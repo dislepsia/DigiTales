@@ -238,9 +238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRecordingButton: {fileID: 949809632}
-  resultText: {fileID: 678557057}
+  sceneText: {fileID: 678557057}
   coincidencia: {fileID: 566318978}
-  contador: {fileID: 2013932332}
+  cantAccesos: {fileID: 2013932332}
   resultTextSpeech: {fileID: 1654107961}
   resultErrores: {fileID: 1848819862}
   player: {fileID: 1762727097}
@@ -388,7 +388,6 @@ GameObject:
   m_Component:
   - component: {fileID: 553293782}
   - component: {fileID: 553293783}
-  - component: {fileID: 553293784}
   m_Layer: 0
   m_Name: Cuerpo
   m_TagString: Untagged
@@ -453,23 +452,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!95 &553293784
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 553293781}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 25af1963c629e464aa6b1c8cc059be02, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &566318977
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +593,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hab\xEDa una vez una ni\xF1a que comenz\xF3 a correr por diversi\xF3n"
+  m_Text: "hab\xEDa una vez una ni\xF1a que comenz\xF3 a correr por diversi\xF3n"
 --- !u!222 &678557058
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -979,6 +961,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762727098}
   - component: {fileID: 1762727099}
+  - component: {fileID: 1762727100}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -1011,6 +994,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376478d02d3948743b54be6a2876cdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1762727100
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1762727097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1dc2ff8b88e60ae45a84d31ac9f9ee27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1848819860
 GameObject:
   m_ObjectHideFlags: 0

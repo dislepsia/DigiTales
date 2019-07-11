@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\KKSpeechRecognizer\Example\RecordingCanvas.cs">
     <Files>
-      <File FileName="Assets\KKSpeechRecognizer\Example\RecordingCanvas.cs" Line="82" Column="9" />
+      <File FileName="Assets\KKSpeechRecognizer\Example\RecordingCanvas.cs" Line="97" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

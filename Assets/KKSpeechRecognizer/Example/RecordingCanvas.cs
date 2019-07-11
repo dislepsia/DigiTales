@@ -6,29 +6,31 @@ using KKSpeech;
 public class RecordingCanvas : MonoBehaviour {
 
 	public Button startRecordingButton;
-	public Text resultText;
+	public Text sceneText; //oracion propia de la escena
 
-	public Text coincidencia;
-	public Text contador;
-	public Text resultTextSpeech;
-	public Text resultErrores;
+	public Text coincidencia; //
+	public Text cantAccesos; //cantidad de veces que se accede a metodo OnPartialResult
+	public Text resultTextSpeech; //texto reconocido por voz
+	public Text resultErrores; //visualizar error
 
-	private string textoEscena;
-	private string[] palabrasEscena = null;
-	private string textoSpeech;
+	//variables para trabajar sceneText
+	private string textoEscena; 
+	private string[] palabrasEscena = null; 
+	int cantPalabrasEscena = 0; 
+
+	//variables para trabajar result(reconocimiento parcial de voz)
 	private string[] palabrasSpeech = null;
-
-	int cantPalabrasEscena = 0;
 	int cantPalabrasSpeech = 0;
+
+	//variables para controlar coloreo
 	int i = 0;
 	int j = 0;
 	int n = 0;
-	int salir = 0;
-	int count = 0;
+	int palabraReconocida = 0;
 
-	public GameObject player;
+	//int count = 0;
 
-
+	public GameObject player; //objeto para controlar animacion de personaje
 
 	void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -43,63 +45,87 @@ public class RecordingCanvas : MonoBehaviour {
 			startRecordingButton.enabled = false;
 			SpeechRecognizer.RequestAccess();
 
-			textoEscena = resultText.text;
+			//obtengo cantidad de palabras de escena actual
+			textoEscena = sceneText.text;
 			palabrasEscena = textoEscena.Split(' ');
 			cantPalabrasEscena = palabrasEscena.Length;
 
-			//animator = GetComponent<Animator>();
-			//animator.Play("PlayerRun2");
-
-
-		} else {
-			//animator.Play("PlayerRun2");
+		} else {			
 			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			startRecordingButton.enabled = false;
 		}
 
 	}
 
+	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnFinalResult(string result) {
 		//resultText.text = result;
 	}
 
+	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnPartialResult(string result) {
-		
+
+		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
 
-		for (i = n; i < cantPalabrasSpeech; i++)
+		/*COLOREO DE ORACION DE LA ESCENA*/
+		/*for (i = n; i < cantPalabrasSpeech; i++)
 		{
 			for (j = n; j < cantPalabrasEscena; j++)
 			{
 				if (palabrasSpeech [i].ToString () == palabrasEscena [j].ToString ())
 				{
-					/*if (palabrasEscena [j].ToString ().Trim() == "correr")
-					{
-						contador.text = "correr";
-						player.SendMessage("UpdateState", "PlayerRun2"); 
-
-					}*/
-					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " ";
-					n++;
-					salir = 1;
-
+					//activar animacion segun palabra
+					if (palabrasEscena [j].ToString ().Trim() == "correr")
+						player.SendMessage("UpdateState", "PlayerRun");
+					
+					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
+					n++; //para no tener en cuenta palabra coloreada en el bucle
+					palabraReconocida = 1; //para terminar bucleo por palabra encontrada
 					
 					break;
-
 				}
 			}
-			if(salir == 1)
+			if(palabraReconocida == 1)
 			{
-				salir = 0;
+				palabraReconocida = 0;
 				break;
 			}
+		}*/
+
+		/*COLOREO DE ORACION DE LA ESCENA*/
+		for (i = n; i < cantPalabrasSpeech; i++)
+		{
+			for (j = n; j < cantPalabrasEscena; j++)
+			{
+				if (palabrasSpeech [i].ToString () == palabrasEscena [j].ToString () && i == j)
+				{
+					//activar animacion segun palabra
+					if (palabrasEscena [j].ToString ().Trim() == "correr")
+						player.SendMessage("UpdateState", "PlayerRun");
+
+					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
+					n++; //para no tener en cuenta palabra coloreada en el bucle
+					palabraReconocida = 1; //para terminar bucleo por palabra encontrada
+
+					break;
+				}
+			}
+			if(palabraReconocida == 1)
+			{
+				palabraReconocida = 0;
+				resultErrores.text = "OK";
+				break;
+			}
+			else 
+				resultErrores.text = "Palabra no reconocida";
 		}
 
-		coincidencia.text = result;
+
+		//coincidencia.text = result;
 		//count++;
-		//contador.text = count.ToString();
-		//resultText.text = result;
+		//cantAccesos.text = count.ToString();
 	}
 
 	public void OnAvailabilityChange(bool available) {
