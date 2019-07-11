@@ -22,8 +22,12 @@ public class Boton : MonoBehaviour
 
     public void RelatarCuento()
     {
-        SceneManager.LoadScene("RelatarCuento");
-        
+        SceneManager.LoadScene("RelatarCuento2");        
+    }
+
+    public void ListadoCuentos()
+    {
+        SceneManager.LoadScene("ListadoCuentos");
     }
 }
 

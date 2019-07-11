@@ -2,7 +2,9 @@ Android
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/Creditos.unity
+Assets/Scenes/ListadoCuentos.unity
 Assets/Scenes/RelatarCuento.unity
+Assets/Scenes/RelatarCuento2.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -145,5 +147,6 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-d739e2af7c75e7df7ed14d594f99bdfc Assembly-CSharp.dll:.RecordingCanvas
+886f3f3e342cdb9296e5b7e53c9cc737 Assembly-CSharp.dll:.RecordingCanvas
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+50a3671b8b5cbd0fbe712bb73e532c41 Assembly-CSharp.dll:.ControlarListado

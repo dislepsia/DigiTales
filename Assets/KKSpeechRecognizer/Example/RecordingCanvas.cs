@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using KKSpeech;
+using UnityEngine.SceneManagement;
 
 public class RecordingCanvas : MonoBehaviour {
 
@@ -31,8 +32,9 @@ public class RecordingCanvas : MonoBehaviour {
 	//int count = 0;
 
 	public GameObject player; //objeto para controlar animacion de personaje
+    public GameObject bosque; //objeto para controlar escena
 
-	void Start() { 
+    void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
@@ -101,9 +103,26 @@ public class RecordingCanvas : MonoBehaviour {
 			{
 				if (palabrasSpeech [i].ToString () == palabrasEscena [j].ToString () && i == j)
 				{
-					//activar animacion segun palabra
-					if (palabrasEscena [j].ToString ().Trim() == "correr")
+                    //activar animacion segun palabra
+                    if (palabrasEscena[j].ToString().Trim() == "bosque")
+                        bosque.SetActive(true);
+
+                    //activar animacion segun palabra
+                    if (palabrasEscena[j].ToString().Trim() == "niña")
+                        player.SetActive(true);
+
+                    //activar animacion segun palabra
+                    if (palabrasEscena[j].ToString().Trim() == "temerosa")
+                    {
+                        SceneManager.LoadScene("RelatarCuento");
+                        player.SetActive(true);
+                        bosque.SetActive(true);
+                    }
+
+                        //activar animacion segun palabra
+                     if (palabrasEscena [j].ToString ().Trim() == "correr")
 						player.SendMessage("UpdateState", "PlayerRun");
+                     
 
 					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
 					n++; //para no tener en cuenta palabra coloreada en el bucle

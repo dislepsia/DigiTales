@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlarEscena : MonoBehaviour
 {
@@ -15,6 +16,14 @@ public class ControlarEscena : MonoBehaviour
         {
             Screen.orientation = ScreenOrientation.Portrait;
         }
+        else if (LevelName == "ListadoCuentos")
+        {
+            Screen.orientation = ScreenOrientation.Portrait;
+        }
+        else if (LevelName == "RelatarCuento2")
+        {
+            Screen.orientation = ScreenOrientation.Landscape;
+        }
         else if (LevelName == "RelatarCuento")
         {
             Screen.orientation = ScreenOrientation.Landscape;
@@ -26,5 +35,5 @@ public class ControlarEscena : MonoBehaviour
     void Update()
     {
         
-    }
+    }    
 }
