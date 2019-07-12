@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class ControlarEscena : MonoBehaviour
 {
+    public Button boton; // variable para controlar boton del listado
+    public GameObject bosque;
     // Start is called before the first frame update
     void Start()
     {
         string LevelName = Application.loadedLevelName;
         if (LevelName == "Menu") {
             Screen.orientation = ScreenOrientation.Portrait;
+            boton.interactable = false;
         }
         else if (LevelName == "Creditos")
         {
@@ -27,6 +30,7 @@ public class ControlarEscena : MonoBehaviour
         else if (LevelName == "RelatarCuento")
         {
             Screen.orientation = ScreenOrientation.Landscape;
+            bosque.SetActive(true);
         }
 
     }

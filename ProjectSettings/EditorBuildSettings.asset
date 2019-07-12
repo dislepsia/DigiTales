@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ListadoCuentos.unity
     guid: 5f8a8a0ac77f520418e1cd1d0dc7ca8f
   - enabled: 1
+    path: Assets/Scenes/Cuento.unity
+    guid: 8030d472741b67a43bf9c4e31f5a12db
+  - enabled: 1
     path: Assets/Scenes/RelatarCuento.unity
     guid: 383c05f8b439b6649a5ddbafd212cda7
   - enabled: 1

@@ -29,5 +29,10 @@ public class Boton : MonoBehaviour
     {
         SceneManager.LoadScene("ListadoCuentos");
     }
+
+    public void Cuento()
+    {
+        SceneManager.LoadScene("Cuento");
+    }
 }
 
