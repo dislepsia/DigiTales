@@ -9,13 +9,13 @@ public class RecordingCanvas : MonoBehaviour {
 	public Button startRecordingButton;
 	public Text sceneText; //oracion propia de la escena
 
-	public Text coincidencia; //
-	public Text cantAccesos; //cantidad de veces que se accede a metodo OnPartialResult
+	//public Text coincidencia; //coincidencia de palabra en escena y pronunciada
+	//public Text cantAccesos; //cantidad de veces que se accede a metodo OnPartialResult
 	public Text resultTextSpeech; //texto reconocido por voz
 	public Text resultErrores; //visualizar error
 
 	//variables para trabajar sceneText
-	private string textoEscena; 
+	private string textoEscena = string.Empty; 
 	private string[] palabrasEscena = null; 
 	int cantPalabrasEscena = 0; 
 
@@ -25,9 +25,7 @@ public class RecordingCanvas : MonoBehaviour {
 
 	//variables para controlar coloreo
 	int i = 0;
-	int j = 0;
 	int n = 0;
-	int palabraReconocida = 0;
 
 	//int count = 0;
 
@@ -52,6 +50,8 @@ public class RecordingCanvas : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 			cantPalabrasEscena = palabrasEscena.Length;
 
+			//coincidencia.text = coincidencia.text + " " + cantPalabrasEscena.ToString()+ " " + cantPalabrasSpeech.ToString()+ " " + i.ToString()+ " " + n.ToString();
+
 		} else {			
 			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			startRecordingButton.enabled = false;
@@ -62,87 +62,53 @@ public class RecordingCanvas : MonoBehaviour {
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnFinalResult(string result) {
 		//resultText.text = result;
+		ReiniciarValoresEscena();
 	}
 
 	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnPartialResult(string result) {
 
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
-		palabrasSpeech = result.Split(' ');
+		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
 
 		/*COLOREO DE ORACION DE LA ESCENA*/
-		/*for (i = n; i < cantPalabrasSpeech; i++)
-		{
-			for (j = n; j < cantPalabrasEscena; j++)
+			for (i = n; i < cantPalabrasSpeech; i++)
 			{
-				if (palabrasSpeech [i].ToString () == palabrasEscena [j].ToString ())
+				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()))
 				{
 					//activar animacion segun palabra
-					if (palabrasEscena [j].ToString ().Trim() == "correr")
-						player.SendMessage("UpdateState", "PlayerRun");
-					
-					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
-					n++; //para no tener en cuenta palabra coloreada en el bucle
-					palabraReconocida = 1; //para terminar bucleo por palabra encontrada
-					
-					break;
-				}
-			}
-			if(palabraReconocida == 1)
-			{
-				palabraReconocida = 0;
-				break;
-			}
-		}*/
-
-		/*COLOREO DE ORACION DE LA ESCENA*/
-		for (i = n; i < cantPalabrasSpeech; i++)
-		{
-			for (j = n; j < cantPalabrasEscena; j++)
-			{
-				if (palabrasSpeech [i].ToString () == palabrasEscena [j].ToString () && i == j)
-				{
-                    //activar animacion segun palabra
-                    if (palabrasEscena[j].ToString().Trim() == "bosque")
-                        bosque.SetActive(true);
-
-                    //activar animacion segun palabra
-                    if (palabrasEscena[j].ToString().Trim() == "niña")
-                        player.SetActive(true);
-
-                    //activar animacion segun palabra
-                    if (palabrasEscena[j].ToString().Trim() == "temerosa")
-                    {
-                        SceneManager.LoadScene("RelatarCuento");
-                        player.SetActive(true);
-                        bosque.SetActive(true);
-                    }
-
-                        //activar animacion segun palabra
-                     if (palabrasEscena [j].ToString ().Trim() == "correr")
-						player.SendMessage("UpdateState", "PlayerRun");
-                     
+					switch (palabrasSpeech [i].ToString ().Trim())
+					{
+						case "bosque":
+							bosque.SetActive(true);
+							break;
+						case "nena":
+							player.SetActive(true);
+							break;
+						case "temerosa":
+							SceneManager.LoadScene("RelatarCuento");
+							player.SetActive(true);
+							bosque.SetActive(true);
+							break;
+						case "correr":
+							player.SendMessage("UpdateState", "PlayerRun");
+							break;
+						default:					
+							break;
+					}
 
 					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
 					n++; //para no tener en cuenta palabra coloreada en el bucle
-					palabraReconocida = 1; //para terminar bucleo por palabra encontrada
+					//resultErrores.text = "OK";
 
 					break;
 				}
-			}
-			if(palabraReconocida == 1)
-			{
-				palabraReconocida = 0;
-				resultErrores.text = "OK";
-				break;
-			}
-			else 
-				resultErrores.text = "Palabra no reconocida";
-		}
+			/*else 
+				resultErrores.text = "Palabra no reconocida";*/
+			}	
 
-
-		//coincidencia.text = result;
+		//coincidencia.text = coincidencia.text + result + " ";
 		//count++;
 		//cantAccesos.text = count.ToString();
 	}
@@ -187,5 +153,12 @@ public class RecordingCanvas : MonoBehaviour {
 			startRecordingButton.GetComponentInChildren<Text>().text = "";
 			resultErrores.text = "Say something :-)";
 		}
+	}
+
+	public void ReiniciarValoresEscena() {		
+		resultTextSpeech.text = string.Empty;
+		resultErrores.text = string.Empty;
+		i = 0;
+		n = 0;
 	}
 }
