@@ -7,10 +7,11 @@ public class ControlarEscena : MonoBehaviour
 {
     public Button boton; // variable para controlar boton del listado
     public GameObject bosque;
+	string LevelName=string.Empty;
     // Start is called before the first frame update
     void Start()
     {
-        string LevelName = Application.loadedLevelName;
+        LevelName = Application.loadedLevelName;
         if (LevelName == "Menu") {
             Screen.orientation = ScreenOrientation.Portrait;
             boton.interactable = false;
@@ -38,6 +39,10 @@ public class ControlarEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		if (LevelName == "Menu") 
+		{
+			if (Input.GetKeyDown (KeyCode.Escape))
+				Application.Quit ();
+		}
     }    
 }

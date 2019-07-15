@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
@@ -27,10 +28,13 @@ public class RecordingCanvas : MonoBehaviour {
 	int i = 0;
 	int n = 0;
 
+	int efectoParallax = 0;
+	public float parallaxSpeed = 0.12f;
+
 	//int count = 0;
 
 	public GameObject player; //objeto para controlar animacion de personaje
-    public GameObject bosque; //objeto para controlar escena
+	public GameObject bosque; //objeto para controlar escena
 
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -92,7 +96,8 @@ public class RecordingCanvas : MonoBehaviour {
 							bosque.SetActive(true);
 							break;
 						case "correr":
-							player.SendMessage("UpdateState", "PlayerRun");
+							player.SendMessage ("UpdateState", "PlayerRun");
+							efectoParallax = 1;
 							break;
 						default:					
 							break;
@@ -161,4 +166,15 @@ public class RecordingCanvas : MonoBehaviour {
 		i = 0;
 		n = 0;
 	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		if (efectoParallax == 1)
+		{
+			float finalSpeed= parallaxSpeed * Time.deltaTime;
+			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
+			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
+		}
+	}    
 }
