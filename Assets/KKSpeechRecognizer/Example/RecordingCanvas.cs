@@ -28,8 +28,15 @@ public class RecordingCanvas : MonoBehaviour {
 	int i = 0;
 	int n = 0;
 
+	//variables para efectoParallax
 	int efectoParallax = 0;
 	public float parallaxSpeed = 0.12f;
+
+	//variables de sonidos
+	public AudioClip buho;
+	public AudioClip grito;
+	private AudioSource ambienteBosque;
+	int hayGrito=0;
 
 	//int count = 0;
 
@@ -53,6 +60,9 @@ public class RecordingCanvas : MonoBehaviour {
 			textoEscena = sceneText.text;
 			palabrasEscena = textoEscena.Split(' ');
 			cantPalabrasEscena = palabrasEscena.Length;
+
+			ambienteBosque = GetComponent<AudioSource> ();
+
 
 			//coincidencia.text = coincidencia.text + " " + cantPalabrasEscena.ToString()+ " " + cantPalabrasSpeech.ToString()+ " " + i.ToString()+ " " + n.ToString();
 
@@ -86,9 +96,12 @@ public class RecordingCanvas : MonoBehaviour {
 					{
 						case "bosque":
 							bosque.SetActive(true);
+					ambienteBosque.clip = buho;
+					ambienteBosque.Play ();
 							break;
 						case "nena":
 							player.SetActive(true);
+
 							break;
 						case "temerosa":
 							SceneManager.LoadScene("RelatarCuento");
@@ -98,6 +111,10 @@ public class RecordingCanvas : MonoBehaviour {
 						case "correr":
 							player.SendMessage ("UpdateState", "PlayerRun");
 							efectoParallax = 1;
+							break;
+				case "grito":
+					hayGrito = 1;
+
 							break;
 						default:					
 							break;
@@ -176,5 +193,14 @@ public class RecordingCanvas : MonoBehaviour {
 			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
 		}
+
+		if (hayGrito == 1)
+		{
+			ambienteBosque.clip = grito;
+			ambienteBosque.Play ();
+			hayGrito = 0;
+		}
+
+
 	}    
 }
