@@ -42,6 +42,10 @@ public class RecordingCanvas : MonoBehaviour {
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
 
+	string LevelName = string.Empty;
+	private string[] palabrasClave = null; 
+	int cantPalabrasClave = 0;
+
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -60,9 +64,23 @@ public class RecordingCanvas : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 			cantPalabrasEscena = palabrasEscena.Length;
 
+			LevelName = Application.loadedLevelName;
+
 			ambienteBosque = GetComponent<AudioSource> ();
 			ambienteBosque.clip = buho;
 			ambienteBosque.Play ();
+
+			if (LevelName == "RelatarCuento2") 
+			{
+				palabrasClave = new string[3]{"bosque","nena","temerosa"};
+				cantPalabrasClave = 3;
+			}else if (LevelName == "RelatarCuento")
+			{
+				ambienteBosque.clip = grito;//para q se reproduzca mas rapido, es sonido ya esta asignado
+				palabrasClave = new string[3]{"grito","se","correr"};
+				cantPalabrasClave = 3;
+			}
+
 
 
 			//coincidencia.text = coincidencia.text + " " + cantPalabrasEscena.ToString()+ " " + cantPalabrasSpeech.ToString()+ " " + i.ToString()+ " " + n.ToString();
@@ -87,7 +105,7 @@ public class RecordingCanvas : MonoBehaviour {
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
 
-		/*COLOREO DE ORACION DE LA ESCENA*/
+		/*COLOREO DE ORACION DE LA ESCENA*//*TODOO*/
 			for (i = n; i < cantPalabrasSpeech; i++)
 			{
 				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()))
@@ -111,10 +129,16 @@ public class RecordingCanvas : MonoBehaviour {
 							efectoParallax = 1;
 							break;
 				case "grito":					
-							ambienteBosque.clip = grito;
+							//ambienteBosque.clip = grito;
 							ambienteBosque.Play ();
-							Handheld.Vibrate();
+							//Handheld.Vibrate();
 							break;
+				case "se":					
+					//ambienteBosque.clip = grito;
+					//ambienteBosque.Play ();
+					Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
+					break;
+				
 						default:					
 							break;
 					}
@@ -125,9 +149,61 @@ public class RecordingCanvas : MonoBehaviour {
 
 					break;
 				}
-			/*else 
-				resultErrores.text = "Palabra no reconocida";*/
+			//else 
+				//resultErrores.text = "Palabra no reconocida";
 			}	
+
+
+		/*COLOREO DE ORACION DE LA ESCENA*//*PORPALABRACLAVE*/
+		/*for (i = n; i < cantPalabrasSpeech; i++)
+		{
+			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasClave [i].ToString ().Trim()))
+			{
+				//activar animacion segun palabra
+				switch (palabrasSpeech [i].ToString ().Trim())
+				{
+				case "bosque":
+					bosque.SetActive(true);
+					break;
+				case "nena":
+					player.SetActive(true);
+					break;
+				case "temerosa":
+					SceneManager.LoadScene("RelatarCuento");
+					player.SetActive(true);
+					bosque.SetActive(true);
+					break;
+				case "correr":
+					player.SendMessage ("UpdateState", "PlayerRun");
+					efectoParallax = 1;
+					break;
+				case "grito":					
+					//ambienteBosque.clip = grito;
+					ambienteBosque.Play ();
+					//Handheld.Vibrate();
+					break;
+				case "se":					
+					//ambienteBosque.clip = grito;
+					//ambienteBosque.Play ();
+					Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
+					break;
+
+				default:					
+					break;
+				}
+
+				for(int j=n; j<i ;j++){
+				}
+				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+				n++; //para no tener en cuenta palabra coloreada en el bucle
+				//resultErrores.text = "OK";
+
+				break;
+			}
+			//else 
+				//resultErrores.text = "Palabra no reconocida";
+		}	*/
+
 
 		//coincidencia.text = coincidencia.text + result + " ";
 		//count++;
@@ -192,5 +268,7 @@ public class RecordingCanvas : MonoBehaviour {
 			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
 		}
+
+
 	}    
 }
