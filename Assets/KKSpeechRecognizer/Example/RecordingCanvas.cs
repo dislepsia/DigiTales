@@ -45,6 +45,9 @@ public class RecordingCanvas : MonoBehaviour {
 	string LevelName = string.Empty;
 	private string[] palabrasClave = null; 
 	int cantPalabrasClave = 0;
+	int k=0;
+	int j=0;
+
 
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -106,7 +109,7 @@ public class RecordingCanvas : MonoBehaviour {
 		cantPalabrasSpeech = palabrasSpeech.Length;
 
 		/*COLOREO DE ORACION DE LA ESCENA*//*TODOO*/
-			for (i = n; i < cantPalabrasSpeech; i++)
+			/*for (i = n; i < cantPalabrasSpeech; i++)
 			{
 				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()))
 				{
@@ -151,14 +154,17 @@ public class RecordingCanvas : MonoBehaviour {
 				}
 			//else 
 				//resultErrores.text = "Palabra no reconocida";
-			}	
+			}	*/
 
 
 		/*COLOREO DE ORACION DE LA ESCENA*//*PORPALABRACLAVE*/
-		/*for (i = n; i < cantPalabrasSpeech; i++)
+		/**/for (i = 0; i < cantPalabrasSpeech; i++)
 		{
-			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasClave [i].ToString ().Trim()))
+			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
 			{
+				
+
+				//n = i;//para que no buclee sobre lo pintado
 				//activar animacion segun palabra
 				switch (palabrasSpeech [i].ToString ().Trim())
 				{
@@ -192,17 +198,27 @@ public class RecordingCanvas : MonoBehaviour {
 					break;
 				}
 
-				for(int j=n; j<i ;j++){
+				//StartCoroutine(UsingYield(0.5f));
+
+				while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim())){
+					
+
+					resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+					j++;
+					StartCoroutine(UsingYield(0.5f));
+					 
 				}
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
-				n++; //para no tener en cuenta palabra coloreada en el bucle
-				//resultErrores.text = "OK";
+				j++;
+
+				k++;
 
 				break;
 			}
 			//else 
 				//resultErrores.text = "Palabra no reconocida";
-		}	*/
+		}	/**/
+
 
 
 		//coincidencia.text = coincidencia.text + result + " ";
@@ -257,6 +273,10 @@ public class RecordingCanvas : MonoBehaviour {
 		resultErrores.text = string.Empty;
 		i = 0;
 		n = 0;
+
+		j = 0;
+		k = 0;
+
 	}
 
 	// Update is called once per frame
@@ -269,6 +289,22 @@ public class RecordingCanvas : MonoBehaviour {
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
 		}
 
+	}  
 
-	}    
+	IEnumerator UsingYield(float seconds)
+	{
+		/*while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim())){
+
+
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+			j++;*/
+			yield return new WaitForSeconds(seconds);
+
+		/*}
+		resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+		j++;
+
+		k++;*/
+
+	}
 }
