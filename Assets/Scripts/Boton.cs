@@ -12,7 +12,8 @@ public class Boton : MonoBehaviour
 
     public void MenuPrincipal()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("NewMenu");
+		Screen.orientation = ScreenOrientation.Portrait;
     }
 
     public void Creditos()
@@ -27,7 +28,8 @@ public class Boton : MonoBehaviour
 
     public void ListadoCuentos()
     {
-        SceneManager.LoadScene("ListadoCuentos");
+		
+        SceneManager.LoadScene("NewListadoCuentos");
     }
 
     public void Cuento()

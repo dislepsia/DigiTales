@@ -12,7 +12,7 @@ public class ControlarEscena : MonoBehaviour
     void Start()
     {
         LevelName = Application.loadedLevelName;
-        if (LevelName == "Menu") {
+        if (LevelName == "NewMenu") {
             Screen.orientation = ScreenOrientation.Portrait;
             boton.interactable = false;
         }
@@ -20,7 +20,7 @@ public class ControlarEscena : MonoBehaviour
         {
             Screen.orientation = ScreenOrientation.Portrait;
         }
-        else if (LevelName == "ListadoCuentos")
+        else if (LevelName == "NewListadoCuentos")
         {
             Screen.orientation = ScreenOrientation.Portrait;
         }
@@ -39,7 +39,7 @@ public class ControlarEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (LevelName == "Menu") 
+		if (LevelName == "NewMenu") 
 		{
 			if (Input.GetKeyDown (KeyCode.Escape))
 				Application.Quit ();
