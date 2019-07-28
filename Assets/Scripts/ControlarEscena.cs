@@ -33,7 +33,11 @@ public class ControlarEscena : MonoBehaviour
             Screen.orientation = ScreenOrientation.Landscape;
             bosque.SetActive(true);
         }
-
+		else if (LevelName == "Opciones")
+		{
+			Screen.orientation = ScreenOrientation.Portrait;
+			bosque.SetActive(true);
+		}
     }
 
     // Update is called once per frame

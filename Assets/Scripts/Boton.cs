@@ -34,7 +34,12 @@ public class Boton : MonoBehaviour
 
     public void Cuento()
     {
-        SceneManager.LoadScene("Cuento");
+		SceneManager.LoadScene("Opciones");
     }
+
+	public void Opciones()
+	{
+		SceneManager.LoadScene("Opciones");
+	}
 }
 
