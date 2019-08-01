@@ -50,7 +50,7 @@ public class RecordingCanvas : MonoBehaviour {
 
 
 	public Animator imagenNegra;
-
+	public Animator circuloNegro;
 
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -187,7 +187,7 @@ public class RecordingCanvas : MonoBehaviour {
 					player.SendMessage ("UpdateState", "PlayerRun");
 					efectoParallax = 1;
 
-					StartCoroutine (SpriteFadeOut());
+					StartCoroutine (SpriteShapeOut());
 					break;
 				case "grito":					
 					//ambienteBosque.clip = grito;
@@ -319,11 +319,17 @@ public class RecordingCanvas : MonoBehaviour {
 		imagenNegra.SetTrigger ("end");
 		yield return new WaitForSeconds(2f);
 
-		if (LevelName == "RelatarCuento2") 
-		{
+
 			SceneManager.LoadScene("RelatarCuento");
 			player.SetActive(true);
 			bosque.SetActive(true);
-		}
+
+	}
+	IEnumerator SpriteShapeOut()
+	{		
+		circuloNegro.SetTrigger ("end");
+		yield return new WaitForSeconds(2f);
+
+
 	}
 }
