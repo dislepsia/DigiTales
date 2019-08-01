@@ -49,6 +49,9 @@ public class RecordingCanvas : MonoBehaviour {
 	int j=0;
 
 
+	public Animator imagenNegra;
+
+
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -175,13 +178,16 @@ public class RecordingCanvas : MonoBehaviour {
 					player.SetActive(true);
 					break;
 				case "temerosa":
-					SceneManager.LoadScene("RelatarCuento");
+					StartCoroutine (SpriteFadeOut());
+					/*SceneManager.LoadScene("RelatarCuento");
 					player.SetActive(true);
-					bosque.SetActive(true);
+					bosque.SetActive(true);*/
 					break;
 				case "correr":
 					player.SendMessage ("UpdateState", "PlayerRun");
 					efectoParallax = 1;
+
+					StartCoroutine (SpriteFadeOut());
 					break;
 				case "grito":					
 					//ambienteBosque.clip = grito;
@@ -306,5 +312,18 @@ public class RecordingCanvas : MonoBehaviour {
 
 		k++;*/
 
+	}
+
+	IEnumerator SpriteFadeOut()
+	{		
+		imagenNegra.SetTrigger ("end");
+		yield return new WaitForSeconds(2f);
+
+		if (LevelName == "RelatarCuento2") 
+		{
+			SceneManager.LoadScene("RelatarCuento");
+			player.SetActive(true);
+			bosque.SetActive(true);
+		}
 	}
 }

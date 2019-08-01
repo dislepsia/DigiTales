@@ -526,7 +526,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4f96f9ed6ee5f844e89627c97ae52445, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -674,6 +674,8 @@ MonoBehaviour:
   grito: {fileID: 8300000, guid: 7a1867fdbe654da46ae1fb51cfc8aaf8, type: 3}
   player: {fileID: 1762727097}
   bosque: {fileID: 990243658}
+  fadeOutTime: 2
+  imagenNegra: {fileID: 252866402}
 --- !u!82 &339369637
 AudioSource:
   m_ObjectHideFlags: 0

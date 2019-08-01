@@ -474,6 +474,8 @@ MonoBehaviour:
   grito: {fileID: 8300000, guid: 7a1867fdbe654da46ae1fb51cfc8aaf8, type: 3}
   player: {fileID: 1762727097}
   bosque: {fileID: 990243658}
+  fadeOutTime: 2
+  imagenNegra: {fileID: 1802879651}
 --- !u!82 &339369637
 AudioSource:
   m_ObjectHideFlags: 0
