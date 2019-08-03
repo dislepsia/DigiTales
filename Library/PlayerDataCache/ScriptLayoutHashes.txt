@@ -2,7 +2,7 @@ Android
 SceneListBegin?
 Assets/Scenes/NewMenu.unity
 Assets/Scenes/NewListadoCuentos.unity
-Assets/Scenes/Creditos.unity
+Assets/Scenes/NewCreditos.unity
 Assets/Scenes/Cuento.unity
 Assets/Scenes/RelatarCuento.unity
 Assets/Scenes/RelatarCuento2.unity
@@ -236,3 +236,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 af7666733efcc974926d7d470e1732a6 Assembly-CSharp.dll:TMPro.Examples.SkewTextExample
 34e025057ef78b1bf238460cdf6583a3 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.SimpleScript
+3f6c61abb9608771dbc5ee579aec1a86 Assembly-CSharp.dll:.BrightnessValueChange

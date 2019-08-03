@@ -18,7 +18,7 @@ public class Boton : MonoBehaviour
 
     public void Creditos()
     {
-        SceneManager.LoadScene("Creditos");
+        SceneManager.LoadScene("NewCreditos");
     }
 
     public void RelatarCuento()
