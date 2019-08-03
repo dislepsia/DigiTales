@@ -211,7 +211,7 @@ public class RecordingCanvas : MonoBehaviour {
 
 					resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 					j++;
-					StartCoroutine(UsingYield(0.5f));
+					//StartCoroutine(UsingYield(0.5f));
 					 
 				}
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
