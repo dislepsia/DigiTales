@@ -52,6 +52,11 @@ public class RecordingCanvas : MonoBehaviour {
 	public Animator imagenNegra;
 	public Animator circuloNegro;
 
+	int contadorUsing=0;
+	int contadorUsing2=0;
+	int contadorUsing3=0;
+
+
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -161,7 +166,7 @@ public class RecordingCanvas : MonoBehaviour {
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
-		if (string.Equals (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
+		/*if (string.Equals (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
 		{			
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
@@ -209,46 +214,59 @@ public class RecordingCanvas : MonoBehaviour {
 		//else 
 			//resultErrores.text = "Palabra no reconocida";
 		}
-
+		*/
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra
-			/*switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
+			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "bosque":
-				bosque.SetActive(true);
-				StartCoroutine(UsingYield());
+		case "bosque":
+				bosque.SetActive (true);
+
+				StartCoroutine (UsingYield ());
+				StopCoroutine ("UsingYield");
 				break;
 			case "nena":
 				player.SetActive(true);
-				StartCoroutine(UsingYield());
+				
+				StartCoroutine(UsingYield2());
+				StopCoroutine ("UsingYield2");
 				break;
 			case "temerosa":
-				StartCoroutine (SpriteFadeOut());	
-				StartCoroutine(UsingYield());
+				StartCoroutine (SpriteFadeOut());
+				
+				StartCoroutine(UsingYield3());
+				StopCoroutine ("UsingYield3");
 				break;
-			case "correr":
-				player.SendMessage ("UpdateState", "PlayerRun");
-				efectoParallax = 1;
-				StartCoroutine (SpriteShapeOut());
-				StartCoroutine(UsingYield());
-				break;
+
 			case "grito":					
 				//ambienteBosque.clip = grito;
 				ambienteBosque.Play ();
 				//Handheld.Vibrate();
+
 				StartCoroutine(UsingYield());
+				StopCoroutine ("UsingYield");
 				break;
 			case "se":					
 				//ambienteBosque.clip = grito;
 				//ambienteBosque.Play ();
 				Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
-				StartCoroutine(UsingYield());
+
+				StartCoroutine(UsingYield2());
+				StopCoroutine ("UsingYield2");
+				break;
+			case "correr":
+				player.SendMessage ("UpdateState", "PlayerRun");
+				efectoParallax = 1;
+				StartCoroutine (SpriteShapeOut());
+
+				StartCoroutine(UsingYield3());
+				StopCoroutine ("UsingYield3");
 				break;
 			default:					
 				break;
-			}*/
+			}
 
 		//coincidencia.text = coincidencia.text + result + " ";
 		//count++;
@@ -306,6 +324,9 @@ public class RecordingCanvas : MonoBehaviour {
 		j = 0;
 		k = 0;
 
+		contadorUsing = 0;
+		contadorUsing2 = 0;
+		contadorUsing3 = 0;
 	}
 
 	// Update is called once per frame
@@ -318,21 +339,70 @@ public class RecordingCanvas : MonoBehaviour {
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
 		}
 
+
 	}  
 
 	IEnumerator UsingYield()
 	{
-		while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
-		{
-			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
-			j++;	
-			yield return new WaitForSeconds(0.03f);
-		}
+		contadorUsing ++;
+		if (contadorUsing == 1)
+		{	
+			
+			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
+			{
+				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+				j++;	
+				yield return new WaitForSeconds(0.03f);
+			}
 
-		resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
-		j++;
-		k++;
-		yield return null;
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+			j++;
+			k++;
+
+
+		}
+	}
+
+	IEnumerator UsingYield2()
+	{
+		contadorUsing2 ++;
+		if (contadorUsing2 == 1)
+		{	
+
+			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
+			{
+				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+				j++;	
+				yield return new WaitForSeconds(0.03f);
+			}
+
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+			j++;
+			k++;
+
+
+		}
+	}
+
+	IEnumerator UsingYield3()
+	{
+		contadorUsing3 ++;
+		if (contadorUsing3 == 1)
+		{	
+
+			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
+			{
+				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+				j++;	
+				yield return new WaitForSeconds(0.03f);
+			}
+
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
+			j++;
+			k++;
+
+
+		}
 	}
 
 	IEnumerator SpriteFadeOut()
