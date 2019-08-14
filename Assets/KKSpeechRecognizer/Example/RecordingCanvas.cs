@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class RecordingCanvas : MonoBehaviour {
 
 	public Button startRecordingButton;
+
 	public Text sceneText; //oracion propia de la escena
 
 	//public Text coincidencia; //coincidencia de palabra en escena y pronunciada
@@ -51,6 +52,7 @@ public class RecordingCanvas : MonoBehaviour {
 
 	public Animator imagenNegra;
 	public Animator circuloNegro;
+	public Animator microfono;
 
 	int contadorUsing=0;
 	int contadorUsing2=0;
@@ -94,12 +96,17 @@ public class RecordingCanvas : MonoBehaviour {
 
 
 
+
+
+
 			//coincidencia.text = coincidencia.text + " " + cantPalabrasEscena.ToString()+ " " + cantPalabrasSpeech.ToString()+ " " + i.ToString()+ " " + n.ToString();
 
 		} else {			
 			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			startRecordingButton.enabled = false;
 		}
+
+
 
 	}
 
@@ -302,13 +309,21 @@ public class RecordingCanvas : MonoBehaviour {
 		Debug.LogError(error);
 		resultErrores.text = "Something went wrong... Try again! \n [" + error + "]";
 		startRecordingButton.GetComponentInChildren<Text>().text = "";
+
+		startRecordingButton.gameObject.SetActive(true);
+		microfono.gameObject.SetActive(false);
 	}
 
 	public void OnStartRecordingPressed() {
 		if (SpeechRecognizer.IsRecording()) {
 			SpeechRecognizer.StopIfRecording();
 			startRecordingButton.GetComponentInChildren<Text>().text = "";
-		} else {
+
+			startRecordingButton.gameObject.SetActive(true);
+			microfono.gameObject.SetActive(false);
+		} else {			
+			startRecordingButton.gameObject.SetActive(false);
+			microfono.gameObject.SetActive(true);
 			SpeechRecognizer.StartRecording(true);
 			startRecordingButton.GetComponentInChildren<Text>().text = "";
 			resultErrores.text = "Say something :-)";
@@ -327,6 +342,9 @@ public class RecordingCanvas : MonoBehaviour {
 		contadorUsing = 0;
 		contadorUsing2 = 0;
 		contadorUsing3 = 0;
+
+		startRecordingButton.gameObject.SetActive(true);
+		microfono.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
