@@ -43,7 +43,7 @@ public class ControlarEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (LevelName == "NewMenu") 
+		if (LevelName == "Salir") 
 		{
 			if (Input.GetKeyDown (KeyCode.Escape))
 				Application.Quit ();

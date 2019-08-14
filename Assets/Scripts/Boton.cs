@@ -41,5 +41,10 @@ public class Boton : MonoBehaviour
 	{
 		SceneManager.LoadScene("Opciones");
 	}
+
+	public void Salir()
+	{
+		SceneManager.LoadScene("Salir");
+	}
 }
 
