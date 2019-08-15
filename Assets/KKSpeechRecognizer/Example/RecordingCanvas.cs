@@ -285,7 +285,7 @@ public class RecordingCanvas : MonoBehaviour {
 		if (!available) {
 			resultErrores.text = "Speech Recognition not available";
 		} else {
-			resultErrores.text = "Say something :-)";
+			//resultErrores.text = "Say something :-)";
 		}
 	}
 
@@ -307,7 +307,7 @@ public class RecordingCanvas : MonoBehaviour {
 
 	public void OnError(string error) {
 		Debug.LogError(error);
-		resultErrores.text = "Something went wrong... Try again! \n [" + error + "]";
+		//resultErrores.text = "Something went wrong... Try again! \n [" + error + "]";
 		startRecordingButton.GetComponentInChildren<Text>().text = "";
 
 		startRecordingButton.gameObject.SetActive(true);
@@ -326,7 +326,7 @@ public class RecordingCanvas : MonoBehaviour {
 			microfono.gameObject.SetActive(true);
 			SpeechRecognizer.StartRecording(true);
 			startRecordingButton.GetComponentInChildren<Text>().text = "";
-			resultErrores.text = "Say something :-)";
+			//resultErrores.text = "Say something :-)";
 		}
 	}
 
