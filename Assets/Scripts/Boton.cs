@@ -30,6 +30,7 @@ public class Boton : MonoBehaviour
     {
 		
         SceneManager.LoadScene("NewListadoCuentos");
+		Screen.orientation = ScreenOrientation.Portrait;
     }
 
     public void Cuento()
