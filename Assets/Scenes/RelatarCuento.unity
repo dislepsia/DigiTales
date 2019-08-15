@@ -363,7 +363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "de repente un gran grito se escucha entonces comenz\xF3 a correr"
+  m_Text: la tormenta parecia inevitable asi como la angustiosa oscuridad
 --- !u!222 &96952184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -635,8 +635,9 @@ MonoBehaviour:
   resultTextSpeech: {fileID: 840632029}
   resultErrores: {fileID: 1463085897}
   parallaxSpeed: 0.12
-  buho: {fileID: 8300000, guid: 72c00b67e465fe445b6c9d74eb76c526, type: 3}
-  grito: {fileID: 8300000, guid: 7a1867fdbe654da46ae1fb51cfc8aaf8, type: 3}
+  buho: {fileID: 0}
+  grito: {fileID: 0}
+  trueno: {fileID: 8300000, guid: fa425540a87bc7144974fc57f338d2c4, type: 3}
   player: {fileID: 1762727097}
   bosque: {fileID: 990243658}
   imagenNegra: {fileID: 0}

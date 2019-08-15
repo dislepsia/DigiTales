@@ -8,6 +8,9 @@ Assets/Scenes/RelatarCuento.unity
 Assets/Scenes/RelatarCuento2.unity
 Assets/Scenes/Opciones.unity
 Assets/Scenes/Salir.unity
+Assets/Scenes/RelatarCuento3.unity
+Assets/Scenes/RelatarCuento4.unity
+Assets/Scenes/RelatarCuento5.unity
 SceneListEnd?
 75cd0c6c744b9733ef29aa6c59ece2b1 Assembly-CSharp.dll:TMPro.Examples.VertexZoom
 c906602d9b43cc5e075f80e1d8ae7c79 Assembly-CSharp.dll:TMPro.Examples.Benchmark01_UGUI
@@ -228,7 +231,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 1cd4893b18ef6c9e1612214d23ea08a3 Assembly-CSharp.dll:.ChatController
 2f332606b836e51d93c2aa652d317cd5 Assembly-CSharp.dll:.SettingsMenu
-f22bb7492c7f252b2c00f0ba9d757614 Assembly-CSharp.dll:.RecordingCanvas
+700c75e3ea8cf81b9f48e8c223a74d25 Assembly-CSharp.dll:.RecordingCanvas
 48a9dee325686d1924a2646b71c83f08 Assembly-CSharp.dll:TMPro.Examples.Benchmark01
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TextConsoleSimulator

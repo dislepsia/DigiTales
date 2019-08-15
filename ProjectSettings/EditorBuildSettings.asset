@@ -38,3 +38,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Creditos.unity
     guid: 52d82146daffef548a808dd30703937f
+  - enabled: 1
+    path: Assets/Scenes/RelatarCuento3.unity
+    guid: 9eefa66f081f2834f90f13187d0e3cb4
+  - enabled: 1
+    path: Assets/Scenes/RelatarCuento4.unity
+    guid: 9fcc1b26a3b382444bf5a22a5c436221
+  - enabled: 1
+    path: Assets/Scenes/RelatarCuento5.unity
+    guid: 3c9aa3e621a63304392c6c36f146ab42

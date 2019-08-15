@@ -36,6 +36,7 @@ public class RecordingCanvas : MonoBehaviour {
 	//variables de sonidos
 	public AudioClip buho;
 	public AudioClip grito;
+	public AudioClip trueno;
 	private AudioSource ambienteBosque;
 
 	//int count = 0;
@@ -80,18 +81,49 @@ public class RecordingCanvas : MonoBehaviour {
 			LevelName = Application.loadedLevelName;
 
 			ambienteBosque = GetComponent<AudioSource> ();
-			ambienteBosque.clip = buho;
-			ambienteBosque.Play ();
+			/*ambienteBosque.clip = buho;
+			ambienteBosque.Play ();*/
 
 			if (LevelName == "RelatarCuento2") 
 			{
-				palabrasClave = new string[3]{"bosque","nena","temerosa"};
+				palabrasClave = new string[3]{"bosque","niña","misteriosa"};
 				cantPalabrasClave = 3;
 			}else if (LevelName == "RelatarCuento")
+			{				
+				ambienteBosque.clip = trueno;//para q se reproduzca mas rapido, es sonido ya esta asignado
+				palabrasClave = new string[3]{"tormenta","inevitable","oscuridad"};
+				cantPalabrasClave = 3;
+
+				player.SetActive(true);
+				bosque.SetActive(true);
+			}else if (LevelName == "RelatarCuento3")
+			{				
+				ambienteBosque.clip = buho;//para q se reproduzca mas rapido, es sonido ya esta asignado
+				palabrasClave = new string[3]{"comenzó","búho","cantar"};
+				cantPalabrasClave = 3;
+
+				player.SetActive(true);
+				bosque.SetActive(true);
+			}
+			else if (LevelName == "RelatarCuento4")
 			{
 				ambienteBosque.clip = grito;//para q se reproduzca mas rapido, es sonido ya esta asignado
-				palabrasClave = new string[3]{"grito","se","correr"};
+				palabrasClave = new string[3]{"grito","entonces","correr"};
 				cantPalabrasClave = 3;
+
+				player.SetActive(true);
+				bosque.SetActive(true);
+			}else if (LevelName == "RelatarCuento5")
+			{
+				
+				palabrasClave = new string[3]{"adrenalina","varios","agilmente"};
+				cantPalabrasClave = 3;
+
+				player.SetActive(true);
+				bosque.SetActive(true);
+
+				player.SendMessage ("UpdateState", "PlayerRun");
+				efectoParallax = 1;
 			}
 
 
@@ -234,31 +266,104 @@ public class RecordingCanvas : MonoBehaviour {
 				StartCoroutine (UsingYield ());
 				StopCoroutine ("UsingYield");
 				break;
-			case "nena":
+			case "niña":
 				player.SetActive(true);
 				
 				StartCoroutine(UsingYield2());
 				StopCoroutine ("UsingYield2");
 				break;
-			case "temerosa":
-				StartCoroutine (SpriteFadeOut());
+			case "misteriosa":
+				
 				
 				StartCoroutine(UsingYield3());
 				StopCoroutine ("UsingYield3");
+
+			StartCoroutine(esperar());
+			StopCoroutine ("esperar");
+
+			StartCoroutine (SpriteFadeOut());
+			StopCoroutine ("SpriteFadeOut");
+
+			SceneManager.LoadScene("RelatarCuento");
 				break;
+
+
+
+		case "tormenta":
+			ambienteBosque.Play ();
+
+			StartCoroutine(UsingYield2());
+			StopCoroutine ("UsingYield2");
+			break;
+		case "inevitable":	
+
+			StartCoroutine (UsingYield ());
+			StopCoroutine ("UsingYield");
+			break;
+		
+		case "oscuridad":
+			
+
+			StartCoroutine(UsingYield3());
+			StopCoroutine ("UsingYield3");
+
+			StartCoroutine(esperar());
+			StopCoroutine ("esperar");
+
+			StartCoroutine (SpriteShapeOut());
+			StopCoroutine ("SpriteShapeOut");
+
+			SceneManager.LoadScene("RelatarCuento3");
+			break;
+
+
+
+
+
+
+		case "comenzó":	
+			ambienteBosque.Play ();
+
+			StartCoroutine (UsingYield ());
+			StopCoroutine ("UsingYield");
+			break;
+		case "búho":			
+
+			StartCoroutine(UsingYield2());
+			StopCoroutine ("UsingYield2");
+			break;
+		case "cantar":
+			
+			StartCoroutine(UsingYield3());
+			StopCoroutine ("UsingYield3");
+
+			StartCoroutine(esperar());
+			StopCoroutine ("esperar");
+
+			StartCoroutine (SpriteShapeOut());
+			StopCoroutine ("SpriteShapeOut");
+
+			SceneManager.LoadScene("RelatarCuento4");
+			break;
+
+
+
+
+
+
 
 			case "grito":					
 				//ambienteBosque.clip = grito;
 				ambienteBosque.Play ();
-				//Handheld.Vibrate();
+				Handheld.Vibrate();
 
 				StartCoroutine(UsingYield());
 				StopCoroutine ("UsingYield");
 				break;
-			case "se":					
+			case "entonces":					
 				//ambienteBosque.clip = grito;
 				//ambienteBosque.Play ();
-				Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
+				//Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
 
 				StartCoroutine(UsingYield2());
 				StopCoroutine ("UsingYield2");
@@ -266,11 +371,48 @@ public class RecordingCanvas : MonoBehaviour {
 			case "correr":
 				player.SendMessage ("UpdateState", "PlayerRun");
 				efectoParallax = 1;
-				StartCoroutine (SpriteShapeOut());
+				
 
 				StartCoroutine(UsingYield3());
 				StopCoroutine ("UsingYield3");
+
+			StartCoroutine(esperar());
+			StopCoroutine ("esperar");
+
+			StartCoroutine (SpriteShapeOut());
+
+			SceneManager.LoadScene("RelatarCuento5");
 				break;
+
+
+
+		case "adrenalina":			
+
+			StartCoroutine(UsingYield());
+			StopCoroutine ("UsingYield");
+			break;
+		case "varios":			
+
+			StartCoroutine(UsingYield2());
+			StopCoroutine ("UsingYield2");
+			break;
+		case "agilmente":
+			
+
+
+			StartCoroutine(UsingYield3());
+			StopCoroutine ("UsingYield3");
+
+			StartCoroutine(esperar());
+			StopCoroutine ("esperar");
+
+			StartCoroutine (SpriteShapeOut());
+
+			break;
+
+
+
+
 			default:					
 				break;
 			}
@@ -331,8 +473,8 @@ public class RecordingCanvas : MonoBehaviour {
 	}
 
 	public void ReiniciarValoresEscena() {		
-		resultTextSpeech.text = string.Empty;
-		resultErrores.text = string.Empty;
+		//resultTextSpeech.text = string.Empty;
+		//resultErrores.text = string.Empty;
 		i = 0;
 		n = 0;
 
@@ -428,14 +570,23 @@ public class RecordingCanvas : MonoBehaviour {
 		imagenNegra.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
 
-		SceneManager.LoadScene("RelatarCuento");
-		player.SetActive(true);
-		bosque.SetActive(true);
+
+
 	}
 
 	IEnumerator SpriteShapeOut()
 	{		
 		circuloNegro.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
+	}
+
+
+	IEnumerator esperar()
+	{		
+		
+		yield return new WaitForSeconds(4f);
+
+
+
 	}
 }
