@@ -98,7 +98,7 @@ aa9d1bd0cc771545f2ae1f63a6d0ed6a Assembly-CSharp.dll:TMPro.Examples.TMP_TextEven
 f0f0ab6b8a39d0572cfa4ea315d84fbf Assembly-CSharp.dll:TMPro.Examples.Benchmark04
 29273f491d11f6bdd02a43a9d8df84c7 Assembly-CSharp.dll:TMPro.Examples.TMP_ExampleScript_01
 1cd4893b18ef6c9e1612214d23ea08a3 Assembly-CSharp.dll:.ChatController
-2f332606b836e51d93c2aa652d317cd5 Assembly-CSharp.dll:.SettingsMenu
+bce31c879ddef5964b2c67ec4582fe91 Assembly-CSharp.dll:.SettingsMenu
 700c75e3ea8cf81b9f48e8c223a74d25 Assembly-CSharp.dll:.RecordingCanvas
 48a9dee325686d1924a2646b71c83f08 Assembly-CSharp.dll:TMPro.Examples.Benchmark01
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TextConsoleSimulator

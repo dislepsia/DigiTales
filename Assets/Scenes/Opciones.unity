@@ -589,7 +589,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 04576db15afb84b49a2695f8eda198e6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5cfc89c0f6508e4f9998002ea997a87, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -963,7 +963,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f4e5e818e2b14e7419e33512a88705c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b3fd99e50354c940ac37b126796b0e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1684,6 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 01fabe98eecf51a4083641c4a08f0908, type: 2}
+  icono: {fileID: 0}
 --- !u!1 &638772563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 01fabe98eecf51a4083641c4a08f0908, type: 2}
+  icono: {fileID: 0}
 --- !u!1 &1110332310
 GameObject:
   m_ObjectHideFlags: 0
