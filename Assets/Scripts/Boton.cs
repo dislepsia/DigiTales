@@ -32,15 +32,15 @@ public class Boton : MonoBehaviour
         SceneManager.LoadScene("NewListadoCuentos");
 		Screen.orientation = ScreenOrientation.Portrait;
     }
-
-    public void Cuento()
-    {
-		SceneManager.LoadScene("Opciones");
-    }
-
+		
 	public void Opciones()
 	{
 		SceneManager.LoadScene("Opciones");
+	}
+
+	public void Descargar()
+	{
+		SceneManager.LoadScene("CargaDeCodigo");
 	}
 
 	public void Salir()

@@ -347,7 +347,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: RELATAR
+  m_text: CUENTOS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 808aa8f1ab804104aa7d0c337a6c1481, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: c26f698d4eee19e4a8b8f42cd299bab5, type: 2}
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 22
+  m_fontSize: 20.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1376,7 +1376,8 @@ AudioSource:
   m_GameObject: {fileID: 1026056729}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 01fabe98eecf51a4083641c4a08f0908,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 330af7faf3bb8a042bb7066e3371cf6d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
