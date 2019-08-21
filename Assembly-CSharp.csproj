@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\ControlarListado.cs" />
      <Compile Include="Assets\Scripts\ControlarPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelLoader.cs" />
+     <Compile Include="Assets\Scripts\ManejoEscena2.cs" />
      <Compile Include="Assets\Scripts\SettingsMenu.cs" />
      <Compile Include="Assets\Scripts\VisibleButton01.cs" />
      <Compile Include="Assets\Scripts\VisibleButton02.cs" />

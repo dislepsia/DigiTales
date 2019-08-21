@@ -511,6 +511,7 @@ GameObject:
   - component: {fileID: 339369631}
   - component: {fileID: 339369635}
   - component: {fileID: 339369636}
+  - component: {fileID: 339369638}
   - component: {fileID: 339369637}
   m_Layer: 5
   m_Name: Canvas
@@ -625,7 +626,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 339369630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d281205c1dc5f4a268701edde385d06c, type: 3}
   m_Name: 
@@ -723,6 +724,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &339369638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339369630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3577496e3bda4947b5ba1a3f609e4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRecordingButton: {fileID: 2083636919}
+  sceneText: {fileID: 96952183}
+  resultTextSpeech: {fileID: 840632029}
+  resultErrores: {fileID: 1463085897}
+  trueno: {fileID: 8300000, guid: fa425540a87bc7144974fc57f338d2c4, type: 3}
+  player: {fileID: 1762727097}
+  bosque: {fileID: 990243658}
+  circuloNegro: {fileID: 1497941334}
+  microfono: {fileID: 1720698364}
 --- !u!1 &358848512
 GameObject:
   m_ObjectHideFlags: 0

@@ -473,7 +473,7 @@ public class RecordingCanvas : MonoBehaviour {
 	}
 
 	public void ReiniciarValoresEscena() {		
-		//resultTextSpeech.text = string.Empty;
+		resultTextSpeech.text = string.Empty;
 		//resultErrores.text = string.Empty;
 		i = 0;
 		n = 0;
