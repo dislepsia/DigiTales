@@ -59,6 +59,8 @@ public class RecordingCanvas : MonoBehaviour {
 	int contadorUsing2=0;
 	int contadorUsing3=0;
 
+	//para freezar ejecucion
+	bool coroutineStarted = true;
 
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -266,11 +268,13 @@ public class RecordingCanvas : MonoBehaviour {
 				StartCoroutine (UsingYield ());
 				StopCoroutine ("UsingYield");
 				break;
-			case "niña":
-				player.SetActive(true);
+		case "niña":
+			player.SetActive (true);
 				
-				StartCoroutine(UsingYield2());
-				StopCoroutine ("UsingYield2");
+			StartCoroutine (UsingYield2 ());
+			StopCoroutine ("UsingYield2");
+
+
 				break;
 			case "misteriosa":
 				
@@ -278,13 +282,13 @@ public class RecordingCanvas : MonoBehaviour {
 				StartCoroutine(UsingYield3());
 				StopCoroutine ("UsingYield3");
 
-			StartCoroutine(esperar());
-			StopCoroutine ("esperar");
+			//StartCoroutine(esperar());
+			//StopCoroutine ("esperar");
 
-			StartCoroutine (SpriteFadeOut());
-			StopCoroutine ("SpriteFadeOut");
+			//para freezar ejecucion
+			coroutineStarted = false;
 
-			SceneManager.LoadScene("RelatarCuento");
+
 				break;
 
 
@@ -307,8 +311,7 @@ public class RecordingCanvas : MonoBehaviour {
 			StartCoroutine(UsingYield3());
 			StopCoroutine ("UsingYield3");
 
-			StartCoroutine(esperar());
-			StopCoroutine ("esperar");
+
 
 			StartCoroutine (SpriteShapeOut());
 			StopCoroutine ("SpriteShapeOut");
@@ -337,8 +340,7 @@ public class RecordingCanvas : MonoBehaviour {
 			StartCoroutine(UsingYield3());
 			StopCoroutine ("UsingYield3");
 
-			StartCoroutine(esperar());
-			StopCoroutine ("esperar");
+
 
 			StartCoroutine (SpriteShapeOut());
 			StopCoroutine ("SpriteShapeOut");
@@ -376,8 +378,7 @@ public class RecordingCanvas : MonoBehaviour {
 				StartCoroutine(UsingYield3());
 				StopCoroutine ("UsingYield3");
 
-			StartCoroutine(esperar());
-			StopCoroutine ("esperar");
+
 
 			StartCoroutine (SpriteShapeOut());
 
@@ -403,8 +404,7 @@ public class RecordingCanvas : MonoBehaviour {
 			StartCoroutine(UsingYield3());
 			StopCoroutine ("UsingYield3");
 
-			StartCoroutine(esperar());
-			StopCoroutine ("esperar");
+
 
 			StartCoroutine (SpriteShapeOut());
 
@@ -499,8 +499,25 @@ public class RecordingCanvas : MonoBehaviour {
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
 		}
 
-
+		if (!coroutineStarted)
+			StartCoroutine (EsperarSegundos (3));
 	}  
+
+
+	IEnumerator EsperarSegundos(int seconds)
+	{
+		coroutineStarted = true;
+		yield return new WaitForSeconds(seconds);
+
+		StartCoroutine (SpriteFadeOut());
+		StopCoroutine ("SpriteFadeOut");
+
+
+		SceneManager.LoadScene("RelatarCuento");
+
+
+	}
+
 
 	IEnumerator UsingYield()
 	{
@@ -581,12 +598,5 @@ public class RecordingCanvas : MonoBehaviour {
 	}
 
 
-	IEnumerator esperar()
-	{		
-		
-		yield return new WaitForSeconds(4f);
 
-
-
-	}
 }
