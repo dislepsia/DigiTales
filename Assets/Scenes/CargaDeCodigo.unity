@@ -514,7 +514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d467cb0f88209439670cda7517578a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idButton: 
 --- !u!114 &295133916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc455e76c9d071641841a8579c582498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
 --- !u!1 &334354383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,9 +2312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcd9c56a5497ba49981455895b0e9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 0}
-  slider: {fileID: 0}
-  progressText: {fileID: 0}
+  loadingScreen: {fileID: 202615927}
+  slider: {fileID: 1899847218}
+  progressText: {fileID: 1045253636}
 --- !u!1 &1895160356
 GameObject:
   m_ObjectHideFlags: 0
