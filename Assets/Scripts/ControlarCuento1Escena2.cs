@@ -5,53 +5,35 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class RecordingCanvas : MonoBehaviour {
+public class ControlarCuento1Escena2 : MonoBehaviour {
 
 	public Button startRecordingButton;
 
-	public Text sceneText; //oracion propia de la escena
-
-	//public Text coincidencia; //coincidencia de palabra en escena y pronunciada
-	//public Text cantAccesos; //cantidad de veces que se accede a metodo OnPartialResult
+	public Text sceneText; //texto propio de la escena
 	public Text resultTextSpeech; //texto reconocido por voz
+
 	public Text resultErrores; //visualizar error
 
 	//variables para trabajar sceneText
 	private string textoEscena = string.Empty; 
 	private string[] palabrasEscena = null; 
-	int cantPalabrasEscena = 0; 
 
 	//variables para trabajar result(reconocimiento parcial de voz)
 	private string[] palabrasSpeech = null;
 	int cantPalabrasSpeech = 0;
 
-	//variables para controlar coloreo
-	int i = 0;
-	int n = 0;
-
-	//variables para efectoParallax
-	int efectoParallax = 0;
-	public float parallaxSpeed = 0.12f;
-
 	//variables de sonidos
-	public AudioClip buho;
-	public AudioClip grito;
 	public AudioClip trueno;
 	private AudioSource ambienteBosque;
-
-	//int count = 0;
 
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
 
-	string LevelName = string.Empty;
 	private string[] palabrasClave = null; 
-	int cantPalabrasClave = 0;
+
 	int k=0;
 	int j=0;
 
-
-	public Animator imagenNegra;
 	public Animator circuloNegro;
 	public Animator microfono;
 
@@ -59,8 +41,7 @@ public class RecordingCanvas : MonoBehaviour {
 	int contadorUsing2=0;
 	int contadorUsing3=0;
 
-	//para freezar ejecucion
-	bool coroutineStarted = true;
+	bool coroutineStarted = true;//para freezar ejecucion
 
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -78,62 +59,17 @@ public class RecordingCanvas : MonoBehaviour {
 			//obtengo cantidad de palabras de escena actual
 			textoEscena = sceneText.text;
 			palabrasEscena = textoEscena.Split(' ');
-			cantPalabrasEscena = palabrasEscena.Length;
 
-			LevelName = Application.loadedLevelName;
+			//para q se reproduzca mas rapido, es sonido ya esta asignado
+			ambienteBosque = GetComponent<AudioSource> ();						
+			ambienteBosque.clip = trueno;
 
-			ambienteBosque = GetComponent<AudioSource> ();
-			/*ambienteBosque.clip = buho;
-			ambienteBosque.Play ();*/
+			//palabras clave
+			palabrasClave = new string[3]{"tormenta","inevitable","oscuridad"};
 
-			if (LevelName == "RelatarCuento2") 
-			{
-				palabrasClave = new string[3]{"bosque","niña","misteriosa"};
-				cantPalabrasClave = 3;
-			}else if (LevelName == "RelatarCuento")
-			{				
-				ambienteBosque.clip = trueno;//para q se reproduzca mas rapido, es sonido ya esta asignado
-				palabrasClave = new string[3]{"tormenta","inevitable","oscuridad"};
-				cantPalabrasClave = 3;
-
-				player.SetActive(true);
-				bosque.SetActive(true);
-			}else if (LevelName == "RelatarCuento3")
-			{				
-				ambienteBosque.clip = buho;//para q se reproduzca mas rapido, es sonido ya esta asignado
-				palabrasClave = new string[3]{"comenzó","búho","cantar"};
-				cantPalabrasClave = 3;
-
-				player.SetActive(true);
-				bosque.SetActive(true);
-			}
-			else if (LevelName == "RelatarCuento4")
-			{
-				ambienteBosque.clip = grito;//para q se reproduzca mas rapido, es sonido ya esta asignado
-				palabrasClave = new string[3]{"grito","entonces","correr"};
-				cantPalabrasClave = 3;
-
-				player.SetActive(true);
-				bosque.SetActive(true);
-			}else if (LevelName == "RelatarCuento5")
-			{
-				
-				palabrasClave = new string[3]{"adrenalina","varios","agilmente"};
-				cantPalabrasClave = 3;
-
-				player.SetActive(true);
-				bosque.SetActive(true);
-
-				player.SendMessage ("UpdateState", "PlayerRun");
-				efectoParallax = 1;
-			}
-
-
-
-
-
-
-			//coincidencia.text = coincidencia.text + " " + cantPalabrasEscena.ToString()+ " " + cantPalabrasSpeech.ToString()+ " " + i.ToString()+ " " + n.ToString();
+			//iniciar objetos
+			player.SetActive(true);
+			bosque.SetActive(true);
 
 		} else {			
 			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
@@ -145,8 +81,7 @@ public class RecordingCanvas : MonoBehaviour {
 	}
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
-	public void OnFinalResult(string result) {
-		//resultText.text = result;
+	public void OnFinalResult(string result) {		
 		ReiniciarValoresEscena();
 	}
 
@@ -176,20 +111,7 @@ public class RecordingCanvas : MonoBehaviour {
 							player.SetActive(true);
 							bosque.SetActive(true);
 							break;
-						case "correr":
-							player.SendMessage ("UpdateState", "PlayerRun");
-							efectoParallax = 1;
-							break;
-						case "grito":					
-							//ambienteBosque.clip = grito;
-							ambienteBosque.Play ();
-							//Handheld.Vibrate();
-							break;
-						case "se":					
-							//ambienteBosque.clip = grito;
-							//ambienteBosque.Play ();
-							Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
-							break;				
+								
 						default:					
 							break;
 					}
@@ -197,12 +119,10 @@ public class RecordingCanvas : MonoBehaviour {
 					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
 					n++; //para no tener en cuenta palabra coloreada en el bucle
 
-					//resultErrores.text = "OK";
-
 					break;
 				}
-			//else 
-				//resultErrores.text = "Palabra no reconocida";
+			else 
+				resultErrores.text = "Palabra no reconocida";
 			}*/
 
 
@@ -221,205 +141,48 @@ public class RecordingCanvas : MonoBehaviour {
 				case "temerosa":
 					StartCoroutine (SpriteFadeOut());					
 					break;
-				case "correr":
-					player.SendMessage ("UpdateState", "PlayerRun");
-					efectoParallax = 1;
-					StartCoroutine (SpriteShapeOut());
-					break;
-				case "grito":					
-					//ambienteBosque.clip = grito;
-					ambienteBosque.Play ();
-					//Handheld.Vibrate();
-					break;
-				case "se":					
-					//ambienteBosque.clip = grito;
-					//ambienteBosque.Play ();
-					Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
-					break;
+
 				default:					
 					break;
 			}
-			//StartCoroutine(UsingYield(0.5f));
 
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 				j++;					
 			}
-
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
 
-
-		//else 
-			//resultErrores.text = "Palabra no reconocida";
+		else 
+			resultErrores.text = "Palabra no reconocida";
 		}
 		*/
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra
-			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
-			{
-		case "bosque":
-				bosque.SetActive (true);
-
-				StartCoroutine (UsingYield ());
-				StopCoroutine ("UsingYield");
-				break;
-		case "niña":
-			player.SetActive (true);
-				
-			StartCoroutine (UsingYield2 ());
-			StopCoroutine ("UsingYield2");
-
-
-				break;
-			case "misteriosa":
-				
-				
-				StartCoroutine(UsingYield3());
-				StopCoroutine ("UsingYield3");
-
-			//StartCoroutine(esperar());
-			//StopCoroutine ("esperar");
-
-			//para freezar ejecucion
-			coroutineStarted = false;
-
-
-				break;
-
-
-
-		case "tormenta":
-			ambienteBosque.Play ();
-
-			StartCoroutine(UsingYield2());
-			StopCoroutine ("UsingYield2");
-			break;
-		case "inevitable":	
-
-			StartCoroutine (UsingYield ());
-			StopCoroutine ("UsingYield");
-			break;
-		
-		case "oscuridad":
-			
-
-			StartCoroutine(UsingYield3());
-			StopCoroutine ("UsingYield3");
-
-
-
-			StartCoroutine (SpriteShapeOut());
-			StopCoroutine ("SpriteShapeOut");
-
-			SceneManager.LoadScene("RelatarCuento3");
-			break;
-
-
-
-
-
-
-		case "comenzó":	
-			ambienteBosque.Play ();
-
-			StartCoroutine (UsingYield ());
-			StopCoroutine ("UsingYield");
-			break;
-		case "búho":			
-
-			StartCoroutine(UsingYield2());
-			StopCoroutine ("UsingYield2");
-			break;
-		case "cantar":
-			
-			StartCoroutine(UsingYield3());
-			StopCoroutine ("UsingYield3");
-
-
-
-			StartCoroutine (SpriteShapeOut());
-			StopCoroutine ("SpriteShapeOut");
-
-			SceneManager.LoadScene("RelatarCuento4");
-			break;
-
-
-
-
-
-
-
-			case "grito":					
-				//ambienteBosque.clip = grito;
+		switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
+		{
+			case "tormenta":
 				ambienteBosque.Play ();
-				Handheld.Vibrate();
-
-				StartCoroutine(UsingYield());
-				StopCoroutine ("UsingYield");
-				break;
-			case "entonces":					
-				//ambienteBosque.clip = grito;
-				//ambienteBosque.Play ();
-				//Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
-
 				StartCoroutine(UsingYield2());
 				StopCoroutine ("UsingYield2");
 				break;
-			case "correr":
-				player.SendMessage ("UpdateState", "PlayerRun");
-				efectoParallax = 1;
-				
-
+			case "inevitable":	
+				StartCoroutine (UsingYield ());
+				StopCoroutine ("UsingYield");
+				break;			
+			case "oscuridad":
 				StartCoroutine(UsingYield3());
 				StopCoroutine ("UsingYield3");
-
-
-
-			StartCoroutine (SpriteShapeOut());
-
-			SceneManager.LoadScene("RelatarCuento5");
+				coroutineStarted = false;
 				break;
 
-
-
-		case "adrenalina":			
-
-			StartCoroutine(UsingYield());
-			StopCoroutine ("UsingYield");
-			break;
-		case "varios":			
-
-			StartCoroutine(UsingYield2());
-			StopCoroutine ("UsingYield2");
-			break;
-		case "agilmente":
-			
-
-
-			StartCoroutine(UsingYield3());
-			StopCoroutine ("UsingYield3");
-
-
-
-			StartCoroutine (SpriteShapeOut());
-
-			break;
-
-
-
-
-			default:					
-				break;
-			}
-
-		//coincidencia.text = coincidencia.text + result + " ";
-		//count++;
-		//cantAccesos.text = count.ToString();
+				default:					
+					break;
+		}	
 	}
 
 	public void OnAvailabilityChange(bool available) {
@@ -474,9 +237,6 @@ public class RecordingCanvas : MonoBehaviour {
 
 	public void ReiniciarValoresEscena() {		
 		resultTextSpeech.text = string.Empty;
-		//resultErrores.text = string.Empty;
-		i = 0;
-		n = 0;
 
 		j = 0;
 		k = 0;
@@ -492,13 +252,6 @@ public class RecordingCanvas : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		if (efectoParallax == 1)
-		{
-			float finalSpeed= parallaxSpeed * Time.deltaTime;
-			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
-			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
-		}
-
 		if (!coroutineStarted)
 			StartCoroutine (EsperarSegundos (3));
 	}  
@@ -509,13 +262,10 @@ public class RecordingCanvas : MonoBehaviour {
 		coroutineStarted = true;
 		yield return new WaitForSeconds(seconds);
 
-		StartCoroutine (SpriteFadeOut());
-		StopCoroutine ("SpriteFadeOut");
+		StartCoroutine (SpriteShapeOut());
+		StopCoroutine ("SpriteShapeOut");
 
-
-		SceneManager.LoadScene("RelatarCuento");
-
-
+		SceneManager.LoadScene("Cuento1Escena3");
 	}
 
 
@@ -523,8 +273,7 @@ public class RecordingCanvas : MonoBehaviour {
 	{
 		contadorUsing ++;
 		if (contadorUsing == 1)
-		{	
-			
+		{				
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
@@ -535,8 +284,6 @@ public class RecordingCanvas : MonoBehaviour {
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
-
-
 		}
 	}
 
@@ -545,7 +292,6 @@ public class RecordingCanvas : MonoBehaviour {
 		contadorUsing2 ++;
 		if (contadorUsing2 == 1)
 		{	
-
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
@@ -556,8 +302,6 @@ public class RecordingCanvas : MonoBehaviour {
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
-
-
 		}
 	}
 
@@ -566,7 +310,6 @@ public class RecordingCanvas : MonoBehaviour {
 		contadorUsing3 ++;
 		if (contadorUsing3 == 1)
 		{	
-
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
@@ -577,18 +320,7 @@ public class RecordingCanvas : MonoBehaviour {
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
-
-
 		}
-	}
-
-	IEnumerator SpriteFadeOut()
-	{		
-		imagenNegra.SetTrigger ("end");
-		yield return new WaitForSeconds(1f);
-
-
-
 	}
 
 	IEnumerator SpriteShapeOut()
@@ -596,7 +328,4 @@ public class RecordingCanvas : MonoBehaviour {
 		circuloNegro.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
 	}
-
-
-
 }

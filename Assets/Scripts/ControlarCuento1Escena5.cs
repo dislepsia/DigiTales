@@ -5,49 +5,38 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class ManejoEscena2 : MonoBehaviour {
+public class ControlarCuento1Escena5 : MonoBehaviour {
 
 	public Button startRecordingButton;
 
-	public Text sceneText; //oracion propia de la escena
-
-	//public Text coincidencia; //coincidencia de palabra en escena y pronunciada
-	//public Text cantAccesos; //cantidad de veces que se accede a metodo OnPartialResult
+	public Text sceneText; //texto propio de la escena
 	public Text resultTextSpeech; //texto reconocido por voz
+
 	public Text resultErrores; //visualizar error
 
 	//variables para trabajar sceneText
 	private string textoEscena = string.Empty; 
 	private string[] palabrasEscena = null; 
-	int cantPalabrasEscena = 0; 
 
 	//variables para trabajar result(reconocimiento parcial de voz)
 	private string[] palabrasSpeech = null;
 	int cantPalabrasSpeech = 0;
 
-	//variables para controlar coloreo
-	int i = 0;
-	int n = 0;
-
-
+	//variables para efectoParallax
+	int efectoParallax = 0;
+	public float parallaxSpeed = 0.12f;
 
 	//variables de sonidos
-
-	public AudioClip trueno;
+	//public AudioClip grito;
 	private AudioSource ambienteBosque;
-
-	//int count = 0;
 
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
 
-	string LevelName = string.Empty;
 	private string[] palabrasClave = null; 
-	int cantPalabrasClave = 0;
+
 	int k=0;
 	int j=0;
-
-
 
 	public Animator circuloNegro;
 	public Animator microfono;
@@ -56,8 +45,7 @@ public class ManejoEscena2 : MonoBehaviour {
 	int contadorUsing2=0;
 	int contadorUsing3=0;
 
-	//para freezar ejecucion
-	bool coroutineStarted = true;
+	bool coroutineStarted = true;//para freezar ejecucion
 
     void Start() { 
 		if (SpeechRecognizer.ExistsOnDevice()) {
@@ -75,29 +63,19 @@ public class ManejoEscena2 : MonoBehaviour {
 			//obtengo cantidad de palabras de escena actual
 			textoEscena = sceneText.text;
 			palabrasEscena = textoEscena.Split(' ');
-			cantPalabrasEscena = palabrasEscena.Length;
 
-			LevelName = Application.loadedLevelName;
+			//para q se reproduzca mas rapido, es sonido ya esta asignado
+			//ambienteBosque = GetComponent<AudioSource> ();						
+			//ambienteBosque.clip = grito;
 
-			ambienteBosque = GetComponent<AudioSource> ();
-			/*ambienteBosque.clip = buho;
-			ambienteBosque.Play ();*/
+			//palabras clave
+			palabrasClave = new string[3]{"adrenalina","varios","ágilmente"};
 
-						
-				ambienteBosque.clip = trueno;//para q se reproduzca mas rapido, es sonido ya esta asignado
-				palabrasClave = new string[3]{"tormenta","inevitable","oscuridad"};
-				cantPalabrasClave = 3;
-
-				player.SetActive(true);
-				bosque.SetActive(true);
-
-
-
-
-
-
-
-			//coincidencia.text = coincidencia.text + " " + cantPalabrasEscena.ToString()+ " " + cantPalabrasSpeech.ToString()+ " " + i.ToString()+ " " + n.ToString();
+			//iniciar objetos
+			player.SetActive(true);
+			bosque.SetActive(true);
+			player.SendMessage ("UpdateState", "PlayerRun");
+			efectoParallax = 1;
 
 		} else {			
 			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
@@ -109,8 +87,7 @@ public class ManejoEscena2 : MonoBehaviour {
 	}
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
-	public void OnFinalResult(string result) {
-		//resultText.text = result;
+	public void OnFinalResult(string result) {		
 		ReiniciarValoresEscena();
 	}
 
@@ -140,20 +117,7 @@ public class ManejoEscena2 : MonoBehaviour {
 							player.SetActive(true);
 							bosque.SetActive(true);
 							break;
-						case "correr":
-							player.SendMessage ("UpdateState", "PlayerRun");
-							efectoParallax = 1;
-							break;
-						case "grito":					
-							//ambienteBosque.clip = grito;
-							ambienteBosque.Play ();
-							//Handheld.Vibrate();
-							break;
-						case "se":					
-							//ambienteBosque.clip = grito;
-							//ambienteBosque.Play ();
-							Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
-							break;				
+								
 						default:					
 							break;
 					}
@@ -161,12 +125,10 @@ public class ManejoEscena2 : MonoBehaviour {
 					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
 					n++; //para no tener en cuenta palabra coloreada en el bucle
 
-					//resultErrores.text = "OK";
-
 					break;
 				}
-			//else 
-				//resultErrores.text = "Palabra no reconocida";
+			else 
+				resultErrores.text = "Palabra no reconocida";
 			}*/
 
 
@@ -185,91 +147,47 @@ public class ManejoEscena2 : MonoBehaviour {
 				case "temerosa":
 					StartCoroutine (SpriteFadeOut());					
 					break;
-				case "correr":
-					player.SendMessage ("UpdateState", "PlayerRun");
-					efectoParallax = 1;
-					StartCoroutine (SpriteShapeOut());
-					break;
-				case "grito":					
-					//ambienteBosque.clip = grito;
-					ambienteBosque.Play ();
-					//Handheld.Vibrate();
-					break;
-				case "se":					
-					//ambienteBosque.clip = grito;
-					//ambienteBosque.Play ();
-					Handheld.Vibrate();//vibracion en proxima palabra para que se reproduzca casi simultaneamente
-					break;
+
 				default:					
 					break;
 			}
-			//StartCoroutine(UsingYield(0.5f));
 
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 				j++;					
 			}
-
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
 
-
-		//else 
-			//resultErrores.text = "Palabra no reconocida";
+		else 
+			resultErrores.text = "Palabra no reconocida";
 		}
 		*/
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra
-			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
-			{
-
-
-
-
-		case "tormenta":
-			ambienteBosque.Play ();
-
-			StartCoroutine(UsingYield2());
-			StopCoroutine ("UsingYield2");
-			break;
-		case "inevitable":	
-
-			StartCoroutine (UsingYield ());
-			StopCoroutine ("UsingYield");
-			break;
-		
-		case "oscuridad":
-			
-
-			StartCoroutine(UsingYield3());
-			StopCoroutine ("UsingYield3");
-
-			coroutineStarted = false;
-
-
-			break;
-
-
-
-
-
-
-		
-
-
-
+		switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
+		{
+			case "adrenalina":	
+				StartCoroutine(UsingYield());
+				StopCoroutine ("UsingYield");
+				break;
+			case "varios":	
+				StartCoroutine(UsingYield2());
+				StopCoroutine ("UsingYield2");
+				break;
+			case "ágilmente":
+				StartCoroutine(UsingYield3());
+				StopCoroutine ("UsingYield3");
+				coroutineStarted = false;
+				break;
 
 			default:					
 				break;
-			}
-
-		//coincidencia.text = coincidencia.text + result + " ";
-		//count++;
-		//cantAccesos.text = count.ToString();
+		}	
 	}
 
 	public void OnAvailabilityChange(bool available) {
@@ -324,9 +242,6 @@ public class ManejoEscena2 : MonoBehaviour {
 
 	public void ReiniciarValoresEscena() {		
 		resultTextSpeech.text = string.Empty;
-		//resultErrores.text = string.Empty;
-		i = 0;
-		n = 0;
 
 		j = 0;
 		k = 0;
@@ -342,7 +257,12 @@ public class ManejoEscena2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		
+		if (efectoParallax == 1)
+		{
+			float finalSpeed= parallaxSpeed * Time.deltaTime;
+			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
+			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
+		}
 
 		if (!coroutineStarted)
 			StartCoroutine (EsperarSegundos (3));
@@ -357,9 +277,7 @@ public class ManejoEscena2 : MonoBehaviour {
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
 
-		SceneManager.LoadScene("RelatarCuento3");
-
-
+		SceneManager.LoadScene("NewMenu");
 	}
 
 
@@ -367,8 +285,7 @@ public class ManejoEscena2 : MonoBehaviour {
 	{
 		contadorUsing ++;
 		if (contadorUsing == 1)
-		{	
-			
+		{				
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
@@ -379,8 +296,6 @@ public class ManejoEscena2 : MonoBehaviour {
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
-
-
 		}
 	}
 
@@ -389,7 +304,6 @@ public class ManejoEscena2 : MonoBehaviour {
 		contadorUsing2 ++;
 		if (contadorUsing2 == 1)
 		{	
-
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
@@ -400,8 +314,6 @@ public class ManejoEscena2 : MonoBehaviour {
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
-
-
 		}
 	}
 
@@ -410,7 +322,6 @@ public class ManejoEscena2 : MonoBehaviour {
 		contadorUsing3 ++;
 		if (contadorUsing3 == 1)
 		{	
-
 			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
 			{
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
@@ -421,19 +332,12 @@ public class ManejoEscena2 : MonoBehaviour {
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
 			j++;
 			k++;
-
-
 		}
 	}
-
-
 
 	IEnumerator SpriteShapeOut()
 	{		
 		circuloNegro.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
 	}
-
-
-
 }

@@ -4,43 +4,56 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ControlarEscena : MonoBehaviour
-{
-    public Button boton; // variable para controlar boton del listado
-    public GameObject bosque;
-	string LevelName=string.Empty;
-    // Start is called before the first frame update
+{    
+	string LevelName = string.Empty;
+    
     void Start()
     {
         LevelName = Application.loadedLevelName;
-        if (LevelName == "NewMenu") {
-            Screen.orientation = ScreenOrientation.Portrait;
-            boton.interactable = false;
-        }
-        else if (LevelName == "Creditos")
-        {
-            Screen.orientation = ScreenOrientation.Portrait;
-        }
-        else if (LevelName == "NewListadoCuentos")
-        {
-            Screen.orientation = ScreenOrientation.Portrait;
-        }
-        else if (LevelName == "RelatarCuento2")
-        {
-            Screen.orientation = ScreenOrientation.Landscape;
-        }
-        else if (LevelName == "RelatarCuento")
-        {
-            Screen.orientation = ScreenOrientation.Landscape;
-            bosque.SetActive(true);
-        }
-		else if (LevelName == "Opciones")
-		{
-			Screen.orientation = ScreenOrientation.Portrait;
-			bosque.SetActive(true);
-		}
-    }
 
-    // Update is called once per frame
+		switch (LevelName)
+		{
+		case "NewMenu":
+			Screen.orientation = ScreenOrientation.Portrait;
+			break;
+
+		case "Creditos":
+			Screen.orientation = ScreenOrientation.Portrait;
+			break;
+
+		case "NewListadoCuentos":
+			Screen.orientation = ScreenOrientation.Portrait;
+			break;
+
+		case "Cuento1Escena1":
+			Screen.orientation = ScreenOrientation.Landscape;
+			break;
+
+		case "Cuento1Escena2":
+			Screen.orientation = ScreenOrientation.Landscape;
+			break;
+
+		case "Cuento1Escena3":
+			Screen.orientation = ScreenOrientation.Landscape;
+			break;
+
+		case "Cuento1Escena4":
+			Screen.orientation = ScreenOrientation.Landscape;
+			break;
+
+		case "Cuento1Escena5":
+			Screen.orientation = ScreenOrientation.Landscape;
+			break;
+
+		case "Opciones":
+			Screen.orientation = ScreenOrientation.Portrait;
+			break;
+
+		default:					
+			break;
+		}        
+    }
+	    
     void Update()
     {
 		if (LevelName == "Salir") 
