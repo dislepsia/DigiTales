@@ -48,6 +48,8 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 	bool coroutineStarted = true;//para freezar ejecucion
 
     void Start() { 
+		Screen.orientation = ScreenOrientation.Landscape;
+
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
@@ -179,8 +181,9 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 				StartCoroutine(UsingYield2());
 				StopCoroutine ("UsingYield2");
 				break;
-			case "correr":
-				player.SendMessage ("UpdateState", "PlayerRun");
+		case "correr":
+			//player.SendMessage ("UpdateState", "PlayerRun");
+			    player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 				efectoParallax = 1;
 				StartCoroutine(UsingYield3());
 				StopCoroutine ("UsingYield3");

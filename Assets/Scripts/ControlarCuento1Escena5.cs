@@ -48,6 +48,8 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 	bool coroutineStarted = true;//para freezar ejecucion
 
     void Start() { 
+		Screen.orientation = ScreenOrientation.Landscape;
+
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
@@ -74,7 +76,8 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 			//iniciar objetos
 			player.SetActive(true);
 			bosque.SetActive(true);
-			player.SendMessage ("UpdateState", "PlayerRun");
+			//player.SendMessage ("UpdateState", "PlayerRun");
+			player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 			efectoParallax = 1;
 
 		} else {			

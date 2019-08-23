@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boton : MonoBehaviour
+public class ControlarBotones : MonoBehaviour
 {
     public void ExitGame()
     {
@@ -13,7 +13,6 @@ public class Boton : MonoBehaviour
     public void MenuPrincipal()
     {
         SceneManager.LoadScene("NewMenu");
-		Screen.orientation = ScreenOrientation.Portrait;
     }
 
     public void Creditos()
@@ -27,10 +26,8 @@ public class Boton : MonoBehaviour
     }
 
     public void ListadoCuentos()
-    {
-		
+    {		
         SceneManager.LoadScene("NewListadoCuentos");
-		Screen.orientation = ScreenOrientation.Portrait;
     }
 		
 	public void Opciones()

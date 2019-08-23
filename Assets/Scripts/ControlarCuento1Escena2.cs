@@ -44,6 +44,8 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 	bool coroutineStarted = true;//para freezar ejecucion
 
     void Start() { 
+		Screen.orientation = ScreenOrientation.Landscape;
+
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
