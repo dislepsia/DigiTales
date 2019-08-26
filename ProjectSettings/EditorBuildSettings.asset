@@ -21,20 +21,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Opciones.unity
     guid: 86306128026b59240820e64540008647
   - enabled: 1
+    path: Assets/Scenes/Juego.unity
+    guid: 62f9d82d156476749a34e74d69388aed
+  - enabled: 1
     path: Assets/Scenes/Salir.unity
     guid: 67587046edd75f14bb59552e181ceb28
   - enabled: 1
-    path: Assets/Scenes/RelatarCuento.unity
+    path: Assets/Scenes/MiniJuegoCuento.unity
+    guid: dd8a2202281abe54bae5d49926d32f69
+  - enabled: 1
+    path: Assets/Scenes/Cuento1Escena2.unity
     guid: 383c05f8b439b6649a5ddbafd212cda7
   - enabled: 1
-    path: Assets/Scenes/RelatarCuento2.unity
+    path: Assets/Scenes/Cuento1Escena1.unity
     guid: 03509ac960731634f8e1cc0521a8b742
   - enabled: 1
-    path: Assets/Scenes/RelatarCuento3.unity
+    path: Assets/Scenes/Cuento1Escena3.unity
     guid: 9eefa66f081f2834f90f13187d0e3cb4
   - enabled: 1
-    path: Assets/Scenes/RelatarCuento4.unity
+    path: Assets/Scenes/Cuento1Escena4.unity
     guid: 9fcc1b26a3b382444bf5a22a5c436221
   - enabled: 1
-    path: Assets/Scenes/RelatarCuento5.unity
+    path: Assets/Scenes/Cuento1Escena5.unity
     guid: 3c9aa3e621a63304392c6c36f146ab42
