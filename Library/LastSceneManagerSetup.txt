@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/NewCreditos.unity
+- path: Assets/Scenes/MiniJuego-NenaTemerosa.unity
   isLoaded: 1
   isActive: 1
