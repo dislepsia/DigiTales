@@ -21,13 +21,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Opciones.unity
     guid: 86306128026b59240820e64540008647
   - enabled: 1
-    path: Assets/Scenes/Juego.unity
-    guid: 62f9d82d156476749a34e74d69388aed
-  - enabled: 1
     path: Assets/Scenes/Salir.unity
     guid: 67587046edd75f14bb59552e181ceb28
   - enabled: 1
-    path: Assets/Scenes/MiniJuegoCuento.unity
+    path: Assets/Scenes/MiniJuego-NenaTemerosa.unity
+    guid: 98d69ef31230f4f4e9b4044ce42f3efe
+  - enabled: 1
+    path: Assets/Scenes/MiniJuego-NenaTemerosa-Letras.unity
+    guid: 62f9d82d156476749a34e74d69388aed
+  - enabled: 1
+    path: Assets/Scenes/MiniJuego-NenaTemerosa-Modo.unity
     guid: dd8a2202281abe54bae5d49926d32f69
   - enabled: 1
     path: Assets/Scenes/Cuento1Escena2.unity

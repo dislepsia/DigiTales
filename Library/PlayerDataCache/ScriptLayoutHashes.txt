@@ -5,8 +5,9 @@ Assets/Scenes/NewListadoCuentos.unity
 Assets/Scenes/NewCreditos.unity
 Assets/Scenes/CargaDeCodigo.unity
 Assets/Scenes/Opciones.unity
-Assets/Scenes/MiniJuego-NenaTemerosa-Letras.unity
 Assets/Scenes/Salir.unity
+Assets/Scenes/MiniJuego-NenaTemerosa.unity
+Assets/Scenes/MiniJuego-NenaTemerosa-Letras.unity
 Assets/Scenes/MiniJuego-NenaTemerosa-Modo.unity
 Assets/Scenes/Cuento1Escena2.unity
 Assets/Scenes/Cuento1Escena1.unity
