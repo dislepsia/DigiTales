@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour {
 
-	float scrollSpeed = -10f;
+	float scrollSpeed = -30f;
 	Vector2 startPos;
 
 	// Use this for initialization
@@ -14,12 +14,7 @@ public class Parallax : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float newPos=0f;
-
-
-			newPos = Mathf.Repeat(Time.time * scrollSpeed, 200);
-
+		float newPos = Mathf.Repeat(Time.time * scrollSpeed,900);
 		transform.position = startPos + Vector2.right * newPos;
-		Debug.Log ("Verdadero: " +transform.position);
 	}
 }

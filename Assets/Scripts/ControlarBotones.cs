@@ -27,15 +27,20 @@ public class ControlarBotones : MonoBehaviour
         SceneManager.LoadScene("Cuento1Escena1");        
     }
 
-	public void ElegirModo()
+	public void MiniJuegoNenaTemerosaLetras()
 	{
-		Screen.orientation = ScreenOrientation.Portrait;
-		SceneManager.LoadScene("MiniJuegoCuento");        
+		SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");        
 	}
 
-	public void MiniJuego()
+	public void MiniJuegoNenaTemerosaModo()
 	{
-		SceneManager.LoadScene("Juego");        
+		Screen.orientation = ScreenOrientation.Portrait;
+		SceneManager.LoadScene("MiniJuego-NenaTemerosa-Modo");        
+	}
+
+	public void MiniJuegoNenaTemerosa()
+	{
+		SceneManager.LoadScene("MiniJuego-NenaTemerosa");        
 	}
 
     public void ListadoCuentos()
