@@ -15,7 +15,7 @@ public class LinksContacto : MonoBehaviour
 
     public void InstagramLeo()
     {
-        Application.OpenURL("https://www.instagram.com/l30luna/?hl=es-la");
+        Application.OpenURL("https://www.instagram.com/l30.design/?hl=es-la");
     }
 
     public void LinkedinAdrian()
