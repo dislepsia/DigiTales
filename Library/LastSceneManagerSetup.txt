@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Cuento1Escena3.unity
+- path: Assets/Scenes/NewCreditos.unity
   isLoaded: 1
   isActive: 1

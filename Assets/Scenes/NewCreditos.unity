@@ -3033,7 +3033,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '@L30 LUNA
+  m_text: '@L30.design
 
 '
   m_isRightToLeft: 0
@@ -3105,9 +3105,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1712824424}
-    characterCount: 10
+    characterCount: 12
     spriteCount: 0
-    spaceCount: 2
+    spaceCount: 1
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -4145,7 +4145,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0b4e50bd7c06593408ba5320130786b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 983fd2eea1197374b9d00859ddc9dade, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
