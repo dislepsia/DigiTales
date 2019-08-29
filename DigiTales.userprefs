@@ -1,6 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento1Escena2.cs">
+    <Files>
+      <File FileName="Assets\Scripts\ControlarCuento1Escena2.cs" Line="115" Column="6" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena3.cs" Line="112" Column="6" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena4.cs" Line="125" Column="6" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena5.cs" Line="118" Column="6" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena1.cs" Line="107" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

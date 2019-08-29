@@ -289,7 +289,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "el sonido nocturno comenz\xF3 a surgir como el b\xFAho y su tetrico cantar"
+  m_Text: "el sonido nocturno comienza a o\xEDrse, como el b\xFAho y su t\xE9trico
+    cantar"
 --- !u!222 &96952184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1397,8 +1398,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.001175, y: -345.909}
-  m_SizeDelta: {x: 593.8, y: 60.6}
+  m_AnchoredPosition: {x: 64.7, y: -346.28}
+  m_SizeDelta: {x: 1663.5, y: 61.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463085897
 MonoBehaviour:
