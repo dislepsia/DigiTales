@@ -37,6 +37,8 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 
 	bool coroutineStarted = true;//para freezar ejecucion
 
+	int modoRelato=0;
+
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 
@@ -84,14 +86,14 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
+		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
 
-		//resultErrores.text = result.ToLower () + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim () + " ";
-
-
+		if (modoRelato == 0)
+		{
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
-			/*for (i = n; i < cantPalabrasSpeech; i++)
+			for (i = n; i < cantPalabrasSpeech; i++)
 			{
-			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) && n == i)
+				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) && n == i)
 				{
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
@@ -111,16 +113,12 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 					n++; //para no tener en cuenta palabra coloreada en el bucle
 
 					break;
+				}			
 			}
-			//else 
-				//SpeechRecognizer.StopIfRecording();
-			//resultErrores.text = "Palabra no reconocida";
-		}*/
-
-
-////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
-		//if (string.Equals (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
-		//{			
+		}
+		else
+		{
+////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////				
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
@@ -139,15 +137,7 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 				default:					
 					break;
 			}
-
-
-
-		//else 
-			//resultErrores.text = "Palabra no reconocida";
-		//}
-
-
-
+		}
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra
 		/*switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())

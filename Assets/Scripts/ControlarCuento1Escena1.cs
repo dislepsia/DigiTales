@@ -36,6 +36,8 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 
 	bool coroutineStarted = true;//para freezar ejecucion
 
+	int modoRelato=0;
+
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 
@@ -76,44 +78,42 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
-
 		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
+
+		if (modoRelato == 0)
+		{
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
-			/*for (i = n; i < cantPalabrasSpeech; i++)
+			for (i = n; i < cantPalabrasSpeech; i++)
 			{
-			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) && n == i)
-				{
-					//activar animacion segun palabra
-					switch (palabrasSpeech [i].ToString ().Trim())
+				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) && n == i)
 					{
-						case "bosque":
-							bosque.SetActive (true);							
-							break;
-						case "niña":
-							player.SetActive (true);							
-							break;
-						case "rojo":											
-							coroutineStarted = false;//para freezar ejecucion
-							break;
+						//activar animacion segun palabra
+						switch (palabrasSpeech [i].ToString ().Trim())
+						{
+							case "bosque":
+								bosque.SetActive (true);							
+								break;
+							case "niña":
+								player.SetActive (true);							
+								break;
+							case "rojo":											
+								coroutineStarted = false;//para freezar ejecucion
+								break;
 
-						default:					
-							break;
-					}
+							default:					
+								break;
+						}
 
-					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
-					n++; //para no tener en cuenta palabra coloreada en el bucle
+						resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
+						n++; //para no tener en cuenta palabra coloreada en el bucle
 
-					break;
-				}
-			//else 
-				//SpeechRecognizer.StopIfRecording();
-				//resultErrores.text = "Palabra no reconocida";
-			}*/
-
-
-////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
-		//if (string.Equals (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
-		//{			
+						break;
+					}			
+			}
+		}
+		else
+		{
+////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////				
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
@@ -136,14 +136,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 				default:					
 					break;
 			}
-
-
-
-		//else 
-			//resultErrores.text = "Palabra no reconocida";
-		//}
-
-
+		}
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra

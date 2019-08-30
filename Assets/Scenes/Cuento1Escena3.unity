@@ -289,7 +289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "el sonido nocturno se presenta como el b\xFAho y su t\xE9trico cantar"
+  m_Text: "el sonido nocturno se presenta como el b\xFAho y su tetrico cantar"
 --- !u!222 &96952184
 CanvasRenderer:
   m_ObjectHideFlags: 0
