@@ -84,16 +84,16 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
-		resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
+		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
-			for (i = n; i < cantPalabrasSpeech; i++)
+			/*for (i = n; i < cantPalabrasSpeech; i++)
 			{
-				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()))
+			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) && n == i)
 				{
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{
-						case "oírse":	
+						case "escucharse":	
 							ambienteBosque.Play ();							
 							break;						
 						case "cantar":							
@@ -112,42 +112,37 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 			//else 
 				//SpeechRecognizer.StopIfRecording();
 			//resultErrores.text = "Palabra no reconocida";
-		}
+		}*/
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
-		/*if (string.Equals (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
-		{			
+		//if (string.Equals (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim(), palabrasClave [k].ToString ().Trim()))
+		//{			
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-				case "bosque":
-					bosque.SetActive(true);
-					break;
-				case "nena":
-					player.SetActive(true);
-					break;
-				case "temerosa":
-					StartCoroutine (SpriteFadeOut());					
+				case "presenta":	
+					if(Pintar ("presenta", 0))
+						ambienteBosque.Play ();							
+					break;						
+				case "cantar":			
+					if(Pintar ("cantar", 1))
+					{
+						coroutineStarted = false;//para freezar ejecucion	
+						SpeechRecognizer.StopIfRecording();
+					}				
 					break;
 
 				default:					
 					break;
 			}
 
-			while(!string.Equals (palabrasEscena [j].ToString (), palabrasClave [k].ToString ().Trim()))
-			{
-				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
-				j++;					
-			}
-			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [j].ToString () + " "; //coloreo
-			j++;
-			k++;
 
-		else 
-			resultErrores.text = "Palabra no reconocida";
-		}
-		*/
+
+		//else 
+			//resultErrores.text = "Palabra no reconocida";
+		//}
+
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
@@ -223,6 +218,21 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 			//resultErrores.text = "Say something :-)";
 		}
 	}
+
+	bool Pintar(string palabraClave, int nroPalabraClave)
+	{
+		if (n == nroPalabraClave) {	
+			n++;
+			while (!string.Equals (palabrasEscena [i].ToString (), palabraClave)) {
+				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [i].ToString () + " "; //coloreo
+				i++;					
+			}
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [i].ToString () + " "; //coloreo
+			i++;
+			return true;
+		} else
+			return false;
+	}  
 
 	public void ReiniciarValoresEscena() {		
 		resultTextSpeech.text = string.Empty;

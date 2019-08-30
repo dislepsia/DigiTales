@@ -71,6 +71,7 @@ e763036081c708b34f78f5a56f72c23d TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_StyleS
 136f28bae18bcd1072d830ee3456f3ab TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_SubMesh
 5833a86cc374f497ae8d9fb9d8c3e5f4 TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_SubMeshUI
 22bb40270d2bfc0d0884e2aefd3d1c60 TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_Text
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScriptCodigoCuento
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TMP_TextSelector_A
 8843ecc84367b43eedb2e3fb5feb7427 Assembly-CSharp.dll:.ControlarCuento1Escena2
 b900ead596b2fb1093b31cb63a678767 Assembly-CSharp.dll:TMPro.Examples.TextMeshProFloatingText
@@ -103,6 +104,7 @@ b8f04bdad423045528c67dfa4c3dca0d Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 aa9d1bd0cc771545f2ae1f63a6d0ed6a Assembly-CSharp.dll:TMPro.Examples.TMP_TextEventCheck
 31615e618c6318ae1584a3aec191e584 Assembly-CSharp.dll:KKSpeech.SpeechRecognizerListener
 f0f0ab6b8a39d0572cfa4ea315d84fbf Assembly-CSharp.dll:TMPro.Examples.Benchmark04
+5761ef9a3109826ae5d7c8453b6c9e73 Assembly-CSharp.dll:.HabilitarCuento
 29273f491d11f6bdd02a43a9d8df84c7 Assembly-CSharp.dll:TMPro.Examples.TMP_ExampleScript_01
 1cd4893b18ef6c9e1612214d23ea08a3 Assembly-CSharp.dll:.ChatController
 2f332606b836e51d93c2aa652d317cd5 Assembly-CSharp.dll:.SettingsMenu
@@ -250,5 +252,3 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
-5761ef9a3109826ae5d7c8453b6c9e73 Assembly-CSharp.dll:.HabilitarCuento
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScriptCodigoCuento
