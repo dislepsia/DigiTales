@@ -8,7 +8,7 @@ public class CargarCodigosDesbloqueados : MonoBehaviour {
 
 	public TMP_InputField entrada;
 	public Text salida;
-	string codigosAnteriores = "";
+	//string codigosAnteriores = "";
 
 	public void Guardar () {
 		PlayerPrefs.SetString ("CodigoCuento", entrada.text);
@@ -17,7 +17,6 @@ public class CargarCodigosDesbloqueados : MonoBehaviour {
 	// Update is called once per frame
 	void Start () {
 		salida.text = PlayerPrefs.GetString ("CodigoCuento");
-
 	}
 		
 }

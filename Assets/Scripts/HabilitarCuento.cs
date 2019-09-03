@@ -34,7 +34,6 @@ public class HabilitarCuento : MonoBehaviour {
 					GameObject.Find ("CaperucitaButton").GetComponent<Button> ().interactable = true;
 				} 
 			}
-
 		}
 	//}
 }
