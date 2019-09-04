@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 
-	public static int index;
+	public int modo;
+	public static SeleccionModoReconocimientoVoz voz = new SeleccionModoReconocimientoVoz();
 
 	public void Dropdown_IndexChange(int indice)
     {
-		index = indice;
+		modo = indice;
 
 		if(indice == 0)
 			Debug.Log("Modo: Tiempo Real");

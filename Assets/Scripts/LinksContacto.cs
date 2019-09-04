@@ -30,7 +30,7 @@ public class LinksContacto : MonoBehaviour
 
     public void LinkedinMatias()
     {
-        Application.OpenURL("https://www.linkedin.com/in/mart%C3%ADn-ferrarese-912b7238/");
+        Application.OpenURL("https://www.linkedin.com/in/martias-patrignoni-24288a192/");
     }
 
     public void CorreoDigiTales()

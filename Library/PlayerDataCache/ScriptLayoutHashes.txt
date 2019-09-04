@@ -22,6 +22,7 @@ c906602d9b43cc5e075f80e1d8ae7c79 Assembly-CSharp.dll:TMPro.Examples.Benchmark01_
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.VolumeValueChange
 6a492d7b8465b2c00d15794caa46ec2e Assembly-CSharp.dll:TMPro.Examples.TMPro_InstructionOverlay
 765037da3d8faeee91e39d672b924c61 Assembly-CSharp.dll:.EnvMapAnimator
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ArmarJson
 76015de5fcb247eeb8df66c001d5a22d Assembly-CSharp.dll:TMPro.Examples.TMP_UiFrameRateCounter
 75cd0c6c744b9733ef29aa6c59ece2b1 Assembly-CSharp.dll:TMPro.Examples.VertexJitter
 235d00f1cce52e4be07203116fff77df Assembly-CSharp.dll:.ControlBrightness
@@ -99,10 +100,13 @@ a8ed45ab553b07236625df6cc6ac449c TextMeshPro-2017.3-Editor.dll:TMPro.EditorUtili
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TeleType
 8a50d3d11bf0cc541f5c35347dd25633 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ControlarBotones
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Inicio
 76015de5fcb247eeb8df66c001d5a22d Assembly-CSharp.dll:TMPro.Examples.TMP_FrameRateCounter
 b8f04bdad423045528c67dfa4c3dca0d Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
+f26e8a7744ba7a2c94ea361c351b151b Assembly-CSharp.dll:.CargarCodigosDesbloqueados
 62229a3e4d53ca59bec192e89627ed52 Assembly-CSharp.dll:TMPro.Examples.CameraController
 aa9d1bd0cc771545f2ae1f63a6d0ed6a Assembly-CSharp.dll:TMPro.Examples.TMP_TextEventCheck
+356d389b73dd8cff3ec1027b2bdf6179 Assembly-CSharp.dll:.SeleccionModoReconocimientoVoz
 31615e618c6318ae1584a3aec191e584 Assembly-CSharp.dll:KKSpeech.SpeechRecognizerListener
 f0f0ab6b8a39d0572cfa4ea315d84fbf Assembly-CSharp.dll:TMPro.Examples.Benchmark04
 5761ef9a3109826ae5d7c8453b6c9e73 Assembly-CSharp.dll:.HabilitarCuento
@@ -116,6 +120,7 @@ f0f0ab6b8a39d0572cfa4ea315d84fbf Assembly-CSharp.dll:TMPro.Examples.Benchmark04
 75cd0c6c744b9733ef29aa6c59ece2b1 Assembly-CSharp.dll:TMPro.Examples.VertexShakeB
 6826e26f7cc718f870001971f13e79c7 Assembly-CSharp.dll:TMPro.TMP_TextEventHandler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.VertexColorCycler
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CodigosGuardados
 020550babdb991365f61c5bffe1f4f52 Assembly-CSharp.dll:TMPro.Examples.TextMeshSpawner
 af7666733efcc974926d7d470e1732a6 Assembly-CSharp.dll:TMPro.Examples.SkewTextExample
 34e025057ef78b1bf238460cdf6583a3 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
@@ -253,9 +258,3 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
-f26e8a7744ba7a2c94ea361c351b151b Assembly-CSharp.dll:.CargarCodigosDesbloqueados
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ArmarJson
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CodigosGuardados
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SeleccionModoReconocimientoVoz
-5926cdc79bc14b774d12ee20cb47956d Assembly-CSharp.dll:.Dropdown
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Inicio
