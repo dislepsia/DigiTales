@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class HabilitarCuento : MonoBehaviour {
 
-	public string cuento = "";
-	public GameObject objectToDisable;
+	string cuento = "";
+	GameObject objectToDisable;
 
 	public static HabilitarCuento objetoHabilitar= new HabilitarCuento();
 	public string codigo = null;
@@ -30,8 +30,12 @@ public class HabilitarCuento : MonoBehaviour {
 					GameObject.Find ("ChanchitosButton").GetComponent<Button> ().interactable = true;
 				}
 
-				if (cuento.Equals ("5555")) {
+				if (cuento.Equals ("7735")) {
 					GameObject.Find ("CaperucitaButton").GetComponent<Button> ().interactable = true;
+				} 
+
+				if (cuento.Equals ("4467")) {
+					GameObject.Find ("CenicientaButton").GetComponent<Button> ().interactable = true;
 				} 
 			}
 		}
