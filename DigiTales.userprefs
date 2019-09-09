@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Assets\Scripts\ScriptCodigoCuento.cs" Line="10" Column="3" />
       <File FileName="Assets\Scripts\HabilitarCuento.cs" Line="29" Column="1" />
-      <File FileName="Assets\Scripts\CargarCodigosDesbloqueados.cs" Line="52" Column="87" />
+      <File FileName="Assets\Scripts\CargarCodigosDesbloqueados.cs" Line="44" Column="16" />
       <File FileName="Assets\Scripts\CodigosGuardados.cs" Line="44" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>

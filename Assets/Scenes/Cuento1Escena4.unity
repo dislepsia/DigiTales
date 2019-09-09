@@ -1815,7 +1815,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 339369635}
-        m_MethodName: ListadoCuentos
+        m_MethodName: MiniJuegoNenaTemerosaModo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

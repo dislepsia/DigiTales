@@ -55,7 +55,6 @@
      <Compile Include="Assets\KKSpeechRecognizer\SpeechRecognizerListener.cs" />
      <Compile Include="Assets\Scripts\BrightnessValueChange.cs" />
      <Compile Include="Assets\Scripts\CargarCodigosDesbloqueados.cs" />
-     <Compile Include="Assets\Scripts\CodigosGuardados.cs" />
      <Compile Include="Assets\Scripts\ControlarBotones.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena1.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena2.cs" />
@@ -70,6 +69,7 @@
      <Compile Include="Assets\Scripts\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\LinksContacto.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
+     <Compile Include="Assets\Scripts\ResetearPlayerPrefabs.cs" />
      <Compile Include="Assets\Scripts\ScriptCodigoCuento.cs" />
      <Compile Include="Assets\Scripts\SeleccionModoReconocimientoVoz.cs" />
      <Compile Include="Assets\Scripts\SettingsMenu.cs" />

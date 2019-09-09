@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CargarCodigosDesbloqueados : MonoBehaviour {
 
 	public TMP_InputField entrada;
 	public Text salida;
-	public int pantalla = 0;
+	string[] codigosHabilitados = null;
 
 	public void Guardar () {
 
@@ -20,8 +21,6 @@ public class CargarCodigosDesbloqueados : MonoBehaviour {
 
 		if(entrada.text.Equals("4467"))
 			PlayerPrefs.SetString ("Cenicienta", entrada.text+ " ");
-
-		pantalla = 1;
 	}
 
 	void Start () {
@@ -42,9 +41,13 @@ public class CargarCodigosDesbloqueados : MonoBehaviour {
 	//Habilitar botón para la carga de código sólo cuando haya 4 caracteres
 	void Update(){
 
-		if(pantalla.Equals(0)){
+		string nombreEscena = SceneManager.GetActiveScene().name;
 
-			string[] codigosHabilitados = GameObject.Find ("Text").GetComponent<Text> ().text.Split(' ');
+		//Cargo los códigos para aquellos cuentos que ya fueron ingresados
+		if(nombreEscena.Equals("NewListadoCuentos")){
+			//Debug.Log("Se cargo la escena: NewListadoCuentos");
+		
+			codigosHabilitados = GameObject.Find ("LabelCodigos").GetComponent<Text> ().text.Split(' ');
 
 			foreach(string codigo in codigosHabilitados){
 
@@ -59,26 +62,20 @@ public class CargarCodigosDesbloqueados : MonoBehaviour {
 				if (codigo.Equals ("4467")) {
 					GameObject.Find ("CenicientaButton").GetComponent<Button> ().interactable = true;
 				} 
-
 			}
-
-
 		}
-		else
-			pantalla = 2;
 
-		if (pantalla.Equals(1)){
-
+		//Habilito el botón de Cargar cuando el código ingresado sea de 4 caracteres
+		if(nombreEscena.Equals("CargaDeCodigo")){
+			
 			Button cargaCodigo = GameObject.Find ("CargarButton").GetComponent<Button> ();
 
-			if(entrada.text.Length>3){
+			if(entrada.text.Length > 3){
 				cargaCodigo.interactable = true;
 			}
 			else{
 				cargaCodigo.interactable = false;
 			}
-
 		}
-
 	}
 }
