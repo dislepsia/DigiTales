@@ -259,3 +259,4 @@ af7666733efcc974926d7d470e1732a6 Assembly-CSharp.dll:TMPro.Examples.SkewTextExam
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.SimpleScript
 a8ed45ab553b07236625df6cc6ac449c Assembly-CSharp.dll:.ResetearPlayerPrefabs
 a2750fcf76563e45805e09f81726e960 Assembly-CSharp.dll:.ButtonsAnimations
+41f682e00950a761b31d475c88f6101c Assembly-CSharp.dll:.UIParticleSystem
