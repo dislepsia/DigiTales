@@ -54,6 +54,7 @@
      <Compile Include="Assets\KKSpeechRecognizer\SpeechRecognizer.cs" />
      <Compile Include="Assets\KKSpeechRecognizer\SpeechRecognizerListener.cs" />
      <Compile Include="Assets\Scripts\BrightnessValueChange.cs" />
+     <Compile Include="Assets\Scripts\ButtonsAnimations.cs" />
      <Compile Include="Assets\Scripts\CargarCodigosDesbloqueados.cs" />
      <Compile Include="Assets\Scripts\ControlarBotones.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena1.cs" />

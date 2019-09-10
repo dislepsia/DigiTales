@@ -330,7 +330,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 44.05
+  m_fontSize: 47.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 140570340}
   - component: {fileID: 140570342}
   - component: {fileID: 140570341}
+  - component: {fileID: 140570343}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -559,6 +560,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140570339}
+--- !u!114 &140570343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140570339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.9998802
+      value: -0.00017005554
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.49583334
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.9958801
+      value: -0.0063095093
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &145059418
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,6 +802,7 @@ GameObject:
   - component: {fileID: 729321294}
   - component: {fileID: 729321293}
   - component: {fileID: 729321292}
+  - component: {fileID: 729321295}
   m_Layer: 5
   m_Name: AprendizajeButton
   m_TagString: Untagged
@@ -890,6 +928,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 729321290}
+--- !u!114 &729321295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729321290}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &859299679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1108,7 @@ GameObject:
   - component: {fileID: 935146157}
   - component: {fileID: 935146159}
   - component: {fileID: 935146158}
+  - component: {fileID: 935146160}
   m_Layer: 5
   m_Name: Imagen
   m_TagString: Untagged
@@ -1078,8 +1131,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000018937, y: 44.2}
-  m_SizeDelta: {x: 173.26, y: 114.86}
+  m_AnchoredPosition: {x: 0.000016212, y: 36.97}
+  m_SizeDelta: {x: 161.69, y: 100.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935146158
 MonoBehaviour:
@@ -1114,6 +1167,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 935146156}
+--- !u!114 &935146160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 935146156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.9972314
+      value: 0.00377989
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.51249593
+      value: 0.9997177
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 2.003479
+      value: -0.008720398
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &950392142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1213,7 @@ GameObject:
   - component: {fileID: 950392143}
   - component: {fileID: 950392145}
   - component: {fileID: 950392144}
+  - component: {fileID: 950392146}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1146,8 +1236,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0024995422, y: -37.84}
-  m_SizeDelta: {x: -0, y: -268.82}
+  m_AnchoredPosition: {x: -0.0000076294, y: -32.3}
+  m_SizeDelta: {x: -184.27, y: -246.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950392144
 MonoBehaviour:
@@ -1270,6 +1360,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 950392142}
+--- !u!114 &950392146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 950392142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.500002
+      value: -0.000655293
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.49166667
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.4999939
+      value: 0.0019630194
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1190941561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,7 +1661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 35, y: 35}
+  m_AnchoredPosition: {x: 1835, y: 3107}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721784162
@@ -1755,6 +1881,7 @@ GameObject:
   - component: {fileID: 1965078236}
   - component: {fileID: 1965078238}
   - component: {fileID: 1965078237}
+  - component: {fileID: 1965078239}
   m_Layer: 5
   m_Name: Resumen
   m_TagString: Untagged
@@ -1901,6 +2028,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1965078235}
+--- !u!114 &1965078239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1965078235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.5031701
+      value: 0.49699065
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.49583334
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.5020142
+      value: 0.5003128
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &2046260502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +2074,7 @@ GameObject:
   - component: {fileID: 2046260503}
   - component: {fileID: 2046260505}
   - component: {fileID: 2046260504}
+  - component: {fileID: 2046260506}
   m_Layer: 5
   m_Name: Imagen
   m_TagString: Untagged
@@ -1933,7 +2097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: 48.875}
+  m_AnchoredPosition: {x: 0.000016286, y: 44}
   m_SizeDelta: {x: 131.75, y: 109.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046260504
@@ -1969,6 +2133,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2046260502}
+--- !u!114 &2046260506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2046260502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.49971962
+      value: 0.49749303
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.4931478
+      value: 0.8979759
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.4997032
+      value: 0.49917957
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &2052364868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +2179,7 @@ GameObject:
   - component: {fileID: 2052364869}
   - component: {fileID: 2052364871}
   - component: {fileID: 2052364870}
+  - component: {fileID: 2052364872}
   m_Layer: 5
   m_Name: Resumen
   m_TagString: Untagged
@@ -2125,3 +2326,39 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2052364868}
+--- !u!114 &2052364872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2052364868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -1.0029962
+      value: -0.0013042188
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5032186
+      value: 1.0052567
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 2.0008545
+      value: -0.0057754517
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
