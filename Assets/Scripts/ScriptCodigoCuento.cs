@@ -10,7 +10,8 @@ public class ScriptCodigoCuento : MonoBehaviour {
 		HabilitarCuento.objetoHabilitar.codigo = GameObject.Find ("TextBoxIngresoCodigo").GetComponent<TMP_InputField> ().text;
 
 		//Acceder a la variable para saber en que modo de reconocimiento esta el cuento
-		if (SeleccionModoReconocimientoVoz.voz.modo.Equals (0))
+		//if (SeleccionModoReconocimientoVoz.voz.modo.Equals (0))
+		if(PlayerPrefs.GetString ("ModoReconocimiento").Equals("0"))
 			Debug.Log ("Tiempo Real");
 		else
 			Debug.Log ("Palabras Clave");

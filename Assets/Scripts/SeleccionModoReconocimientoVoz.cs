@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 
-	public int modo;
-	public static SeleccionModoReconocimientoVoz voz = new SeleccionModoReconocimientoVoz();
+	//public int modo;
+	//public static SeleccionModoReconocimientoVoz voz = new SeleccionModoReconocimientoVoz();
 
 	public void Dropdown_IndexChange(int indice)
     {
-		modo = indice;
+		//modo = indice;
+		PlayerPrefs.SetString ("ModoReconocimiento", indice.ToString());
 
-		if(indice == 0)
+
+		if(PlayerPrefs.GetString ("ModoVibracion").Equals("0"))
 			Debug.Log("Modo: Tiempo Real");
 		else
 			Debug.Log("Modo: Palabras Clave");

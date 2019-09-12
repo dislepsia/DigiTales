@@ -8,7 +8,7 @@ public class HabilitarCuento : MonoBehaviour {
 	string cuento = "";
 	GameObject objectToDisable;
 
-	public static HabilitarCuento objetoHabilitar= new HabilitarCuento();
+	public static HabilitarCuento objetoHabilitar = new HabilitarCuento();
 	public string codigo = null;
 
 	void Update () {

@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\ScriptCodigoCuento.cs" />
      <Compile Include="Assets\Scripts\SeleccionModoReconocimientoVoz.cs" />
      <Compile Include="Assets\Scripts\SettingsMenu.cs" />
+     <Compile Include="Assets\Scripts\Vibracion.cs" />
      <Compile Include="Assets\Scripts\VolumeValueChange.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
