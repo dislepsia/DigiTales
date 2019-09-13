@@ -37,10 +37,11 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 
 	bool coroutineStarted = true;//para freezar ejecucion
 
-	int modoRelato=0;
+	string modoRelato = string.Empty; 
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
+		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -88,7 +89,7 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 		cantPalabrasSpeech = palabrasSpeech.Length;
 		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 
-		if (modoRelato == 0)
+		if (modoRelato == "0")
 		{
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
 			for (i = n; i < cantPalabrasSpeech; i++)

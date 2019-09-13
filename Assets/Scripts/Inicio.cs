@@ -10,6 +10,9 @@ public class Inicio : MonoBehaviour {
 	{
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
+
+		//inicializo modo relato
+		PlayerPrefs.SetString ("ModoReconocimiento", "0");
 	}  
 
 	IEnumerator SpriteShapeOut()
