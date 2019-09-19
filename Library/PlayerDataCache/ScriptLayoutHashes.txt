@@ -252,7 +252,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 3e229468b7daff27d7f6a7349af5c896 Assembly-CSharp.dll:.ControlarCuento1Escena4
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TextConsoleSimulator
-51bdb7919eabb79ab9e6f806d973a82c Assembly-CSharp.dll:.ControlarCuento1Escena1
+f453ae0898273df3ed1848ad382d585d Assembly-CSharp.dll:.ControlarCuento1Escena1
 75cd0c6c744b9733ef29aa6c59ece2b1 Assembly-CSharp.dll:TMPro.Examples.VertexShakeB
 6826e26f7cc718f870001971f13e79c7 Assembly-CSharp.dll:TMPro.TMP_TextEventHandler
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.VertexColorCycler

@@ -31,12 +31,17 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 	int i=0;
 	int n=0;
 
+
 	public Animator imagenNegra;
 	public Animator microfono;
+
+	public GameObject contenedor;
 
 	bool coroutineStarted = true;//para freezar ejecucion
 
 	string modoRelato = string.Empty; 
+
+	int cambiarTexto = 0;
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
@@ -55,7 +60,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			SpeechRecognizer.RequestAccess();
 
 			//obtengo cantidad de palabras de escena actual
-			textoEscena = sceneText.text;
+			textoEscena = sceneText.text = "había una vez";
 			palabrasEscena = textoEscena.Split(' ');
 
 		} else {			
@@ -90,8 +95,14 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 						//activar animacion segun palabra
 						switch (palabrasSpeech [i].ToString ().Trim())
 						{
+							case "vez":
+								CambiarTexto("en un bosque oscuro");														
+								break;
 							case "bosque":
 								bosque.SetActive (true);							
+								break;
+							case "oscuro":
+								CambiarTexto("una niña vestida de rojo");															
 								break;
 							case "niña":
 								player.SetActive (true);							
@@ -117,16 +128,24 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
+				case "vez":
+				if(Pintar ("vez", 0))
+					CambiarTexto("en un bosque oscuro");
+					break;
 				case "bosque":					
 					if(Pintar ("bosque", 0))
 						bosque.SetActive (true);
 					break;
+				case "oscuro":
+					if(Pintar ("oscuro", 1))
+					CambiarTexto("una niña vestida de rojo");
+				break;
 				case "niña":					
-					if(Pintar ("niña", 1))
+					if(Pintar ("niña", 0))
 						player.SetActive(true);
 					break;
 				case "rojo":					
-					if(Pintar ("rojo", 2))
+					if(Pintar ("rojo", 1))
 					{
 						coroutineStarted = false;//para freezar ejecucion	
 						SpeechRecognizer.StopIfRecording();
@@ -211,6 +230,16 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			startRecordingButton.GetComponentInChildren<Text>().text = "";
 			//resultErrores.text = "Say something :-)";
 		}
+	}
+
+	public void CambiarTexto(string textoNuevo)
+	{
+		contenedor.SetActive (false);	
+		i = 0;
+		n = 0;
+		textoEscena = sceneText.text = textoNuevo;
+		palabrasEscena = textoEscena.Split (' ');
+		contenedor.SetActive (true);
 	}
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
