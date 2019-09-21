@@ -289,7 +289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "a lo lejos la tormenta se acercaba r\xE1pidamente"
+  m_Text: "en el horizonte la tormenta se acercaba r\xE1pidamente"
 --- !u!222 &96952184
 CanvasRenderer:
   m_ObjectHideFlags: 0
