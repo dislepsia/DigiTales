@@ -38,10 +38,13 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 	public GameObject contenedor;
 
 	bool coroutineStarted = true;//para freezar ejecucion
+	string coroutineStarted1 = string.Empty;//para freezar contenedor
 
 	string modoRelato = string.Empty; 
 
 	int cambiarTexto = 0;
+
+	bool textoCompleto = false;
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
@@ -96,27 +99,39 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 						switch (palabrasSpeech [i].ToString ().Trim())
 						{
 							case "vez":
-								CambiarTexto("en un bosque oscuro");														
+								//textoCompleto = true;
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
+								//textoCompleto = false;
 								break;
 							case "bosque":
-								bosque.SetActive (true);							
+								bosque.SetActive (true);
+								PintarPalabra (palabrasSpeech [i].ToString ());
 								break;
 							case "oscuro":
-								CambiarTexto("una niña vestida de rojo");															
+								//textoCompleto = true;
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor
+								//textoCompleto = false;
 								break;
 							case "niña":
-								player.SetActive (true);							
+								player.SetActive (true);	
+								PintarPalabra (palabrasSpeech [i].ToString ());
 								break;
-							case "rojo":											
+							case "rojo":	
+								//textoCompleto = true;
 								coroutineStarted = false;//para freezar ejecucion
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								//textoCompleto = false;
 								break;
 
-							default:					
+							default:	
+								PintarPalabra (palabrasSpeech [i].ToString ());
 								break;
 						}
 
-						resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
-						n++; //para no tener en cuenta palabra coloreada en el bucle
+						//resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
+						//n++; //para no tener en cuenta palabra coloreada en el bucle
 
 						break;
 					}			
@@ -232,6 +247,12 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		}
 	}
 
+	public void PintarPalabra(string palabra)
+	{
+		resultTextSpeech.text = resultTextSpeech.text + palabra + " "; //coloreo
+		n++; //para no tener en cuenta palabra coloreada en el bucle
+	}
+
 	public void CambiarTexto(string textoNuevo)
 	{
 		contenedor.SetActive (false);	
@@ -239,7 +260,10 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		n = 0;
 		textoEscena = sceneText.text = textoNuevo;
 		palabrasEscena = textoEscena.Split (' ');
-		contenedor.SetActive (true);
+
+		contenedor.SetActive (true);//llama a otro contenedor de texto
+		resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
+		OnStartRecordingPressed ();//activa escucha
 	}
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
@@ -257,21 +281,27 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			return false;
 	}  
 
-	public void ReiniciarValoresEscena() {		
-		resultTextSpeech.text = string.Empty;
+	public void ReiniciarValoresEscena() {	
+		//if(!textoCompleto)
+		//{
+			resultTextSpeech.text = string.Empty;
 
-		i=0;
-		n=0;
+			i=0;
+			n=0;
 
-		startRecordingButton.gameObject.SetActive(true);
-		microfono.gameObject.SetActive(false);
+			startRecordingButton.gameObject.SetActive(true);
+			microfono.gameObject.SetActive(false);
+		//}
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (2));
+			StartCoroutine (EsperarSegundos (1));
+
+		if (!string.IsNullOrEmpty(coroutineStarted1))			
+			StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
 	}  
 
 
@@ -291,4 +321,15 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		imagenNegra.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
 	}
+
+	IEnumerator RetrasarContenedor(int seconds, string frase)
+	{		
+		coroutineStarted1 = string.Empty;
+		yield return new WaitForSeconds(seconds);
+
+		CambiarTexto(frase);
+	}
+
+
+
 }
