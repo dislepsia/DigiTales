@@ -1,5 +1,6 @@
 Android
 SceneListBegin?
+Assets/Scenes/Inicio.unity
 Assets/Scenes/NewMenu.unity
 Assets/Scenes/NewListadoCuentos.unity
 Assets/Scenes/NewCreditos.unity

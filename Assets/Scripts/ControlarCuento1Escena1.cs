@@ -59,7 +59,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			listener.onFinalResults.AddListener(OnFinalResult);
 			listener.onPartialResults.AddListener(OnPartialResult);
 			listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
-			startRecordingButton.enabled = false;
+			//startRecordingButton.enabled = false;
 			SpeechRecognizer.RequestAccess();
 
 			//obtengo cantidad de palabras de escena actual
@@ -71,7 +71,9 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			startRecordingButton.enabled = false;
 		}
 
-		OnStartRecordingPressed ();
+		//OnStartRecordingPressed ();
+		DesactivarEscucha ();
+		ActivarEscucha ();
 	}
 
 
@@ -98,8 +100,9 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 						//activar animacion segun palabra
 						switch (palabrasSpeech [i].ToString ().Trim())
 						{
-							case "vez":
-								textoCompleto = true;
+					case "vez":
+						textoCompleto = true;
+						DesactivarEscucha ();
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
 								textoCompleto = false;
@@ -110,6 +113,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 								break;
 							case "oscuro":
 								textoCompleto = true;
+						DesactivarEscucha ();
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor
 								textoCompleto = false;
@@ -120,6 +124,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 								break;
 							case "rojo":	
 								textoCompleto = true;
+						DesactivarEscucha ();
 								coroutineStarted = false;//para freezar ejecucion
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								//textoCompleto = false;
@@ -274,7 +279,8 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 
 		contenedor.SetActive (true);//llama a otro contenedor de texto
 		resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
-		OnStartRecordingPressed ();//activa escucha
+		//OnStartRecordingPressed ();//activa escucha
+		ActivarEscucha();
 	}
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
@@ -341,6 +347,16 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		CambiarTexto(frase);
 	}
 
+	public void ActivarEscucha() {	
+		startRecordingButton.gameObject.SetActive(false);
+		microfono.gameObject.SetActive(true);
+		SpeechRecognizer.StartRecording(true);
+	}
 
+	public void DesactivarEscucha() {	
+		SpeechRecognizer.StopIfRecording ();
+		startRecordingButton.gameObject.SetActive(true);
+		microfono.gameObject.SetActive(false);
+	}
 
 }
