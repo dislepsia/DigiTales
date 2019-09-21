@@ -209,7 +209,7 @@ a8ed45ab553b07236625df6cc6ac449c TextMeshPro-2017.3-Editor.dll:TMPro.EditorUtili
 8a50d3d11bf0cc541f5c35347dd25633 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
 a2750fcf76563e45805e09f81726e960 Assembly-CSharp.dll:.ButtonsAnimations
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ControlarBotones
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Inicio
+1badf1b8755e24b55d371f0f9e3d61fc Assembly-CSharp.dll:.Inicio
 76015de5fcb247eeb8df66c001d5a22d Assembly-CSharp.dll:TMPro.Examples.TMP_FrameRateCounter
 b8f04bdad423045528c67dfa4c3dca0d Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 41f682e00950a761b31d475c88f6101c Assembly-CSharp.dll:.UIParticleSystem

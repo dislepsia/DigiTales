@@ -50,7 +50,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
 
-		if (SpeechRecognizer.ExistsOnDevice()) {
+		//if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
 			listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
@@ -66,10 +66,10 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			textoEscena = sceneText.text = "había una vez";
 			palabrasEscena = textoEscena.Split(' ');
 
-		} else {			
-			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
-			startRecordingButton.enabled = false;
-		}
+		//} else {			
+			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
+			//startRecordingButton.enabled = false;
+		//}
 
 		//OnStartRecordingPressed ();
 		DesactivarEscucha ();
