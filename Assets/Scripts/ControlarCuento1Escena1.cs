@@ -122,7 +122,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 								textoCompleto = true;
 								coroutineStarted = false;//para freezar ejecucion
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								textoCompleto = false;
+								//textoCompleto = false;
 								break;
 
 							default:	
@@ -144,8 +144,12 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
 				case "vez":
-				if(Pintar ("vez", 0))
-					CambiarTexto("en un bosque oscuro");
+					if(Pintar ("vez", 0))
+					{
+						textoCompleto = true;				
+						coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
+						textoCompleto = false;
+					}
 					break;
 				case "bosque":					
 					if(Pintar ("bosque", 0))
@@ -153,8 +157,12 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 					break;
 				case "oscuro":
 					if(Pintar ("oscuro", 1))
-					CambiarTexto("una niña vestida de rojo");
-				break;
+					{
+						textoCompleto = true;				
+						coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor	
+						textoCompleto = false;
+					}
+					break;
 				case "niña":					
 					if(Pintar ("niña", 0))
 						player.SetActive(true);
@@ -162,8 +170,11 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 				case "rojo":					
 					if(Pintar ("rojo", 1))
 					{
+						textoCompleto = true;
 						coroutineStarted = false;//para freezar ejecucion	
 						SpeechRecognizer.StopIfRecording();
+						//resultTextSpeech.text = string.Empty;
+						//textoCompleto = false;
 					}
 					break;
 
