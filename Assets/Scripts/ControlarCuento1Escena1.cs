@@ -99,30 +99,30 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 						switch (palabrasSpeech [i].ToString ().Trim())
 						{
 							case "vez":
-								//textoCompleto = true;
+								textoCompleto = true;
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
-								//textoCompleto = false;
+								textoCompleto = false;
 								break;
 							case "bosque":
 								bosque.SetActive (true);
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								break;
 							case "oscuro":
-								//textoCompleto = true;
+								textoCompleto = true;
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor
-								//textoCompleto = false;
+								textoCompleto = false;
 								break;
 							case "niña":
 								player.SetActive (true);	
 								PintarPalabra (palabrasSpeech [i].ToString ());
 								break;
 							case "rojo":	
-								//textoCompleto = true;
+								textoCompleto = true;
 								coroutineStarted = false;//para freezar ejecucion
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								//textoCompleto = false;
+								textoCompleto = false;
 								break;
 
 							default:	
@@ -282,8 +282,8 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 	}  
 
 	public void ReiniciarValoresEscena() {	
-		//if(!textoCompleto)
-		//{
+		if(!textoCompleto)
+		{
 			resultTextSpeech.text = string.Empty;
 
 			i=0;
@@ -291,7 +291,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 
 			startRecordingButton.gameObject.SetActive(true);
 			microfono.gameObject.SetActive(false);
-		//}
+		}
 	}
 
 	// Update is called once per frame

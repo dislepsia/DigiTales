@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Assets\Scripts\SeleccionModoReconocimientoVoz.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Inicio.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlarCuento1Escena1.cs" Line="13" Column="30" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena1.cs" Line="41" Column="67" />
       <File FileName="Assets\Scripts\ControlarCuento1Escena4.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
