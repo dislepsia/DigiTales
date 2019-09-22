@@ -27,7 +27,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 	public float parallaxSpeed = 0.12f;
 
 	//variables para vibrar
-	bool vibrar = true;
+	//bool vibrar = true;
 
 	//variables de sonidos
 	public AudioClip grito;
@@ -45,10 +45,12 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 	bool coroutineStarted = true;//para freezar ejecucion
 
 	string modoRelato = string.Empty; 
+	string modoVibracion = string.Empty; 
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
+		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -107,8 +109,9 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{
 						case "grito":	
-							vibrar = false;
-							ambienteBosque.Play ();														
+							//vibrar = false;
+							ambienteBosque.Play ();	
+							Vibrar ();
 							break;						
 						case "correr":							
 							player.gameObject.GetComponent<Animator>().Play("PlayerRun");
@@ -136,7 +139,8 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 				case "grito":
 					if(Pintar ("grito", 0))
 					{	
-						vibrar = false;
+						//vibrar = false;
+						Vibrar ();
 						ambienteBosque.Play ();	
 					}
 					break;						
@@ -270,8 +274,8 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 		if (!coroutineStarted)
 			StartCoroutine (EsperarSegundos (3));
 
-		if (!vibrar)
-			VibrarCelular ();
+		/*if (!vibrar)
+			VibrarCelular ();*/
 	}  
 
 
@@ -286,16 +290,20 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 		SceneManager.LoadScene("Cuento1Escena5");
 	}
 
-	IEnumerator VibrarCelular()
+	/*IEnumerator VibrarCelular()
 	{
 		vibrar = true;
 		Handheld.Vibrate ();
 		yield return new WaitForSeconds(0.01f);
-	}
+	}*/
 
 	IEnumerator SpriteShapeOut()
 	{		
 		circuloNegro.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
+	}
+
+	public void Vibrar(){
+		Handheld.Vibrate ();
 	}
 }

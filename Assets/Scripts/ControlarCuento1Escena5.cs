@@ -42,10 +42,12 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 	bool coroutineStarted = true;//para freezar ejecucion
 
 	string modoRelato = string.Empty; 
+	string modoVibracion = string.Empty;
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
+		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
 		if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -274,5 +276,9 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 	{		
 		circuloNegro.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
+	}
+
+	public void Vibrar(){
+		Handheld.Vibrate ();
 	}
 }

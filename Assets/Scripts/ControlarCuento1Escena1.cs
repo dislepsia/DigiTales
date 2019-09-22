@@ -41,6 +41,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
 
 	string modoRelato = string.Empty; 
+	string modoVibracion = string.Empty; 
 
 	int cambiarTexto = 0;
 
@@ -49,6 +50,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
+		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
 		//if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -100,12 +102,11 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 						//activar animacion segun palabra
 						switch (palabrasSpeech [i].ToString ().Trim())
 						{
-					case "vez":
-						textoCompleto = true;
-						DesactivarEscucha ();
+							case "vez":
+								textoCompleto = true;
+								DesactivarEscucha ();
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
-								//textoCompleto = false;
+								coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor									
 								break;
 							case "bosque":
 								bosque.SetActive (true);
@@ -113,10 +114,9 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 								break;
 							case "oscuro":
 								textoCompleto = true;
-						DesactivarEscucha ();
+								DesactivarEscucha ();
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor
-								//textoCompleto = false;
+								coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor								
 								break;
 							case "niña":
 								player.SetActive (true);	
@@ -126,8 +126,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 								textoCompleto = true;
 								DesactivarEscucha ();
 								coroutineStarted = false;//para freezar ejecucion
-								PintarPalabra (palabrasSpeech [i].ToString ());
-								//textoCompleto = false;
+								PintarPalabra (palabrasSpeech [i].ToString ());								
 								break;
 
 							default:	
@@ -350,6 +349,10 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		SpeechRecognizer.StopIfRecording ();
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
+	}
+
+	public void Vibrar(){
+		Handheld.Vibrate ();
 	}
 
 }
