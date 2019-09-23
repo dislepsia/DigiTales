@@ -28,6 +28,7 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
+	public GameObject bosqueInv; //objeto para controlar escena
 
 	int i=0;
 	int n=0;
@@ -39,6 +40,7 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 
 	bool coroutineStarted = true;//para freezar ejecucion
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
+	bool coroutineStarted2 = true;
 
 	string modoRelato = string.Empty; 
 	string modoVibracion = string.Empty; 
@@ -115,8 +117,10 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 						coroutineStarted1 = "la tormenta se acercaba";//para freezar contenedor				
 						break;
 						case "tormenta":
-							ambienteBosque.Play ();		
 						PintarPalabra (palabrasSpeech [i].ToString ());
+						coroutineStarted2 = false;
+							//ambienteBosque.Play ();		
+
 							break;	
 					case "acercaba":
 						textoCompleto = true;
@@ -159,7 +163,8 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 				break;
 				case "tormenta":
 					if(Pintar ("tormenta", 0))
-						ambienteBosque.Play ();											
+						coroutineStarted2 = false;
+						//ambienteBosque.Play ();											
 					break;		
 			case "acercaba":
 				if(Pintar ("acercaba", 1))
@@ -308,7 +313,24 @@ public void ReiniciarValoresEscena() {
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
+
+	if (!coroutineStarted2)
+		StartCoroutine (EfectoRelampago ());
 	}  
+
+IEnumerator EfectoRelampago()
+{
+	coroutineStarted2 = true;
+
+	for (int z = 0; z < 2; z++)
+	{
+		bosqueInv.SetActive (true);
+		yield return new WaitForSeconds(0.1f);
+		bosqueInv.SetActive (false);
+		yield return new WaitForSeconds(0.1f);
+	}
+	ambienteBosque.Play ();	
+}
 
 
 	IEnumerator EsperarSegundos(int seconds)
