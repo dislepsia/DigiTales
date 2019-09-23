@@ -16,7 +16,7 @@ public class Inicio : MonoBehaviour {
 
 		//inicializo modo relato
 		PlayerPrefs.SetString ("ModoReconocimiento", "0");		
-		PlayerPrefs.SetString ("ModoVibracion", "0");	
+		PlayerPrefs.SetString ("ModoVibracion", "1");	
 	}  
 
 	IEnumerator SpriteShapeOut()

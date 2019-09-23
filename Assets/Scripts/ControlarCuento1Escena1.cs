@@ -150,9 +150,10 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 				case "vez":
 					if(Pintar ("vez", 0))
 					{
-						textoCompleto = true;				
+						textoCompleto = true;	
+					DesactivarEscucha ();
 						coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
-						textoCompleto = false;
+						//textoCompleto = false;
 					}
 					break;
 				case "bosque":					
@@ -162,9 +163,10 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 				case "oscuro":
 					if(Pintar ("oscuro", 1))
 					{
-						textoCompleto = true;				
+						textoCompleto = true;		
+					DesactivarEscucha ();
 						coroutineStarted1 = "una niña vestida de rojo";//para freezar contenedor	
-						textoCompleto = false;
+						//textoCompleto = false;
 					}
 					break;
 				case "niña":					
@@ -175,8 +177,9 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 					if(Pintar ("rojo", 1))
 					{
 						textoCompleto = true;
+					DesactivarEscucha ();
 						coroutineStarted = false;//para freezar ejecucion	
-						SpeechRecognizer.StopIfRecording();
+
 						//resultTextSpeech.text = string.Empty;
 						//textoCompleto = false;
 					}
