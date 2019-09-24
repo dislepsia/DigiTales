@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 471}
   m_MaxSize: {x: 18008, y: 14021}
   vertical: 0
-  controlID: 10
+  controlID: 118
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 770
     height: 731
-  m_MinSize: {x: 202, y: 442}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 202, y: 421}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 0
-  controlID: 11
+  controlID: 49
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,10 +154,10 @@ MonoBehaviour:
     y: 0
     width: 770
     height: 731
-  m_MinSize: {x: 202, y: 442}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 202, y: 421}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 12
+  controlID: 50
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 133
+  controlID: 119
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -327,8 +327,8 @@ MonoBehaviour:
     y: 0
     width: 441
     height: 487
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -352,8 +352,8 @@ MonoBehaviour:
     y: 487
     width: 441
     height: 244
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 24}
   m_Panes:
   - {fileID: 24}
@@ -736,7 +736,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scenes
   m_ViewMode: 0
   m_StartGridSize: 84
   m_LastFolders: []
@@ -747,7 +747,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f02b0000
     m_LastClickedID: 11248
-    m_ExpandedIDs: 00000000a0280000c2280000d82800003c2900005e290000c2290000d4290000582a0000b82a0000f02a0000062b0000242c00001c2e00001e2e0000
+    m_ExpandedIDs: 000000009c280000be280000d4280000382900005a290000b8290000be290000d0290000542a0000b42a0000ec2a0000022b0000202c0000202e0000222e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -772,24 +772,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 468}
+    scrollPos: {x: 0, y: 68}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a0280000c2280000d82800003c2900005e290000bc290000c2290000d4290000582a0000b82a0000f02a0000062b0000242c00001c2e00001e2e0000
+    m_ExpandedIDs: 000000009c280000be280000d4280000382900005a290000b8290000be290000d0290000542a00005e2a0000b42a0000ec2a0000022b0000202c0000202e0000222e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: ControlarCuento1Escena1
-      m_OriginalName: ControlarCuento1Escena1
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2260
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
@@ -861,7 +861,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: f888fffff089ffff968bffffa48bffffb28bffffc08bffffc68bffffdc8bffff228cffff3c8cffff468cffff728cffff908cffffb08cffffda8cfffff68cfffffc8cffff0095fffff895ffff9e97ffffac97ffffba97ffffc897ffffce97ffffe497ffff2a98ffff4498ffff4e98ffff6e99ffff8c99ffffac99ffffd699fffff299fffff899ffff3aa6ffff32a7ffffd8a8ffffe6a8fffff4a8ffff02a9ffff08a9ffff1ea9ffff64a9ffff7ea9ffff88a9ffffb4a9ffffd2a9fffff2a9ffff1caaffff38aaffff3eaaffff3cb2ffff34b3ffffdeb4fffff0b4ffff02b5ffff14b5ffff1eb5ffff38b5ffff82b5ffffa0b5ffffaeb5ffffdeb5ffff00b6ffff24b6ffff52b6ffff72b6ffff7cb6ffffdef7ffff84fbffff00000000402e0000
+    m_ExpandedIDs: e64bffffde4cffff844effff924effff984effffa64effffb44effffca4effff104fffff2a4fffff344fffff604fffff7e4fffff9e4fffffc84fffffe44fffffea4fffff4860ffff8e6bffff9087ffff8a88ffff348affff468affff508affff628affff748affff8e8affffd88afffff68affff048bffff348bffff568bffff7a8bffffa88bffffc88bffffd28bffff5ca7ffff56a8fffffca9ffff0aaaffff10aaffff1eaaffff2caaffff42aaffff88aaffffa2aaffffacaaffffd8aafffff6aaffff16abffff40abffff5cabffff62abffffe2b6ffffdcb7ffff82b9ffff90b9ffff96b9ffffa4b9ffffb2b9ffffc8b9ffff0ebaffff28baffff32baffff5ebaffff7cbaffff9cbaffffc6baffffe2baffffe8baffff32daffff54dcffffa6e0ffff52e8ffff4ae9fffff4eaffff06ebffff10ebffff22ebffff34ebffff4eebffff98ebffffb6ebffffc4ebfffff4ebffff16ecffff3aecffff68ecffff88ecffff92ecffffbaf6ffff9efbffff00000000d83f0000944000009a400000fa510000a6620000ea62000052730000c47300001c740000d8740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -880,7 +880,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
   m_ExpandedScenes:
-  - Cuento1Escena2
+  - Cuento1Escena3
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
