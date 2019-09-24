@@ -34,6 +34,7 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 
 	public Animator circuloNegro;
 	public Animator microfono;
+	public Animator buhoEfecto;
 
 	public GameObject contenedor;
 
@@ -113,7 +114,7 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "como el búho";//para freezar contenedor				
+						coroutineStarted1 = "así como el búho";//para freezar contenedor				
 						break;
 					case "como":	
 						PintarPalabra (palabrasSpeech [i].ToString ());
@@ -125,6 +126,10 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 						PintarPalabra (palabrasSpeech [i].ToString ());
 						coroutineStarted1 = "y su siniestro cantar";//para freezar contenedor				
 						break;
+					case "siniestro":	
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						buhoEfecto.gameObject.SetActive(true);						
+						break;	
 						case "cantar":							
 						textoCompleto = true;
 						DesactivarEscucha ();
@@ -171,8 +176,14 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 					coroutineStarted1 = "y su siniestro cantar";//para freezar contenedor	
 				}
 				break;
+			case "siniestro":	
+				if(Pintar ("siniestro", 0))
+					buhoEfecto.gameObject.SetActive(true);
+
+				break;	
+
 			case "cantar":					
-				if(Pintar ("cantar", 0))
+				if(Pintar ("cantar", 1))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
