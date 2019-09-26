@@ -503,6 +503,7 @@ MonoBehaviour:
   resultErrores: {fileID: 1463085897}
   parallaxSpeed: 0.12
   grito: {fileID: 8300000, guid: 7a1867fdbe654da46ae1fb51cfc8aaf8, type: 3}
+  viento: {fileID: 8300000, guid: 5c813640c367ddc45a96728e3f27dcff, type: 3}
   player: {fileID: 1762727097}
   bosque: {fileID: 990243658}
   circuloNegro: {fileID: 1497941334}
@@ -2136,7 +2137,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: un desesperado grito se oye
+  m_Text: 
 --- !u!222 &2088788117
 CanvasRenderer:
   m_ObjectHideFlags: 0

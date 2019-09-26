@@ -27,7 +27,7 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 	public float parallaxSpeed = 0.12f;
 
 	//variables de sonidos
-	//public AudioClip grito;
+	public AudioClip viento;
 	private AudioSource ambienteBosque;
 
 	public GameObject player; //objeto para controlar animacion de personaje
@@ -74,8 +74,9 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 
 			//para q se reproduzca mas rapido, es sonido ya esta asignado
-			//ambienteBosque = GetComponent<AudioSource> ();						
-			//ambienteBosque.clip = grito;
+			ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = viento;
+		ambienteBosque.Play ();		
 
 			//iniciar objetos
 			player.SetActive(true);
@@ -313,6 +314,10 @@ public void ReiniciarValoresEscena() {
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
+
+		if (!ambienteBosque.isPlaying)
+			ambienteBosque.Play ();
+		
 	}  
 
 

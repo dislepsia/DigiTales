@@ -31,6 +31,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 
 	//variables de sonidos
 	public AudioClip grito;
+	public AudioClip viento;
 	private AudioSource ambienteBosque;
 
 	public GameObject player; //objeto para controlar animacion de personaje
@@ -79,6 +80,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 			//para q se reproduzca mas rapido, es sonido ya esta asignado
 			ambienteBosque = GetComponent<AudioSource> ();						
 			ambienteBosque.clip = grito;
+
 
 			//iniciar objetos
 			player.SetActive(true);
@@ -136,6 +138,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
+						ambienteBosque.clip = viento;
 						coroutineStarted1 = "entonces comenzó a correr";//para freezar contenedor				
 						break;
 
@@ -144,6 +147,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 						DesactivarEscucha ();
 						player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 						efectoParallax = 1;
+						ambienteBosque.Play ();		
 						coroutineStarted = false;//para freezar ejecucion
 						PintarPalabra (palabrasSpeech [i].ToString ());				
 						break;
@@ -200,6 +204,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 					DesactivarEscucha ();
 					player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 					efectoParallax = 1;	
+					ambienteBosque.Play ();		
 					coroutineStarted = false;//para freezar ejecucion	
 
 					//resultTextSpeech.text = string.Empty;

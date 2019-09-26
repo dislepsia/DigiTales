@@ -428,6 +428,7 @@ MonoBehaviour:
   resultTextSpeech: {fileID: 646634856}
   resultErrores: {fileID: 1463085897}
   parallaxSpeed: 0.12
+  viento: {fileID: 8300000, guid: 5c813640c367ddc45a96728e3f27dcff, type: 3}
   player: {fileID: 1762727097}
   bosque: {fileID: 990243658}
   circuloNegro: {fileID: 1497941334}
