@@ -38,6 +38,7 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 
 	public Animator circuloNegro;
 	public Animator microfono;
+	public Animator troncoEfecto;
 
 	public GameObject contenedor;
 
@@ -123,6 +124,12 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 						PintarPalabra (palabrasSpeech [i].ToString ());
 						coroutineStarted1 = "una gran rama cae al suelo";//para freezar contenedor				
 						break;
+					case "cae":	
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						troncoEfecto.gameObject.SetActive(true);	
+						player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
+						efectoParallax = 0;	
+						break;	
 					case "suelo":							
 						textoCompleto = true;
 						DesactivarEscucha ();
@@ -162,8 +169,16 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 					coroutineStarted1 = "una gran rama cae al suelo";//para freezar contenedor	
 				}
 				break;
+			case "cae":	
+				if(Pintar ("cae", 0))
+				{
+					troncoEfecto.gameObject.SetActive(true);
+				player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
+				efectoParallax = 0;	
+				}
+				break;	
 			case "suelo":
-				if(Pintar ("suelo", 0))
+				if(Pintar ("suelo", 1))
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
@@ -296,6 +311,8 @@ public void ReiniciarValoresEscena() {
 
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
+
+		troncoEfecto.gameObject.SetActive(false);
 	}
 }
 
@@ -308,6 +325,11 @@ public void ReiniciarValoresEscena() {
 			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
 		}
+	else
+	{
+		RawImage bosqueImagen = bosque.GetComponent<RawImage> ();
+		bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x , 0f, 1f, 1f);
+	}
 
 		if (!coroutineStarted)
 			StartCoroutine (EsperarSegundos (1));

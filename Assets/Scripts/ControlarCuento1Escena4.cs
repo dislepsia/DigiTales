@@ -194,6 +194,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
+					ambienteBosque.clip = viento;
 					coroutineStarted1 = "entonces comenzó a correr";//para freezar contenedor	
 				}	
 				break;
