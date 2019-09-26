@@ -311,6 +311,8 @@ public void ReiniciarValoresEscena() {
 
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
+
+		buhoEfecto.gameObject.SetActive(false);
 	}
 }
 
