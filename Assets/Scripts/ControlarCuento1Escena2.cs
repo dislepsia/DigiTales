@@ -28,6 +28,7 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
+	public GameObject bosqueInv; //objeto para controlar escena
 
 	int i=0;
 	int n=0;
@@ -35,28 +36,38 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 	public Animator circuloNegro;
 	public Animator microfono;
 
+	public GameObject contenedor;
+
 	bool coroutineStarted = true;//para freezar ejecucion
+	string coroutineStarted1 = string.Empty;//para freezar contenedor
+	bool coroutineStarted2 = true;
 
 	string modoRelato = string.Empty; 
+	string modoVibracion = string.Empty; 
+
+	int cambiarTexto = 0;
+
+	bool textoCompleto = false;
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
+		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
-		if (SpeechRecognizer.ExistsOnDevice()) {
+		//if (SpeechRecognizer.ExistsOnDevice()) {
 			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
-			listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
-			listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
+			//listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
+			//listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
 			listener.onErrorDuringRecording.AddListener(OnError);
-			listener.onErrorOnStartRecording.AddListener(OnError);
+			//listener.onErrorOnStartRecording.AddListener(OnError);
 			listener.onFinalResults.AddListener(OnFinalResult);
 			listener.onPartialResults.AddListener(OnPartialResult);
-			listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
-			startRecordingButton.enabled = false;
-			SpeechRecognizer.RequestAccess();
+			//listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
+			//startRecordingButton.enabled = false;
+			//SpeechRecognizer.RequestAccess();
 
 			//obtengo cantidad de palabras de escena actual
-			textoEscena = sceneText.text;
+		textoEscena = sceneText.text = "en el horizonte";
 			palabrasEscena = textoEscena.Split(' ');
 
 			//para q se reproduzca mas rapido, es sonido ya esta asignado
@@ -67,12 +78,13 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 			player.SetActive(true);
 			bosque.SetActive(true);
 
-		} else {			
-			resultErrores.text = "Sorry, but this device doesn't support speech recognition";
-			startRecordingButton.enabled = false;
-		}
+		//} else {			
+			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
+			//startRecordingButton.enabled = false;
+		//}
 
-		OnStartRecordingPressed ();
+		//OnStartRecordingPressed ();
+		ActivarEscucha ();
 	}
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
@@ -98,19 +110,38 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{
+					case "horizonte":
+						textoCompleto = true;
+						DesactivarEscucha ();
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						coroutineStarted1 = "la tormenta se acercaba";//para freezar contenedor				
+						break;
 						case "tormenta":
-							ambienteBosque.Play ();							
-							break;						
-						case "rápidamente":							
-							coroutineStarted = false;
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						coroutineStarted2 = false;
+							//ambienteBosque.Play ();		
+
+							break;	
+					case "acercaba":
+						textoCompleto = true;
+						DesactivarEscucha ();
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						coroutineStarted1 = "a gran velocidad";//para freezar contenedor							
+						break;
+						case "velocidad":							
+						textoCompleto = true;
+						DesactivarEscucha ();
+						coroutineStarted = false;//para freezar ejecucion
+						PintarPalabra (palabrasSpeech [i].ToString ());		
 							break;
 
-						default:					
+						default:	
+						PintarPalabra (palabrasSpeech [i].ToString ());
 							break;
 					}
 
-					resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
-					n++; //para no tener en cuenta palabra coloreada en el bucle
+					//resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
+					//n++; //para no tener en cuenta palabra coloreada en el bucle
 
 					break;
 				}			
@@ -122,17 +153,38 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
+			case "horizonte":
+				if(Pintar ("horizonte", 0))
+				{
+					textoCompleto = true;		
+					DesactivarEscucha ();
+					coroutineStarted1 = "la tormenta se acercaba";//para freezar contenedor	
+				}
+				break;
 				case "tormenta":
 					if(Pintar ("tormenta", 0))
-						ambienteBosque.Play ();											
-					break;						
-				case "rápidamente":		
-					if(Pintar ("rápidamente", 1))
-					{
-						coroutineStarted = false;//para freezar ejecucion	
-						SpeechRecognizer.StopIfRecording();
-					}
-					break;
+						coroutineStarted2 = false;
+						//ambienteBosque.Play ();											
+					break;		
+			case "acercaba":
+				if(Pintar ("acercaba", 1))
+				{
+					textoCompleto = true;		
+					DesactivarEscucha ();
+					coroutineStarted1 = "a gran velocidad";//para freezar contenedor	
+				}
+				break;
+			case "velocidad":					
+				if(Pintar ("velocidad", 0))
+				{
+					textoCompleto = true;
+					DesactivarEscucha ();
+					coroutineStarted = false;//para freezar ejecucion	
+
+					//resultTextSpeech.text = string.Empty;
+					//textoCompleto = false;
+				}
+				break;
 
 				default:					
 					break;
@@ -162,16 +214,16 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 		}*/	
 	}
 
-	public void OnAvailabilityChange(bool available) {
+	/*public void OnAvailabilityChange(bool available) {
 		startRecordingButton.enabled = available;
 		if (!available) {
 			resultErrores.text = "Speech Recognition not available";
 		} else {
 			//resultErrores.text = "Say something :-)";
 		}
-	}
+	}*/
 
-	public void OnAuthorizationStatusFetched(AuthorizationStatus status) {
+	/*public void OnAuthorizationStatusFetched(AuthorizationStatus status) {
 		switch (status) {
 		case AuthorizationStatus.Authorized:
 			startRecordingButton.enabled = true;
@@ -181,36 +233,49 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 			resultErrores.text = "Cannot use Speech Recognition, authorization status is " + status;
 			break;
 		}
-	}
+	}*/
 
-	public void OnEndOfSpeech() {
+	/*public void OnEndOfSpeech() {
 		startRecordingButton.GetComponentInChildren<Text>().text = "";
-	}
+	}*/
 
 	public void OnError(string error) {
-		Debug.LogError(error);
+		//Debug.LogError(error);
 		//resultErrores.text = "Something went wrong... Try again! \n [" + error + "]";
-		startRecordingButton.GetComponentInChildren<Text>().text = "";
+		//startRecordingButton.GetComponentInChildren<Text>().text = "";
 
-		startRecordingButton.gameObject.SetActive(true);
-		microfono.gameObject.SetActive(false);
+	DesactivarEscucha();
 	}
 
-	public void OnStartRecordingPressed() {
-		if (SpeechRecognizer.IsRecording()) {
-			SpeechRecognizer.StopIfRecording();
-			startRecordingButton.GetComponentInChildren<Text>().text = "";
-
-			startRecordingButton.gameObject.SetActive(true);
-			microfono.gameObject.SetActive(false);
-		} else {			
-			startRecordingButton.gameObject.SetActive(false);
-			microfono.gameObject.SetActive(true);
-			SpeechRecognizer.StartRecording(true);
-			startRecordingButton.GetComponentInChildren<Text>().text = "";
-			//resultErrores.text = "Say something :-)";
-		}
+public void OnStartRecordingPressed() {
+	if (SpeechRecognizer.IsRecording()) {
+		DesactivarEscucha ();
+	} else {			
+		ActivarEscucha ();
 	}
+}
+
+public void PintarPalabra(string palabra)
+{
+	resultTextSpeech.text = resultTextSpeech.text + palabra + " "; //coloreo
+	n++; //para no tener en cuenta palabra coloreada en el bucle
+}
+
+public void CambiarTexto(string textoNuevo)
+{
+	contenedor.SetActive (false);	
+	i = 0;
+	n = 0;
+	textoEscena = sceneText.text = textoNuevo;
+	palabrasEscena = textoEscena.Split (' ');
+
+	contenedor.SetActive (true);//llama a otro contenedor de texto
+	resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
+	//OnStartRecordingPressed ();//activa escucha
+
+	textoCompleto = false;
+	ActivarEscucha();
+}
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
 	{
@@ -227,22 +292,45 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 			return false;
 	}  
 
-	public void ReiniciarValoresEscena() {		
+public void ReiniciarValoresEscena() {	
+	if(!textoCompleto)
+	{
 		resultTextSpeech.text = string.Empty;
 
-		i = 0;
-		n = 0;
+		i=0;
+		n=0;
 
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
 	}
+}
 
 	// Update is called once per frame
 	void Update()
 	{
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (3));
+			StartCoroutine (EsperarSegundos (1));
+
+	if (!string.IsNullOrEmpty(coroutineStarted1))			
+		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
+
+	if (!coroutineStarted2)
+		StartCoroutine (EfectoRelampago ());
 	}  
+
+IEnumerator EfectoRelampago()
+{
+	coroutineStarted2 = true;
+
+	for (int z = 0; z < 2; z++)
+	{
+		bosqueInv.SetActive (true);
+		yield return new WaitForSeconds(0.1f);
+		bosqueInv.SetActive (false);
+		yield return new WaitForSeconds(0.1f);
+	}
+	ambienteBosque.Play ();	
+}
 
 
 	IEnumerator EsperarSegundos(int seconds)
@@ -261,4 +349,28 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 		circuloNegro.SetTrigger ("end");
 		yield return new WaitForSeconds(1f);
 	}
+
+IEnumerator RetrasarContenedor(int seconds, string frase)
+{		
+	coroutineStarted1 = string.Empty;
+	yield return new WaitForSeconds(seconds);
+
+	CambiarTexto(frase);
+}
+
+public void ActivarEscucha() {	
+	startRecordingButton.gameObject.SetActive(false);
+	microfono.gameObject.SetActive(true);
+	SpeechRecognizer.StartRecording(true);
+}
+
+public void DesactivarEscucha() {	
+	SpeechRecognizer.StopIfRecording ();
+	startRecordingButton.gameObject.SetActive(true);
+	microfono.gameObject.SetActive(false);
+}
+
+public void Vibrar(){
+	Handheld.Vibrate ();
+}
 }

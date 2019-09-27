@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\ControlarCuento1Escena3.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena4.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena5.cs" />
+     <Compile Include="Assets\Scripts\ControlarJuegoAprendizaje.cs" />
      <Compile Include="Assets\Scripts\ControlarMenues.cs" />
      <Compile Include="Assets\Scripts\ControlBrightness.cs" />
      <Compile Include="Assets\Scripts\HabilitarCuento.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Scripts\Juego.cs" />
      <Compile Include="Assets\Scripts\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\LinksContacto.cs" />
+     <Compile Include="Assets\Scripts\NewMenu.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
      <Compile Include="Assets\Scripts\ResetearPlayerPrefabs.cs" />
      <Compile Include="Assets\Scripts\ScriptCodigoCuento.cs" />
