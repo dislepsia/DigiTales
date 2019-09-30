@@ -339,8 +339,11 @@ public void ReiniciarValoresEscena() {
 
 		if (!ambienteBosque.isPlaying)
 			ambienteBosque.Play ();
+
+
 		
 	}  
+
 
 
 	IEnumerator EsperarSegundos(int seconds)

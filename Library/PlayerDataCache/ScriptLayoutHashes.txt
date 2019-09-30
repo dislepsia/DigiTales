@@ -162,6 +162,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 ec8297db1d894a5c227b00a9b4c6d8a9 Assembly-CSharp.dll:.ControlarCuento1Escena3
 50a0fa002cfc67638c87a901e46b763e Assembly-CSharp.dll:TMPro.Examples.TMP_TextSelector_B
 020550babdb991365f61c5bffe1f4f52 Assembly-CSharp.dll:TMPro.Examples.Benchmark03
+bed0f0caa9307bcdc12186952329bbb3 Assembly-CSharp.dll:.ControlarJuegoAprendizaje
 b9332c0eee630779376843b5343eb250 Assembly-CSharp.dll:TMPro.Examples.TMP_TextInfoDebugTool
 01977cc2bf8607f6bef88066194cf672 Assembly-CSharp.dll:.LevelLoader
 f4bd1aee67eeef7953cce6c44588b3d7 TextMeshPro-2017.3-Runtime.dll:TMPro.TextContainer
@@ -262,4 +263,3 @@ af7666733efcc974926d7d470e1732a6 Assembly-CSharp.dll:TMPro.Examples.SkewTextExam
 a8ed45ab553b07236625df6cc6ac449c Assembly-CSharp.dll:.ResetearPlayerPrefabs
 34e025057ef78b1bf238460cdf6583a3 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.SimpleScript
-bed0f0caa9307bcdc12186952329bbb3 Assembly-CSharp.dll:.ControlarJuegoAprendizaje
