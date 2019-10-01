@@ -29,6 +29,11 @@ public class EfectoTronco : MonoBehaviour {
 		}
 
 	}
+
+	void Temblor()
+	{	
+		Handheld.Vibrate ();
+	}
 	
 	// Update is called once per frame
 	void Update () {
