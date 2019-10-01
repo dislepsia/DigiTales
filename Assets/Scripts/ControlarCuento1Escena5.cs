@@ -126,15 +126,17 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 						break;
 					case "cae":	
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						troncoEfecto.gameObject.SetActive(true);	
-						player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
+						troncoEfecto.gameObject.SetActive (true);	
+						player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
 						efectoParallax = 0;	
+						//coroutineStarted2 = false;
 						break;	
 					case "suelo":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "bloqueando la huida";//para freezar contenedor				
+						coroutineStarted1 = "bloqueando la huida";//para freezar contenedor		
+
 						break;
 					case "huida":							
 						textoCompleto = true;
@@ -313,6 +315,8 @@ public void ReiniciarValoresEscena() {
 		microfono.gameObject.SetActive(false);
 
 		troncoEfecto.gameObject.SetActive(false);
+		player.gameObject.GetComponent<Animator> ().Play ("PlayerRun");
+		efectoParallax = 1;
 	}
 }
 
@@ -340,11 +344,30 @@ public void ReiniciarValoresEscena() {
 		if (!ambienteBosque.isPlaying)
 			ambienteBosque.Play ();
 
-
+	/*if (!coroutineStarted2)
+		StartCoroutine (EfectoTemblor ());*/
 		
 	}  
 
+/*IEnumerator EfectoTemblor()
+{	
+	//coroutineStarted2 = true;
 
+	//troncoEfecto.gameObject.SetActive (true);
+	//yield return new WaitForSeconds(0.2f);
+
+	RectTransform bosqueImagen = bosque.GetComponent<RectTransform> ();
+	Vector3 myVector = new Vector3(bosqueImagen.position.x+0.5f, bosqueImagen.position.y, bosqueImagen.position.z);
+	Vector3 myVector2 = new Vector3(bosqueImagen.position.x, bosqueImagen.position.y, bosqueImagen.position.z);
+	for (int z = 0; z < 2; z++)
+	{		
+		bosqueImagen.position = myVector;
+		yield return new WaitForSeconds(0.1f);
+		bosqueImagen.position = myVector2;
+		yield return new WaitForSeconds(0.1f);
+	}
+
+}*/
 
 	IEnumerator EsperarSegundos(int seconds)
 	{
