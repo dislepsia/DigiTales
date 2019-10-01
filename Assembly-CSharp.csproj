@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\ControlarJuegoAprendizaje.cs" />
      <Compile Include="Assets\Scripts\ControlarMenues.cs" />
      <Compile Include="Assets\Scripts\ControlBrightness.cs" />
+     <Compile Include="Assets\Scripts\EfectoTronco.cs" />
      <Compile Include="Assets\Scripts\HabilitarCuento.cs" />
      <Compile Include="Assets\Scripts\Inicio.cs" />
      <Compile Include="Assets\Scripts\Juego.cs" />
