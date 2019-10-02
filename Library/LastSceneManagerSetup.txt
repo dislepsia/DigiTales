@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/Cuento1Escena6.unity
-  isLoaded: 1
-  isActive: 1
