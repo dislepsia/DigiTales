@@ -5,6 +5,7 @@ using UnityEngine;
 public class EfectoTronco : MonoBehaviour {
 
 	public GameObject bosque; //objeto para controlar escena
+	public GameObject player; //objeto para controlar animacion de personaje
 
 	// Use this for initialization
 	void Start () {		
@@ -33,6 +34,11 @@ public class EfectoTronco : MonoBehaviour {
 	void Temblor()
 	{	
 		Handheld.Vibrate ();
+	}
+
+	void Correr()
+	{	
+		player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 	}
 	
 	// Update is called once per frame
