@@ -1,2 +1,0 @@
-C:\Users\alazarte\Desktop\DigiTales\DigiTales\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
-C:\Users\ferra\Documents\Repositorios\DigiTales\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
