@@ -2,23 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using KKSpeech;
+
 using TMPro;
 using UnityEngine.SceneManagement;
+using KKSpeech;
 
 public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 	public Button startRecordingButton;
-
-
 	public GameObject sceneText;
-
-
 	public Text resultErrores; //visualizar error
-
-	//variables para trabajar sceneText
-	private string textoEscena = string.Empty; 
-	private string[] palabrasEscena = null; 
 
 	//variables para trabajar result(reconocimiento parcial de voz)
 	private string[] palabrasSpeech = null;
@@ -27,27 +20,18 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 	//variables de sonidos
 	private AudioSource ambienteBosque;
 
-
-
 	public Animator microfono;
 	public Animator imagenNegra;
 
 	bool coroutineStarted = true;//para freezar ejecucion
-	string coroutineStarted1 = string.Empty;//para freezar contenedor
-
-	string modoVibracion = string.Empty; 
 
 	void Start() { 
-		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
-
 		SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
 		listener.onErrorDuringRecording.AddListener(OnError);//NECESARIO, CUANDO ESTA ACTIVO POR MAS DE 5S TIRA ERROR PARA RESETEARSE LA ESCUCHA
 		listener.onFinalResults.AddListener(OnFinalResult);
 		listener.onPartialResults.AddListener(OnPartialResult);
-
 		ActivarEscucha ();
 	}
-
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnFinalResult(string result) {		
@@ -66,7 +50,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		{
 			case "árbol":									
 					DesactivarEscucha ();
-					//coroutineStarted1 = "en un bosque oscuro";//para freezar contenedor	
+			GameObject.Find ("RespuestaText-A").GetComponent<TMP_Text> ().enabled = true;
 					sceneText.SetActive(true);
 					coroutineStarted = false;//para freezar ejecucion					
 				
@@ -92,15 +76,11 @@ public void ReiniciarValoresEscena() {
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);	
 }
-
-// Update is called once per frame
+		
 void Update()
 {
 	if (!coroutineStarted)
 		StartCoroutine (EsperarSegundos (1));
-
-	/*if (!string.IsNullOrEmpty(coroutineStarted1))			
-		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));*/
 }  
 
 
@@ -120,14 +100,6 @@ IEnumerator SpriteFadeOut()
 	imagenNegra.SetTrigger ("end");
 	yield return new WaitForSeconds(1f);
 }
-
-/*IEnumerator RetrasarContenedor(int seconds, string frase)
-{		
-	coroutineStarted1 = string.Empty;
-	yield return new WaitForSeconds(seconds);
-
-	CambiarTexto(frase);
-}*/
 
 public void ActivarEscucha() {	
 	startRecordingButton.gameObject.SetActive(false);
