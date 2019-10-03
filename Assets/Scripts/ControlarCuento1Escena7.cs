@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class ControlarCuento1Escena6 : MonoBehaviour {
+public class ControlarCuento1Escena7 : MonoBehaviour {
 
 	public Button startRecordingButton;
 
@@ -27,19 +27,18 @@ public class ControlarCuento1Escena6 : MonoBehaviour {
 	public float parallaxSpeed = 0.12f;
 
 	//variables de sonidos
-	public AudioClip lobo;
+	public AudioClip viento;
 	private AudioSource ambienteBosque;
 
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
-	public GameObject tronco; //objeto para controlar tronco
 
 	int i=0;
 	int n=0;
 
 	public Animator circuloNegro;
 	public Animator microfono;
-	private Animator troncoEfecto;
+	//public Animator troncoEfecto;
 
 	public GameObject contenedor;
 
@@ -72,20 +71,20 @@ public class ControlarCuento1Escena6 : MonoBehaviour {
 			//SpeechRecognizer.RequestAccess();
 
 			//obtengo cantidad de palabras de escena actual
-		textoEscena = sceneText.text = "el terror la paraliza";
+		textoEscena = sceneText.text = "a causa del temible viento";
 			palabrasEscena = textoEscena.Split(' ');
 
 			//para q se reproduzca mas rapido, es sonido ya esta asignado
 			ambienteBosque = GetComponent<AudioSource> ();						
-		ambienteBosque.clip = lobo;
-			
+		ambienteBosque.clip = viento;
+		ambienteBosque.Play ();		
 
 			//iniciar objetos
 			player.SetActive(true);
 			bosque.SetActive(true);
 			//player.SendMessage ("UpdateState", "PlayerRun");
-			player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
-			efectoParallax = 0;
+			player.gameObject.GetComponent<Animator>().Play("PlayerRun");
+			efectoParallax = 1;
 
 		//} else {			
 			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
@@ -93,8 +92,6 @@ public class ControlarCuento1Escena6 : MonoBehaviour {
 		//}
 
 		ActivarEscucha ();
-
-
 
 	}
 
@@ -120,35 +117,28 @@ public class ControlarCuento1Escena6 : MonoBehaviour {
 				{
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
-					{	
-					case "terror":							
-						
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						ambienteBosque.Play ();			
-						break;
-					case "paraliza":							
+					{						
+						case "viento":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "pero con gran coraje";//para freezar contenedor				
+						coroutineStarted1 = "una gran rama cae al suelo";//para freezar contenedor				
 						break;
-				
-					case "coraje":							
+					case "cae":	
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						//troncoEfecto.gameObject.SetActive (true);	
+						player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
+						efectoParallax = 0;	
+						//coroutineStarted2 = false;
+						break;	
+					case "suelo":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "logra saltar el enorme tronco";//para freezar contenedor		
+						coroutineStarted1 = "bloqueando la huida";//para freezar contenedor		
 
 						break;
-					case "saltar":							
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						player.gameObject.GetComponent<Animator> ().Play ("PlayerJump");
-						tronco.gameObject.GetComponent<Animator> ().enabled =true;
-						tronco.gameObject.GetComponent<Animator>().Play("MoverTronco");
-						efectoParallax = 1;			
-						break;
-
-					case "tronco":							
+					case "huida":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						coroutineStarted = false;//para freezar ejecucion
@@ -173,48 +163,36 @@ public class ControlarCuento1Escena6 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "terror":
-				if(Pintar ("terror", 0))
+			case "viento":
+				if(Pintar ("viento", 0))
 				{
-					ambienteBosque.clip = lobo;	
+					textoCompleto = true;		
+					DesactivarEscucha ();
+					coroutineStarted1 = "una gran rama cae al suelo";//para freezar contenedor	
 				}
 				break;
-			case "paraliza":	
-				if(Pintar ("paraliza", 1))
+			case "cae":	
+				if(Pintar ("cae", 0))
 				{
-					textoCompleto = true;
-					DesactivarEscucha ();
-
-					coroutineStarted1 = "pero con gran coraje";//para freezar contenedor	
+					//troncoEfecto.gameObject.SetActive(true);
+				player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
+				efectoParallax = 0;	
 				}
 				break;	
-			case "coraje":
-				if(Pintar ("coraje", 0))
+			case "suelo":
+				if(Pintar ("suelo", 1))
+				{
+					textoCompleto = true;		
+					DesactivarEscucha ();
+					coroutineStarted1 = "bloqueando la huida";//para freezar contenedor	
+				}
+				break;
+			case "huida":					
+				if(Pintar ("huida", 0))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
-
-					coroutineStarted1 = "logra saltar el enorme tronco";//para freezar contenedor	
-				}
-				break;
-			case "saltar":					
-				if(Pintar ("saltar", 0))
-				{
-					player.gameObject.GetComponent<Animator>().Play("PlayerJump");
-					tronco.gameObject.GetComponent<Animator> ().enabled =true;
-
-					tronco.gameObject.GetComponent<Animator>().Play("MoverTronco");
-					efectoParallax = 1;	
-
-				}
-				break;
-
-			case "tronco":					
-				if(Pintar ("tronco", 1))
-				{
-					textoCompleto = true;
-					DesactivarEscucha ();
-					coroutineStarted = false;//para freezar ejecucion
+					coroutineStarted = false;//para freezar ejecucion	
 
 				}
 				break;
@@ -336,8 +314,9 @@ public void ReiniciarValoresEscena() {
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
 
-
-
+		//troncoEfecto.gameObject.SetActive(false);
+		player.gameObject.GetComponent<Animator> ().Play ("PlayerRun");
+		efectoParallax = 1;
 	}
 }
 
@@ -349,18 +328,24 @@ public void ReiniciarValoresEscena() {
 			float finalSpeed= parallaxSpeed * Time.deltaTime;
 			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
 			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
-
-
-		} 
-
+		}
+	else
+	{
+		RawImage bosqueImagen = bosque.GetComponent<RawImage> ();
+		bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x , 0f, 1f, 1f);
+	}
 
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (3));
+			StartCoroutine (EsperarSegundos (1));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
 
-		
+		if (!ambienteBosque.isPlaying)
+			ambienteBosque.Play ();
+
+	/*if (!coroutineStarted2)
+		StartCoroutine (EfectoTemblor ());*/
 		
 	}  
 
@@ -392,7 +377,7 @@ public void ReiniciarValoresEscena() {
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
 
-		SceneManager.LoadScene("Cuento1Escena7");
+	SceneManager.LoadScene("NewMenu");
 	}
 
 	IEnumerator SpriteShapeOut()
