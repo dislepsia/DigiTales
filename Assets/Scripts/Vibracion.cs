@@ -11,11 +11,11 @@ public class Vibracion : MonoBehaviour {
 		//GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ().value = indice;
 
 		if(PlayerPrefs.GetString ("ModoVibracion").Equals("0")){
-			Debug.Log ("Clases-Vibrar: ON (" + indice + ")");
+			//Debug.Log ("Clases-Vibrar: ON (" + indice + ")");
 			Vibrate ();
 		}
 			else{
-			Debug.Log ("Clases-Vibrar: OFF (" + indice + ")");
+			//Debug.Log ("Clases-Vibrar: OFF (" + indice + ")");
 		}	
 	}
 

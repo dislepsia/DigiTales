@@ -81,11 +81,11 @@ public class ControlarBotones : MonoBehaviour
 	public void ControlarVibracion()
 	{
 		if(PlayerPrefs.GetString ("ModoVibracion").Equals("0")){
-			Debug.Log ("Clases-Vibrar: ON");
+			//Debug.Log ("Clases-Vibrar: ON");
 			Vibrate ();
 		}
 		else{
-			Debug.Log ("Clases-Vibrar: OFF");
+			//Debug.Log ("Clases-Vibrar: OFF");
 		}	
 	}
 
