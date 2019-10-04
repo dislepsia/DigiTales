@@ -50,10 +50,9 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		{
 			case "árbol":									
 					DesactivarEscucha ();
-			GameObject.Find ("RespuestaText-A").GetComponent<TMP_Text> ().enabled = true;
+					GameObject.Find ("RespuestaText-A").GetComponent<TextMeshProUGUI> ().enabled = true;
 					sceneText.SetActive(true);
 					coroutineStarted = false;//para freezar ejecucion					
-				
 				break;
 			default:					
 				break;
