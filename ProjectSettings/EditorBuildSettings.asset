@@ -53,3 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cuento1Escena6.unity
     guid: 5ffc70a69378b604798c7072af51633c
+  - enabled: 1
+    path: Assets/Scenes/Cuento1Escena7.unity
+    guid: ceed1a7e9616dec4bbb7eecf9b5bc60e

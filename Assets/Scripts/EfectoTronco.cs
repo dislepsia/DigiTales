@@ -6,6 +6,7 @@ public class EfectoTronco : MonoBehaviour {
 
 	public GameObject bosque; //objeto para controlar escena
 	public GameObject player; //objeto para controlar animacion de personaje
+	public GameObject lluvia; //objeto para controlar animacion de personaje
 
 	// Use this for initialization
 	void Start () {		
@@ -39,6 +40,11 @@ public class EfectoTronco : MonoBehaviour {
 	void Correr()
 	{	
 		player.gameObject.GetComponent<Animator>().Play("PlayerRun");
+	}
+
+	void Lluvia()
+	{	
+		lluvia.SetActive (true);
 	}
 	
 	// Update is called once per frame
