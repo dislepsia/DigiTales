@@ -44,76 +44,96 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		palabrasSpeech = result.ToLower().Split(' ');
 		resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
 
-		////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////				
-		//activar animacion segun palabra
-		switch (palabrasSpeech [0].ToString ().Trim())
-		{
-			case "árbol":									
-					DesactivarEscucha ();
-					GameObject.Find ("RespuestaText-A").GetComponent<TextMeshProUGUI> ().enabled = true;
-					sceneText.SetActive(true);
-					coroutineStarted = false;//para freezar ejecucion					
-				break;
-			default:					
-				break;
+		switch (palabrasSpeech [0].ToString ().Trim ()) {
+
+		case "árbol":									
+			respuesta ("A", true);				
+			break;
+
+		case "barco":									
+			respuesta ("B",true);					
+			break;
+
+		default:
+			//respuesta ("B",false);
+			break;
 		}			
 	}
 
-public void OnError(string error) {
-	DesactivarEscucha();
-}
+	void respuesta(string respuesta, bool audio){
+		DesactivarEscucha ();
 
-public void OnStartRecordingPressed() {
-	if (SpeechRecognizer.IsRecording()) {
-		DesactivarEscucha();
-	} else {			
-		ActivarEscucha ();
+		if (audio.Equals (true)) {
+			GameObject.Find ("RespuestaText-" + respuesta).GetComponent<TextMeshProUGUI> ().enabled = true;
+			GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
+			AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
+			respuestaOk.Play ();
+		} else{
+
+		//if (audio.Equals (false)) {
+			GameObject.Find ("RespuestaText-" + respuesta).GetComponent<TextMeshProUGUI> ().enabled = false;
+			GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
+			AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
+			respuestaError.Play ();
+		}
+
+		sceneText.SetActive (true);
+		coroutineStarted = false;//para freezar ejecucion	
 	}
-}
 
-public void ReiniciarValoresEscena() {			
-		startRecordingButton.gameObject.SetActive(true);
-		microfono.gameObject.SetActive(false);	
-}
+	public void OnError(string error) {
+		DesactivarEscucha();
+	}
+
+	public void OnStartRecordingPressed() {
+		if (SpeechRecognizer.IsRecording()) {
+			DesactivarEscucha();
+		} else {			
+			ActivarEscucha ();
+		}
+	}
+
+	public void ReiniciarValoresEscena() {			
+			startRecordingButton.gameObject.SetActive(true);
+			microfono.gameObject.SetActive(false);	
+	}
+			
+	void Update()
+	{
+		if (!coroutineStarted)
+			StartCoroutine (EsperarSegundos (2));
+	}  
 		
-void Update()
-{
-	if (!coroutineStarted)
-		StartCoroutine (EsperarSegundos (1));
-}  
+	IEnumerator EsperarSegundos(int seconds)
+		{
+			coroutineStarted = true;
+			yield return new WaitForSeconds (seconds);
 
+			StartCoroutine (SpriteFadeOut ());
+			StopCoroutine ("SpriteFadeOut");
+		SceneManager.LoadScene ("MiniJuego-NenaTemerosa-Letras");
+		}
 
-IEnumerator EsperarSegundos(int seconds)
-{
-	coroutineStarted = true;
-	yield return new WaitForSeconds(seconds);
+	IEnumerator SpriteFadeOut()
+	{		
+		imagenNegra.SetTrigger ("end");
+		yield return new WaitForSeconds(1f);
+	}
 
-	StartCoroutine (SpriteFadeOut());
-	StopCoroutine ("SpriteFadeOut");
+	public void ActivarEscucha() {	
+		startRecordingButton.gameObject.SetActive(false);
+		microfono.gameObject.SetActive(true);
+		SpeechRecognizer.StartRecording(true);
+	}
 
-	SceneManager.LoadScene("newMenu");
-}
+	public void DesactivarEscucha() {	
+		SpeechRecognizer.StopIfRecording ();
+		startRecordingButton.gameObject.SetActive(true);
+		microfono.gameObject.SetActive(false);
+	}
 
-IEnumerator SpriteFadeOut()
-{		
-	imagenNegra.SetTrigger ("end");
-	yield return new WaitForSeconds(1f);
-}
-
-public void ActivarEscucha() {	
-	startRecordingButton.gameObject.SetActive(false);
-	microfono.gameObject.SetActive(true);
-	SpeechRecognizer.StartRecording(true);
-}
-
-public void DesactivarEscucha() {	
-	SpeechRecognizer.StopIfRecording ();
-	startRecordingButton.gameObject.SetActive(true);
-	microfono.gameObject.SetActive(false);
-}
-
-public void Vibrar(){
-	Handheld.Vibrate ();
-}
+	public void Vibrar(){
+			Handheld.Vibrate ();
+		}
 
 }
