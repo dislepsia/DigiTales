@@ -27,7 +27,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 	public float parallaxSpeed = 0.12f;
 
 	//variables de sonidos
-	public AudioClip viento;
+	//public AudioClip viento;
 	private AudioSource ambienteBosque;
 
 	public GameObject player; //objeto para controlar animacion de personaje
@@ -71,13 +71,13 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 			//SpeechRecognizer.RequestAccess();
 
 			//obtengo cantidad de palabras de escena actual
-		textoEscena = sceneText.text = "a causa del temible viento";
+		textoEscena = sceneText.text = "finalmente la lluvia comenzó";
 			palabrasEscena = textoEscena.Split(' ');
 
 			//para q se reproduzca mas rapido, es sonido ya esta asignado
 			ambienteBosque = GetComponent<AudioSource> ();						
-		ambienteBosque.clip = viento;
-		ambienteBosque.Play ();		
+		//ambienteBosque.clip = viento;
+		//ambienteBosque.Play ();		
 
 			//iniciar objetos
 			player.SetActive(true);
@@ -118,27 +118,27 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{						
-						case "viento":							
+						case "comenzó":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "una gran rama cae al suelo";//para freezar contenedor				
+						coroutineStarted1 = "de pronto luego de un relámpago";//para freezar contenedor				
 						break;
-					case "cae":	
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						//troncoEfecto.gameObject.SetActive (true);	
-						player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
-						efectoParallax = 0;	
-						//coroutineStarted2 = false;
-						break;	
-					case "suelo":							
+					
+					case "relámpago":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "bloqueando la huida";//para freezar contenedor		
+						coroutineStarted1 = "una tenebrosa sombra aparece";//para freezar contenedor		
 
 						break;
-					case "huida":							
+
+					case "sombra":							
+								
+
+						break;
+
+					case "aparece":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						coroutineStarted = false;//para freezar ejecucion
@@ -163,32 +163,32 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "viento":
-				if(Pintar ("viento", 0))
+			case "comenzó":
+				if(Pintar ("comenzó", 0))
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
-					coroutineStarted1 = "una gran rama cae al suelo";//para freezar contenedor	
+					coroutineStarted1 = "de pronto luego de un relámpago";//para freezar contenedor	
 				}
 				break;
-			case "cae":	
-				if(Pintar ("cae", 0))
-				{
-					//troncoEfecto.gameObject.SetActive(true);
-				player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
-				efectoParallax = 0;	
-				}
-				break;	
-			case "suelo":
-				if(Pintar ("suelo", 1))
+			
+			case "relámpago":
+				if(Pintar ("relámpago", 0))
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
-					coroutineStarted1 = "bloqueando la huida";//para freezar contenedor	
+					coroutineStarted1 = "una tenebrosa sombra aparece";//para freezar contenedor	
 				}
 				break;
-			case "huida":					
-				if(Pintar ("huida", 0))
+
+			case "sombra":
+				if(Pintar ("sombra", 0))
+				{
+					
+				}
+				break;
+			case "aparece":					
+				if(Pintar ("aparece", 1))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();

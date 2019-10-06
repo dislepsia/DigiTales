@@ -1780,6 +1780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bosque: {fileID: 990243658}
   player: {fileID: 1762727097}
+  lluvia: {fileID: 0}
 --- !u!95 &1762727100
 Animator:
   serializedVersion: 3
