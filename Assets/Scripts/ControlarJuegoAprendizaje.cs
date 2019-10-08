@@ -54,11 +54,24 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			respuesta ("B",true);					
 			break;
 
+		case "castillo":									
+			respuesta ("C",true);					
+			break;
+
+		case "durazno":									
+			respuesta ("D",true);					
+			break;
+
+		case "elefante":									
+			respuesta ("E",true);					
+			break;
+
 		default:
-			//respuesta ("B",false);
+			//respuesta (false);
 			break;
 		}			
 	}
+
 
 	void respuesta(string respuesta, bool audio){
 		DesactivarEscucha ();
@@ -68,18 +81,23 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
 			AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
 			respuestaOk.Play ();
-		} else{
-
-		//if (audio.Equals (false)) {
-			GameObject.Find ("RespuestaText-" + respuesta).GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
-			AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
-			respuestaError.Play ();
-		}
+		} 
 
 		sceneText.SetActive (true);
 		coroutineStarted = false;//para freezar ejecucion	
 	}
+
+	void respuesta(bool respuesta){
+		DesactivarEscucha ();
+			GameObject.Find ("RespuestaText-X" + respuesta).GetComponent<TextMeshProUGUI> ().enabled = false;
+			GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
+			AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
+		respuestaError.Play ();
+
+		sceneText.SetActive (true);
+		coroutineStarted = false;
+	}
+
 
 	public void OnError(string error) {
 		DesactivarEscucha();

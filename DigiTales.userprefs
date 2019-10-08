@@ -1,12 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento1Escena7.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LetraElegida.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="357" Column="3" />
       <File FileName="Assets\Scripts\ControlarCuento1Escena5.cs" Line="131" Column="27" />
       <File FileName="Assets\Scripts\ControlarCuento1Escena2.cs" Line="121" Column="7" />
       <File FileName="Assets\Scripts\ControlarBotones.cs" Line="29" Column="47" />
       <File FileName="Assets\Scripts\ControlarCuento1Escena6.cs" Line="147" Column="70" />
+=======
+      <File FileName="Assets\Scripts\ControlarJuegoAprendizaje.cs" Line="70" Column="6" />
+      <File FileName="Assets\Scripts\CargarImagenDependiendoDeLetra.cs" Line="29" Column="66" />
+      <File FileName="Assets\Scripts\LetraElegida.cs" Line="34" Column="8" />
+>>>>>>> 4646d7dcf0faab0bff6427f29e95117e5bd0a6b7
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
