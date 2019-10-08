@@ -26,7 +26,7 @@ public class ControlarBotones : MonoBehaviour
 
     public void RelatarCuento()
     {
-        SceneManager.LoadScene("Cuento1Escena1");        
+        SceneManager.LoadScene("Cuento1Escena7Bis");        
     }
 
 	public void MiniJuegoNenaTemerosaLetras()
