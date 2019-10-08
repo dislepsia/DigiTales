@@ -14,7 +14,7 @@ public class CargarImagenDependiendoDeLetra : MonoBehaviour {
 	}
 
 	public void LetraB () {
-		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "barco";
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "buho";
 	}
 
 	public void LetraC () {
@@ -25,7 +25,15 @@ public class CargarImagenDependiendoDeLetra : MonoBehaviour {
 		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "durazno";
 	}
 
-	public void LetraE () {
-		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "elefante";
+	public void LetraT () {
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "tormenta";
+	}
+
+	public void LetraR () {
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "rama";
+	}
+
+	public void LetraV () {
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "vestido";
 	}
 }

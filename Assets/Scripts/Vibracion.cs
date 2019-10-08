@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class Vibracion : MonoBehaviour {
 
+	//public static string modo = 1;
+	//public static bool bandera = true;
+
 	public void Dropdown_IndexChange(int indice)
 	{
+		//modo = indice;
+		//bandera = false;
 		PlayerPrefs.SetString ("ModoVibracion", indice.ToString());
-		//GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ().value = indice;
 
-		if(PlayerPrefs.GetString ("ModoVibracion").Equals("0")){
-			//Debug.Log ("Clases-Vibrar: ON (" + indice + ")");
+		if(PlayerPrefs.GetString("ModoVibracion").Equals("0")){
 			Vibrate ();
 		}
-			else{
-			//Debug.Log ("Clases-Vibrar: OFF (" + indice + ")");
-		}	
 	}
 
 	public void Vibrate(){
@@ -24,12 +24,13 @@ public class Vibracion : MonoBehaviour {
 	}
 
 	void Start(){
-		//GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ().value = 
-			//int.Parse(PlayerPrefs.GetString ("ModoVibracion").ToString());
+		//if (bandera.Equals (false)) {
+		//	GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ().value = int.Parse(PlayerPrefs.GetString ("ModoVibracion"));	
+		//}
 	}
 
 	void Update(){
-		//GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ().value = 
-			//int.Parse(PlayerPrefs.GetString ("ModoVibracion").ToString());
+		//modo = GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ();
+		//modo.value = int.Parse (PlayerPrefs.GetString ("ModoVibracion").ToString ());
 	}
 }

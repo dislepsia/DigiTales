@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 79204333}
   - component: {fileID: 79204332}
   m_Layer: 5
-  m_Name: Letra-A-Button (10)
+  m_Name: Letra-K-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 118350173}
   - component: {fileID: 118350172}
   m_Layer: 5
-  m_Name: Letra-A-Button (13)
+  m_Name: Letra-N-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 163509527}
   - component: {fileID: 163509526}
   m_Layer: 5
-  m_Name: Letra-A-Button (17)
+  m_Name: Letra-Q-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1350,7 +1350,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 195132254}
   m_OnClick:
     m_PersistentCalls:
@@ -1373,17 +1373,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 330af7faf3bb8a042bb7066e3371cf6d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 761967601}
-        m_MethodName: LetraE
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1495,7 +1484,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 201225016}
   m_OnClick:
     m_PersistentCalls:
@@ -1882,7 +1871,7 @@ GameObject:
   - component: {fileID: 429734903}
   - component: {fileID: 429734902}
   m_Layer: 5
-  m_Name: Letra-A-Button (6)
+  m_Name: Letra-G-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2016,7 +2005,7 @@ GameObject:
   - component: {fileID: 439955756}
   - component: {fileID: 439955755}
   m_Layer: 5
-  m_Name: Letra-A-Button (18)
+  m_Name: Letra-W-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2034,11 +2023,11 @@ RectTransform:
   m_Children:
   - {fileID: 1432732394}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 18
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 177.9995, y: -310.099}
+  m_AnchoredPosition: {x: 177.9995, y: -310.09903}
   m_SizeDelta: {x: 94, y: 81.1}
   m_Pivot: {x: 0.49999997, y: 0.50000006}
 --- !u!114 &439955755
@@ -2150,7 +2139,7 @@ GameObject:
   - component: {fileID: 559209305}
   - component: {fileID: 559209304}
   m_Layer: 5
-  m_Name: Letra-A-Button (16)
+  m_Name: Letra-P-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2440,7 +2429,7 @@ GameObject:
   - component: {fileID: 739444280}
   - component: {fileID: 739444279}
   m_Layer: 5
-  m_Name: Letra-A-Button (8)
+  m_Name: Letra-I-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4290,7 +4279,7 @@ GameObject:
   - component: {fileID: 936449100}
   - component: {fileID: 936449099}
   m_Layer: 5
-  m_Name: Letra-A-Button (14)
+  m_Name: "Letra-\xD1-Button"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4424,7 +4413,7 @@ GameObject:
   - component: {fileID: 967362099}
   - component: {fileID: 967362098}
   m_Layer: 5
-  m_Name: Letra-A-Button (15)
+  m_Name: Letra-O-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4748,7 +4737,7 @@ GameObject:
   - component: {fileID: 1063295965}
   - component: {fileID: 1063295964}
   m_Layer: 5
-  m_Name: Letra-A-Button (12)
+  m_Name: Letra-M-Butto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4882,7 +4871,7 @@ GameObject:
   - component: {fileID: 1094002464}
   - component: {fileID: 1094002463}
   m_Layer: 5
-  m_Name: Letra-A-Button (25)
+  m_Name: Letra-X-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4900,7 +4889,7 @@ RectTransform:
   m_Children:
   - {fileID: 566517920}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5244,7 +5233,7 @@ GameObject:
   - component: {fileID: 1188003213}
   - component: {fileID: 1188003212}
   m_Layer: 5
-  m_Name: Letra-A-Button (11)
+  m_Name: Letra-L-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5378,7 +5367,7 @@ GameObject:
   - component: {fileID: 1192937333}
   - component: {fileID: 1192937332}
   m_Layer: 5
-  m_Name: Letra-A-Button (9)
+  m_Name: Letra-J-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5512,7 +5501,7 @@ GameObject:
   - component: {fileID: 1195268665}
   - component: {fileID: 1195268664}
   m_Layer: 5
-  m_Name: Letra-A-Button (24)
+  m_Name: Letra-Z-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5530,7 +5519,7 @@ RectTransform:
   m_Children:
   - {fileID: 131353530}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6114,7 +6103,7 @@ GameObject:
   - component: {fileID: 1333795002}
   - component: {fileID: 1333795001}
   m_Layer: 5
-  m_Name: Letra-A-Button (19)
+  m_Name: Letra-R-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6132,7 +6121,7 @@ RectTransform:
   m_Children:
   - {fileID: 59501377}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6173,13 +6162,13 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1333795002}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1055465836}
-        m_MethodName: 
+      - m_Target: {fileID: 1055465838}
+        m_MethodName: MiniJuegoNenaTemerosa
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6196,6 +6185,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 330af7faf3bb8a042bb7066e3371cf6d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 761967601}
+        m_MethodName: LetraR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6554,7 +6554,7 @@ GameObject:
   - component: {fileID: 1371785753}
   - component: {fileID: 1371785752}
   m_Layer: 5
-  m_Name: Letra-A-Button (20)
+  m_Name: Letra-S-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6572,7 +6572,7 @@ RectTransform:
   m_Children:
   - {fileID: 1201384595}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7028,7 +7028,7 @@ GameObject:
   - component: {fileID: 1428131874}
   - component: {fileID: 1428131873}
   m_Layer: 5
-  m_Name: Letra-A-Button (23)
+  m_Name: Letra-V-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7046,7 +7046,7 @@ RectTransform:
   m_Children:
   - {fileID: 206915053}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7087,13 +7087,13 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1428131874}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1055465836}
-        m_MethodName: 
+      - m_Target: {fileID: 1055465838}
+        m_MethodName: MiniJuegoNenaTemerosa
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7110,6 +7110,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 330af7faf3bb8a042bb7066e3371cf6d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 761967601}
+        m_MethodName: LetraV
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7363,7 +7374,7 @@ GameObject:
   - component: {fileID: 1640965609}
   - component: {fileID: 1640965608}
   m_Layer: 5
-  m_Name: Letra-A-Button (7)
+  m_Name: Letra-H-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7497,7 +7508,7 @@ GameObject:
   - component: {fileID: 1651792865}
   - component: {fileID: 1651792864}
   m_Layer: 5
-  m_Name: Letra-A-Button (26)
+  m_Name: Letra-Y-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7515,7 +7526,7 @@ RectTransform:
   m_Children:
   - {fileID: 746412882}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8159,15 +8170,15 @@ RectTransform:
   - {fileID: 967362097}
   - {fileID: 559209303}
   - {fileID: 163509525}
-  - {fileID: 439955754}
   - {fileID: 1333795000}
   - {fileID: 1371785751}
   - {fileID: 2045162531}
   - {fileID: 1980500040}
   - {fileID: 1428131872}
-  - {fileID: 1195268663}
+  - {fileID: 439955754}
   - {fileID: 1094002462}
   - {fileID: 1651792863}
+  - {fileID: 1195268663}
   m_Father: {fileID: 1846901383}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8690,7 +8701,7 @@ GameObject:
   - component: {fileID: 1980500042}
   - component: {fileID: 1980500041}
   m_Layer: 5
-  m_Name: Letra-A-Button (22)
+  m_Name: Letra-U-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8708,7 +8719,7 @@ RectTransform:
   m_Children:
   - {fileID: 912331865}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8980,7 +8991,7 @@ GameObject:
   - component: {fileID: 2045162533}
   - component: {fileID: 2045162532}
   m_Layer: 5
-  m_Name: Letra-A-Button (21)
+  m_Name: Letra-T-Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8998,11 +9009,11 @@ RectTransform:
   m_Children:
   - {fileID: 1355831632}
   m_Father: {fileID: 1899423238}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 177.9995, y: -198.09995}
+  m_AnchoredPosition: {x: 177.9995, y: -198.09999}
   m_SizeDelta: {x: 94, y: 81.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045162532
@@ -9039,13 +9050,13 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 2045162533}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1055465836}
-        m_MethodName: 
+      - m_Target: {fileID: 1055465838}
+        m_MethodName: MiniJuegoNenaTemerosa
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9062,6 +9073,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 330af7faf3bb8a042bb7066e3371cf6d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 761967601}
+        m_MethodName: LetraT
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
