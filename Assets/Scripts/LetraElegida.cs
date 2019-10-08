@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LetraElegida : MonoBehaviour {
 
@@ -9,30 +10,42 @@ public class LetraElegida : MonoBehaviour {
 	public Image imgB;
 	public Image imgC;
 	public Image imgD;
-	public Image imgE;
-
+	public Image imgT;
+	public Image imgR;
+	public Image imgV;
 
 	void Start () {
-		//GameObject.Find ("TextLetra").GetComponent<Text> ().text = 
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("árbol")) {
+
+		switch (CargarImagenDependiendoDeLetra.objetoEleccion.letra) {
+
+		case "árbol":
 			imgA.enabled = true;
-		}
+			break;
 
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("barco")) {
+		case "buho":
 			imgB.enabled = true;
-		}
+			break;
 
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) {
+		case "castillo":
 			imgC.enabled = true;
-		}
+			break;
 
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("durazno")) {
+		case "durazno":
 			imgD.enabled = true;
-		}
+			break;
 
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("elefante")) {
-			imgE.enabled = true;
+		case "tormenta":
+			GameObject.Find ("Titulo").GetComponent<TextMeshProUGUI> ().text = "Que palabra es?...";
+			GameObject.Find ("RespuestaText-T").GetComponent<TextMeshProUGUI> ().enabled = true;
+			break;
+
+		case "rama":
+			imgR.enabled = true;
+			break;
+
+		case "vestido":
+			imgV.enabled = true;
+			break;
 		}
 	}
-		
 }
