@@ -27,11 +27,14 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 	public float parallaxSpeed = 0.12f;
 
 	//variables de sonidos
-	//public AudioClip viento;
+	public AudioClip suspenso;
 	private AudioSource ambienteBosque;
+	public GameObject bosqueInv; //objeto para controlar escena
 
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
+
+	public GameObject fantasma; //objeto para controlar escena
 
 	int i=0;
 	int n=0;
@@ -53,46 +56,37 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 
 	bool textoCompleto = false;
 
+	string fraseEscena = string.Empty;
+
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
 		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
-		//if (SpeechRecognizer.ExistsOnDevice()) {
-			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
-			//listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
-			//listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);
-			listener.onErrorDuringRecording.AddListener(OnError);
-			//listener.onErrorOnStartRecording.AddListener(OnError);
-			listener.onFinalResults.AddListener(OnFinalResult);
-			listener.onPartialResults.AddListener(OnPartialResult);
-			//listener.onEndOfSpeech.AddListener(OnEndOfSpeech);
-			//startRecordingButton.enabled = false;
-			//SpeechRecognizer.RequestAccess();
 
-			//obtengo cantidad de palabras de escena actual
-		textoEscena = sceneText.text = "finalmente la lluvia comenzó";
-			palabrasEscena = textoEscena.Split(' ');
+		SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();		
+		listener.onErrorDuringRecording.AddListener(OnError);			
+		listener.onFinalResults.AddListener(OnFinalResult);
+		listener.onPartialResults.AddListener(OnPartialResult);
 
-			//para q se reproduzca mas rapido, es sonido ya esta asignado
-			ambienteBosque = GetComponent<AudioSource> ();						
-		//ambienteBosque.clip = viento;
-		//ambienteBosque.Play ();		
 
-			//iniciar objetos
-			player.SetActive(true);
-			bosque.SetActive(true);
-			//player.SendMessage ("UpdateState", "PlayerRun");
-			player.gameObject.GetComponent<Animator>().Play("PlayerRun");
-			efectoParallax = 1;
+		//obtengo cantidad de palabras de escena actual
+		textoEscena = sceneText.text = "de pronto luego de varios relámpagos";
+		palabrasEscena = textoEscena.Split(' ');
 
-		//} else {			
-			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
-			//startRecordingButton.enabled = false;
-		//}
+		//para q se reproduzca mas rapido, es sonido ya esta asignado
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = suspenso;
+			
+
+		//iniciar objetos
+		player.SetActive(true);
+		bosque.SetActive(true);
+
+		player.gameObject.GetComponent<Animator>().Play("PlayerRun");
+		efectoParallax = 1;
 
 		ActivarEscucha ();
-
 	}
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
@@ -117,30 +111,56 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 				{
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
-					{						
-						case "comenzó":							
-						textoCompleto = true;
-						DesactivarEscucha ();
+					{	
+					case "luego":							
+						
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "de pronto luego de un relámpago";//para freezar contenedor				
+						coroutineStarted2 = false;	
+									
 						break;
-					
-					case "relámpago":							
+
+					case "relámpagos":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "una tenebrosa sombra aparece";//para freezar contenedor		
 
+						coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor				
 						break;
 
 					case "sombra":							
-								
+
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						coroutineStarted2 = false;	
+						fantasma.SetActive(true);
+						ambienteBosque.Play ();	
+
+						player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
+						efectoParallax = 0;	
 
 						break;
 
-					case "aparece":							
+					case "surge":							
 						textoCompleto = true;
 						DesactivarEscucha ();
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						fraseEscena = coroutineStarted1 = "la niña cae desmayada";//para freezar contenedor		
+
+						break;
+
+					case "cae":		
+						PintarPalabra (palabrasSpeech [i].ToString ());
+						player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
+
+
+							
+
+						break;
+
+					case "desmayada":							
+						textoCompleto = true;
+						DesactivarEscucha ();
+						fantasma.gameObject.GetComponent<Animator> ().enabled =true;
+						fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
 						coroutineStarted = false;//para freezar ejecucion
 						PintarPalabra (palabrasSpeech [i].ToString ());				
 						break;
@@ -148,10 +168,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 						default:	
 						PintarPalabra (palabrasSpeech [i].ToString ());
 							break;
-					}
-
-					//resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
-					//n++; //para no tener en cuenta palabra coloreada en el bucle
+					}		
 
 					break;
 				}			
@@ -163,36 +180,58 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "comenzó":
-				if(Pintar ("comenzó", 0))
+			case "luego":
+				if(Pintar ("luego", 0))
 				{
-					textoCompleto = true;		
-					DesactivarEscucha ();
-					coroutineStarted1 = "de pronto luego de un relámpago";//para freezar contenedor	
+					coroutineStarted2 = false;	
 				}
 				break;
 			
-			case "relámpago":
-				if(Pintar ("relámpago", 0))
+			case "relámpagos":
+				if(Pintar ("relámpagos", 1))
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
-					coroutineStarted1 = "una tenebrosa sombra aparece";//para freezar contenedor	
+					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor		
 				}
 				break;
 
 			case "sombra":
 				if(Pintar ("sombra", 0))
 				{
-					
+					coroutineStarted2 = false;	
+					fantasma.SetActive(true);
+					ambienteBosque.Play ();	
+
+					player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
+					efectoParallax = 0;	
 				}
 				break;
-			case "aparece":					
-				if(Pintar ("aparece", 1))
+			case "surge":					
+				if(Pintar ("surge", 1))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
-					coroutineStarted = false;//para freezar ejecucion	
+
+					fraseEscena = coroutineStarted1 = "la niña cae desmayada";//para freezar contenedor
+
+				}
+				break;
+			case "cae":
+				if(Pintar ("cae", 0))
+				{
+					player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
+
+					fantasma.gameObject.GetComponent<Animator> ().enabled =true;
+					fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
+				}
+				break;
+			case "desmayada":
+				if(Pintar ("desmayada", 1))
+				{
+					textoCompleto = true;
+					DesactivarEscucha ();
+					coroutineStarted = false;//para freezar ejecucion
 
 				}
 				break;
@@ -225,36 +264,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 		}*/
 	}
 
-	/*public void OnAvailabilityChange(bool available) {
-		startRecordingButton.enabled = available;
-		if (!available) {
-			resultErrores.text = "Speech Recognition not available";
-		} else {
-			//resultErrores.text = "Say something :-)";
-		}
-	}*/
-
-	/*public void OnAuthorizationStatusFetched(AuthorizationStatus status) {
-		switch (status) {
-		case AuthorizationStatus.Authorized:
-			startRecordingButton.enabled = true;
-			break;
-		default:
-			startRecordingButton.enabled = false;
-			resultErrores.text = "Cannot use Speech Recognition, authorization status is " + status;
-			break;
-		}
-	}*/
-
-	/*public void OnEndOfSpeech() {
-		startRecordingButton.GetComponentInChildren<Text>().text = "";
-	}*/
-
 public void OnError(string error) {
-	//Debug.LogError(error);
-	//resultErrores.text = "Something went wrong... Try again! \n [" + error + "]";
-	//startRecordingButton.GetComponentInChildren<Text>().text = "";
-
 	DesactivarEscucha();
 }
 
@@ -282,10 +292,11 @@ public void CambiarTexto(string textoNuevo)
 
 	contenedor.SetActive (true);//llama a otro contenedor de texto
 	resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
-	//OnStartRecordingPressed ();//activa escucha
-
+	
 	textoCompleto = false;
 	ActivarEscucha();
+
+		coroutineStarted2 = false;	
 }
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
@@ -314,9 +325,18 @@ public void ReiniciarValoresEscena() {
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
 
-		//troncoEfecto.gameObject.SetActive(false);
+			if(fraseEscena == "la niña cae desmayada")
+			{
+				
+				player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");	
+
+			}
+				else
+				{
 		player.gameObject.GetComponent<Animator> ().Play ("PlayerRun");
 		efectoParallax = 1;
+			fantasma.SetActive(false);
+				}
 	}
 }
 
@@ -335,39 +355,30 @@ public void ReiniciarValoresEscena() {
 		bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x , 0f, 1f, 1f);
 	}
 
-		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (1));
+	if (!coroutineStarted)
+		StartCoroutine (EsperarSegundos (3));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
-		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
-
-		if (!ambienteBosque.isPlaying)
-			ambienteBosque.Play ();
-
-	/*if (!coroutineStarted2)
-		StartCoroutine (EfectoTemblor ());*/
+		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));	
 		
+		if (!coroutineStarted2)
+			StartCoroutine (EfectoRelampago ());
 	}  
 
-/*IEnumerator EfectoTemblor()
-{	
-	//coroutineStarted2 = true;
+	IEnumerator EfectoRelampago()
+	{
+		coroutineStarted2 = true;
 
-	//troncoEfecto.gameObject.SetActive (true);
-	//yield return new WaitForSeconds(0.2f);
+		for (int z = 0; z < 4; z++)
+		{
+			bosqueInv.SetActive (true);
+			yield return new WaitForSeconds(0.1f);
+			bosqueInv.SetActive (false);
+			yield return new WaitForSeconds(0.1f);
+		}
 
-	RectTransform bosqueImagen = bosque.GetComponent<RectTransform> ();
-	Vector3 myVector = new Vector3(bosqueImagen.position.x+0.5f, bosqueImagen.position.y, bosqueImagen.position.z);
-	Vector3 myVector2 = new Vector3(bosqueImagen.position.x, bosqueImagen.position.y, bosqueImagen.position.z);
-	for (int z = 0; z < 2; z++)
-	{		
-		bosqueImagen.position = myVector;
-		yield return new WaitForSeconds(0.1f);
-		bosqueImagen.position = myVector2;
-		yield return new WaitForSeconds(0.1f);
-	}
+	}  
 
-}*/
 
 	IEnumerator EsperarSegundos(int seconds)
 	{
