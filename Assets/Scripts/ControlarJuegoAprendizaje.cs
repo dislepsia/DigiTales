@@ -32,41 +32,59 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 	public void OnFinalResult(string result) {		
 		//ReiniciarValoresEscena();
 		palabrasSpeech = result.ToLower().Split(' ');
-
+		AudioSource respuestaOk;
 		switch (palabrasSpeech [0].ToString ().Trim ()) {
 
-		case "árbol":									
-			respuesta ("A", true);				
+		case "árbol":
+			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("árbol"))
+				respuesta ("A", true);
 			break;
 
-		case "barco":									
-			respuesta ("B",true);					
+		case "lechuza":
+			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("lechuza"))
+				respuesta ("L",true);
 			break;
 
-		case "castillo":									
-			respuesta ("C",true);					
+		case "castillo":
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) {
+				//respuesta ("C",true);					
+				DesactivarEscucha ();
+				GameObject.Find ("Image-C").GetComponent<Image> ().enabled = true;
+				respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
+				GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
+				respuestaOk.Play ();
+				sceneText.SetActive (true);
+				coroutineStarted = false;
+			}
 			break;
 
-		case "durazno":									
-			respuesta ("D",true);					
+		case "durazno":
+			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("durazno"))
+				respuesta ("D",true);
+			else
+				respuesta (false);
 			break;
 
-		case "tormenta":									
-			DesactivarEscucha ();
-			GameObject.Find ("Image-T").GetComponent<Image> ().enabled = true;
-			AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
-			GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
-			respuestaOk.Play ();
-			sceneText.SetActive (true);
-			coroutineStarted = false;
+		case "tormenta":
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) {
+				DesactivarEscucha ();
+				GameObject.Find ("Image-T").GetComponent<Image> ().enabled = true;
+				respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
+				GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
+				respuestaOk.Play ();
+				sceneText.SetActive (true);
+				coroutineStarted = false;
+			}
 			break;
 
-		case "rama":									
-			respuesta ("R",true);					
+		case "rama":
+			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("rama"))
+				respuesta ("R", true);
 			break;
 
-		case "vestido":									
-			respuesta ("V",true);					
+		case "vestido":
+			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("vestido"))
+				respuesta ("V",true);
 			break;
 
 		default:
@@ -78,14 +96,14 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnPartialResult(string result) {
 	}
-
+		
 	void respuesta(string respuesta, bool audio){
 		DesactivarEscucha ();
 
 		if (audio.Equals (true)) {
 
 			GameObject.Find ("RespuestaText-A").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-B").GetComponent<TextMeshProUGUI> ().enabled = false;
+			GameObject.Find ("RespuestaText-L").GetComponent<TextMeshProUGUI> ().enabled = false;
 			GameObject.Find ("RespuestaText-C").GetComponent<TextMeshProUGUI> ().enabled = false;
 			GameObject.Find ("RespuestaText-D").GetComponent<TextMeshProUGUI> ().enabled = false;
 			GameObject.Find ("RespuestaText-R").GetComponent<TextMeshProUGUI> ().enabled = false;
@@ -109,7 +127,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		GameObject.Find ("RespuestaText-Error-Panel-Imagen").GetComponent<Image> ().enabled = true;
 
 		GameObject.Find ("Imagen-A").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-B").GetComponent<Image> ().enabled = false;
+		GameObject.Find ("Imagen-L").GetComponent<Image> ().enabled = false;
 		GameObject.Find ("Imagen-C").GetComponent<Image> ().enabled = false;
 		GameObject.Find ("Imagen-D").GetComponent<Image> ().enabled = false;
 		GameObject.Find ("Imagen-R").GetComponent<Image> ().enabled = false;
@@ -117,7 +135,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		GameObject.Find ("Imagen-V").GetComponent<Image> ().enabled = false;
 
 		GameObject.Find ("RespuestaText-A").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-B").GetComponent<TextMeshProUGUI> ().enabled = false;
+		GameObject.Find ("RespuestaText-L").GetComponent<TextMeshProUGUI> ().enabled = false;
 		GameObject.Find ("RespuestaText-C").GetComponent<TextMeshProUGUI> ().enabled = false;
 		GameObject.Find ("RespuestaText-D").GetComponent<TextMeshProUGUI> ().enabled = false;
 		GameObject.Find ("RespuestaText-R").GetComponent<TextMeshProUGUI> ().enabled = false;

@@ -7,7 +7,7 @@ using TMPro;
 public class LetraElegida : MonoBehaviour {
 
 	public Image imgA;
-	public Image imgB;
+	public Image imgL;
 	public Image imgC;
 	public Image imgD;
 	public Image imgT;
@@ -22,12 +22,13 @@ public class LetraElegida : MonoBehaviour {
 			imgA.enabled = true;
 			break;
 
-		case "buho":
-			imgB.enabled = true;
+		case "lechuza":
+			imgL.enabled = true;
 			break;
 
 		case "castillo":
-			imgC.enabled = true;
+			palabraImagen ("C");
+			//imgC.enabled = true;
 			break;
 
 		case "durazno":
@@ -35,8 +36,7 @@ public class LetraElegida : MonoBehaviour {
 			break;
 
 		case "tormenta":
-			GameObject.Find ("Titulo").GetComponent<TextMeshProUGUI> ().text = "Que palabra es?...";
-			GameObject.Find ("RespuestaText-T").GetComponent<TextMeshProUGUI> ().enabled = true;
+			palabraImagen ("T");
 			break;
 
 		case "rama":
@@ -47,5 +47,10 @@ public class LetraElegida : MonoBehaviour {
 			imgV.enabled = true;
 			break;
 		}
+	}
+
+	void palabraImagen(string boton){
+		GameObject.Find ("Titulo").GetComponent<TextMeshProUGUI> ().text = "Que palabra es?...";
+		GameObject.Find ("RespuestaText-" + boton).GetComponent<TextMeshProUGUI> ().enabled = true;
 	}
 }

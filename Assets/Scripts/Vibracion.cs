@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
 
 public class Vibracion : MonoBehaviour {
 
-	//public static string modo = 1;
-	//public static bool bandera = true;
-
 	public void Dropdown_IndexChange(int indice)
 	{
-		//modo = indice;
-		//bandera = false;
 		PlayerPrefs.SetString ("ModoVibracion", indice.ToString());
+		PlayerPrefs.Save ();
 
 		if(PlayerPrefs.GetString("ModoVibracion").Equals("0")){
 			Vibrate ();
@@ -24,13 +22,12 @@ public class Vibracion : MonoBehaviour {
 	}
 
 	void Start(){
-		//if (bandera.Equals (false)) {
-		//	GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ().value = int.Parse(PlayerPrefs.GetString ("ModoVibracion"));	
-		//}
+		if (PlayerPrefs.GetString ("ModoVibracion").Equals ("0")) {
+			GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 0;
+
+		} else {
+			GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 1;
+		}
 	}
 
-	void Update(){
-		//modo = GameObject.Find ("DropdownVibracion").GetComponent<Dropdown> ();
-		//modo.value = int.Parse (PlayerPrefs.GetString ("ModoVibracion").ToString ());
-	}
 }

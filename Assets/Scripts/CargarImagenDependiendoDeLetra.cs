@@ -13,8 +13,8 @@ public class CargarImagenDependiendoDeLetra : MonoBehaviour {
 		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "árbol";
 	}
 
-	public void LetraB () {
-		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "buho";
+	public void LetraL () {
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "lechuza";
 	}
 
 	public void LetraC () {
