@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class ControlarCuento1Escena7 : MonoBehaviour {
+public class ControlarCuento1Escena7Bis : MonoBehaviour {
 
 	public Button startRecordingButton;
 
@@ -23,23 +23,17 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 	int cantPalabrasSpeech = 0;
 
 	//variables para efectoParallax
-	int efectoParallax = 0;
-	public float parallaxSpeed = 0.12f;
 
 	//variables de sonidos
-	public AudioClip suspenso;
+	public AudioClip relincho;
 	private AudioSource ambienteBosque;
-	public GameObject bosqueInv; //objeto para controlar escena
 
-	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
-
-	public GameObject fantasma; //objeto para controlar escena
 
 	int i=0;
 	int n=0;
 
-	public Animator circuloNegro;
+
 	public Animator microfono;
 	//public Animator troncoEfecto;
 
@@ -47,7 +41,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 
 	bool coroutineStarted = true;//para freezar ejecucion
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
-	bool coroutineStarted2 = true;
+
 
 	string modoRelato = string.Empty; 
 	string modoVibracion = string.Empty; 
@@ -56,7 +50,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 
 	bool textoCompleto = false;
 
-	string fraseEscena = string.Empty;
+
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
@@ -71,20 +65,20 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 
 
 		//obtengo cantidad de palabras de escena actual
-		textoEscena = sceneText.text = "de pronto luego de varios relámpagos";
+		textoEscena = sceneText.text = "unos minutos después";
 		palabrasEscena = textoEscena.Split(' ');
 
 		//para q se reproduzca mas rapido, es sonido ya esta asignado
 		ambienteBosque = GetComponent<AudioSource> ();						
-		ambienteBosque.clip = suspenso;
+		ambienteBosque.clip = relincho;
 			
 
 		//iniciar objetos
-		player.SetActive(true);
+
 		bosque.SetActive(true);
 
-		player.gameObject.GetComponent<Animator>().Play("PlayerRun");
-		efectoParallax = 1;
+
+
 
 		ActivarEscucha ();
 	}
@@ -112,58 +106,23 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{	
-					case "luego":							
-						
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted2 = false;	
-									
-						break;
-
-					case "relámpagos":							
+					case "después":							
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-
-						coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor				
+					
+						coroutineStarted1 = "en otro sitio del bosque";//para freezar contenedor	
 						break;
 
-					case "sombra":							
-
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted2 = false;	
-						fantasma.SetActive(true);
-						ambienteBosque.Play ();	
-
-						player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
-						efectoParallax = 0;	
-
-						break;
-
-					case "surge":							
+					case "bosque":							
 						textoCompleto = true;
 						DesactivarEscucha ();
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						fraseEscena = coroutineStarted1 = "la niña cae desmayada";//para freezar contenedor		
-
-						break;
-
-					case "cae":		
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
-
-
-							
-
-						break;
-
-					case "desmayada":							
-						textoCompleto = true;
-						DesactivarEscucha ();
-						fantasma.gameObject.GetComponent<Animator> ().enabled =true;
-						fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
+						ambienteBosque.Play ();
 						coroutineStarted = false;//para freezar ejecucion
 						PintarPalabra (palabrasSpeech [i].ToString ());				
 						break;
+
+					
 
 						default:	
 						PintarPalabra (palabrasSpeech [i].ToString ());
@@ -180,61 +139,27 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "luego":
-				if(Pintar ("luego", 0))
+			case "después":
+				if(Pintar ("después", 0))
 				{
-					coroutineStarted2 = false;	
+					textoCompleto = true;
+					DesactivarEscucha ();
+
+					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor	
 				}
 				break;
 			
-			case "relámpagos":
-				if(Pintar ("relámpagos", 1))
-				{
-					textoCompleto = true;		
-					DesactivarEscucha ();
-					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor		
-				}
-				break;
-
-			case "sombra":
-				if(Pintar ("sombra", 0))
-				{
-					coroutineStarted2 = false;	
-					fantasma.SetActive(true);
-					ambienteBosque.Play ();	
-
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
-					efectoParallax = 0;	
-				}
-				break;
-			case "surge":					
-				if(Pintar ("surge", 1))
+			case "bosque":
+				if(Pintar ("bosque", 0))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
-
-					fraseEscena = coroutineStarted1 = "la niña cae desmayada";//para freezar contenedor
-
+					ambienteBosque.Play ();
+					coroutineStarted = false;//para freezar ejecucion		
 				}
 				break;
-			case "cae":
-				if(Pintar ("cae", 0))
-				{
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
 
-					fantasma.gameObject.GetComponent<Animator> ().enabled =true;
-					fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
-				}
-				break;
-			case "desmayada":
-				if(Pintar ("desmayada", 1))
-				{
-					textoCompleto = true;
-					DesactivarEscucha ();
-					coroutineStarted = false;//para freezar ejecucion
-
-				}
-				break;
+			
 
 				default:					
 					break;
@@ -296,7 +221,7 @@ public void CambiarTexto(string textoNuevo)
 	textoCompleto = false;
 	ActivarEscucha();
 
-		coroutineStarted2 = false;	
+
 }
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
@@ -325,35 +250,14 @@ public void ReiniciarValoresEscena() {
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
 
-			if(fraseEscena == "la niña cae desmayada")
-			{
-				
-				player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");	
 
-			}
-				else
-				{
-		player.gameObject.GetComponent<Animator> ().Play ("PlayerRun");
-		efectoParallax = 1;
-			fantasma.SetActive(false);
-				}
 	}
 }
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (efectoParallax == 1)
-		{
-			float finalSpeed= parallaxSpeed * Time.deltaTime;
-			RawImage bosqueImagen = bosque.GetComponent<RawImage> ();				
-			bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x + finalSpeed , 0f, 1f, 1f);
-		}
-	else
-	{
-		RawImage bosqueImagen = bosque.GetComponent<RawImage> ();
-		bosqueImagen.uvRect = new Rect(bosqueImagen.uvRect.x , 0f, 1f, 1f);
-	}
+
 
 	if (!coroutineStarted)
 		StartCoroutine (EsperarSegundos (3));
@@ -361,23 +265,10 @@ public void ReiniciarValoresEscena() {
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));	
 		
-		if (!coroutineStarted2)
-			StartCoroutine (EfectoRelampago ());
-	}  
-
-	IEnumerator EfectoRelampago()
-	{
-		coroutineStarted2 = true;
-
-		for (int z = 0; z < 4; z++)
-		{
-			bosqueInv.SetActive (true);
-			yield return new WaitForSeconds(0.1f);
-			bosqueInv.SetActive (false);
-			yield return new WaitForSeconds(0.1f);
-		}
 
 	}  
+
+
 
 
 	IEnumerator EsperarSegundos(int seconds)
@@ -385,17 +276,12 @@ public void ReiniciarValoresEscena() {
 		coroutineStarted = true;
 		yield return new WaitForSeconds(seconds);
 
-		StartCoroutine (SpriteShapeOut());
-		StopCoroutine ("SpriteShapeOut");
 
-	SceneManager.LoadScene("Cuento1Escena7Bis");
+
+	SceneManager.LoadScene("NewMenu");
 	}
 
-	IEnumerator SpriteShapeOut()
-	{		
-		circuloNegro.SetTrigger ("end");
-		yield return new WaitForSeconds(1f);
-	}
+
 
 IEnumerator RetrasarContenedor(int seconds, string frase)
 {		
