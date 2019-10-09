@@ -42,6 +42,11 @@ public class EfectoTronco : MonoBehaviour {
 		player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 	}
 
+	void Idle()
+	{	
+		player.gameObject.GetComponent<Animator>().Play("Player2Idle");
+	}
+
 	void Lluvia()
 	{	
 		lluvia.SetActive (true);

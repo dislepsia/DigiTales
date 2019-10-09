@@ -1,18 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CargarImagenDependiendoDeLetra.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EfectoTronco.cs">
     <Files>
-      <File FileName="Assets\Scripts\ControlarJuegoAprendizaje.cs" Line="126" Column="36" />
-      <File FileName="Assets\Scripts\LetraElegida.cs" Line="27" Column="10" />
-      <File FileName="Assets\Scripts\CargarImagenDependiendoDeLetra.cs" Line="17" Column="65" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento1Escena7Bis.cs">
-    <Files>
-      <File FileName="Assets\Scripts\ControlarCuento1Escena7Bis.cs" Line="119" Column="18" />
-      <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="391" Column="46" />
-      <File FileName="Assets\Scripts\ControlarBotones.cs" Line="29" Column="50" />
->>>>>>> 4ac7117b74a380fc715a18e2fbfbe0903f468d6d
+      <File FileName="Assets\Scripts\ControlarCuento1Escena8.cs" Line="207" Column="6" />
+      <File FileName="Assets\Scripts\EfectoTronco.cs" Line="47" Column="59" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="162" Column="67" />
+      <File FileName="Assets\Scripts\ControlarBotones.cs" Line="27" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
