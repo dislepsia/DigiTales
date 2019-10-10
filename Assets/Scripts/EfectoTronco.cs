@@ -7,9 +7,17 @@ public class EfectoTronco : MonoBehaviour {
 	public GameObject bosque; //objeto para controlar escena
 	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject lluvia; //objeto para controlar animacion de personaje
+	public GameObject fantasma; //objeto para controlar animacion de personaje
+	public GameObject pegaso; //objeto para controlar animacion de personaje
+	public GameObject humo; //objeto para controlar animacion de personaje
+
+	//public AudioClip puerta;
+	//private AudioSource ambienteBosque;
 
 	// Use this for initialization
 	void Start () {		
+		//ambienteBosque = GetComponent<AudioSource> ();						
+		//ambienteBosque.clip = puerta;
 	}
 
 	IEnumerator EfectoTemblor()
@@ -51,7 +59,37 @@ public class EfectoTronco : MonoBehaviour {
 	{	
 		lluvia.SetActive (true);
 	}
-	
+
+	void Fantasma()
+	{	
+		fantasma.SetActive (true);
+	}
+
+	void Humo()
+	{	
+		pegaso.SetActive (false);
+		humo.gameObject.GetComponent<Animator>().Play("Humo");
+
+	}
+
+	void CasaBosque()
+	{	
+		player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
+		humo.gameObject.GetComponent<Animator>().Play("Humo");
+
+	}
+
+	void EntraCasa()
+	{	
+		player.SetActive (false);
+		//ambienteBosque.Play ();
+
+	}
+
+
+
+
+
 	// Update is called once per frame
 	void Update () {
 		

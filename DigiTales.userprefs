@@ -1,11 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EfectoTronco.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento1Escena9.cs">
     <Files>
-      <File FileName="Assets\Scripts\ControlarCuento1Escena8.cs" Line="207" Column="6" />
-      <File FileName="Assets\Scripts\EfectoTronco.cs" Line="47" Column="59" />
-      <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="162" Column="67" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena8.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EfectoTronco.cs" Line="85" Column="5" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ControlarBotones.cs" Line="27" Column="47" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena9.cs" Line="361" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

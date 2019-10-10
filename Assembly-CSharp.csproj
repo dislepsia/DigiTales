@@ -71,6 +71,7 @@
      <Compile Include="Assets\Scripts\ControlarCuento1Escena7.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena7Bis.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento1Escena8.cs" />
+     <Compile Include="Assets\Scripts\ControlarCuento1Escena9.cs" />
      <Compile Include="Assets\Scripts\ControlarJuegoAprendizaje.cs" />
      <Compile Include="Assets\Scripts\ControlarMenues.cs" />
      <Compile Include="Assets\Scripts\ControlBrightness.cs" />
