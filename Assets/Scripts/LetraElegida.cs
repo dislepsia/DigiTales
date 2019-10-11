@@ -6,10 +6,10 @@ using TMPro;
 
 public class LetraElegida : MonoBehaviour {
 
-	public Image imgA;
-	public Image imgL;
+	public Image imgF;
 	public Image imgC;
-	public Image imgD;
+	public Image imgP;
+	public Image imgL;
 	public Image imgT;
 	public Image imgR;
 	public Image imgV;
@@ -18,8 +18,8 @@ public class LetraElegida : MonoBehaviour {
 
 		switch (CargarImagenDependiendoDeLetra.objetoEleccion.letra) {
 
-		case "árbol":
-			imgA.enabled = true;
+		case "fantasma":
+			palabraImagen ("F");
 			break;
 
 		case "lechuza":
@@ -28,11 +28,10 @@ public class LetraElegida : MonoBehaviour {
 
 		case "castillo":
 			palabraImagen ("C");
-			//imgC.enabled = true;
 			break;
 
-		case "durazno":
-			imgD.enabled = true;
+		case "pegaso":
+			imgP.enabled = true;
 			break;
 
 		case "tormenta":

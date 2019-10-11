@@ -10,15 +10,16 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 	public Button startRecordingButton;
 	public GameObject sceneText;
-	public Text resultErrores; //visualizar error
+	public Text resultErrores; 
+	public Image ErrorPanelTexto;
+	public Image ErrorPanelImagen;
 
-	//variables para trabajar result(reconocimiento parcial de voz)
 	private string[] palabrasSpeech = null;
 
 	public Animator microfono;
 	public Animator imagenNegra;
 
-	bool coroutineStarted = true;//para freezar ejecucion
+	bool coroutineStarted = true;
 
 	void Start() { 
 		SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
@@ -27,125 +28,139 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		listener.onPartialResults.AddListener(OnPartialResult);
 		ActivarEscucha ();
 	}
-
-	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
-	public void OnFinalResult(string result) {		
-		//ReiniciarValoresEscena();
+		
+	public void OnPartialResult(string result) {		
+		
 		palabrasSpeech = result.ToLower().Split(' ');
-		AudioSource respuestaOk;
-		switch (palabrasSpeech [0].ToString ().Trim ()) {
+		string reconocimiento = palabrasSpeech [0].ToString ().Trim ();
 
-		case "árbol":
-			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("árbol"))
-				respuesta ("A", true);
+		switch (reconocimiento) {
+
+		case "fantasma":
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma"))
+				rtaOkImagen ("F");
+			else
+				rtaErrorImagen ();
 			break;
 
 		case "lechuza":
-			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("lechuza"))
-				respuesta ("L",true);
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza"))
+				rtaOkPalabra ("L");
+			else
+				rtaErrorPalabra ();
 			break;
 
 		case "castillo":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) {
-				//respuesta ("C",true);					
-				DesactivarEscucha ();
-				GameObject.Find ("Image-C").GetComponent<Image> ().enabled = true;
-				respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
-				GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
-				respuestaOk.Play ();
-				sceneText.SetActive (true);
-				coroutineStarted = false;
-			}
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) 
+				rtaOkImagen ("C");
+			else
+				rtaErrorImagen ();
 			break;
 
-		case "durazno":
-			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("durazno"))
-				respuesta ("D",true);
+		case "pegaso":
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso"))
+				rtaOkPalabra ("P");
 			else
-				respuesta (false);
+				rtaErrorPalabra ();
 			break;
 
 		case "tormenta":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) {
-				DesactivarEscucha ();
-				GameObject.Find ("Image-T").GetComponent<Image> ().enabled = true;
-				respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
-				GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
-				respuestaOk.Play ();
-				sceneText.SetActive (true);
-				coroutineStarted = false;
-			}
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta"))
+				rtaOkImagen ("T");
+			else
+				rtaErrorImagen ();
 			break;
 
 		case "rama":
-			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("rama"))
-				respuesta ("R", true);
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama"))
+				rtaOkPalabra ("R");
+			else
+				rtaErrorPalabra ();
 			break;
 
 		case "vestido":
-			if(CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals("vestido"))
-				respuesta ("V",true);
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido"))
+				rtaOkPalabra ("V");
+			else
+				rtaErrorPalabra ();
 			break;
-
-		default:
-			//respuesta (false);
-			break;
-		}			
-	}
-
-	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*/
-	public void OnPartialResult(string result) {
-	}
 		
-	void respuesta(string respuesta, bool audio){
+		default:
+			ErrorNoDisponible ();
+			break;
+		}
+	}
+
+	public void OnFinalResult(string result) {
+	}
+
+	void ErrorNoDisponible(){
+		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma") ||
+		   CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+		   CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
+			rtaErrorImagen ();
+		}
+		else
+			rtaErrorPalabra ();
+	}
+
+	void rtaOkPalabra(string respuesta){
+
 		DesactivarEscucha ();
 
-		if (audio.Equals (true)) {
-
-			GameObject.Find ("RespuestaText-A").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-L").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-C").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-D").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-R").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-V").GetComponent<TextMeshProUGUI> ().enabled = false;
-			GameObject.Find ("RespuestaText-T").GetComponent<TextMeshProUGUI> ().enabled = false;
-
-			GameObject.Find ("RespuestaText-" + respuesta).GetComponent<TextMeshProUGUI> ().enabled = true;
-
-			GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
-			AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
-			respuestaOk.Play ();
-		} 
+		//Imagen
+		GameObject.Find ("RespuestaText-" + respuesta).GetComponent<TextMeshProUGUI> ().enabled = true;
+		//Panel
+		GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
+		//Audio
+		AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
+		respuestaOk.Play ();
 
 		sceneText.SetActive (true);
-		coroutineStarted = false;//para freezar ejecucion	
+		coroutineStarted = true;//para freezar ejecucion	
 	}
 
-	void respuesta(bool respuesta){
+	void rtaErrorPalabra(){
+		
 		DesactivarEscucha ();
+
+		ErrorPanelTexto.enabled = true;
 		GameObject.Find ("RespuestaText-Error-Panel-Texto").GetComponent<Image> ().enabled = true;
-		GameObject.Find ("RespuestaText-Error-Panel-Imagen").GetComponent<Image> ().enabled = true;
-
-		GameObject.Find ("Imagen-A").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-L").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-C").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-D").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-R").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-T").GetComponent<Image> ().enabled = false;
-		GameObject.Find ("Imagen-V").GetComponent<Image> ().enabled = false;
-
-		GameObject.Find ("RespuestaText-A").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-L").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-C").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-D").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-R").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-V").GetComponent<TextMeshProUGUI> ().enabled = false;
-		GameObject.Find ("RespuestaText-T").GetComponent<TextMeshProUGUI> ().enabled = false;
 
 		AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
 		respuestaError.Play ();
+
 		sceneText.SetActive (true);
-		coroutineStarted = false;
+		coroutineStarted = true;
+	}
+
+	void rtaOkImagen(string respuesta){
+
+		DesactivarEscucha ();
+
+		GameObject.Find ("Image-" + respuesta).GetComponent<Image> ().enabled = true;
+		GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.green;
+
+		AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
+		respuestaOk.Play ();
+
+		sceneText.SetActive (true);
+		coroutineStarted = true;
+	}
+
+	void rtaErrorImagen(){
+
+		DesactivarEscucha ();
+
+		ErrorPanelImagen.enabled = true;
+		GameObject.Find ("RespuestaText-Error-Panel-Imagen").GetComponent<Image> ().enabled = true;
+		GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
+
+		AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
+		respuestaError.Play ();
+
+		sceneText.SetActive (true);
+		coroutineStarted = true;
 	}
 
 	public void OnError(string error) {

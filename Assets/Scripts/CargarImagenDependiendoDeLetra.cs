@@ -9,8 +9,8 @@ public class CargarImagenDependiendoDeLetra : MonoBehaviour {
 	public static CargarImagenDependiendoDeLetra objetoEleccion = new CargarImagenDependiendoDeLetra();
 	public string letra;
 
-	public void LetraA () {
-		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "árbol";
+	public void LetraF () {
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "fantasma";
 	}
 
 	public void LetraL () {
@@ -21,8 +21,8 @@ public class CargarImagenDependiendoDeLetra : MonoBehaviour {
 		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "castillo";
 	}
 
-	public void LetraD () {
-		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "durazno";
+	public void LetraP () {
+		CargarImagenDependiendoDeLetra.objetoEleccion.letra = "pegaso";
 	}
 
 	public void LetraT () {
