@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class ControlarCuento1Escena8 : MonoBehaviour {
+public class ControlarCuento1Escena9Bis : MonoBehaviour {
 
 	public Button startRecordingButton;
 
@@ -22,21 +22,18 @@ public class ControlarCuento1Escena8 : MonoBehaviour {
 	private string[] palabrasSpeech = null;
 	int cantPalabrasSpeech = 0;
 
+	//variables para efectoParallax
+
 	//variables de sonidos
-	public AudioClip relincho;
-	public AudioClip aleteo;
+
 	private AudioSource ambienteBosque;
 
-
-	public GameObject player; //objeto para controlar animacion de personaje
 	public GameObject bosque; //objeto para controlar escena
-
-	public GameObject pegaso; //objeto para controlar escena
 
 	int i=0;
 	int n=0;
 
-	public Animator circuloNegro;
+
 	public Animator microfono;
 	//public Animator troncoEfecto;
 
@@ -54,6 +51,7 @@ public class ControlarCuento1Escena8 : MonoBehaviour {
 	bool textoCompleto = false;
 
 
+
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
 		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
@@ -67,17 +65,19 @@ public class ControlarCuento1Escena8 : MonoBehaviour {
 
 
 		//obtengo cantidad de palabras de escena actual
-		textoEscena = sceneText.text = "con temor abre los ojos";
+		textoEscena = sceneText.text = "esta historia continuará";
 		palabrasEscena = textoEscena.Split(' ');
 
 		//para q se reproduzca mas rapido, es sonido ya esta asignado
 		ambienteBosque = GetComponent<AudioSource> ();						
-		ambienteBosque.clip = relincho;
+
 			
 
 		//iniciar objetos
-		player.SetActive(true);
+
 		bosque.SetActive(true);
+
+
 
 
 		ActivarEscucha ();
@@ -106,55 +106,17 @@ public class ControlarCuento1Escena8 : MonoBehaviour {
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{	
-					case "abre":							
-						
-						PintarPalabra (palabrasSpeech [i].ToString ());
 
-									
-						break;
 
-					case "ojos":							
+					case "continuará":							
 						textoCompleto = true;
 						DesactivarEscucha ();
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						player.gameObject.GetComponent<Animator> ().enabled =true;
-						player.gameObject.GetComponent<Animator>().Play("PlayerIdleInv");
 
-						coroutineStarted1 = "al parecer la sombra es un pegaso";//para freezar contenedor				
-						break;
-
-					case "sombra":							
-
-						PintarPalabra (palabrasSpeech [i].ToString ());
-
-						break;
-
-					case "pegaso":							
-						textoCompleto = true;
-						DesactivarEscucha ();
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						pegaso.gameObject.GetComponent<Animator> ().enabled = true;
-						pegaso.gameObject.GetComponent<Animator> ().Play ("PegasoEspera");
-						ambienteBosque.Play ();
-						coroutineStarted1 = "el cual parte rápidamente";//para freezar contenedor		
-
-						break;
-
-					case "parte":		
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						ambienteBosque.clip = aleteo;
-									
-
-						break;
-
-					case "rápidamente":							
-						textoCompleto = true;
-						DesactivarEscucha ();
-						pegaso.gameObject.GetComponent<Animator>().Play("PegasoVuelo");
-						ambienteBosque.Play ();
 						coroutineStarted = false;//para freezar ejecucion
 						PintarPalabra (palabrasSpeech [i].ToString ());				
 						break;
+
+					
 
 						default:	
 						PintarPalabra (palabrasSpeech [i].ToString ());
@@ -171,60 +133,19 @@ public class ControlarCuento1Escena8 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "luego":
-				if(Pintar ("luego", 0))
-				{
-					
-				}
-				break;
+
 			
-			case "relámpagos":
-				if(Pintar ("relámpagos", 1))
-				{
-					textoCompleto = true;		
-					DesactivarEscucha ();
-					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor		
-				}
-				break;
-
-			case "sombra":
-				if(Pintar ("sombra", 0))
-				{
-					
-
-					ambienteBosque.Play ();	
-
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
-
-				}
-				break;
-			case "surge":					
-				if(Pintar ("surge", 1))
+			case "bosque":
+				if(Pintar ("continuará", 0))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
 
-
-
+					coroutineStarted = false;//para freezar ejecucion		
 				}
 				break;
-			case "cae":
-				if(Pintar ("cae", 0))
-				{
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
 
-
-				}
-				break;
-			case "desmayada":
-				if(Pintar ("desmayada", 1))
-				{
-					textoCompleto = true;
-					DesactivarEscucha ();
-					coroutineStarted = false;//para freezar ejecucion
-
-				}
-				break;
+			
 
 				default:					
 					break;
@@ -284,7 +205,9 @@ public void CambiarTexto(string textoNuevo)
 	resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
 	
 	textoCompleto = false;
-	ActivarEscucha();			
+	ActivarEscucha();
+
+
 }
 
 	bool Pintar(string palabraClave, int nroPalabraClave)
@@ -312,12 +235,15 @@ public void ReiniciarValoresEscena() {
 
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
+
+
 	}
 }
 
 	// Update is called once per frame
 	void Update()
-	{		
+	{
+
 
 	if (!coroutineStarted)
 		StartCoroutine (EsperarSegundos (3));
@@ -329,22 +255,19 @@ public void ReiniciarValoresEscena() {
 	}  
 
 
+
+
 	IEnumerator EsperarSegundos(int seconds)
 	{
 		coroutineStarted = true;
 		yield return new WaitForSeconds(seconds);
 
-		StartCoroutine (SpriteShapeOut());
-		StopCoroutine ("SpriteShapeOut");
 
-	SceneManager.LoadScene("Cuento1Escena9");
+
+	SceneManager.LoadScene("NewMenu");
 	}
 
-	IEnumerator SpriteShapeOut()
-	{		
-		circuloNegro.SetTrigger ("end");
-		yield return new WaitForSeconds(1f);
-	}
+
 
 IEnumerator RetrasarContenedor(int seconds, string frase)
 {		

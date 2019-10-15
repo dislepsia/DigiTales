@@ -425,7 +425,7 @@ public void ReiniciarValoresEscena() {
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
 
-	SceneManager.LoadScene("Cuento1Escena7Bis");
+	SceneManager.LoadScene("Cuento1Escena9Bis");
 	}
 
 	IEnumerator SpriteShapeOut()

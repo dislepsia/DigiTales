@@ -278,7 +278,7 @@ public void ReiniciarValoresEscena() {
 
 
 
-	SceneManager.LoadScene("NewMenu");
+	SceneManager.LoadScene("Cuento1Escena8");
 	}
 
 
