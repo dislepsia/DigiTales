@@ -11,6 +11,10 @@ public class EfectoTronco : MonoBehaviour {
 	public GameObject pegaso; //objeto para controlar animacion de personaje
 	public GameObject humo; //objeto para controlar animacion de personaje
 
+	public AudioClip suspenso;
+	public AudioClip chirrido;
+	private AudioSource ambienteBosque;
+
 	//public AudioClip puerta;
 	//private AudioSource ambienteBosque;
 
@@ -63,12 +67,18 @@ public class EfectoTronco : MonoBehaviour {
 	void Fantasma()
 	{	
 		fantasma.SetActive (true);
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = suspenso;
+		ambienteBosque.Play ();
+
 	}
 
 	void Humo()
 	{	
 		pegaso.SetActive (false);
+		humo.SetActive (true);
 		humo.gameObject.GetComponent<Animator>().Play("Humo");
+
 
 	}
 
@@ -81,9 +91,18 @@ public class EfectoTronco : MonoBehaviour {
 
 	void EntraCasa()
 	{	
+		
 		player.SetActive (false);
 		//ambienteBosque.Play ();
 
+	}
+
+	void PuertaCasa()
+	{	
+
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = chirrido;
+		ambienteBosque.Play ();
 	}
 
 

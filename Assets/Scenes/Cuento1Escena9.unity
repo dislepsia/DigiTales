@@ -759,8 +759,8 @@ RectTransform:
   - {fileID: 2123824417}
   - {fileID: 1704764295}
   - {fileID: 1749724840}
-  - {fileID: 1312636459}
   - {fileID: 1586635844}
+  - {fileID: 1312636459}
   - {fileID: 892753568}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -797,11 +797,11 @@ MonoBehaviour:
   resultTextSpeech: {fileID: 646634856}
   resultErrores: {fileID: 1463085897}
   parallaxSpeed: 0.06
-  suspenso: {fileID: 8300000, guid: 7887f70336fafde44bc576e7237ddd20, type: 3}
+  relincho: {fileID: 8300000, guid: 1374d17fd97fc8f41b0edc145049a43c, type: 3}
   bosqueInv: {fileID: 948603222}
   player: {fileID: 1762727097}
   bosque: {fileID: 990243658}
-  pegaso: {fileID: 0}
+  pegaso: {fileID: 1586635843}
   circuloNegro: {fileID: 1497941334}
   microfono: {fileID: 1720698364}
   contenedor: {fileID: 2123824415}
@@ -2151,6 +2151,7 @@ GameObject:
   - component: {fileID: 892753570}
   - component: {fileID: 892753571}
   - component: {fileID: 892753569}
+  - component: {fileID: 892753572}
   m_Layer: 5
   m_Name: Humo
   m_TagString: Untagged
@@ -2254,6 +2255,88 @@ MonoBehaviour:
   fantasma: {fileID: 1303956652}
   pegaso: {fileID: 0}
   humo: {fileID: 0}
+  suspenso: {fileID: 8300000, guid: 7887f70336fafde44bc576e7237ddd20, type: 3}
+  chirrido: {fileID: 0}
+--- !u!82 &892753572
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892753567}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &907920274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,14 +3194,14 @@ RectTransform:
   m_GameObject: {fileID: 1312636458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 70, y: 70, z: 70}
+  m_LocalScale: {x: 70, y: 64, z: 70}
   m_Children: []
   m_Father: {fileID: 339369634}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1257, y: 0}
+  m_AnchoredPosition: {x: 1257, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1312636460
@@ -4158,7 +4241,7 @@ RectTransform:
   m_LocalScale: {x: 299.99997, y: 299.99997, z: 300}
   m_Children: []
   m_Father: {fileID: 339369634}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4243,6 +4326,8 @@ MonoBehaviour:
   fantasma: {fileID: 0}
   pegaso: {fileID: 1586635843}
   humo: {fileID: 892753567}
+  suspenso: {fileID: 0}
+  chirrido: {fileID: 0}
 --- !u!1 &1669038654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,6 +4534,8 @@ MonoBehaviour:
   fantasma: {fileID: 0}
   pegaso: {fileID: 0}
   humo: {fileID: 0}
+  suspenso: {fileID: 0}
+  chirrido: {fileID: 0}
 --- !u!1 &1715549879
 GameObject:
   m_ObjectHideFlags: 0
@@ -4701,6 +4788,8 @@ MonoBehaviour:
   fantasma: {fileID: 0}
   pegaso: {fileID: 0}
   humo: {fileID: 0}
+  suspenso: {fileID: 0}
+  chirrido: {fileID: 0}
 --- !u!95 &1749724842
 Animator:
   serializedVersion: 3
@@ -4824,6 +4913,7 @@ GameObject:
   - component: {fileID: 1762727098}
   - component: {fileID: 1762727100}
   - component: {fileID: 1762727099}
+  - component: {fileID: 1762727101}
   m_Layer: 0
   m_Name: Personaje
   m_TagString: Untagged
@@ -4862,6 +4952,8 @@ MonoBehaviour:
   fantasma: {fileID: 0}
   pegaso: {fileID: 0}
   humo: {fileID: 0}
+  suspenso: {fileID: 0}
+  chirrido: {fileID: 8300000, guid: bc3dc66bc299c584d93e273d7905b61d, type: 3}
 --- !u!95 &1762727100
 Animator:
   serializedVersion: 3
@@ -4879,6 +4971,86 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!82 &1762727101
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1762727097}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1778949589
 GameObject:
   m_ObjectHideFlags: 0

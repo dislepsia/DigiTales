@@ -27,7 +27,9 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 	public float parallaxSpeed = 0.06f;
 
 	//variables de sonidos
-	public AudioClip suspenso;
+
+	public AudioClip relincho;
+
 	private AudioSource ambienteBosque;
 	public GameObject bosqueInv; //objeto para controlar escena
 
@@ -50,6 +52,8 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
 	bool coroutineStarted2 = true;
 
+	bool coroutineStarted3 = true;
+
 	string modoRelato = string.Empty; 
 	string modoVibracion = string.Empty; 
 
@@ -58,6 +62,8 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 	bool textoCompleto = false;
 
 	public GameObject casa;
+
+	string fraseEscena = string.Empty;
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
@@ -72,13 +78,16 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 
 
 		//obtengo cantidad de palabras de escena actual
-		textoEscena = sceneText.text = "una casa al parecer abandonada aparece";
+		fraseEscena = textoEscena = sceneText.text = "una casa abandonada aparece";
 		palabrasEscena = textoEscena.Split(' ');
 
 		//para q se reproduzca mas rapido, es sonido ya esta asignado
 		ambienteBosque = GetComponent<AudioSource> ();						
-		ambienteBosque.clip = suspenso;
+		ambienteBosque.clip = relincho;
 			
+
+
+
 
 		//iniciar objetos
 		player.SetActive(true);
@@ -118,6 +127,8 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 						PintarPalabra (palabrasSpeech [i].ToString ());
 						casa.SetActive(true);
 						coroutineStarted2 = false;	
+
+						coroutineStarted3 = false;
 							
 						break;
 
@@ -126,17 +137,19 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
-						coroutineStarted1 = "sin dudarlo ingresa sigilosamente";//para freezar contenedor				
+						fraseEscena = coroutineStarted1 = "sin dudarlo ingresa sigilosamente";//para freezar contenedor				
 						break;
 
 					case "dudarlo":							
 
 						PintarPalabra (palabrasSpeech [i].ToString ());
+
+						player.gameObject.GetComponent<Animator> ().Play ("PlayerWalk2");
 						coroutineStarted2 = false;	
 
 							
 
-						player.gameObject.GetComponent<Animator> ().Play ("PlayerWalk2");
+
 
 
 						break;
@@ -153,7 +166,7 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 
 					case "parecer":		
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						pegaso.gameObject.GetComponent<Animator> ().Play ("PegasoVuelve");
+
 
 
 							
@@ -163,6 +176,9 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 					case "sola":							
 						textoCompleto = true;
 						DesactivarEscucha ();
+						pegaso.SetActive(true);
+						pegaso.gameObject.GetComponent<Animator> ().Play ("PegasoVuelo2");
+						ambienteBosque.Play ();
 
 						coroutineStarted = false;//para freezar ejecucion
 						PintarPalabra (palabrasSpeech [i].ToString ());				
@@ -327,7 +343,16 @@ public void ReiniciarValoresEscena() {
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
 
+			if(fraseEscena == "una casa abandonada aparece")
+			{
+			casa.SetActive(false);
+			
+			}
+			else
+			{
 
+				player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
+			}
 	}
 }
 
@@ -347,7 +372,7 @@ public void ReiniciarValoresEscena() {
 	}
 
 	if (!coroutineStarted)
-		StartCoroutine (EsperarSegundos (3));
+		StartCoroutine (EsperarSegundos (5));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));	
@@ -357,16 +382,25 @@ public void ReiniciarValoresEscena() {
 
 		//resultErrores.text = casa.GetComponent<RectTransform> ().position.x.ToString ().Trim() ;
 
-		if (casa.GetComponent<RectTransform> ().position.x.ToString() == "5.044")
+		if (!coroutineStarted3)
 		{
-			player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
-			efectoParallax = 0;
+			StartCoroutine (RetrasarParallax (2));
+
 		}
 
 
 
 
 	}  
+
+	IEnumerator RetrasarParallax(int seconds)
+	{
+		coroutineStarted3 = true;
+		yield return new WaitForSeconds(seconds);
+
+		player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
+		efectoParallax = 0;
+	}
 
 	IEnumerator EfectoRelampago()
 	{
