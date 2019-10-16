@@ -49,6 +49,8 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
 	bool coroutineStarted2 = true;
 
+	bool coroutineStarted4 = true;
+
 	string modoRelato = string.Empty; 
 	string modoVibracion = string.Empty; 
 
@@ -122,18 +124,14 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "un desesperado grito se oye";//para freezar contenedor				
+						coroutineStarted1 = "un grito desesperado se oye";//para freezar contenedor				
 						break;
-						case "grito":	
-							//vibrar = false;
+					case "grito":	
+							
 						PintarPalabra (palabrasSpeech [i].ToString ());
-							ambienteBosque.Play ();								
+						coroutineStarted4 = false;								
 						break;	
-					case "se":	
-						//vibrar = false;
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						Vibrar ();
-							break;		
+					
 					case "oye":
 						textoCompleto = true;
 						DesactivarEscucha ();
@@ -171,38 +169,46 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
+			case "detrás":
+				if(n == 0)
+					Pintar (palabrasSpeech [cantPalabrasSpeech - 1].ToString ().Trim ());				
+				break;
 			case "ella":
-				if(Pintar ("ella", 0))
+				if(n == 1)
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
-					coroutineStarted1 = "un desesperado grito se oye";//para freezar contenedor	
+					Pintar (palabrasSpeech [cantPalabrasSpeech - 1].ToString ().Trim ());
+					coroutineStarted1 = "un grito desesperado se oye";//para freezar contenedor	
 				}
 				break;
 			case "grito":	
-				if(Pintar ("grito", 0))
-					ambienteBosque.Play ();		
-
-				break;	
-			case "se":	
-				if(Pintar ("se", 1))
-					Vibrar ();		
-
-				break;	
+				if(n == 0)
+				{
+					Pintar (palabrasSpeech [cantPalabrasSpeech - 1].ToString ().Trim ());
+					coroutineStarted4 = false;
+				}
+				break;				
 			case "oye":
-				if(Pintar ("oye", 2))
+				if(n == 1)
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
+					Pintar (palabrasSpeech [cantPalabrasSpeech - 1].ToString ().Trim ());
 					ambienteBosque.clip = viento;
 					coroutineStarted1 = "entonces comenzó a correr";//para freezar contenedor	
 				}	
 				break;
+			case "comenzó":
+				if(n == 0)
+					Pintar (palabrasSpeech [cantPalabrasSpeech - 1].ToString ().Trim ());				
+				break;
 			case "correr":					
-				if(Pintar ("correr", 0))
+				if(n == 1)
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
+					Pintar (palabrasSpeech [cantPalabrasSpeech - 1].ToString ().Trim ());
 					player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 					efectoParallax = 1;	
 					ambienteBosque.Play ();		
@@ -308,9 +314,10 @@ public void CambiarTexto(string textoNuevo)
 	ActivarEscucha();
 }
 
-	bool Pintar(string palabraClave, int nroPalabraClave)
+	void Pintar(string palabraClave)
 	{
-		if (n == nroPalabraClave) {	
+	
+		
 			n++;
 			while (!string.Equals (palabrasEscena [i].ToString (), palabraClave)) {
 				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [i].ToString () + " "; //coloreo
@@ -318,9 +325,7 @@ public void CambiarTexto(string textoNuevo)
 			}
 			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [i].ToString () + " "; //coloreo
 			i++;
-			return true;
-		} else
-			return false;
+		
 	}  
 
 public void ReiniciarValoresEscena() {	
@@ -352,8 +357,10 @@ public void ReiniciarValoresEscena() {
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
 
-		/*if (!vibrar)
-			VibrarCelular ();*/
+
+
+	if (!coroutineStarted4)
+		StartCoroutine (VibrarCelular ());
 	}  
 
 
@@ -368,12 +375,7 @@ public void ReiniciarValoresEscena() {
 		SceneManager.LoadScene("Cuento1Escena5");
 	}
 
-	/*IEnumerator VibrarCelular()
-	{
-		vibrar = true;
-		Handheld.Vibrate ();
-		yield return new WaitForSeconds(0.01f);
-	}*/
+
 
 	IEnumerator SpriteShapeOut()
 	{		
@@ -401,7 +403,13 @@ public void DesactivarEscucha() {
 	microfono.gameObject.SetActive(false);
 }
 
-public void Vibrar(){
-	Handheld.Vibrate ();
+
+
+IEnumerator VibrarCelular(){
+	coroutineStarted4 = true;
+	ambienteBosque.Play ();
+	yield return new WaitForSeconds(1f);
+	Handheld.Vibrate ();		
+
 }
 }
