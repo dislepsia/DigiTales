@@ -135,7 +135,7 @@ public class ControlarCuento1Escena9Bis : MonoBehaviour {
 			{
 
 			
-			case "bosque":
+			case "continuará":
 				if(Pintar ("continuará", 0))
 				{
 					textoCompleto = true;

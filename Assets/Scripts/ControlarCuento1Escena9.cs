@@ -199,56 +199,57 @@ public class ControlarCuento1Escena9 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "luego":
-				if(Pintar ("luego", 0))
+			case "casa":
+				if(Pintar ("casa", 0))
 				{
+					casa.SetActive(true);
 					coroutineStarted2 = false;	
+
+					coroutineStarted3 = false;
 				}
 				break;
 			
-			case "relámpagos":
-				if(Pintar ("relámpagos", 1))
+			case "aparece":
+				if(Pintar ("aparece", 1))
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
-					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor		
+					fraseEscena = coroutineStarted1 = "sin dudarlo ingresa sigilosamente";//para freezar contenedor			
 				}
 				break;
 
-			case "sombra":
-				if(Pintar ("sombra", 0))
+			case "dudarlo":
+				if(Pintar ("dudarlo", 0))
 				{
+					player.gameObject.GetComponent<Animator> ().Play ("PlayerWalk2");
 					coroutineStarted2 = false;	
-
-					ambienteBosque.Play ();	
-
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
-					efectoParallax = 0;	
 				}
 				break;
-			case "surge":					
-				if(Pintar ("surge", 1))
+			case "sigilosamente":					
+				if(Pintar ("sigilosamente", 1))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
-
+					coroutineStarted1 = "pero al parecer no se encuentra sola";//para freezar contenedor
 
 
 				}
 				break;
-			case "cae":
-				if(Pintar ("cae", 0))
+			case "parecer":
+				if(Pintar ("parecer", 0))
 				{
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
-
-				
+					
 				}
 				break;
-			case "desmayada":
-				if(Pintar ("desmayada", 1))
+			case "sola":
+				if(Pintar ("sola", 1))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
+					pegaso.SetActive(true);
+					pegaso.gameObject.GetComponent<Animator> ().Play ("PegasoVuelo2");
+					ambienteBosque.Play ();
+
 					coroutineStarted = false;//para freezar ejecucion
 
 				}

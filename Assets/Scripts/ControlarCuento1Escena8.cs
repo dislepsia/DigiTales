@@ -171,56 +171,57 @@ public class ControlarCuento1Escena8 : MonoBehaviour {
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
-			case "luego":
-				if(Pintar ("luego", 0))
+			case "abre":
+				if(Pintar ("abre", 0))
 				{
 					
 				}
 				break;
 			
-			case "relámpagos":
-				if(Pintar ("relámpagos", 1))
+			case "ojos":
+				if(Pintar ("ojos", 1))
 				{
 					textoCompleto = true;		
 					DesactivarEscucha ();
-					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor		
+					player.gameObject.GetComponent<Animator> ().enabled =true;
+					player.gameObject.GetComponent<Animator>().Play("PlayerIdleInv");
+
+					coroutineStarted1 = "al parecer la sombra es un pegaso";//para freezar contenedor		
 				}
 				break;
 
 			case "sombra":
 				if(Pintar ("sombra", 0))
 				{
-					
-
-					ambienteBosque.Play ();	
-
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
 
 				}
 				break;
-			case "surge":					
-				if(Pintar ("surge", 1))
+			case "pegaso":					
+				if(Pintar ("pegaso", 1))
+				{
+					textoCompleto = true;
+					DesactivarEscucha ();
+					pegaso.gameObject.GetComponent<Animator> ().enabled = true;
+					pegaso.gameObject.GetComponent<Animator> ().Play ("PegasoEspera");
+					ambienteBosque.Play ();
+					coroutineStarted1 = "el cual parte rápidamente";//para freezar contenedor	
+				}
+				break;
+			case "parte":
+				if(Pintar ("parte", 0))
+				{
+					ambienteBosque.clip = aleteo;
+				}
+				break;
+			case "rápidamente":
+				if(Pintar ("rápidamente", 1))
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
 
+					pegaso.gameObject.GetComponent<Animator>().Play("PegasoVuelo");
+					ambienteBosque.Play ();
 
-
-				}
-				break;
-			case "cae":
-				if(Pintar ("cae", 0))
-				{
-					player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
-
-
-				}
-				break;
-			case "desmayada":
-				if(Pintar ("desmayada", 1))
-				{
-					textoCompleto = true;
-					DesactivarEscucha ();
 					coroutineStarted = false;//para freezar ejecucion
 
 				}

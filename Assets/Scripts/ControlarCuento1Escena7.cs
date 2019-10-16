@@ -222,8 +222,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 				{
 					player.gameObject.GetComponent<Animator> ().Play ("PlayerDie");
 
-					fantasma.gameObject.GetComponent<Animator> ().enabled =true;
-					fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
+
 				}
 				break;
 			case "desmayada":
@@ -231,6 +230,8 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
+					fantasma.gameObject.GetComponent<Animator> ().enabled =true;
+					fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
 					coroutineStarted = false;//para freezar ejecucion
 
 				}
