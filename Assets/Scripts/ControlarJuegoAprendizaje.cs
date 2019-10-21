@@ -36,53 +36,91 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 		switch (reconocimiento) {
 
+		case "castillo":
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo"))
+				rtaOkImagen ("C");
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+				rtaErrorPalabra ();
+			} else {
+				rtaErrorImagen ();
+			}
+			break;
+
 		case "fantasma":
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma"))
 				rtaOkImagen ("F");
-			else
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+				rtaErrorPalabra ();
+			} else {
 				rtaErrorImagen ();
+			}
 			break;
 
 		case "lechuza":
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza"))
 				rtaOkPalabra ("L");
-			else
-				rtaErrorPalabra ();
-			break;
-
-		case "castillo":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) 
-				rtaOkImagen ("C");
-			else
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
 				rtaErrorImagen ();
+			} else {
+				rtaErrorPalabra ();
+			}
 			break;
 
 		case "pegaso":
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso"))
 				rtaOkPalabra ("P");
-			else
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
+				rtaErrorImagen ();
+			} else {
 				rtaErrorPalabra ();
+			}
 			break;
 
 		case "tormenta":
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta"))
 				rtaOkImagen ("T");
-			else
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+				rtaErrorPalabra ();
+			} else {
 				rtaErrorImagen ();
+			}
 			break;
 
 		case "rama":
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama"))
 				rtaOkPalabra ("R");
-			else
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
+				rtaErrorImagen ();
+			} else {
 				rtaErrorPalabra ();
+			}
 			break;
 
 		case "vestido":
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido"))
 				rtaOkPalabra ("V");
-			else
+			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
+				rtaErrorImagen ();
+			} else {
 				rtaErrorPalabra ();
+			}
 			break;
 		
 		default:
@@ -100,8 +138,13 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		   CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
 			rtaErrorImagen ();
 		}
-		else
-			rtaErrorPalabra ();
+
+		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+			CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
+			CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+			CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+				rtaErrorPalabra ();
+		}
 	}
 
 	void rtaOkPalabra(string respuesta){
