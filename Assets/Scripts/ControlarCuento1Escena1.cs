@@ -40,7 +40,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 	bool coroutineStarted = true;//para freezar ejecucion
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
 
-	string modoRelato = string.Empty; 
+
 	string modoVibracion = string.Empty; 
 
 	int cambiarTexto = 0;
@@ -49,7 +49,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
-		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
+
 		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
 		//if (SpeechRecognizer.ExistsOnDevice()) {
@@ -59,7 +59,10 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 			listener.onErrorDuringRecording.AddListener(OnError);//NECESARIO, CUANDO ESTA ACTIVO POR MAS DE 5S TIRA ERROR PARA RESETEARSE LA ESCUCHA
 			//listener.onErrorOnStartRecording.AddListener(OnError);//NO NECESARIO, NO ME INTERESA ERROR
 			listener.onFinalResults.AddListener(OnFinalResult);
+		if(PlayerPrefs.GetString ("ModoReconocimiento") == "0")
 			listener.onPartialResults.AddListener(OnPartialResult);
+		else
+			listener.onPartialResults.AddListener(OnPartialResultPalabraClave);
 			//listener.onEndOfSpeech.AddListener(OnEndOfSpeech);//NO NECESARIO, SE LLAMA ANTES DE ONFINALRESULT
 			//startRecordingButton.enabled = false;
 			//SpeechRecognizer.RequestAccess();//NO NECESARIO PARA ANDROID(YA DECLARADO EN MANIFEST)
@@ -92,8 +95,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		cantPalabrasSpeech = palabrasSpeech.Length;
 		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
 
-		if (modoRelato == "0")
-		{
+
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
 			for (i = n; i < cantPalabrasSpeech; i++)
 			{
@@ -141,8 +143,12 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 					}			
 			}
 		}
-		else
-		{
+
+	public void OnPartialResultPalabraClave(string result) {
+
+		//obtengo cantidad de palabras de reconocimiento parcial de voz
+		palabrasSpeech = result.ToLower().Split(' ');
+		cantPalabrasSpeech = palabrasSpeech.Length;
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////				
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
@@ -188,7 +194,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 				default:					
 					break;
 			}
-		}
+
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra

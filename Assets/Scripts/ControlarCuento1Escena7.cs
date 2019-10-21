@@ -49,7 +49,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
 	bool coroutineStarted2 = true;
 
-	string modoRelato = string.Empty; 
+
 	string modoVibracion = string.Empty; 
 
 	int cambiarTexto = 0;
@@ -60,14 +60,17 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 
     void Start() { 
 		Screen.orientation = ScreenOrientation.Landscape;
-		modoRelato = PlayerPrefs.GetString ("ModoReconocimiento");
+
 		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
 
 
 		SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();		
 		listener.onErrorDuringRecording.AddListener(OnError);			
 		listener.onFinalResults.AddListener(OnFinalResult);
-		listener.onPartialResults.AddListener(OnPartialResult);
+		if(PlayerPrefs.GetString ("ModoReconocimiento") == "0")
+			listener.onPartialResults.AddListener(OnPartialResult);
+		else
+			listener.onPartialResults.AddListener(OnPartialResultPalabraClave);
 
 
 		//obtengo cantidad de palabras de escena actual
@@ -102,8 +105,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 		cantPalabrasSpeech = palabrasSpeech.Length;
 		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 
-		if (modoRelato == "0")
-		{
+
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
 			for (i = n; i < cantPalabrasSpeech; i++)
 			{
@@ -174,8 +176,11 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 				}			
 			}
 		}
-		else
-		{
+	public void OnPartialResultPalabraClave(string result) {
+
+		//obtengo cantidad de palabras de reconocimiento parcial de voz
+		palabrasSpeech = result.ToLower().Split(' ');
+		cantPalabrasSpeech = palabrasSpeech.Length;
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
 			//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
@@ -240,7 +245,7 @@ public class ControlarCuento1Escena7 : MonoBehaviour {
 				default:					
 					break;
 			}		
-		}
+
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra
