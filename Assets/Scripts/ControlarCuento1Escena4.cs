@@ -110,14 +110,13 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
-		cantPalabrasSpeech = palabrasSpeech.Length;
+
 		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
-			for (i = n; i < cantPalabrasSpeech; i++)
-			{
-				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) && n == i)
+			
+				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) )
 				{
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
@@ -161,9 +160,9 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 					//resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
 					//n++; //para no tener en cuenta palabra coloreada en el bucle
 
-					break;
+					
 				}			
-			}
+			
 		}
 	public void OnPartialResultPalabraClave(string result) {
 
@@ -300,7 +299,7 @@ public void OnStartRecordingPressed() {
 public void PintarPalabra(string palabra)
 {
 	resultTextSpeech.text = resultTextSpeech.text + palabra + " "; //coloreo
-	n++; //para no tener en cuenta palabra coloreada en el bucle
+	i++;
 }
 
 public void CambiarTexto(string textoNuevo)
