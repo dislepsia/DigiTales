@@ -1188,6 +1188,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bosque: {fileID: 990243658}
+  player: {fileID: 0}
+  lluvia: {fileID: 0}
+  fantasma: {fileID: 0}
+  pegaso: {fileID: 0}
+  humo: {fileID: 0}
+  suspenso: {fileID: 0}
+  chirrido: {fileID: 0}
 --- !u!1 &990243658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,7 +1747,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b3d4f32b9e5ded74eba05a4027e08d33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a48d2781758bab4fbcc15ca45572997, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

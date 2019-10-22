@@ -25,4 +25,15 @@ public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 			GameObject.Find ("DropdownReconocimiento").GetComponent<TMP_Dropdown> ().value = 1;
 		}
 	}
+
+	void Update(){
+		if (PlayerPrefs.GetString ("ModoReconocimiento").Equals ("0")) {
+			GameObject.Find ("Icono-TipoRelato-TiempoReal").GetComponent<Image> ().enabled = true;
+			GameObject.Find ("Icono-TipoRelato-PalabrasClave").GetComponent<Image> ().enabled = false;
+
+		} else {
+			GameObject.Find ("Icono-TipoRelato-TiempoReal").GetComponent<Image> ().enabled = false;
+			GameObject.Find ("Icono-TipoRelato-PalabrasClave").GetComponent<Image> ().enabled = true;
+		}
+	}
 }

@@ -30,120 +30,209 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 	}
 		
 	public void OnPartialResult(string result) {		
-		
+		//OnFinalResult	
+	}
+
+	public void OnFinalResult(string result) {
 		palabrasSpeech = result.ToLower().Split(' ');
 		string reconocimiento = palabrasSpeech [0].ToString ().Trim ();
+		int bandera = 0;
+		int marca = 1;
+
+		GameObject.Find ("Resultado").GetComponent<Text> ().text = reconocimiento;
 
 		switch (reconocimiento) {
 
 		case "castillo":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo")) {
+				bandera = -1;
 				rtaOkImagen ("C");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
-			} else {
+			} 
+
+			bandera++;
+
+			if (bandera.Equals (2)) {
 				rtaErrorImagen ();
 			}
+
+			bandera = 0;
+			marca = 0;
 			break;
 
 		case "fantasma":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")) {
+				bandera = -1;
 				rtaOkImagen ("F");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
-			} else {
+			}
+
+			bandera++;
+
+			if(bandera.Equals(2)) {
 				rtaErrorImagen ();
 			}
+
+			bandera = 0;
+			marca = 0;
 			break;
 
 		case "lechuza":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza")) {
+				bandera = -1;
 				rtaOkPalabra ("L");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
 				rtaErrorImagen ();
-			} else {
+			} 
+
+			bandera++;
+
+			if(bandera.Equals(2)) {
 				rtaErrorPalabra ();
 			}
+
+			bandera = 0;
+			marca = 0;
 			break;
 
 		case "pegaso":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")) {
+				bandera = -1;
 				rtaOkPalabra ("P");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
 				rtaErrorImagen ();
-			} else {
+			} 
+
+			bandera++;
+
+			if(bandera.Equals(2)) {
 				rtaErrorPalabra ();
 			}
+
+			bandera = 0;
+			marca = 0;
 			break;
 
 		case "tormenta":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
+				bandera = -1;
 				rtaOkImagen ("T");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
-			} else {
+			} 
+
+			bandera++;
+
+			if(bandera.Equals(2)) {
 				rtaErrorImagen ();
 			}
+
+			bandera = 0;
+			marca = 0;
 			break;
 
 		case "rama":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")) {
+				bandera = -1;
 				rtaOkPalabra ("R");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
 				rtaErrorImagen ();
-			} else {
+			} 
+
+			bandera++;
+
+			if(bandera.Equals(2)) {
 				rtaErrorPalabra ();
 			}
+
+			bandera = 0;
+			marca = 0;
 			break;
 
 		case "vestido":
-			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido"))
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+				bandera = -1;
 				rtaOkPalabra ("V");
-			else if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma")||
+			}
+
+			bandera++;
+
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma") ||
 				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
 				rtaErrorImagen ();
-			} else {
+			}
+
+			bandera++;
+
+			if(bandera.Equals(2)) {
 				rtaErrorPalabra ();
 			}
-			break;
-		
-		default:
-			//ErrorNoDisponible ();
+
+			bandera = 0;
+			marca = 0;
 			break;
 		}
+
+		ErrorNoDisponible (marca);
 	}
 
-	public void OnFinalResult(string result) {
-	}
+	void ErrorNoDisponible(int marca){
 
-	void ErrorNoDisponible(){
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma") ||
-		   CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
-		   CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
-			rtaErrorImagen ();
-		}
+		if(marca == 1){
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("fantasma") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("castillo") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("tormenta")) {
+				rtaErrorImagen ();
+			}
 
-		if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-			CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso")||
-			CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama")||
-			CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
+				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
+			}
 		}
 	}
 
@@ -160,7 +249,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		respuestaOk.Play ();
 
 		sceneText.SetActive (true);
-		coroutineStarted = true;//para freezar ejecucion	
+		coroutineStarted = false;//para freezar ejecucion	
 	}
 
 	void rtaErrorPalabra(){
@@ -174,7 +263,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		respuestaError.Play ();
 
 		sceneText.SetActive (true);
-		coroutineStarted = true;
+		coroutineStarted = false;
 	}
 
 	void rtaOkImagen(string respuesta){
@@ -188,7 +277,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		respuestaOk.Play ();
 
 		sceneText.SetActive (true);
-		coroutineStarted = true;
+		coroutineStarted = false;
 	}
 
 	void rtaErrorImagen(){
@@ -203,7 +292,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		respuestaError.Play ();
 
 		sceneText.SetActive (true);
-		coroutineStarted = true;
+		coroutineStarted = false;
 	}
 
 	public void OnError(string error) {
