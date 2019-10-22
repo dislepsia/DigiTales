@@ -124,7 +124,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			break;
 		
 		default:
-			ErrorNoDisponible ();
+			//ErrorNoDisponible ();
 			break;
 		}
 	}
