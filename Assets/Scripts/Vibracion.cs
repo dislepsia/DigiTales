@@ -23,9 +23,6 @@ public class Vibracion : MonoBehaviour {
 
 	void Start(){
 
-		PlayerPrefs.SetString ("ModoVibracion", "0");
-		PlayerPrefs.Save ();
-
 		string nombreEscena = SceneManager.GetActiveScene().name;
 
 		if (nombreEscena.Equals ("Opciones")) {

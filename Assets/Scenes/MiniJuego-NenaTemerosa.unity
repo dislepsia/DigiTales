@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 318697055}
   - component: {fileID: 318697054}
   m_Layer: 5
-  m_Name: RespuestaText-D
+  m_Name: RespuestaText-P
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Durazno
+  m_text: Pegaso
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a4f739a620dd6049be9f2d1ccbf3510, type: 2}
   m_sharedMaterial: {fileID: 21612420141632392, guid: 0a4f739a620dd6049be9f2d1ccbf3510,
