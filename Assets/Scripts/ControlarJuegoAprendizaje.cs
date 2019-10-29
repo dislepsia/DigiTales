@@ -259,7 +259,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		ErrorPanelTexto.enabled = true;
 		GameObject.Find ("RespuestaText-Error-Panel-Texto").GetComponent<Image> ().enabled = true;
 
-		AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
+		AudioSource respuestaError = GameObject.Find ("AudioRespuestaIncorrecta").GetComponent<AudioSource> ();
 		respuestaError.Play ();
 
 		sceneText.SetActive (true);
@@ -288,7 +288,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		GameObject.Find ("RespuestaText-Error-Panel-Imagen").GetComponent<Image> ().enabled = true;
 		GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
 
-		AudioSource respuestaError = GameObject.Find ("AudioRespuestaError").GetComponent<AudioSource> ();
+		AudioSource respuestaError = GameObject.Find ("AudioRespuestaIncorrecta").GetComponent<AudioSource> ();
 		respuestaError.Play ();
 
 		sceneText.SetActive (true);

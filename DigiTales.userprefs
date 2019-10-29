@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LetraElegida.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewMenu.cs">
     <Files>
       <File FileName="Assets\Scripts\ControlarJuegoAprendizaje.cs" Line="181" Column="6" />
-      <File FileName="Assets\Scripts\CargarImagenDependiendoDeLetra.cs" Line="13" Column="68" />
-      <File FileName="Assets\Scripts\LetraElegida.cs" Line="34" Column="24" />
+      <File FileName="Assets\Scripts\CargarImagenDependiendoDeLetra.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LetraElegida.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NewMenu.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
