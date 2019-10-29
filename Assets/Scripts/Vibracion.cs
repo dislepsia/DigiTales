@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Vibracion : MonoBehaviour {
 
@@ -21,21 +22,36 @@ public class Vibracion : MonoBehaviour {
 	}
 
 	void Start(){
-		if (PlayerPrefs.GetString ("ModoVibracion").Equals ("0")) {
-			GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 0;
-		} else {
-			GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 1;
+
+		PlayerPrefs.SetString ("ModoVibracion", "0");
+		PlayerPrefs.Save ();
+
+		string nombreEscena = SceneManager.GetActiveScene().name;
+
+		if (nombreEscena.Equals ("Opciones")) {
+
+			if (PlayerPrefs.GetString ("ModoVibracion").Equals ("0")) {
+				GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 0;
+			} else {
+				GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 1;
+			}
 		}
 	}
 		
 	void Update(){
-		if (PlayerPrefs.GetString ("ModoVibracion").Equals ("0")) {
-			GameObject.Find ("Icono-Vibrar-Si").GetComponent<Image> ().enabled = true;
-			GameObject.Find ("Icono-Vibrar-No").GetComponent<Image> ().enabled = false;
+		
+		string nombreEscena = SceneManager.GetActiveScene().name;
 
-		} else {
-			GameObject.Find ("Icono-Vibrar-Si").GetComponent<Image> ().enabled = false;
-			GameObject.Find ("Icono-Vibrar-No").GetComponent<Image> ().enabled = true;
+		if (nombreEscena.Equals ("Opciones")) {
+
+			if (PlayerPrefs.GetString ("ModoVibracion").Equals ("0")) {
+				GameObject.Find ("Icono-Vibrar-Si").GetComponent<Image> ().enabled = true;
+				GameObject.Find ("Icono-Vibrar-No").GetComponent<Image> ().enabled = false;
+
+			} else {
+				GameObject.Find ("Icono-Vibrar-Si").GetComponent<Image> ().enabled = false;
+				GameObject.Find ("Icono-Vibrar-No").GetComponent<Image> ().enabled = true;
+			}
 		}
 	}
 

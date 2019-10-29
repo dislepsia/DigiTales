@@ -38,6 +38,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		string reconocimiento = palabrasSpeech [0].ToString ().Trim ();
 		int bandera = 0;
 		int marca = 1;
+		int palabraReservada = 0;
 
 		GameObject.Find ("Resultado").GetComponent<Text> ().text = reconocimiento;
 
@@ -52,20 +53,22 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			bandera++;
 
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
+				palabraReservada = 1;
 			} 
 
 			bandera++;
 
-			if (bandera.Equals (2)) {
+			if (bandera.Equals (2) && !palabraReservada.Equals(1)) {
 				rtaErrorImagen ();
 			}
 
 			bandera = 0;
 			marca = 0;
+			palabraReservada = 0;
 			break;
 
 		case "fantasma":
@@ -77,20 +80,22 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			bandera++;
 
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
+				palabraReservada = 1;
 			}
 
 			bandera++;
 
-			if(bandera.Equals(2)) {
+			if (bandera.Equals (2) && !palabraReservada.Equals (1)) {
 				rtaErrorImagen ();
 			}
 
 			bandera = 0;
 			marca = 0;
+			palabraReservada = 0;
 			break;
 
 		case "lechuza":
@@ -150,20 +155,22 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			bandera++;
 
 			if (CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("lechuza") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
-				CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("pegaso") ||
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("rama") ||
+			    CargarImagenDependiendoDeLetra.objetoEleccion.letra.Equals ("vestido")) {
 				rtaErrorPalabra ();
+				palabraReservada = 1;
 			} 
 
 			bandera++;
 
-			if(bandera.Equals(2)) {
+			if (bandera.Equals (2) && !palabraReservada.Equals (1)) {
 				rtaErrorImagen ();
 			}
 
 			bandera = 0;
 			marca = 0;
+			palabraReservada = 0;
 			break;
 
 		case "rama":
@@ -256,8 +263,9 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		
 		DesactivarEscucha ();
 
-		ErrorPanelTexto.enabled = true;
-		GameObject.Find ("RespuestaText-Error-Panel-Texto").GetComponent<Image> ().enabled = true;
+		//ErrorPanelTexto.enabled = true;
+		GameObject.Find ("Respuesta-Error-Panel-Texto").GetComponent<Image> ().enabled = true;
+		GameObject.Find ("RespuestaPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
 
 		AudioSource respuestaError = GameObject.Find ("AudioRespuestaIncorrecta").GetComponent<AudioSource> ();
 		respuestaError.Play ();
@@ -284,8 +292,8 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 		DesactivarEscucha ();
 
-		ErrorPanelImagen.enabled = true;
-		GameObject.Find ("RespuestaText-Error-Panel-Imagen").GetComponent<Image> ().enabled = true;
+		//ErrorPanelImagen.enabled = true;
+		GameObject.Find ("Respuesta-Error-Panel-Imagen").GetComponent<Image> ().enabled = true;
 		GameObject.Find ("ImagenPanel").GetComponent<Image> ().color = UnityEngine.Color.red;
 
 		AudioSource respuestaError = GameObject.Find ("AudioRespuestaIncorrecta").GetComponent<AudioSource> ();

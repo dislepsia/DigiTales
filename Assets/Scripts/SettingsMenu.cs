@@ -31,11 +31,10 @@ public class SettingsMenu : MonoBehaviour {
 			GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = false;
 			GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = true;
 		}
-		//Debug.Log ("Valor" +volume);
-
 	}
 
 	public void Update(){
-		audioMixer.SetFloat("volume",PlayerPrefs.GetFloat ("Volume"));
+		Slider volumen = GameObject.Find ("BarraSonido").GetComponent<Slider> ();
+		volumen.value = PlayerPrefs.GetFloat ("Volume");
 	}
 }

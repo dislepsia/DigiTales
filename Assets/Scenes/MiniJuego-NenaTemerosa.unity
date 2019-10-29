@@ -2577,7 +2577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1436254188
 Transform:
   m_ObjectHideFlags: 0
@@ -3183,8 +3183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13baf366a996134aaa0ec31a658ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rtaOk: {fileID: 8300000, guid: bda3f03df46a4f747878292c4f5ed210, type: 3}
-  rtaError: {fileID: 8300000, guid: 5bba12b8393467444a0b51e46c28849b, type: 3}
   startRecordingButton: {fileID: 1909637584}
   sceneText: {fileID: 1940910741}
   resultErrores: {fileID: 1276004061}
