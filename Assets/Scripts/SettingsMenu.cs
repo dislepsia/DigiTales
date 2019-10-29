@@ -10,6 +10,7 @@ public class SettingsMenu : MonoBehaviour {
 
 	public void SetVolume(float volume){
 		audioMixer.SetFloat("volume",volume);
+		PlayerPrefs.SetFloat ("Volume", volume);
 
 		volume = (-1) * volume;
 
@@ -32,5 +33,9 @@ public class SettingsMenu : MonoBehaviour {
 		}
 		//Debug.Log ("Valor" +volume);
 
+	}
+
+	public void Update(){
+		audioMixer.SetFloat("volume",PlayerPrefs.GetFloat ("Volume"));
 	}
 }
