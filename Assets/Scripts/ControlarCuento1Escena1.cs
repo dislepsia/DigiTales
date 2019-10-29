@@ -84,6 +84,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		//OnStartRecordingPressed ();
 		//DesactivarEscucha ();
 		ActivarEscucha ();
+		imagenNegra.Play("FadeIN");
 	}
 
 
@@ -401,8 +402,9 @@ void Pintar(string palabraClave)
 
 	IEnumerator SpriteFadeOut()
 	{		
-		imagenNegra.SetTrigger ("end");
-		yield return new WaitForSeconds(1f);
+	//player.gameObject.GetComponent<Animator>().Play("PlayerRun");
+	imagenNegra.Play("FadeOUT");
+		yield return new WaitForSeconds(0.5f);
 	}
 
 	IEnumerator RetrasarContenedor(int seconds, string frase)

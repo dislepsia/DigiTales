@@ -36,7 +36,7 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 	int palabraspintadas=0;
 	int nroContenedor=0;
 
-	public Animator circuloNegro;
+	public Animator imagenNegra;
 	public Animator microfono;
 	public Animator buhoEfecto;
 
@@ -93,6 +93,7 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 		//}
 
 		ActivarEscucha ();
+		imagenNegra.Play("FadeIN");
 
 	}
 
@@ -394,8 +395,8 @@ public void ReiniciarValoresEscena() {
 
 	IEnumerator SpriteShapeOut()
 	{		
-		circuloNegro.SetTrigger ("end");
-		yield return new WaitForSeconds(1f);
+	imagenNegra.Play("FadeOUT");
+	yield return new WaitForSeconds(0.5f);
 	}
 
 IEnumerator RetrasarContenedor(int seconds, string frase)

@@ -37,7 +37,7 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 	int palabraspintadas=0;
 	int nroContenedor=0;
 
-	public Animator circuloNegro;
+	public Animator imagenNegra;
 	public Animator microfono;
 
 	public GameObject contenedor;
@@ -94,6 +94,7 @@ public class ControlarCuento1Escena2 : MonoBehaviour {
 
 		//OnStartRecordingPressed ();
 		ActivarEscucha ();
+		imagenNegra.Play("FadeIN");
 	}
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
@@ -400,8 +401,8 @@ IEnumerator EfectoRelampago()
 
 	IEnumerator SpriteShapeOut()
 	{		
-		circuloNegro.SetTrigger ("end");
-		yield return new WaitForSeconds(1f);
+	imagenNegra.Play("FadeOUT");
+	yield return new WaitForSeconds(0.5f);
 	}
 
 IEnumerator RetrasarContenedor(int seconds, string frase)
