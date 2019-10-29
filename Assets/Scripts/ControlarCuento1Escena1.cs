@@ -39,6 +39,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 	public Animator microfono;
 
 	public GameObject contenedor;
+	public GameObject contenedorError;
 
 	bool coroutineStarted = true;//para freezar ejecucion
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
@@ -303,6 +304,7 @@ public class ControlarCuento1Escena1 : MonoBehaviour {
 		//startRecordingButton.GetComponentInChildren<Text>().text = "";
 
 		DesactivarEscucha();
+	contenedorError.SetActive (true);
 	}
 
 	public void OnStartRecordingPressed() {
@@ -370,6 +372,7 @@ void Pintar(string palabraClave)
 
 			startRecordingButton.gameObject.SetActive(true);
 			microfono.gameObject.SetActive(false);
+		contenedorError.SetActive (true);
 		}
 	}
 
@@ -417,12 +420,15 @@ void Pintar(string palabraClave)
 		startRecordingButton.gameObject.SetActive(false);
 		microfono.gameObject.SetActive(true);
 		SpeechRecognizer.StartRecording(true);
+
+	contenedorError.SetActive (false);
 	}
 
 	public void DesactivarEscucha() {	
 		SpeechRecognizer.StopIfRecording ();
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
+
 	}
 
 	public void Vibrar(){

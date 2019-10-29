@@ -41,6 +41,7 @@ public class ControlarCuento1Escena3 : MonoBehaviour {
 	public Animator buhoEfecto;
 
 	public GameObject contenedor;
+	public GameObject contenedorError;
 
 	bool coroutineStarted = true;//para freezar ejecucion
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
@@ -300,6 +301,7 @@ public void OnError(string error) {
 	//startRecordingButton.GetComponentInChildren<Text>().text = "";
 
 	DesactivarEscucha();
+	contenedorError.SetActive (true);
 }
 
 public void OnStartRecordingPressed() {
@@ -363,6 +365,7 @@ public void ReiniciarValoresEscena() {
 		microfono.gameObject.SetActive(false);
 
 		buhoEfecto.gameObject.SetActive(false);
+		contenedorError.SetActive (true);
 	}
 }
 
@@ -407,6 +410,7 @@ public void ActivarEscucha() {
 	startRecordingButton.gameObject.SetActive(false);
 	microfono.gameObject.SetActive(true);
 	SpeechRecognizer.StartRecording(true);
+	contenedorError.SetActive (false);
 }
 
 public void DesactivarEscucha() {	
