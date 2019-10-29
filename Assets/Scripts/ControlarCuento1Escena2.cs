@@ -364,10 +364,10 @@ public void ReiniciarValoresEscena() {
 	void Update()
 	{
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (1));
+		StartCoroutine (EsperarSegundos (0.5f));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
-		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));
+		StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));
 
 	if (!coroutineStarted2)
 		StartCoroutine (EfectoRelampago ());
@@ -388,7 +388,7 @@ IEnumerator EfectoRelampago()
 }
 
 
-	IEnumerator EsperarSegundos(int seconds)
+IEnumerator EsperarSegundos(float seconds)
 	{
 		coroutineStarted = true;
 		yield return new WaitForSeconds(seconds);
@@ -405,7 +405,7 @@ IEnumerator EfectoRelampago()
 	yield return new WaitForSeconds(0.5f);
 	}
 
-IEnumerator RetrasarContenedor(int seconds, string frase)
+IEnumerator RetrasarContenedor(float seconds, string frase)
 {		
 	coroutineStarted1 = string.Empty;
 	yield return new WaitForSeconds(seconds);
