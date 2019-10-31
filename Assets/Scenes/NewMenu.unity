@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 60179375}
   - component: {fileID: 60179374}
   - component: {fileID: 60179373}
+  - component: {fileID: 60179376}
   m_Layer: 5
   m_Name: SalirButton
   m_TagString: Untagged
@@ -193,9 +194,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -156, y: 136.2}
+  m_AnchoredPosition: {x: -308.8999, y: 0}
   m_SizeDelta: {x: 308.9, y: 266.9}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &60179373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +294,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 60179371}
+--- !u!114 &60179376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 60179371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.0023543835
+      value: 0.90092224
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.50019073
+      value: 0.9996643
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0012736
+      value: 0.89845383
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &294981791
 Prefab:
   m_ObjectHideFlags: 0
@@ -673,7 +710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.1, y: 93.1}
+  m_AnchoredPosition: {x: 0.54997253, y: 88.08136}
   m_SizeDelta: {x: 91.04, y: 37.1}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &383427077
@@ -2642,6 +2679,7 @@ GameObject:
   - component: {fileID: 1891579235}
   - component: {fileID: 1891579234}
   - component: {fileID: 1891579233}
+  - component: {fileID: 1891579236}
   m_Layer: 5
   m_Name: AboutButton
   m_TagString: Untagged
@@ -2766,6 +2804,42 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1891579231}
+--- !u!114 &1891579236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1891579231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed49e68d3cb3d442ab19b1f6aa67602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleSpeed: 0.4
+  aCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: -0.0023543835
+      value: 0.90092224
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.50019073
+      value: 0.9996643
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0012736
+      value: 0.89845383
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &2010326340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,9 +2870,9 @@ RectTransform:
   m_Father: {fileID: 60179372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.099976, y: -20.018654}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -153.90002, y: 246.98135}
   m_SizeDelta: {x: 158.9, y: 158.9}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2010326342
