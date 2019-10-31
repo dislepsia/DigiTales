@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class Inicio : MonoBehaviour {
 
-	public Text resultErrores; //visualizar error
+	public Text resultErrores;
+	public GameObject contenedor;
 
 	void Start()
 	{	
@@ -22,13 +23,21 @@ public class Inicio : MonoBehaviour {
 
 	IEnumerator SpriteShapeOut()
 	{	
+		SystemLanguage lenguaje = Application.systemLanguage;
+
 		yield return new WaitForSeconds(3f);
 
 		//COMPRUEBA COMPATIBILIDAD DE DISPOSITIVO
 		if (SpeechRecognizer.ExistsOnDevice()) {
-			SceneManager.LoadScene("NewMenu");
+			if (lenguaje.ToString() == "Spanish") 
+				SceneManager.LoadScene("NewMenu");
+			else {			
+				resultErrores.text = "DEBE HABILITAR EL IDIOMA ESPAÑOL EN SU DISPOSITIVO";
+				contenedor.SetActive (true);
+			}
 		} else {			
 			resultErrores.text = "SU DISPOSITIVO NO ES COMPATIBLE CON LA APLICACION";
+			contenedor.SetActive (true);
 		}
 
 	}
