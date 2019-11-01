@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.UIElements;
 
 public class ControlarBotones : MonoBehaviour
 {
@@ -24,7 +25,16 @@ public class ControlarBotones : MonoBehaviour
 
     public void RelatarCuento()
     {
-        SceneManager.LoadScene("Cuento2Escena1");        
+		switch (CargarPantallaDeCuento.objetoEleccion.cuento) {
+
+		case "nena":
+			SceneManager.LoadScene("Cuento1Escena1");
+			break;
+
+		case "chanchitos":
+			SceneManager.LoadScene("Cuento2Escena1");
+			break;
+		}
     }
 
 	public void MiniJuegoNenaTemerosaLetras()

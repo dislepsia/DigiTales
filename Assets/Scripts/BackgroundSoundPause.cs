@@ -15,7 +15,8 @@ public class BackgroundSoundPause : MonoBehaviour {
 			nombreEscena.Equals ("Cuento1Escena3") ||
 			nombreEscena.Equals ("Cuento1Escena4") ||
 			nombreEscena.Equals ("Cuento1Escena5") ||
-			nombreEscena.Equals ("Cuento1Escena6")) {
+			nombreEscena.Equals ("Cuento1Escena6") ||
+			nombreEscena.Equals ("Cuento2Escena1")) {
 
 			BackgroundSound.Instance.gameObject.GetComponent<AudioSource> ().Pause ();
 			marca = 1;
