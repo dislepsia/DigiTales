@@ -15,6 +15,10 @@ public class EfectoTronco : MonoBehaviour {
 	public AudioClip chirrido;
 	private AudioSource ambienteBosque;
 
+
+	public GameObject chanchoGranjero;
+	public GameObject chanchoCarpintero;
+	public GameObject chanchaArquitecta;
 	//public AudioClip puerta;
 	//private AudioSource ambienteBosque;
 
@@ -103,6 +107,21 @@ public class EfectoTronco : MonoBehaviour {
 		ambienteBosque = GetComponent<AudioSource> ();						
 		ambienteBosque.clip = chirrido;
 		ambienteBosque.Play ();
+	}
+
+	void ChanchoGranjeroAparece()
+	{	
+		chanchoGranjero.SetActive (true);
+	}
+
+	void ChanchoCarpinteroAparece()
+	{	
+		chanchoCarpintero.SetActive (true);
+	}
+
+	void ChanchaArquitectaAparece()
+	{	
+		chanchaArquitecta.SetActive (true);
 	}
 
 
