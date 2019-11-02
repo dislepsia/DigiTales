@@ -71,3 +71,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cuento2Escena1.unity
     guid: 121575b5f5401164e83840b7c8cd8c1f
+  - enabled: 1
+    path: Assets/Scenes/Cuento2Escena2.unity
+    guid: 631436032396e6a459d1a4fbe8810a1c
