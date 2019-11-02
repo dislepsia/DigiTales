@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class ControlarCuento2Escena2 : MonoBehaviour {
+public class ControlarCuento2Escena3 : MonoBehaviour {
 
 	public Button startRecordingButton;
 
@@ -26,7 +26,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 	//variables de sonidos
 	private AudioSource ambienteBosque;
 
-	public GameObject chanchoGranjero; //objeto para controlar animacion de personaje
+	public GameObject chanchoCarpintero; //objeto para controlar animacion de personaje
 
 	public GameObject bosque; //objeto para controlar escena
 
@@ -80,7 +80,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 			//SpeechRecognizer.RequestAccess();//NO NECESARIO PARA ANDROID(YA DECLARADO EN MANIFEST)
 
 			//obtengo cantidad de palabras de escena actual
-			textoEscena = sceneText.text = "el humilde chanchito granjero";
+			textoEscena = sceneText.text = "el ingenioso chanchito carpintero";
 			palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
@@ -128,14 +128,14 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					{
 								
 								PintarPalabra (palabrasSpeech [i].ToString ());
-						chanchoGranjero.SetActive (true);
-						chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
-						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoLLega");
+						chanchoCarpintero.SetActive (true);
+						chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
+						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoLLega1");
 
 								
 					}
 								break;
-				case "granjero":
+				case "carpintero":
 					if(palabraspintadas==i)
 					{
 								
@@ -143,19 +143,19 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
-						coroutineStarted1 = "levantó su frágil casa";//para freezar contenedor
+						coroutineStarted1 = "armó su pintoresca casa";//para freezar contenedor
 
 
 					}
 								break;
 
-				case "levantó":
+				case "armó":
 					if(palabraspintadas==i)
 					{
 
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
-						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoConstruye");
+						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoConstruye1");
 
 
 
@@ -171,7 +171,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
 
-						coroutineStarted1 = "usando paja y muchas ramas";//para freezar contenedor
+						coroutineStarted1 = "usando madera y muchos clavos";//para freezar contenedor
 
 
 
@@ -180,13 +180,13 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 
 
 
-				case "paja":
+				case "madera":
 					if(palabraspintadas==i)
 					{
 						
 
 					
-						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo");
+						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo1");
 
 
 
@@ -196,7 +196,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					break;
 
 
-				case "ramas":
+				case "clavos":
 						if(palabraspintadas==i)
 						{
 								textoCompleto = true;
@@ -249,12 +249,12 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 				if(n == 0  && nroContenedor==0)
 					{
 					Pintar (palabrasSpeech [i].ToString ().Trim ());	
-					chanchoGranjero.SetActive (true);
-					chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
-					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoLLega");
+					chanchoCarpintero.SetActive (true);
+					chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
+					chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoLLega1");
 					}
 					break;
-				case "granjero":					
+				case "carpintero":					
 				if(n == 1  && nroContenedor==0)
 					{
 						
@@ -263,14 +263,14 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
 
 					nroContenedor=1;
-					coroutineStarted1 = "levantó su frágil casa";//para freezar contenedor
+					coroutineStarted1 = "armó su pintoresca casa";//para freezar contenedor
 					}
 					break;
-			case "levantó":
+			case "armó":
 				if(n == 0   && nroContenedor==1)
 					{
 					Pintar (palabrasSpeech [i].ToString ().Trim ());	
-					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoConstruye");
+					chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoConstruye1");
 											
 						
 					}
@@ -283,22 +283,22 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
 
 					nroContenedor=2;
-					coroutineStarted1 = "usando paja y muchas ramas";//para freezar contenedor
+					coroutineStarted1 = "usando madera y muchos clavos";//para freezar contenedor
 						
 					}
 					break;
-				case "paja":					
+			case "madera":					
 				if(n == 0  && nroContenedor==2)
 					{
 
-					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo");
+					chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo1");
 				
 
 						Pintar (palabrasSpeech [i].ToString ().Trim ());
 						
 					}
 					break;
-			case "ramas":					
+			case "clavos":					
 				if(n == 1   && nroContenedor==2)
 				{
 					textoCompleto = true;
@@ -476,7 +476,7 @@ void Pintar(string palabraClave)
 		StartCoroutine (SpriteFadeOut());
 		StopCoroutine ("SpriteFadeOut");
 
-		SceneManager.LoadScene("Cuento2Escena3");
+		SceneManager.LoadScene("Cuento1Escena2");
 	}
 
 	IEnumerator SpriteFadeOut()

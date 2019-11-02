@@ -23,6 +23,10 @@ public class EfectoTronco : MonoBehaviour {
 	public GameObject casaPaja;
 	public GameObject casaPaja1;
 	public GameObject casaPaja2;
+
+	public GameObject casaMadera;
+	public GameObject casaMadera1;
+	public GameObject casaMadera2;
 	//public AudioClip puerta;
 	//private AudioSource ambienteBosque;
 
@@ -141,6 +145,22 @@ public class EfectoTronco : MonoBehaviour {
 	void CasaPajaAparece2()
 	{	
 		casaPaja2.SetActive (true);
+	}
+
+
+	void CasaMaderaAparece()
+	{	
+		casaMadera.SetActive (true);
+	}
+
+	void CasaMaderaAparece1()
+	{	
+		casaMadera1.SetActive (true);
+	}
+
+	void CasaMaderaAparece2()
+	{	
+		casaMadera2.SetActive (true);
 	}
 
 

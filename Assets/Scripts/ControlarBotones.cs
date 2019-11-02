@@ -32,7 +32,7 @@ public class ControlarBotones : MonoBehaviour
 			break;
 
 		case "chanchitos":
-			SceneManager.LoadScene("Cuento2Escena2");
+			SceneManager.LoadScene("Cuento2Escena1");
 			break;
 		}
     }
