@@ -17,6 +17,7 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour {
 	//variables para trabajar sceneText
 	private string textoEscena = string.Empty; 
 	private string[] palabrasEscena = null; 
+	int cantPalabrasEscena = 0;
 
 	//variables para trabajar result(reconocimiento parcial de voz)
 	private string[] palabrasSpeech = null;
@@ -32,12 +33,15 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour {
 
 	int i=0;
 	int n=0;
-
+	int k=0;
+	int palabraspintadas=0;
+	int nroContenedor=0;
 
 	public Animator microfono;
 	//public Animator troncoEfecto;
 
 	public GameObject contenedor;
+	public GameObject contenedorError;
 
 	bool coroutineStarted = true;//para freezar ejecucion
 	string coroutineStarted1 = string.Empty;//para freezar contenedor
@@ -70,6 +74,7 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour {
 		//obtengo cantidad de palabras de escena actual
 		textoEscena = sceneText.text = "unos minutos después";
 		palabrasEscena = textoEscena.Split(' ');
+		cantPalabrasEscena = palabrasEscena.Length;
 
 		//para q se reproduzca mas rapido, es sonido ya esta asignado
 		ambienteBosque = GetComponent<AudioSource> ();						
@@ -97,40 +102,52 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour {
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
 
-		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
+		cantPalabrasSpeech = palabrasSpeech.Length;
+		resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
-			
+		for (i = n; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
+		{
 				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) )
 				{
 					//activar animacion segun palabra
 					switch (palabrasSpeech [i].ToString ().Trim())
 					{	
-					case "después":							
+					case "después":
+					if(palabraspintadas==i)
+					{
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-					
-						coroutineStarted1 = "en otro sitio del bosque";//para freezar contenedor	
+						ambienteBosque.Play ();
+						coroutineStarted = false;//para freezar ejecucion
+						//coroutineStarted1 = "en otro sitio del bosque";//para freezar contenedor	
+					}		
 						break;
 
-					case "bosque":							
+					/*case "bosque":	
+						if(palabraspintadas==i)
+						{
 						textoCompleto = true;
 						DesactivarEscucha ();
 						ambienteBosque.Play ();
 						coroutineStarted = false;//para freezar ejecucion
-						PintarPalabra (palabrasSpeech [i].ToString ());				
-						break;
+						PintarPalabra (palabrasSpeech [i].ToString ());		
+						}		
+						break;*/
 
 					
 
 						default:	
+							if(palabraspintadas==i)
+							{
 						PintarPalabra (palabrasSpeech [i].ToString ());
+							}		
 							break;
 					}		
 
-					
+			}	
 				}			
 			
 		}
@@ -140,34 +157,44 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour {
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
-			//activar animacion segun palabra
+		resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
+		for (i = k; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
+		{	
+		//activar animacion segun palabra
 			switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
 			{
+			case "unos":
+				if(n == 0 && nroContenedor==0)
+					Pintar (palabrasSpeech [i].ToString ().Trim());				
+				break;
 			case "después":
-				if(Pintar ("después", 0))
+				if(n == 1 && nroContenedor==0)
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
-
-					coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor	
+					ambienteBosque.Play ();
+					Pintar (palabrasSpeech [i].ToString ().Trim());
+					coroutineStarted = false;//para freezar ejecucion
+					//coroutineStarted1 = "una tenebrosa sombra surge";//para freezar contenedor	
 				}
 				break;
 			
-			case "bosque":
-				if(Pintar ("bosque", 0))
+			/*case "bosque":
+				if(n == 0 && nroContenedor==0)
 				{
 					textoCompleto = true;
 					DesactivarEscucha ();
 					ambienteBosque.Play ();
 					coroutineStarted = false;//para freezar ejecucion		
 				}
-				break;
+				break;*/
 
 			
 
 				default:					
 					break;
-			}		
+			}
+		}
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
@@ -195,6 +222,7 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour {
 
 public void OnError(string error) {
 	DesactivarEscucha();
+		contenedorError.SetActive (true);
 }
 
 public void OnStartRecordingPressed() {
@@ -208,7 +236,8 @@ public void OnStartRecordingPressed() {
 public void PintarPalabra(string palabra)
 {
 	resultTextSpeech.text = resultTextSpeech.text + palabra + " "; //coloreo
-		i++;
+		n++;
+		palabraspintadas++;
 }
 
 public void CambiarTexto(string textoNuevo)
@@ -216,8 +245,11 @@ public void CambiarTexto(string textoNuevo)
 	contenedor.SetActive (false);	
 	i = 0;
 	n = 0;
+		k=0;
+		palabraspintadas = 0;
 	textoEscena = sceneText.text = textoNuevo;
 	palabrasEscena = textoEscena.Split (' ');
+		cantPalabrasEscena = palabrasEscena.Length;
 
 	contenedor.SetActive (true);//llama a otro contenedor de texto
 	resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
@@ -228,20 +260,18 @@ public void CambiarTexto(string textoNuevo)
 
 }
 
-	bool Pintar(string palabraClave, int nroPalabraClave)
-	{
-		if (n == nroPalabraClave) {	
-			n++;
-			while (!string.Equals (palabrasEscena [i].ToString (), palabraClave)) {
-				resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [i].ToString () + " "; //coloreo
-				i++;					
-			}
-			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [i].ToString () + " "; //coloreo
-			i++;
-			return true;
-		} else
-			return false;
-	}  
+	void Pintar(string palabraClave)
+	{		
+		n++;//controla orden de coloreo de palabra clave
+		while (!string.Equals (palabrasEscena [k].ToString (), palabraClave)) {
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [k].ToString () + " "; //coloreo
+			//i++;	
+			k++;
+		}
+		resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [k].ToString () + " "; //coloreo
+		//i++;	
+		k++;		
+	} 
 
 public void ReiniciarValoresEscena() {	
 	if(!textoCompleto)
@@ -250,10 +280,11 @@ public void ReiniciarValoresEscena() {
 
 		i=0;
 		n=0;
-
+			k=0;
+			palabraspintadas = 0;
 		startRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(false);
-
+			contenedorError.SetActive (true);
 
 	}
 }
@@ -264,10 +295,10 @@ public void ReiniciarValoresEscena() {
 
 
 	if (!coroutineStarted)
-		StartCoroutine (EsperarSegundos (3));
+			StartCoroutine (EsperarSegundos (0.5f));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
-		StartCoroutine (RetrasarContenedor (1, coroutineStarted1));	
+			StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));	
 		
 
 	}  
@@ -275,7 +306,7 @@ public void ReiniciarValoresEscena() {
 
 
 
-	IEnumerator EsperarSegundos(int seconds)
+	IEnumerator EsperarSegundos(float seconds)
 	{
 		coroutineStarted = true;
 		yield return new WaitForSeconds(seconds);
@@ -287,7 +318,7 @@ public void ReiniciarValoresEscena() {
 
 
 
-IEnumerator RetrasarContenedor(int seconds, string frase)
+	IEnumerator RetrasarContenedor(float seconds, string frase)
 {		
 	coroutineStarted1 = string.Empty;
 	yield return new WaitForSeconds(seconds);
@@ -299,6 +330,7 @@ public void ActivarEscucha() {
 	startRecordingButton.gameObject.SetActive(false);
 	microfono.gameObject.SetActive(true);
 	SpeechRecognizer.StartRecording(true);
+		contenedorError.SetActive (false);
 }
 
 public void DesactivarEscucha() {	
