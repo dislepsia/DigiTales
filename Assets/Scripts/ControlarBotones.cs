@@ -40,7 +40,23 @@ public class ControlarBotones : MonoBehaviour
 	public void MiniJuegoNenaTemerosaLetras()
 	{
 		Screen.orientation = ScreenOrientation.Portrait;
-		SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");        
+
+		switch (CargarPantallaDeCuento.objetoEleccion.cuento) {
+
+		case "nena":
+			//GameObject.Find ("PanelNena").GetComponent<Image> ().visible = true;
+			//GameObject.Find ("PanelChanchito").GetComponent<Image> ().visible = false;
+			Debug.Log ("Entro a la nena");
+			SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");    
+			break;
+
+		case "chanchitos":
+			//GameObject.Find ("PanelNena").GetComponent<Image> ().visible = false;
+			//GameObject.Find ("PanelChanchito").GetComponent<Image> ().visible = true;
+			Debug.Log ("Chanchos");
+			SceneManager.LoadScene("MiniJuego-Chanchitos");    
+			break;
+		}  
 	}
 
 	public void MiniJuegoNenaTemerosaModo()
@@ -75,6 +91,12 @@ public class ControlarBotones : MonoBehaviour
 	}
 
 	public void Salir()
+	{
+		Screen.orientation = ScreenOrientation.Portrait;
+		SceneManager.LoadScene("Salir");
+	}
+
+	public static void Salir_Atras_Boton_Cel()
 	{
 		Screen.orientation = ScreenOrientation.Portrait;
 		SceneManager.LoadScene("Salir");

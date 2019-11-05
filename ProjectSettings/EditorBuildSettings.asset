@@ -75,5 +75,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Cuento2Escena2.unity
     guid: 631436032396e6a459d1a4fbe8810a1c
   - enabled: 1
+    path: Assets/Scenes/MiniJuego-Chanchitos.unity
+    guid: c379d8c1195de7f469391c23e51f618a
+  - enabled: 1
     path: Assets/Scenes/Cuento2Escena3.unity
     guid: b8f3585dc72f06949b31b584b121067a

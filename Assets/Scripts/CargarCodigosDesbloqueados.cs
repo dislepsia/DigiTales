@@ -48,20 +48,30 @@ public class CargarCodigosDesbloqueados : MonoBehaviour {
 			//Debug.Log("Se cargo la escena: NewListadoCuentos");
 		
 			codigosHabilitados = GameObject.Find ("LabelCodigos").GetComponent<Text> ().text.Split(' ');
+			int codigoErroneo = 0;
+
 
 			foreach(string codigo in codigosHabilitados){
 
 				if (codigo.Equals("6281")){
 					GameObject.Find ("ChanchitosButton").GetComponent<Button> ().interactable = true;
+					codigoErroneo = 1;
 				}
 
 				if (codigo.Equals ("7735")) {
 					GameObject.Find ("CaperucitaButton").GetComponent<Button> ().interactable = true;
+					codigoErroneo = 1;
 				} 
 
 				if (codigo.Equals ("4467")) {
 					GameObject.Find ("CenicientaButton").GetComponent<Button> ().interactable = true;
+					codigoErroneo = 1;
 				} 
+
+				/*if (codigoErroneo.Equals (1)) {
+					contenedorError.SetActive (true);
+					Debug.Log ("Entro, codigo erroneo->Mensaje");
+				}*/
 			}
 		}
 
