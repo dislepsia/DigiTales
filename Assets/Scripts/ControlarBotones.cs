@@ -44,16 +44,10 @@ public class ControlarBotones : MonoBehaviour
 		switch (CargarPantallaDeCuento.objetoEleccion.cuento) {
 
 		case "nena":
-			//GameObject.Find ("PanelNena").GetComponent<Image> ().visible = true;
-			//GameObject.Find ("PanelChanchito").GetComponent<Image> ().visible = false;
-			Debug.Log ("Entro a la nena");
 			SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");    
 			break;
 
 		case "chanchitos":
-			//GameObject.Find ("PanelNena").GetComponent<Image> ().visible = false;
-			//GameObject.Find ("PanelChanchito").GetComponent<Image> ().visible = true;
-			Debug.Log ("Chanchos");
 			SceneManager.LoadScene("MiniJuego-Chanchitos");    
 			break;
 		}  
