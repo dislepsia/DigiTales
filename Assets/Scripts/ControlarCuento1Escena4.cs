@@ -119,7 +119,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 		palabrasSpeech = result.ToLower().Split(' ');
 
 		cantPalabrasSpeech = palabrasSpeech.Length;
-		resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
+		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 
 
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
@@ -195,7 +195,7 @@ public class ControlarCuento1Escena4 : MonoBehaviour {
 		cantPalabrasSpeech = palabrasSpeech.Length;
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////
 			//activar animacion segun palabra
-		resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
+		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
 		for (i = k; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
 		{	
 			switch (palabrasSpeech [i].ToString ().Trim())

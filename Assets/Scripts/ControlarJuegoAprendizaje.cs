@@ -16,7 +16,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 	private string[] palabrasSpeech = null;
 
-	public Animator microfono;
+	public GameObject microfono;
 	public Animator imagenNegra;
 
 	bool coroutineStarted = true;
@@ -40,7 +40,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		int marca = 1;
 		int palabraReservada = 0;
 
-		GameObject.Find ("Resultado").GetComponent<Text> ().text = reconocimiento;
+		//GameObject.Find ("Resultado").GetComponent<Text> ().text = reconocimiento;
 
 		switch (reconocimiento) {
 
@@ -317,7 +317,8 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 	public void ReiniciarValoresEscena() {			
 			startRecordingButton.gameObject.SetActive(true);
-			microfono.gameObject.SetActive(false);	
+			//microfono.gameObject.SetActive(false);	
+		microfono.SetActive(false);
 	}
 			
 	void Update(){
@@ -341,14 +342,16 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 
 	public void ActivarEscucha() {	
 		startRecordingButton.gameObject.SetActive(false);
-		microfono.gameObject.SetActive(true);
+		//microfono.gameObject.SetActive(true);
+		microfono.SetActive(true);
 		SpeechRecognizer.StartRecording(true);
 	}
 
 	public void DesactivarEscucha() {	
 		SpeechRecognizer.StopIfRecording ();
 		startRecordingButton.gameObject.SetActive(true);
-		microfono.gameObject.SetActive(false);
+		//microfono.gameObject.SetActive(false);
+		microfono.SetActive(false);
 	}
 
 	public void Vibrar(){
