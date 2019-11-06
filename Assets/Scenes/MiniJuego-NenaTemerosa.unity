@@ -167,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '...Que vez?'
+  m_text: '...Que ves?'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a4f739a620dd6049be9f2d1ccbf3510, type: 2}
   m_sharedMaterial: {fileID: 21612420141632392, guid: 0a4f739a620dd6049be9f2d1ccbf3510,
@@ -3114,7 +3114,6 @@ GameObject:
   - component: {fileID: 1651781144}
   - component: {fileID: 1651781148}
   - component: {fileID: 1651781149}
-  - component: {fileID: 1651781150}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3224,17 +3223,6 @@ MonoBehaviour:
   microfono: {fileID: 1436254187}
   imagenNegra: {fileID: 1938771508}
 --- !u!114 &1651781149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1651781143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37a6a8fef6b20442bfa0bf681e6c912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1651781150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
