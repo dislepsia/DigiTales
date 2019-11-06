@@ -2201,7 +2201,7 @@ RectTransform:
   m_GameObject: {fileID: 1243717882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87501025, y: 1, z: 1}
   m_Children:
   - {fileID: 1854201449}
   m_Father: {fileID: 1096710861}
@@ -2313,7 +2313,7 @@ RectTransform:
   m_GameObject: {fileID: 1283468642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87501025, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1096710861}
   m_RootOrder: 4
@@ -3031,7 +3031,7 @@ RectTransform:
   m_GameObject: {fileID: 1418730921}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87501025, y: 1, z: 1}
   m_Children:
   - {fileID: 396359034}
   m_Father: {fileID: 1096710861}
@@ -3701,7 +3701,7 @@ Prefab:
     - target: {fileID: 224429802145071514, guid: dc18de6bec49a79408860f55307afa04,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 46.45526
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224429802145071514, guid: dc18de6bec49a79408860f55307afa04,
         type: 2}
@@ -4308,7 +4308,7 @@ RectTransform:
   m_GameObject: {fileID: 2077044610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.765634, y: 1, z: 1}
   m_Children:
   - {fileID: 1419232633}
   m_Father: {fileID: 1096710861}
@@ -4316,7 +4316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 247, y: -17.169312}
+  m_AnchoredPosition: {x: 214, y: -17.169312}
   m_SizeDelta: {x: 20, y: 671.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2077044612
@@ -4358,7 +4358,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2055129536}
   m_Direction: 2
   m_Value: 0.9602571
-  m_Size: 0.6878882
+  m_Size: 0.68788826
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4625,7 +4625,7 @@ RectTransform:
   m_GameObject: {fileID: 2143747311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.87501025, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1096710861}
   m_RootOrder: 1
