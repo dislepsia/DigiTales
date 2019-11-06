@@ -80,6 +80,8 @@
      <Compile Include="Assets\Scripts\ControlarCuento2Escena2.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento2Escena3.cs" />
      <Compile Include="Assets\Scripts\ControlarCuento2Escena4.cs" />
+     <Compile Include="Assets\Scripts\ControlarCuento2Escena5.cs" />
+     <Compile Include="Assets\Scripts\ControlarCuento2Escena5Bis.cs" />
      <Compile Include="Assets\Scripts\ControlarJuegoAprendizaje.cs" />
      <Compile Include="Assets\Scripts\ControlarMenues.cs" />
      <Compile Include="Assets\Scripts\CuentoElegido.cs" />

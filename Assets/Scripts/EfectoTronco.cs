@@ -34,6 +34,9 @@ public class EfectoTronco : MonoBehaviour {
 	//public AudioClip puerta;
 	//private AudioSource ambienteBosque;
 
+	public GameObject lobo;
+	public GameObject polvo;
+
 	// Use this for initialization
 	void Start () {		
 		//ambienteBosque = GetComponent<AudioSource> ();						
@@ -184,7 +187,41 @@ public class EfectoTronco : MonoBehaviour {
 	}
 
 
+	void LoboAparece()
+	{	
+		lobo.SetActive (true);
+		polvo.SetActive (false);
+	}
 
+	void ChanchoGranjeroDesAparece()
+	{	
+		chanchoGranjero.SetActive (false);
+	}
+
+	void ChanchoCarpinteroDesAparece()
+	{	
+		chanchoCarpintero.SetActive (false);
+	}
+
+	void ChanchaArquitectaDesAparece()
+	{	
+		chanchaArquitecta.SetActive (false);
+	}
+
+
+	void CasaPajaDesAparece()
+	{	
+		casaPaja.SetActive (false);
+	}
+
+	void CasaMaderaDesAparece()
+	{	
+		casaMadera.SetActive (false);
+	}
+	void CasaLadrilloDesAparece()
+	{	
+		casaLadrillo.SetActive (false);
+	}
 	// Update is called once per frame
 	void Update () {
 		

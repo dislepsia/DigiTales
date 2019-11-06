@@ -464,10 +464,10 @@ void Pintar(string palabraClave)
 				StartCoroutine (RetrasarContenedor (2f, coroutineStarted1));
 	} 
 			else*/
-				StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));
+				StartCoroutine (RetrasarContenedor (0.8f, coroutineStarted1));
 
 	if (!coroutineStartedChanchos)
-		StartCoroutine (AparecenChanchos (0.5f));
+		StartCoroutine (AparecenChanchos (0.8f));
 	
 	}  
 
