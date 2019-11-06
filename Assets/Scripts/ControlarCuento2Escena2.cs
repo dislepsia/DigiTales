@@ -171,7 +171,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
 
-						coroutineStarted1 = "usando paja y muchas ramas";//para freezar contenedor
+						coroutineStarted1 = "usando maleza y muchas ramas";//para freezar contenedor
 
 
 
@@ -180,7 +180,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 
 
 
-				case "paja":
+				case "maleza":
 					if(palabraspintadas==i)
 					{
 						
@@ -283,11 +283,11 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
 
 					nroContenedor=2;
-					coroutineStarted1 = "usando paja y muchas ramas";//para freezar contenedor
+					coroutineStarted1 = "usando maleza y muchas ramas";//para freezar contenedor
 						
 					}
 					break;
-				case "paja":					
+			case "maleza":					
 				if(n == 0  && nroContenedor==2)
 					{
 
