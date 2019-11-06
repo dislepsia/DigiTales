@@ -18,6 +18,10 @@ public class LinksContacto : MonoBehaviour
         Application.OpenURL("https://www.instagram.com/l30.design/?hl=es-la");
     }
 
+	public void InstagramRemeras()
+	{
+		Application.OpenURL("https://www.instagram.com/dokremeras/?hl=es-la");
+	}
     public void LinkedinAdrian()
     {
         Application.OpenURL("https://www.linkedin.com/in/adrian-lazarte-620371161/");
