@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\MiniJuegoChanchito.cs" />
      <Compile Include="Assets\Scripts\NewMenu.cs" />
      <Compile Include="Assets\Scripts\PantallaActiva.cs" />
+     <Compile Include="Assets\Scripts\PantallaModos.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
      <Compile Include="Assets\Scripts\PuzzleControl.cs" />
      <Compile Include="Assets\Scripts\ResetearPlayerPrefabs.cs" />

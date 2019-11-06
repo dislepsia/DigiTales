@@ -285,7 +285,7 @@ public void ReiniciarValoresEscena() {
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
 
-	SceneManager.LoadScene("NewMenu");
+		SceneManager.LoadScene("MiniJuego-NenaTemerosa-Modo");
 	}
 
 	IEnumerator SpriteShapeOut()
