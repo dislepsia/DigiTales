@@ -1,10 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CambiarImagenPanelCuentoElegido.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento1Escena9.cs">
     <Files>
-      <File FileName="Assets\Scripts\LetraElegida.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LinksContacto.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CambiarImagenPanelCuentoElegido.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena5.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena6.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlarCuento1Escena9.cs" Line="417" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

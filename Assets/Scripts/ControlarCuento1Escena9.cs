@@ -415,7 +415,7 @@ public void ReiniciarValoresEscena() {
 	}
 
 	if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (0.5f));
+			StartCoroutine (EsperarSegundos (4f));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 			StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));	

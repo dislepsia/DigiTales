@@ -322,6 +322,7 @@ public void CambiarTexto(string textoNuevo)
 		palabraspintadas = 0;
 	textoEscena = sceneText.text = textoNuevo;
 	palabrasEscena = textoEscena.Split (' ');
+		cantPalabrasEscena = palabrasEscena.Length;
 
 	contenedor.SetActive (true);//llama a otro contenedor de texto
 	resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
@@ -363,7 +364,7 @@ public void ReiniciarValoresEscena() {
 	{		
 
 	if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (0.5f));
+			StartCoroutine (EsperarSegundos (1.5f));
 
 	if (!string.IsNullOrEmpty(coroutineStarted1))			
 			StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));	

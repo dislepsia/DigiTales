@@ -175,12 +175,14 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 						
 
 						chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
+						chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
+						chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
 						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoBaila");
 
-						chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
+
 						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoBaila1");
 
-						chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
+
 						chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
 
 
@@ -285,12 +287,14 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 					{
 
 					chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
+					chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
+					chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
 					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoBaila");
 
-					chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
+
 					chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoBaila1");
 
-					chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
+
 					chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
 
 						Pintar (palabrasSpeech [i].ToString ().Trim ());
@@ -455,7 +459,7 @@ void Pintar(string palabraClave)
 	void Update()
 	{
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (0.5f));
+			StartCoroutine (EsperarSegundos (0.8f));
 
 		if (!string.IsNullOrEmpty(coroutineStarted1))	
 		/*	if (chanchosPuff)

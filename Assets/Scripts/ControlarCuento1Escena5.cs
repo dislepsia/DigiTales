@@ -153,10 +153,10 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted1 = "bloqueando la huida";//para freezar contenedor		
+						coroutineStarted1 = "bloqueando el camino";//para freezar contenedor		
 							}
 						break;
-					case "huida":	
+				case "camino":	
 								if(palabraspintadas==i)
 								{
 						textoCompleto = true;
@@ -223,14 +223,14 @@ public class ControlarCuento1Escena5 : MonoBehaviour {
 					DesactivarEscucha ();
 					Pintar (palabrasSpeech [i].ToString ().Trim());	
 					nroContenedor = 2;
-					coroutineStarted1 = "bloqueando la huida";//para freezar contenedor	
+					coroutineStarted1 = "bloqueando el camino";//para freezar contenedor	
 				}
 				break;
 			case "bloqueando":
 				if(n == 0 && nroContenedor==2)
 					Pintar (palabrasSpeech [i].ToString ().Trim());				
 				break;
-			case "huida":					
+			case "camino":					
 				if(n == 1 && nroContenedor==2)
 				{
 					textoCompleto = true;
