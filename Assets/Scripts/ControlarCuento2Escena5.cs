@@ -154,13 +154,13 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
-						escenaNro=coroutineStarted1 = "los chanchitos corren aterrados";//para freezar contenedor
+						escenaNro=coroutineStarted1 = "los cerditos corren aterrados";//para freezar contenedor
 
 
 					}
 								break;
 
-				case "chanchitos":
+				case "cerditos":
 					if(palabraspintadas==i)
 					{
 						
@@ -282,10 +282,10 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 
 					nroContenedor=1;
 					//lobo.SetActive (false);
-					escenaNro=coroutineStarted1 = "los chanchitos corren aterrados";//para freezar contenedor
+					escenaNro=coroutineStarted1 = "los cerditos corren aterrados";//para freezar contenedor
 					}
 					break;
-			case "chanchitos":
+			case "cerditos":
 				if(n == 0   && nroContenedor==1)
 					{
 					Pintar (palabrasSpeech [i].ToString ().Trim ());	

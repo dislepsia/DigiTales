@@ -127,7 +127,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 								DesactivarEscucha ();
 								PintarPalabra (palabrasSpeech [i].ToString ());
 						bosque.SetActive (true);
-								coroutineStarted1 = "tres pequeños chanchitos";//para freezar contenedor	
+						coroutineStarted1 = "tres pequeños cerditos rosados";//para freezar contenedor	
 					}
 								break;
 				case "tres":
@@ -152,10 +152,11 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 					}
 								break;
 
-				case "chanchitos":
+				case "rosados":
 					if(palabraspintadas==i)
 					{
-
+						textoCompleto = true;
+						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
 
@@ -257,7 +258,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
 					bosque.SetActive (true);
 					nroContenedor=1;
-					coroutineStarted1 = "tres pequeños chanchitos";//para freezar contenedor
+					coroutineStarted1 = "tres pequeños cerditos rosados";//para freezar contenedor
 					}
 					break;
 				case "tres":
@@ -270,7 +271,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 						
 					}
 					break;
-				case "chanchitos":					
+			case "rosados":					
 				if(n == 1   && nroContenedor==1)
 					{
 					textoCompleto = true;
@@ -459,7 +460,7 @@ void Pintar(string palabraClave)
 	void Update()
 	{
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (0.8f));
+			StartCoroutine (EsperarSegundos (0.5f));
 
 		if (!string.IsNullOrEmpty(coroutineStarted1))	
 		/*	if (chanchosPuff)
@@ -468,7 +469,7 @@ void Pintar(string palabraClave)
 				StartCoroutine (RetrasarContenedor (2f, coroutineStarted1));
 	} 
 			else*/
-				StartCoroutine (RetrasarContenedor (0.8f, coroutineStarted1));
+				StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));
 
 	if (!coroutineStartedChanchos)
 		StartCoroutine (AparecenChanchos (0.8f));

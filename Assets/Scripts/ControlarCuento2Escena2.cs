@@ -80,7 +80,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 			//SpeechRecognizer.RequestAccess();//NO NECESARIO PARA ANDROID(YA DECLARADO EN MANIFEST)
 
 			//obtengo cantidad de palabras de escena actual
-			textoEscena = sceneText.text = "el humilde chanchito granjero";
+			textoEscena = sceneText.text = "el humilde cerdito granjero";
 			palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
@@ -123,7 +123,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 						//activar animacion segun palabra
 						switch (palabrasSpeech [i].ToString ().Trim())
 						{
-						case "chanchito":
+				case "cerdito":
 					if(palabraspintadas==i)
 					{
 								
@@ -245,7 +245,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 			switch (palabrasSpeech [i].ToString ().Trim())
 			{
 				
-				case "chanchito":
+			case "cerdito":
 				if(n == 0  && nroContenedor==0)
 					{
 					Pintar (palabrasSpeech [i].ToString ().Trim ());	
