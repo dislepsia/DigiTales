@@ -227,10 +227,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="TextMeshPro-2017.3-Editor">
- <HintPath>C:/Users/Maty/Desktop/ProyectoDigiTales/0.44/DigiTales/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
+ <HintPath>C:/Users/Maty/Desktop/ProyectoDigiTales/0.46/DigiTales/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Editor.dll</HintPath>
  </Reference>
  <Reference Include="TextMeshPro-2017.3-Runtime">
- <HintPath>C:/Users/Maty/Desktop/ProyectoDigiTales/0.44/DigiTales/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
+ <HintPath>C:/Users/Maty/Desktop/ProyectoDigiTales/0.46/DigiTales/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Maty/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>

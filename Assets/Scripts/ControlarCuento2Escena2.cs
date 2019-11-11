@@ -516,4 +516,10 @@ IEnumerator RetrasarContenedor(float seconds, string frase)
 		Handheld.Vibrate ();
 	}
 
+public void BotonVolver() {	
+
+	DesactivarEscucha();
+	Screen.orientation = ScreenOrientation.Portrait;
+	SceneManager.LoadScene("MiniJuego-NenaTemerosa-Modo");  
+}
 }

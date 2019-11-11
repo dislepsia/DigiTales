@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento1Escena9.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControlarCuento2Escena5Bis.cs">
     <Files>
-      <File FileName="Assets\Scripts\ControlarCuento2Escena1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlarCuento2Escena5.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlarCuento1Escena6.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlarCuento1Escena7.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlarCuento2Escena2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ControlarCuento1Escena9.cs" Line="417" Column="24" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena1.cs" Line="549" Column="2" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena2.cs" Line="524" Column="2" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena3.cs" Line="524" Column="2" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena4.cs" Line="524" Column="2" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena5.cs" Line="609" Column="2" />
+      <File FileName="Assets\Scripts\ControlarCuento2Escena5Bis.cs" Line="327" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

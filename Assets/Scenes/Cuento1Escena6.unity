@@ -2010,6 +2010,11 @@ MonoBehaviour:
   casaMadera: {fileID: 0}
   casaMadera1: {fileID: 0}
   casaMadera2: {fileID: 0}
+  casaLadrillo: {fileID: 0}
+  casaLadrillo1: {fileID: 0}
+  casaLadrillo2: {fileID: 0}
+  lobo: {fileID: 0}
+  polvo: {fileID: 0}
 --- !u!95 &1762727100
 Animator:
   serializedVersion: 3
@@ -2104,8 +2109,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 339369635}
-        m_MethodName: MiniJuegoNenaTemerosaModo
+      - m_Target: {fileID: 339369636}
+        m_MethodName: BotonVolver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1641,6 +1641,14 @@ MonoBehaviour:
   casaPaja: {fileID: 0}
   casaPaja1: {fileID: 0}
   casaPaja2: {fileID: 0}
+  casaMadera: {fileID: 0}
+  casaMadera1: {fileID: 0}
+  casaMadera2: {fileID: 0}
+  casaLadrillo: {fileID: 0}
+  casaLadrillo1: {fileID: 0}
+  casaLadrillo2: {fileID: 0}
+  lobo: {fileID: 0}
+  polvo: {fileID: 0}
 --- !u!95 &1634212626
 Animator:
   serializedVersion: 3
@@ -1849,6 +1857,14 @@ MonoBehaviour:
   casaPaja: {fileID: 2089036347}
   casaPaja1: {fileID: 239669315}
   casaPaja2: {fileID: 1191410037}
+  casaMadera: {fileID: 0}
+  casaMadera1: {fileID: 0}
+  casaMadera2: {fileID: 0}
+  casaLadrillo: {fileID: 0}
+  casaLadrillo1: {fileID: 0}
+  casaLadrillo2: {fileID: 0}
+  lobo: {fileID: 0}
+  polvo: {fileID: 0}
 --- !u!1 &1763880508
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,8 +2217,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 339369635}
-        m_MethodName: MiniJuegoNenaTemerosaModo
+      - m_Target: {fileID: 339369636}
+        m_MethodName: BotonVolver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
