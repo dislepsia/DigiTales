@@ -323,7 +323,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 			
 	void Update(){
 		if (!coroutineStarted)
-			StartCoroutine (EsperarSegundos (2));
+			StartCoroutine (EsperarSegundos (1));
 	}  
 		
 	IEnumerator EsperarSegundos(int seconds){
@@ -357,4 +357,11 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 	public void Vibrar(){
 			Handheld.Vibrate ();
 		}
+	public void BotonVolver() {	
+
+		DesactivarEscucha();
+		Screen.orientation = ScreenOrientation.Portrait;
+		SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");  
+	}
+
 }
