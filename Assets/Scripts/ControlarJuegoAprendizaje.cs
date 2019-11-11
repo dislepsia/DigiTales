@@ -344,7 +344,7 @@ public class ControlarJuegoAprendizaje : MonoBehaviour {
 		startRecordingButton.gameObject.SetActive(false);
 		//microfono.gameObject.SetActive(true);
 		microfono.SetActive(true);
-		SpeechRecognizer.StartRecording(true);
+		SpeechRecognizer.StartRecording(false);
 	}
 
 	public void DesactivarEscucha() {	
