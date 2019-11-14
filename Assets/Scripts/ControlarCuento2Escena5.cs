@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 public class ControlarCuento2Escena5 : MonoBehaviour {
 
 	public Button startRecordingButton;
+	public Button stopRecordingButton;
+
+	bool stopRecording = false;
 
 	public Text sceneText; //texto propio de la escena
 	public Text resultTextSpeech; //texto reconocido por voz
@@ -116,12 +119,16 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnFinalResult(string result) {		
-		ReiniciarValoresEscena();
+		if (!stopRecording)
+			ReiniciarValoresEscena ();
+		else
+			stopRecording = false;
 	}
 
 	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*/
 	public void OnPartialResult(string result) {
-
+		if(!stopRecording)
+		{
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
@@ -247,11 +254,12 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 				/*break;*/
 			}			
 			}			
-			
+		}
 		}
 
 	public void OnPartialResultPalabraClave(string result) {
-		
+			if(!stopRecording)
+			{
 		//obtengo cantidad de palabras de reconocimiento parcial de voz
 		palabrasSpeech = result.ToLower().Split(' ');
 		cantPalabrasSpeech = palabrasSpeech.Length;
@@ -356,7 +364,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 				default:					
 					break;
 			}
-
+			}
 		}
 ////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
 			//activar animacion segun palabra
@@ -416,12 +424,13 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 	}*/
 
 	public void OnError(string error) {
-		//Debug.LogError(error);
-		//resultErrores.text = "Something went wrong... Try again! \n [" + error + "]";
-		//startRecordingButton.GetComponentInChildren<Text>().text = "";
-
+	if(!stopRecording)
+	{
 		DesactivarEscucha();
-	contenedorError.SetActive (true);
+		contenedorError.SetActive (true);
+	}
+	else
+		stopRecording=false;
 	}
 
 	public void OnStartRecordingPressed() {
@@ -501,6 +510,7 @@ void Pintar(string palabraClave)
 		palabraspintadas = 0;
 
 			startRecordingButton.gameObject.SetActive(true);
+		stopRecordingButton.gameObject.SetActive(false);
 			microfono.gameObject.SetActive(false);
 		contenedorError.SetActive (true);
 		}
@@ -584,6 +594,7 @@ IEnumerator RetrasarContenedor(float seconds, string frase)
 
 	public void ActivarEscucha() {	
 		startRecordingButton.gameObject.SetActive(false);
+	stopRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(true);
 		SpeechRecognizer.StartRecording(true);
 
@@ -593,6 +604,7 @@ IEnumerator RetrasarContenedor(float seconds, string frase)
 	public void DesactivarEscucha() {	
 		SpeechRecognizer.StopIfRecording ();
 		startRecordingButton.gameObject.SetActive(true);
+	stopRecordingButton.gameObject.SetActive(false);
 		microfono.gameObject.SetActive(false);
 
 	}
@@ -607,5 +619,25 @@ public void BotonVolver() {
 	Screen.orientation = ScreenOrientation.Portrait;
 	SceneManager.LoadScene("MiniJuego-NenaTemerosa-Modo");  
 }
+public void ReiniciarValoresStopEscucha() {	
 
+	resultTextSpeech.text = string.Empty;
+
+	i=0;
+	n=0;
+	k=0;
+	palabraspintadas = 0;
+
+
+	DesactivarEscucha ();
+
+
+
+}
+
+public void BotonPararEscucha() {	
+	stopRecording = true;	
+	ReiniciarValoresStopEscucha();
+
+}
 }
