@@ -28,6 +28,8 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 
 	//variables de sonidos
 	private AudioSource ambienteBosque;
+	public AudioClip CerditoOink;
+	public AudioClip CerditoFeliz;
 
 	public GameObject chanchoGranjero; //objeto para controlar animacion de personaje
 	public GameObject chanchoCarpintero;
@@ -89,6 +91,9 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
+
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = CerditoOink;
 		//} else {			
 			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			//startRecordingButton.enabled = false;
@@ -151,7 +156,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 
 						polvo2.SetActive (true);
 
-
+							ambienteBosque.Play ();	
 
 						/*chanchosPuff=true;
 						coroutineStartedChanchos = false;*/
@@ -165,7 +170,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-
+							ambienteBosque.clip = CerditoFeliz;
 
 						coroutineStarted1 = "ellos vivían muy felices";//para freezar contenedor
 
@@ -193,7 +198,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 
 						chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
 
-
+							ambienteBosque.Play ();	
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
 					}
@@ -276,7 +281,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 					polvo.SetActive (true);
 					polvo1.SetActive (true);
 					polvo2.SetActive (true);						
-						
+						ambienteBosque.Play ();	
 					}
 					break;
 			case "rosados":					
@@ -285,7 +290,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 					textoCompleto = true;
 					DesactivarEscucha ();
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
-
+						ambienteBosque.clip = CerditoFeliz;
 					nroContenedor=2;
 					coroutineStarted1 = "ellos vivían muy felices";//para freezar contenedor
 						
@@ -305,7 +310,7 @@ public class ControlarCuento2Escena1 : MonoBehaviour {
 
 
 					chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
-
+						ambienteBosque.Play ();	
 						Pintar (palabrasSpeech [i].ToString ().Trim ());
 						
 					}

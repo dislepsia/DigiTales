@@ -28,6 +28,8 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 
 	//variables de sonidos
 	private AudioSource ambienteBosque;
+	public AudioClip CerditoOink;
+	public AudioClip CasaRamas;
 
 	public GameObject chanchoGranjero; //objeto para controlar animacion de personaje
 
@@ -87,6 +89,9 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
+
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = CerditoOink;
 		//} else {			
 			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			//startRecordingButton.enabled = false;
@@ -138,6 +143,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 						chanchoGranjero.SetActive (true);
 						chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
 						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoLLega");
+							ambienteBosque.Play ();	
 
 								
 					}
@@ -149,7 +155,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-
+							ambienteBosque.clip = CasaRamas;
 						coroutineStarted1 = "levantó su frágil casa";//para freezar contenedor
 
 
@@ -195,7 +201,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					
 						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo");
 
-
+							ambienteBosque.Play ();
 
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
@@ -260,6 +266,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					chanchoGranjero.SetActive (true);
 					chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
 					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoLLega");
+						ambienteBosque.Play ();
 					}
 					break;
 				case "granjero":					
@@ -269,7 +276,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					textoCompleto = true;
 					DesactivarEscucha ();
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
-
+						ambienteBosque.clip = CasaRamas;
 					nroContenedor=1;
 					coroutineStarted1 = "levantó su frágil casa";//para freezar contenedor
 					}
@@ -300,7 +307,7 @@ public class ControlarCuento2Escena2 : MonoBehaviour {
 					{
 
 					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo");
-				
+						ambienteBosque.Play ();
 
 						Pintar (palabrasSpeech [i].ToString ().Trim ());
 						

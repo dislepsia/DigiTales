@@ -28,6 +28,9 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 
 	//variables de sonidos
 	private AudioSource ambienteBosque;
+	public AudioClip LoboMalo;
+	public AudioClip CerditoChillido;
+	public AudioClip GolpePuerta;
 
 	public GameObject chanchoGranjero; //objeto para controlar animacion de personaje
 	public GameObject chanchoCarpintero;
@@ -100,6 +103,9 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
+
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = LoboMalo;
 		//} else {			
 			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			//startRecordingButton.enabled = false;
@@ -148,9 +154,10 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 					{
 								
 								PintarPalabra (palabrasSpeech [i].ToString ());
+							ambienteBosque.Play ();	
 						polvoLobo.SetActive (true);
 
-								
+
 					}
 								break;
 				case "aparece":
@@ -160,7 +167,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-
+							ambienteBosque.clip = CerditoChillido;
 						escenaNro=coroutineStarted1 = "los cerditos corren aterrados";//para freezar contenedor
 
 
@@ -172,6 +179,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 					{
 						
 						PintarPalabra (palabrasSpeech [i].ToString ());
+							ambienteBosque.Play ();	
 						//lobo2.SetActive (true);
 						//chanchoGranjero.SetActive (true);
 						chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
@@ -198,6 +206,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
 						lobo2.SetActive (false);
+							ambienteBosque.clip = GolpePuerta;
 						coroutineStarted1 = "y se refugian en sus casas";//para freezar contenedor
 
 
@@ -276,8 +285,10 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 				case "lobo":
 				if(n == 0  && nroContenedor==0)
 					{
-					Pintar (palabrasSpeech [i].ToString ().Trim ());	
+					Pintar (palabrasSpeech [i].ToString ().Trim ());
+						ambienteBosque.Play ();	
 					polvoLobo.SetActive (true);
+
 					}
 					break;
 				case "aparece":					
@@ -290,6 +301,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 
 					nroContenedor=1;
 					//lobo.SetActive (false);
+						ambienteBosque.clip = CerditoChillido;
 					escenaNro=coroutineStarted1 = "los cerditos corren aterrados";//para freezar contenedor
 					}
 					break;
@@ -301,6 +313,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 
 					//lobo2.SetActive (true);
 					//chanchoGranjero.SetActive (true);
+						ambienteBosque.Play ();	
 					chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
 					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoHuye");
 					//chanchoCarpintero.SetActive (true);
@@ -321,6 +334,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
 					lobo2.SetActive (false);
 					nroContenedor=2;
+						ambienteBosque.clip = GolpePuerta;
 					coroutineStarted1 = "y se refugian en sus casas";//para freezar contenedor
 						
 					}
@@ -329,7 +343,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 				if(n == 0  && nroContenedor==2)
 					{
 
-					casaPaja.SetActive (true);
+					/*casaPaja.SetActive (true);
 					chanchoGranjero.SetActive (true);
 					chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
 					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoCasa");
@@ -340,7 +354,7 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 					casaLadrillo.SetActive (true);
 					chanchaArquitecta.SetActive (true);
 					chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
-					chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoCasa2");
+					chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoCasa2");*/
 				
 
 						Pintar (palabrasSpeech [i].ToString ().Trim ());
@@ -355,8 +369,8 @@ public class ControlarCuento2Escena5 : MonoBehaviour {
 					Pintar (palabrasSpeech [i].ToString ().Trim ());
 
 
-
-					coroutineStarted = false;//para freezar ejecucion	
+						coroutineStartedCasas= false;
+					//coroutineStarted = false;//para freezar ejecucion	
 
 				}
 				break;
@@ -541,6 +555,7 @@ IEnumerator ChanchosCasas(float seconds)
 	chanchoGranjero.SetActive (true);
 	chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
 	chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoCasa");
+	ambienteBosque.Play ();
 
 	yield return new WaitForSeconds(seconds);
 	casaPaja.SetActive (false);
@@ -548,12 +563,16 @@ IEnumerator ChanchosCasas(float seconds)
 	chanchoCarpintero.SetActive (true);
 	chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
 	chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoCasa1");
+	ambienteBosque.Play ();
+
 	yield return new WaitForSeconds(seconds);
 	casaMadera.SetActive (false);
 	casaLadrillo.SetActive (true);
 	chanchaArquitecta.SetActive (true);
 	chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
 	chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoCasa2");
+	ambienteBosque.Play ();
+
 	yield return new WaitForSeconds(seconds);
 	casaLadrillo.SetActive (false);
 	coroutineStarted = false;//para freezar ejecucion

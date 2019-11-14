@@ -28,6 +28,8 @@ public class ControlarCuento2Escena3 : MonoBehaviour {
 
 	//variables de sonidos
 	private AudioSource ambienteBosque;
+	public AudioClip CerditoOink;
+	public AudioClip CasaMaderas;
 
 	public GameObject chanchoCarpintero; //objeto para controlar animacion de personaje
 
@@ -87,6 +89,9 @@ public class ControlarCuento2Escena3 : MonoBehaviour {
 			palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
+
+		ambienteBosque = GetComponent<AudioSource> ();						
+		ambienteBosque.clip = CerditoOink;
 		//} else {			
 			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
 			//startRecordingButton.enabled = false;
@@ -138,7 +143,7 @@ public class ControlarCuento2Escena3 : MonoBehaviour {
 						chanchoCarpintero.SetActive (true);
 						chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
 						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoLLega1");
-
+							ambienteBosque.Play ();	
 								
 					}
 								break;
@@ -149,7 +154,7 @@ public class ControlarCuento2Escena3 : MonoBehaviour {
 						textoCompleto = true;
 						DesactivarEscucha ();
 						PintarPalabra (palabrasSpeech [i].ToString ());
-
+							ambienteBosque.clip = CasaMaderas;
 						coroutineStarted1 = "hizo su pintoresca casa";//para freezar contenedor
 
 
@@ -195,7 +200,7 @@ public class ControlarCuento2Escena3 : MonoBehaviour {
 					
 						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo1");
 
-
+							ambienteBosque.Play ();	
 
 						PintarPalabra (palabrasSpeech [i].ToString ());
 
