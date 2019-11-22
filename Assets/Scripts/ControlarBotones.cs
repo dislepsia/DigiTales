@@ -75,6 +75,7 @@ public class ControlarBotones : MonoBehaviour
 	{
 		Screen.orientation = ScreenOrientation.Portrait;
 		//ControlarVibracion ();
+		//ControlarReconocimiento ();
 		SceneManager.LoadScene("Opciones");
 	}
 
@@ -99,15 +100,14 @@ public class ControlarBotones : MonoBehaviour
 	/*public void ControlarVibracion()
 	{
 		if(PlayerPrefs.GetString ("ModoVibracion").Equals("0")){
-			Debug.Log ("Botones-Clases-Vibrar: ON");
+			Debug.Log ("Botones-Inicio-Vibrar: ON");
 			Vibrate ();
 		}
 		else{
-			Debug.Log ("Botones-Clases-Vibrar: OFF");
+			Debug.Log ("Botones-Inicio-Vibrar: OFF");
 		}	
 	}
-
-
+		
 	public void Vibrate(){
 		Handheld.Vibrate ();
 	}*/

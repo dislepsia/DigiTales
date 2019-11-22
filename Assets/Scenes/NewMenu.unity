@@ -658,20 +658,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.0041656494
-      value: 0.49375153
+      time: -0.0023543835
+      value: 0.90092224
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.49583334
-      value: 1
+      time: 0.50019073
+      value: 1.09758
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.9958191
-      value: 0.49375153
+      time: 1.0012736
+      value: 0.89845383
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1157,20 +1157,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0.5062485
+      time: -0.0023543835
+      value: 0.90092224
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.49583334
-      value: 1
+      time: 0.50019073
+      value: 1.09758
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 0.48125076
+      time: 1.0012736
+      value: 0.89845383
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 662934346}
   - component: {fileID: 662934350}
   - component: {fileID: 662934351}
+  - component: {fileID: 662934352}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1304,6 +1305,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 01fabe98eecf51a4083641c4a08f0908, type: 2}
+--- !u!114 &662934352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 662934345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37a6a8fef6b20442bfa0bf681e6c912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &673815961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,7 +1349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000007454742, y: -17}
+  m_AnchoredPosition: {x: 0.000007454742, y: -9}
   m_SizeDelta: {x: 146.2, y: 245.3}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &673815963
@@ -1389,20 +1401,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: -0.0019625165
-      value: 0.49746656
+      time: -0.0023543835
+      value: 0.90092224
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5020579
-      value: 1
+      time: 0.50019073
+      value: 0.9996643
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 0.49781036
+      time: 1.0012736
+      value: 0.89845383
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2540,20 +2552,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0.5
+      time: -0.0023543835
+      value: 0.90092224
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5000051
-      value: 1
+      time: 0.50019073
+      value: 0.9996643
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1
-      value: 0.5062485
+      time: 1.0012736
+      value: 0.89845383
       inSlope: 0
       outSlope: 0
       tangentMode: 0

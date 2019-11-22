@@ -8,26 +8,38 @@ public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 
 	public void Dropdown_IndexChange(int indice)
     {
-		PlayerPrefs.SetString ("ModoReconocimiento", indice.ToString());
+		PlayerPrefs.SetInt ("ModoReconocimiento", indice);
 		PlayerPrefs.Save ();
 
-		if(PlayerPrefs.GetString ("ModoReconocimiento").Equals("0"))
-			Debug.Log("Modo: Tiempo Real");
+		if(PlayerPrefs.GetInt ("ModoReconocimiento") == 0)
+			Debug.Log("Modo: Tiempo Real-ValorIndice: " +indice.ToString());
 		else
-			Debug.Log("Modo: Palabras Clave");
+			Debug.Log("Modo: Palabras Clave-ValorIndice: " +indice.ToString());
     }
 
 	void Start(){
-		if (PlayerPrefs.GetString ("ModoReconocimiento").Equals ("0")) {
-			GameObject.Find ("DropdownReconocimiento").GetComponent<TMP_Dropdown> ().value = 0;
+		Debug.Log("Start");
+		if (PlayerPrefs.HasKey ("ModoReconocimiento")) {
+			Debug.Log("Entro HasKey");
+			if(PlayerPrefs.GetInt ("ModoReconocimiento") == 0) {
+				GameObject.Find ("DropdownReconocimiento").GetComponent<TMP_Dropdown> ().value = 0;
+				Debug.Log("Modo 0");
+			} else {
+				Debug.Log("Modo 1");
+				GameObject.Find ("DropdownReconocimiento").GetComponent<TMP_Dropdown> ().value = 1;
+			}
+		} 
 
-		} else {
-			GameObject.Find ("DropdownReconocimiento").GetComponent<TMP_Dropdown> ().value = 1;
+		if (!PlayerPrefs.HasKey ("ModoReconocimiento")) {
+			Debug.Log("HasKey En falso");
+			PlayerPrefs.SetInt ("ModoReconocimiento", 0);
+			PlayerPrefs.Save ();
+			Debug.Log("SetHaskey");
 		}
 	}
 
 	void Update(){
-		if (PlayerPrefs.GetString ("ModoReconocimiento").Equals ("0")) {
+		if(PlayerPrefs.GetInt ("ModoReconocimiento") == 0) {
 			GameObject.Find ("Icono-TipoRelato-TiempoReal").GetComponent<Image> ().enabled = true;
 			GameObject.Find ("Icono-TipoRelato-PalabrasClave").GetComponent<Image> ().enabled = false;
 
