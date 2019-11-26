@@ -5,585 +5,468 @@ using UnityEngine.UI;
 using KKSpeech;
 using UnityEngine.SceneManagement;
 
-public class ControlarCuento2Escena1 : MonoBehaviour {
+public class ControlarCuento2Escena1 : MonoBehaviour 
+{
+	//GAMEOBJECTS PARA CONTROL DEL MICROFONO
+	public Button startRecordingButton; //CONTROL-BUTTON MICROFONO INACTIVO
+	public Button stopRecordingButton; //CONTROL-BUTTON PARA DESACTIVAR ESCUCHA MANUALMENTE
+	bool stopRecording = false; //MANEJA DESACTIVACION MANUAL DE ESCUCHA 
 
-	public Button startRecordingButton;
-	public Button stopRecordingButton;
+	//GAMEOBJECTS PARA CONTROL DE RECONOCIMIENTO
+	public Text sceneText; //CONTROL-TEXT DEL CONTENEDOR DE LA ESCENA ACTIVA
+	public Text resultTextSpeech; //CONTROL-TEXT RECONOCIDO POR VOZ
 
-	bool stopRecording = false;
+	public Text resultErrores; //VARIABLE PARA VISUALIZAR ERROR(TESTING)
 
-	public Text sceneText; //texto propio de la escena
-	public Text resultTextSpeech; //texto reconocido por voz
+	//VARIABLES PARA MANEJAR TEXTO DE LA ESCENA ACTIVA
+	private string textoEscena = string.Empty; //TEXTO DE LA ESCENA
+	private string[] palabrasEscena = null; //ARRAY DE PALABRAS DE LA ESCENA 
+	int cantPalabrasEscena = 0; //CANTIDAD DE PALABRAS DE LA ESCENA
 
-	public Text resultErrores; //visualizar error
+	//VARIABLES PARA MANEJAR RECONOCIMIENTO DE VOZ DE LA ESCENA ACTIVA
+	private string[] palabrasSpeech = null; //ARRAY DE PALABRAS RECONOCIDAS
+	int cantPalabrasSpeech = 0; //CANTIDAD DE PALABRAS RECONOCIDAS
 
-	//variables para trabajar sceneText
-	private string textoEscena = string.Empty; 
-	private string[] palabrasEscena = null; 
-	int cantPalabrasEscena = 0;
+	//GAMEOBJECTS PARA MANEJAR SONIDOS
+	private AudioSource ambienteBosque; //SONIDO DE FONDO
+	public AudioClip CerditoOink; //CLIP DE CERDITO
+	public AudioClip CerditoFeliz; //CLIP DE CERDITO
 
-	//variables para trabajar result(reconocimiento parcial de voz)
-	private string[] palabrasSpeech = null;
-	int cantPalabrasSpeech = 0;
-
-	//variables de sonidos
-	private AudioSource ambienteBosque;
-	public AudioClip CerditoOink;
-	public AudioClip CerditoFeliz;
-
-	public GameObject chanchoGranjero; //objeto para controlar animacion de personaje
+	//GAMEOBJECTS PARA MANEJAR PERSONAJES Y SUS ANIMACIONES
+	public GameObject chanchoGranjero; 
 	public GameObject chanchoCarpintero;
 	public GameObject chanchaArquitecta;
-	public GameObject bosque; //objeto para controlar escena
+	public GameObject bosque; 
 
+	//GAMEOBJECTS PARA MANEJAR ANIMACIONES
 	public GameObject polvo;
 	public GameObject polvo1;
 	public GameObject polvo2;
 
-	int i=0;
-	int n=0;
-	int k=0;
-	int palabraspintadas=0;
-	int nroContenedor=0;
+	//VARIABLES PARA CONTROL DE COLOREO
+	int i=0; 
+	int n=0; 
+	int k=0; 
+	int palabraspintadas=0; //CONTROLA INDICE DE PALABRA A PINTAR (ORDEN)
+	int nroContenedor=0; //CONTROLA NRO DE CONTENEDOR ACTIVO
 
-	public Animator imagenNegra;
-	public Animator microfono;
+	//GAMEOBJECTS PARA MANEJAR ANIMACIONES
+	public Animator imagenNegra; //CONTROLA EFECTO DE INICIO Y FIN DE ESCENA
+	public Animator microfono; //CONTROLA EFECTO DE MICROFONO ACTIVO
 
-	public GameObject contenedor;
-	public GameObject contenedorError;
+	//GAMEOBJECTS PARA MANEJAR CONTENEDORES DE TEXTO
+	public GameObject contenedor; //CONTROLA CONTENEDOR ACTIVO
+	public GameObject contenedorError; //CONTROLA CONTENEDOR DE ERROR DE ESCUCHA
 
-	bool coroutineStarted = true;//para freezar ejecucion
-	string coroutineStarted1 = string.Empty;//para freezar contenedor
+	//VARIABLES PARA CONTROL DE TIEMPOS
+	bool coroutineStarted = true; //DETIENE LEVEMENTE LA EJECUCION AL FINALIZAR LA ESCENA
+	string coroutineStarted1 = string.Empty; //DETIENE LEVEMENTE LA EJECUCION AL CAMBIAR DE CONTENEDOR
 
-	bool coroutineStartedChanchos = true;
+	string modoVibracion = string.Empty; //VARIABLE PARA CONTROL DE VIBRACION
+
+	bool textoCompleto = false;//VARIABLE PARA CONTROLAR TEXTO RECONOCIDO TOTALMENTE
 
 
-	string modoVibracion = string.Empty; 
+	/*METODO DE INICIO DE ESCENA*/
+    void Start() 
+	{ 
+		Screen.orientation = ScreenOrientation.Landscape; //ROTO PANTALLA
 
-	int cambiarTexto = 0;
+		modoVibracion = PlayerPrefs.GetString ("ModoVibracion"); //SETEO MODO DE VIBRACION SELECCIONADO EN OPCIONES
 
-	bool textoCompleto = false;
+		//INSTANCIO OBJETO DE RECONOCIMIENTO DE VOZ
+		SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();			
+		listener.onErrorDuringRecording.AddListener(OnError); //RESETEA ESCUCHA AL CABO DE UNOS SEGUNDOS DE INACTIVIDAD
+		listener.onFinalResults.AddListener(OnFinalResult); //METODO QUE CAPTURA RESULTADO FINAL DE RECONOCIMIENTO
 
-	bool chanchosPuff = false;
-
-    void Start() { 
-		Screen.orientation = ScreenOrientation.Landscape;
-
-		modoVibracion = PlayerPrefs.GetString ("ModoVibracion");
-
-		//if (SpeechRecognizer.ExistsOnDevice()) {
-			SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
-			//listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);//NO NECESARIO PARA ANDROID(YA DECLARADO EN MANIFEST)
-			//listener.onAvailabilityChanged.AddListener(OnAvailabilityChange);//NO NECESARIO, SOLO IOS
-			listener.onErrorDuringRecording.AddListener(OnError);//NECESARIO, CUANDO ESTA ACTIVO POR MAS DE 5S TIRA ERROR PARA RESETEARSE LA ESCUCHA
-			//listener.onErrorOnStartRecording.AddListener(OnError);//NO NECESARIO, NO ME INTERESA ERROR
-			listener.onFinalResults.AddListener(OnFinalResult);
+		//SETEO MODO DE RECONOCIMIENTO SELECCIONADO EN OPCIONES
 		if(PlayerPrefs.GetString ("ModoReconocimiento") == "0")
-			listener.onPartialResults.AddListener(OnPartialResult);
+			listener.onPartialResults.AddListener(OnPartialResult); //METODO QUE CAPTURA RESULTADO PARCIAL DE RECONOCIMIENTO
 		else if(PlayerPrefs.GetString ("ModoReconocimiento") == "1")			
-			listener.onPartialResults.AddListener(OnPartialResultPalabraClave);
-			//listener.onEndOfSpeech.AddListener(OnEndOfSpeech);//NO NECESARIO, SE LLAMA ANTES DE ONFINALRESULT
-			//startRecordingButton.enabled = false;
-			//SpeechRecognizer.RequestAccess();//NO NECESARIO PARA ANDROID(YA DECLARADO EN MANIFEST)
+			listener.onPartialResults.AddListener(OnPartialResultPalabraClave); //METODO QUE CAPTURA RESULTADO PARCIAL DE RECONOCIMIENTO
 
-			//obtengo cantidad de palabras de escena actual
-			textoEscena = sceneText.text = "érase una vez en un bosque";
-			palabrasEscena = textoEscena.Split(' ');
+
+		//VARIABLES PARA MANEJAR TEXTO DE LA ESCENA ACTIVA
+		textoEscena = sceneText.text = "érase una vez en un bosque";
+		palabrasEscena = textoEscena.Split(' ');
 		cantPalabrasEscena = palabrasEscena.Length;
 
-
+		//GAMEOBJECTS PARA MANEJAR SONIDOS
 		ambienteBosque = GetComponent<AudioSource> ();						
 		ambienteBosque.clip = CerditoOink;
-		//} else {			
-			//resultErrores.text = "Sorry, but this device doesn't support speech recognition";
-			//startRecordingButton.enabled = false;
-		//}
 
-		//OnStartRecordingPressed ();
-		//DesactivarEscucha ();
-		ActivarEscucha ();
-		imagenNegra.Play("FadeIN");
+		ActivarEscucha (); //ACTIVO ESCUCHA
+		imagenNegra.Play("FadeIN"); //ACTIVO ANIMACION FADE
 	}
 
 
 	/*RESULTADO FINAL DEL RECONOCIMIENTO DE VOZ*/
-	public void OnFinalResult(string result) {		
+	public void OnFinalResult(string result) 
+	{		
 		if (!stopRecording)
 			ReiniciarValoresEscena ();
 		else
 			stopRecording = false;
 	}
 
-	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*/
-	public void OnPartialResult(string result) {
+	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*//*TIEMPO-REAL*/
+	public void OnPartialResult(string result) 
+	{
+		//SI EL RECONOCIMIENTO NO SE DESACTIVO MANUALMENTE
 		if(!stopRecording)
 		{
-		//obtengo cantidad de palabras de reconocimiento parcial de voz
-		palabrasSpeech = result.ToLower().Split(' ');
-		cantPalabrasSpeech = palabrasSpeech.Length;
-		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
+			palabrasSpeech = result.ToLower().Split(' '); //OBTENGO ARRAY DE PALABRAS DE RECONOCIMIENTO PARCIAL DE VOZ
+		    cantPalabrasSpeech = palabrasSpeech.Length; //OBTENGO CANTIDAD DE PALABRAS DE RECONOCIMIENTO PARCIAL DE VOZ
+			//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " "; //TESTING
 
-
-////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*PALABRA-POR-PALABRA*////////////////////////////////////////////
-		for (i = n; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
+			//INICIO COLOREO
+			for (i = n; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
 			{
-			if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()) /*&& n == i*/ )
-					{
-						//activar animacion segun palabra
-						switch (palabrasSpeech [i].ToString ().Trim())
-						{
-						case "bosque":
-					if(palabraspintadas==i)
-					{
-								textoCompleto = true;
-								DesactivarEscucha ();
-								PintarPalabra (palabrasSpeech [i].ToString ());
-						bosque.SetActive (true);
-						coroutineStarted1 = "tres pequeños cerditos rosados";//para freezar contenedor	
-					}
-								break;
-				case "tres":
-					if(palabraspintadas==i)
-					{
-								
-								PintarPalabra (palabrasSpeech [i].ToString ());
-
-						polvo.SetActive (true);
-
-
-						polvo1.SetActive (true);
-
-
-						polvo2.SetActive (true);
-
-							ambienteBosque.Play ();	
-
-						/*chanchosPuff=true;
-						coroutineStartedChanchos = false;*/
-
-					}
-								break;
-
-				case "rosados":
-					if(palabraspintadas==i)
-					{
-						textoCompleto = true;
-						DesactivarEscucha ();
-						PintarPalabra (palabrasSpeech [i].ToString ());
-							ambienteBosque.clip = CerditoFeliz;
-
-						coroutineStarted1 = "ellos vivían muy felices";//para freezar contenedor
-
-						/*chanchosPuff=true;
-						coroutineStartedChanchos = false;*/
-
-					}
-					break;
-
-
-
-				case "vivían":
-					if(palabraspintadas==i)
-					{
-						
-
-						chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
-						chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
-						chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
-						chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoBaila");
-
-
-						chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoBaila1");
-
-
-						chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
-
-							ambienteBosque.Play ();	
-						PintarPalabra (palabrasSpeech [i].ToString ());
-
-					}
-					break;
-
-
-				case "felices":
-						if(palabraspintadas==i)
-						{
-								textoCompleto = true;
-								DesactivarEscucha ();
-						PintarPalabra (palabrasSpeech [i].ToString ());
-						coroutineStarted = false;//para freezar ejecucion
-
-
-
-							
-
-					}
-								break;
-							
-
-							default:	
-									if(palabraspintadas==i)
-									{
-								PintarPalabra (palabrasSpeech [i].ToString ());
-					}
-								break;
-						}
-
-						//resultTextSpeech.text = resultTextSpeech.text + palabrasSpeech [i].ToString () + " "; //coloreo
-						//n++; //para no tener en cuenta palabra coloreada en el bucle
-
-						
-				/*break;*/
-			}			
-			}			
-		}
-		}
-
-	public void OnPartialResultPalabraClave(string result) {
-			if(!stopRecording)
-			{
-		//obtengo cantidad de palabras de reconocimiento parcial de voz
-		palabrasSpeech = result.ToLower().Split(' ');
-		cantPalabrasSpeech = palabrasSpeech.Length;
-
-		//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " " ;
-		for (i = k; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
-		{
-////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE*////////////////////////////////////////////				
-			//activar animacion segun palabra
-			//resultErrores.text = resultErrores.text + i + " " + k + " " + "/ ";
-			switch (palabrasSpeech [i].ToString ().Trim())
-			{
-				
-				case "vez":
-				if(n == 0  && nroContenedor==0)
-					{
-					Pintar (palabrasSpeech [i].ToString ().Trim ());	
-						//textoCompleto = false;
-					}
-					break;
-				case "bosque":					
-				if(n == 1  && nroContenedor==0)
-					{
-						
-					textoCompleto = true;
-					DesactivarEscucha ();
-					Pintar (palabrasSpeech [i].ToString ().Trim ());
-					bosque.SetActive (true);
-					nroContenedor=1;
-					coroutineStarted1 = "tres pequeños cerditos rosados";//para freezar contenedor
-					}
-					break;
-				case "tres":
-				if(n == 0   && nroContenedor==1)
-					{
-					Pintar (palabrasSpeech [i].ToString ().Trim ());	
-					polvo.SetActive (true);
-					polvo1.SetActive (true);
-					polvo2.SetActive (true);						
-						ambienteBosque.Play ();	
-					}
-					break;
-			case "rosados":					
-				if(n == 1   && nroContenedor==1)
-					{
-					textoCompleto = true;
-					DesactivarEscucha ();
-					Pintar (palabrasSpeech [i].ToString ().Trim ());
-						ambienteBosque.clip = CerditoFeliz;
-					nroContenedor=2;
-					coroutineStarted1 = "ellos vivían muy felices";//para freezar contenedor
-						
-					}
-					break;
-				case "vivían":					
-				if(n == 0  && nroContenedor==2)
-					{
-
-					chanchoGranjero.gameObject.GetComponent<Animator> ().enabled =true;
-					chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
-					chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled =true;
-					chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoBaila");
-
-
-					chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoBaila1");
-
-
-					chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
-						ambienteBosque.Play ();	
-						Pintar (palabrasSpeech [i].ToString ().Trim ());
-						
-					}
-					break;
-			case "felices":					
-				if(n == 1   && nroContenedor==2)
+				//SI LA PALABRA DE LA ESCENA ES LA PALABRA RECONOCIDA Y SUS POSICIONES
+				if (string.Equals (palabrasSpeech [i].ToString ().Trim(), palabrasEscena [i].ToString ().Trim()))
 				{
-					textoCompleto = true;
-					DesactivarEscucha ();
-					Pintar (palabrasSpeech [i].ToString ().Trim ());
+					//SEGUN PALABRA RECONOCIDA
+					switch (palabrasSpeech [i].ToString ().Trim())
+					{
+						case "bosque":
+							//SI LA POSICION DE LA PALABRA DE LA ESCENA ES IGUAL A LA RECONOCIDA
+							if(palabraspintadas==i)
+							{
+								textoCompleto = true; //TEXTO DE CONTENEDOR RECONOCIDO
+								DesactivarEscucha (); 
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								bosque.SetActive (true); //ACTIVO ANIMACION DE BOSQUE
+								coroutineStarted1 = "tres pequeños cerditos rosados"; //RETRASO SIGUIENTE CONTENEDOR Y CAMBIO TEXTO	
+							}
+							break;
+						case "tres":
+							if(palabraspintadas==i)
+							{								
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								//ACTIVO ANIMACIONES DE CHANCHITOS
+								polvo.SetActive (true);
+								polvo1.SetActive (true);
+								polvo2.SetActive (true);
+								ambienteBosque.Play ();	//ACTIVO SONIDO CHANCHITOS
+							}
+							break;
+						case "rosados":
+							if(palabraspintadas==i)
+							{
+								textoCompleto = true;
+								DesactivarEscucha ();
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								ambienteBosque.clip = CerditoFeliz; //INSTANCIO OTRO SONIDO
+								coroutineStarted1 = "ellos vivían muy felices";
+							}
+							break;
+						case "vivían":
+							if(palabraspintadas==i)
+							{
+								//ACTIVO COMPONENTE ANIMATOR DE GAMEOBJECTS DE LOS CHANCHITOS
+								chanchoGranjero.gameObject.GetComponent<Animator> ().enabled = true;
+								chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled = true;
+								chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled = true;
+								//ACTIVOS ANIMACIONES DE CHANCHITOS
+								chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoBaila");
+								chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoBaila1");
+								chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
 
-
-
-					coroutineStarted = false;//para freezar ejecucion	
-
-				}
-				break;
-
-				default:					
-					break;
-			}
-			}
+								ambienteBosque.Play ();	//ACTIVO SONIDO CHANCHITOS
+								PintarPalabra (palabrasSpeech [i].ToString ());
+							}
+							break;
+						case "felices":
+							if(palabraspintadas==i)
+							{
+								textoCompleto = true;
+								DesactivarEscucha ();
+								PintarPalabra (palabrasSpeech [i].ToString ());
+								coroutineStarted = false; //RETRASO SIGUIENTE ESCENA	
+							}
+							break;							
+						default:	
+							if(palabraspintadas==i)
+							{
+								PintarPalabra (palabrasSpeech [i].ToString ());
+							}
+							break;
+					}
+				}			
+			}			
 		}
-////////////////////////////////////////////*COLOREO DE ORACION DE LA ESCENA*//*POR-PALABRA-CLAVE(PSEUDO-REAL-TIME)*////////////////////////////////////////////					
-			//activar animacion segun palabra
-		/*switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
-		{
-			case "bosque":
-				bosque.SetActive (true);
-				StartCoroutine (UsingYield ());
-				StopCoroutine ("UsingYield");
-				break;
-			case "niña":
-				player.SetActive (true);
-				StartCoroutine (UsingYield2 ());
-				StopCoroutine ("UsingYield2");
-				break;
-			case "misteriosa":
-				StartCoroutine(UsingYield3());
-				StopCoroutine ("UsingYield3");				
-				coroutineStarted = false;//para freezar ejecucion
-				break;
-
-				default:					
-					break;
-		}	*/
 	}
 
-
-
-
-
-
-
-
-	/*public void OnAvailabilityChange(bool available) {
-		startRecordingButton.enabled = available;
-		if (!available) {
-			resultErrores.text = "Speech Recognition not available";
-		} else {
-			//resultErrores.text = "Say something :-)";
-		}
-	}*/
-
-	/*public void OnAuthorizationStatusFetched(AuthorizationStatus status) {
-		switch (status) {
-		case AuthorizationStatus.Authorized:
-			startRecordingButton.enabled = true;
-			break;
-		default:
-			startRecordingButton.enabled = false;
-			resultErrores.text = "Cannot use Speech Recognition, authorization status is " + status;
-			break;
-		}
-	}*/
-
-	/*public void OnEndOfSpeech() {
-		startRecordingButton.GetComponentInChildren<Text>().text = "";
-	}*/
-
-	public void OnError(string error) {
-	if(!stopRecording)
+	/*RESULTADO PARCIAL DEL RECONOCIMIENTO DE VOZ*//*PALABRA-CLAVE*/
+	public void OnPartialResultPalabraClave(string result) 
 	{
-		DesactivarEscucha();
-		contenedorError.SetActive (true);
-	}
-	else
-		stopRecording=false;
-	}
+		if(!stopRecording)
+		{
+			palabrasSpeech = result.ToLower().Split(' ');
+			cantPalabrasSpeech = palabrasSpeech.Length;
+			//resultErrores.text = result.ToLower() + " " + cantPalabrasSpeech + palabrasSpeech [0].ToString ().Trim() + " ";
 
-	public void OnStartRecordingPressed() {
-		if (SpeechRecognizer.IsRecording()) {
-			DesactivarEscucha ();
-		} else {			
-			ActivarEscucha ();
+			for (i = k; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
+			{
+				switch (palabrasSpeech [i].ToString ().Trim())
+				{				
+					case "vez":
+						//SI ES LA PRIMERA PALABRA CLAVE Y EL PRIMER CONTENEDOR
+						if(n == 0  && nroContenedor==0)
+						{
+							Pintar (palabrasSpeech [i].ToString ().Trim ());	
+						}
+						break;
+					case "bosque":					
+						if(n == 1  && nroContenedor==0)
+						{						
+							textoCompleto = true;
+							DesactivarEscucha ();
+							Pintar (palabrasSpeech [i].ToString ().Trim ());
+							bosque.SetActive (true);
+							nroContenedor=1; //CAMBIO A SIGUIENTE CONTENEDOR
+							coroutineStarted1 = "tres pequeños cerditos rosados";
+						}
+						break;
+					case "tres":
+						if(n == 0   && nroContenedor==1)
+						{
+							Pintar (palabrasSpeech [i].ToString ().Trim ());	
+							polvo.SetActive (true);
+							polvo1.SetActive (true);
+							polvo2.SetActive (true);						
+							ambienteBosque.Play ();	
+						}
+						break;
+					case "rosados":					
+						if(n == 1   && nroContenedor==1)
+						{
+							textoCompleto = true;
+							DesactivarEscucha ();
+							Pintar (palabrasSpeech [i].ToString ().Trim ());
+							ambienteBosque.clip = CerditoFeliz;
+							nroContenedor=2;
+							coroutineStarted1 = "ellos vivían muy felices";					
+						}
+						break;
+					case "vivían":					
+						if(n == 0  && nroContenedor==2)
+						{
+							chanchoGranjero.gameObject.GetComponent<Animator> ().enabled = true;
+							chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled = true;
+							chanchaArquitecta.gameObject.GetComponent<Animator> ().enabled = true;
+
+							chanchoGranjero.gameObject.GetComponent<Animator>().Play("ChanchoBaila");
+							chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoBaila1");
+							chanchaArquitecta.gameObject.GetComponent<Animator>().Play("ChanchoBaila2");
+
+							ambienteBosque.Play ();	
+							Pintar (palabrasSpeech [i].ToString ().Trim ());						
+						}
+						break;
+					case "felices":					
+						if(n == 1   && nroContenedor==2)
+						{
+							textoCompleto = true;
+							DesactivarEscucha ();
+							Pintar (palabrasSpeech [i].ToString ().Trim ());
+							coroutineStarted = false;
+						}
+						break;
+					default:					
+						break;
+				}
+			}
 		}
 	}
 
+	/*SIN RECONOCIMIENTO POR VARIOS SEGUNDOS*/
+	public void OnError(string error) 
+	{
+		//SI EL RECONOCIMIENTO NO SE DESACTIVO MANUALMENTE
+		if(!stopRecording)
+		{
+			DesactivarEscucha();
+			contenedorError.SetActive (true); //MUESTRO ERROR
+		}
+		else
+			stopRecording=false;
+	}
+
+	/*COMIENZA RECONOCIMIENTO DE VOZ*/
+	public void OnStartRecordingPressed() 
+	{
+		//SI ESTA ACTIVA LA ESCUCHA
+		if (SpeechRecognizer.IsRecording()) 
+			DesactivarEscucha ();		 
+		else 					
+			ActivarEscucha ();		
+	}
+
+	/*COLOREA EN TIEMPO-REAL*/
 	public void PintarPalabra(string palabra)
 	{
-		resultTextSpeech.text = resultTextSpeech.text + palabra + " "; //coloreo
-	//i++;
-	n++;
-		palabraspintadas++;
+		resultTextSpeech.text = resultTextSpeech.text + palabra + " "; 	
+		n++; //PARA COMENZAR ITERACION LUEGO DE PALABRA RECONOCIDA
+		palabraspintadas++; //INCREMENTA CANTIDAD DE PALABRAS PINTADAS
 	}
 
+	/*CAMBIA TEXTO DEL CONTENEDOR*/
 	public void CambiarTexto(string textoNuevo)
-	{
-	
-		contenedor.SetActive (false);	
+	{	
+		contenedor.SetActive (false); //OCULTO CONTENEDOR LEIDO
+
+		//RESETEO VARIABLES DE COLOREO
 		i = 0;
 		n = 0;
-
-	k=0;
+		k = 0;
 		palabraspintadas = 0;
 
+		//PREPARO VARIABLES DE NUEVO CONTENEDOR DE ESCENA
 		textoEscena = sceneText.text = textoNuevo;
 		palabrasEscena = textoEscena.Split (' ');
-	cantPalabrasEscena = palabrasEscena.Length;
+		cantPalabrasEscena = palabrasEscena.Length;
 
-		contenedor.SetActive (true);//llama a otro contenedor de texto
-		resultTextSpeech.text = string.Empty;//borra lo escuchado luego de llamar al otro contenedor
-		//OnStartRecordingPressed ();//activa escucha
+		contenedor.SetActive (true); //ANIMACION CONTENEDOR NUEVO
+		resultTextSpeech.text = string.Empty; //BORRO EL TEXTO RECONOCIDO PARA NUEVO CONTENEDOR
 
-		textoCompleto = false;
+		textoCompleto = false; //TEXTO NO COMPLETO PARA NUEVO CONTENEDOR
+
 		ActivarEscucha();
 	}
 
-void Pintar(string palabraClave)
-{		
-	n++;//controla orden de coloreo de palabra clave
-	while (!string.Equals (palabrasEscena [k].ToString (), palabraClave)) {
-		resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [k].ToString () + " "; //coloreo
-		//i++;	
-			k++;
-	}
-	resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [k].ToString () + " "; //coloreo
-	//i++;	
-	k++;
-}  
 
+	/*COLOREA EN PALABRA-CLAVE*/
+	void Pintar(string palabraClave)
+	{		
+		n++; //CONTROLA ORDEN DE COLOREO DE PALABRA-CLAVE
 
+		//MIENTRAS NO SEA LA PALABRA CLAVE 
+		while (!string.Equals (palabrasEscena [k].ToString (), palabraClave)) 
+		{
+			resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [k].ToString () + " "; //COLOREA
+			k++; //INCREMENTO INDICE PARA COLOREO DE PALABRA-CLAVE
+		}
 
-	public void ReiniciarValoresEscena() {	
+		//COLOREA PALABRA CLAVE
+		resultTextSpeech.text = resultTextSpeech.text + palabrasEscena [k].ToString () + " "; 	
+		k++;
+	}  
+
+	/*REINICIO VALORES AL DESACTIVAR ESCUCHA*/
+	public void ReiniciarValoresEscena() 
+	{	
+		//SI EL TEXTO NO SE COMPLETO
 		if(!textoCompleto)
 		{
-			resultTextSpeech.text = string.Empty;
+			resultTextSpeech.text = string.Empty; //BLANQUEO CONTROL-TEXT DE RECONOCIMIENTO
 
-			i=0;
-			n=0;
-		k=0;
-		palabraspintadas = 0;
+			//RESETEO VARIABLES DE COLOREO
+			i = 0;
+			n = 0;
+			k = 0;
+			palabraspintadas = 0;
 
-			startRecordingButton.gameObject.SetActive(true);
-		stopRecordingButton.gameObject.SetActive(false);
-			microfono.gameObject.SetActive(false);
-		contenedorError.SetActive (true);
+			startRecordingButton.gameObject.SetActive(true); //CONTROL-BUTTON MICROFONO ACTIVO
+			stopRecordingButton.gameObject.SetActive(false); //CONTROL-BUTTON DESACTIVAR ESCUCHA MANUALMENTE INACTIVO
+			microfono.gameObject.SetActive(false); //ANIMACION MICROFONO ACTIVO
+			contenedorError.SetActive (true); //MUESTRO ERROR DE RECONOCIMIENTO
 		}
 	}
 
-	// Update is called once per frame
+	/*METODO LLAMADO POR CADA FRAME*/
 	void Update()
 	{
+		//SI TERMINO ESCENA
 		if (!coroutineStarted)
 			StartCoroutine (EsperarSegundos (0.5f));
 
+		//SI HAY OTRO CONTENEDOR
 		if (!string.IsNullOrEmpty(coroutineStarted1))	
-		/*	if (chanchosPuff)
-	{
-		chanchosPuff=false;
-				StartCoroutine (RetrasarContenedor (2f, coroutineStarted1));
-	} 
-			else*/
-				StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));
-
-	if (!coroutineStartedChanchos)
-		StartCoroutine (AparecenChanchos (0.8f));
-	
+			StartCoroutine (RetrasarContenedor (0.5f, coroutineStarted1));	
 	}  
 
-
-IEnumerator AparecenChanchos(float seconds)
-{
-	coroutineStartedChanchos = true;
-
-	polvo.SetActive (true);
-	yield return new WaitForSeconds(seconds);
-
-	polvo1.SetActive (true);
-	yield return new WaitForSeconds(seconds);
-
-	polvo2.SetActive (true);
-	yield return new WaitForSeconds(seconds);
-
-
-}
-
-
+	/*METODO QUE RETRASA EJECUCION*/
 	IEnumerator EsperarSegundos(float seconds)
 	{
 		coroutineStarted = true;
-		yield return new WaitForSeconds(seconds);
+		yield return new WaitForSeconds(seconds); //SEGUNDOS A RETRASAR EJECUCION
 
-		StartCoroutine (SpriteFadeOut());
-		StopCoroutine ("SpriteFadeOut");
+		StartCoroutine (SpriteFadeOut()); //INICIO COROUTINE 
+		StopCoroutine ("SpriteFadeOut"); //FINALIZO COROUTINE
 
-		SceneManager.LoadScene("Cuento2Escena2");
+		SceneManager.LoadScene("Cuento2Escena2"); //INICIO ESCENA SIGUIENTE
 	}
 
+	/*METODO PARA EFECTO FADE DE FIN DE ESCENA*/
 	IEnumerator SpriteFadeOut()
-	{		
-	//player.gameObject.GetComponent<Animator>().Play("PlayerRun");
-	imagenNegra.Play("FadeOUT");
+	{	
+		imagenNegra.Play("FadeOUT");
 		yield return new WaitForSeconds(0.5f);
 	}
 
-IEnumerator RetrasarContenedor(float seconds, string frase)
+	/*METODO QUE RETRASA CONTENEDOR*/
+	IEnumerator RetrasarContenedor(float seconds, string frase)
 	{		
-	
 		coroutineStarted1 = string.Empty;
 		yield return new WaitForSeconds(seconds);
 
-
-
-		CambiarTexto(frase);
+		CambiarTexto(frase); //PREPARO NUEVO CONTENEDOR
 	}
 
-	public void ActivarEscucha() {	
+	/*METODO QUE ACTIVA ESCUCHA*/
+	public void ActivarEscucha() 
+	{	
 		startRecordingButton.gameObject.SetActive(false);
-	stopRecordingButton.gameObject.SetActive(true);
+		stopRecordingButton.gameObject.SetActive(true);
 		microfono.gameObject.SetActive(true);
-		SpeechRecognizer.StartRecording(true);
 
-	contenedorError.SetActive (false);
+		SpeechRecognizer.StartRecording(true); //EL OBJETO INSTANCIADO COMIENZA LA ESCUCHA
+
+		contenedorError.SetActive (false);
 	}
 
-	public void DesactivarEscucha() {	
-		SpeechRecognizer.StopIfRecording ();
+	/*METODO QUE DESACTIVA ESCUCHA*/
+	public void DesactivarEscucha() 
+	{	
+		SpeechRecognizer.StopIfRecording (); //EL OBJETO INSTANCIADO DESACTIVA LA ESCUCHA SI ES Q ESTA ACTIVA
+
 		startRecordingButton.gameObject.SetActive(true);
-	stopRecordingButton.gameObject.SetActive(false);
+		stopRecordingButton.gameObject.SetActive(false);
 		microfono.gameObject.SetActive(false);
-
 	}
 
-	public void Vibrar(){
+	/*METODO QUE ACTIVA VIBRACION*/
+	public void Vibrar()
+	{
 		Handheld.Vibrate ();
 	}
 
-public void BotonVolver() {	
+	/*METODO QUE CONTROLA BOTON VOLVER*/
+	public void BotonVolver() 
+	{	
+		DesactivarEscucha();
+		Screen.orientation = ScreenOrientation.Portrait;
+		SceneManager.LoadScene("MiniJuego-NenaTemerosa-Modo");  
+	}
 
-	DesactivarEscucha();
-	Screen.orientation = ScreenOrientation.Portrait;
-	SceneManager.LoadScene("MiniJuego-NenaTemerosa-Modo");  
-}
-public void ReiniciarValoresStopEscucha() {	
+	/*METODO QUE REINICIA VALORES DE ESCENA SI LA ESCUCHA FUE DESACTIVADA MANUALMENTE*/
+	public void ReiniciarValoresStopEscucha() 
+	{	
+		resultTextSpeech.text = string.Empty;
 
-	resultTextSpeech.text = string.Empty;
+		i = 0;
+		n = 0;
+		k = 0;
+		palabraspintadas = 0;
 
-	i=0;
-	n=0;
-	k=0;
-	palabraspintadas = 0;
+		DesactivarEscucha ();
+	}
 
-
-	DesactivarEscucha ();
-
-
-
-}
-
-public void BotonPararEscucha() {	
-	stopRecording = true;	
-	ReiniciarValoresStopEscucha();
-
-}
+	/*METODO QUE CONTROLA BOTON INVISIBLE QUE DESACTIVA LA ESCUCHA MANUALMENTE*/
+	public void BotonPararEscucha() 
+	{	
+		stopRecording = true;	
+		ReiniciarValoresStopEscucha();
+	}
 }
