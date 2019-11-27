@@ -45,7 +45,6 @@ public class ControlarCuento2Escena2 : MonoBehaviour
 
 	bool coroutineStarted = true;
 	string coroutineStarted1 = string.Empty;
-	bool coroutineStartedChanchos = true;
 
 	string modoVibracion = string.Empty; 
 
