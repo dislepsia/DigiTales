@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using KKSpeech;
 using UnityEngine.UI;
 
-public class Inicio : MonoBehaviour {
-
+//CONTROLA VARIABLES DE INICIO Y COMPATIBILIDAD
+public class Inicio : MonoBehaviour 
+{
 	public Text resultErrores;
 	public GameObject contenedor;
 
@@ -16,12 +17,15 @@ public class Inicio : MonoBehaviour {
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
 
-		//Inicializo modo relato
-		if (!PlayerPrefs.HasKey ("ModoReconocimiento")) {
+		//INICIALIZO MODO RELATO
+		if (!PlayerPrefs.HasKey ("ModoReconocimiento")) 
+		{
 			PlayerPrefs.SetInt ("ModoReconocimiento", 0);
 		} 
 
-		if (!PlayerPrefs.HasKey ("ModoVibracion")) {
+		//INICIALIZO VIBRACION
+		if (!PlayerPrefs.HasKey ("ModoVibracion")) 
+		{
 			PlayerPrefs.SetInt ("ModoVibracion", 1);
 		} 
 
@@ -35,17 +39,21 @@ public class Inicio : MonoBehaviour {
 		yield return new WaitForSeconds(3f);
 
 		//COMPRUEBA COMPATIBILIDAD DE DISPOSITIVO
-		if (SpeechRecognizer.ExistsOnDevice()) {
+		if (SpeechRecognizer.ExistsOnDevice()) 
+		{
+			//VERIFICA LENGUAJE ACTIVO DEL DISPOSITIVO
 			if (lenguaje.ToString() == "Spanish") 
 				SceneManager.LoadScene("NewMenu");
-			else {			
+			else 
+			{			
 				resultErrores.text = "DEBE HABILITAR EL IDIOMA ESPAÑOL EN SU DISPOSITIVO";
 				contenedor.SetActive (true);
 			}
-		} else {			
+		} 
+		else 
+		{			
 			resultErrores.text = "SU DISPOSITIVO NO ES COMPATIBLE CON LA APLICACION";
 			contenedor.SetActive (true);
 		}
-
 	}
 }

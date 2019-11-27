@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EfectoTronco : MonoBehaviour {
-
-	public GameObject bosque; //objeto para controlar escena
-	public GameObject player; //objeto para controlar animacion de personaje
-	public GameObject lluvia; //objeto para controlar animacion de personaje
-	public GameObject fantasma; //objeto para controlar animacion de personaje
-	public GameObject pegaso; //objeto para controlar animacion de personaje
-	public GameObject humo; //objeto para controlar animacion de personaje
+//CONTROLA LOS EVENTOS DE LA ANIMACIONES
+public class EfectoTronco : MonoBehaviour 
+{
+	//GAMEOBJECTS PARA CONTROLAR EL EVENTO REQUERIDO
+	public GameObject bosque; 
+	public GameObject player; 
+	public GameObject lluvia; 
+	public GameObject fantasma; 
+	public GameObject pegaso; 
+	public GameObject humo; 
 
 	public AudioClip suspenso;
 	public AudioClip chirrido;
 	private AudioSource ambienteBosque;
-
 
 	public GameObject chanchoGranjero;
 	public GameObject chanchoCarpintero;
@@ -31,25 +32,18 @@ public class EfectoTronco : MonoBehaviour {
 	public GameObject casaLadrillo;
 	public GameObject casaLadrillo1;
 	public GameObject casaLadrillo2;
-	//public AudioClip puerta;
-	//private AudioSource ambienteBosque;
 
 	public GameObject lobo;
 	public GameObject polvo;
 
-	// Use this for initialization
-	void Start () {		
-		//ambienteBosque = GetComponent<AudioSource> ();						
-		//ambienteBosque.clip = puerta;
+
+	void Start () 
+	{		
+		
 	}
 
 	IEnumerator EfectoTemblor()
-	{	
-		/*coroutineStarted2 = true;
-
-	troncoEfecto.gameObject.SetActive (true);
-	yield return new WaitForSeconds(0.2f);*/
-
+	{
 		RectTransform bosqueImagen = bosque.GetComponent<RectTransform> ();
 		Vector3 myVector = new Vector3(bosqueImagen.position.x+0.5f, bosqueImagen.position.y, bosqueImagen.position.z);
 		Vector3 myVector2 = new Vector3(bosqueImagen.position.x, bosqueImagen.position.y, bosqueImagen.position.z);
@@ -60,7 +54,6 @@ public class EfectoTronco : MonoBehaviour {
 			bosqueImagen.position = myVector2;
 			yield return new WaitForSeconds(0.1f);
 		}
-
 	}
 
 	void Temblor()
@@ -89,7 +82,6 @@ public class EfectoTronco : MonoBehaviour {
 		ambienteBosque = GetComponent<AudioSource> ();						
 		ambienteBosque.clip = suspenso;
 		ambienteBosque.Play ();
-
 	}
 
 	void Humo()
@@ -97,28 +89,21 @@ public class EfectoTronco : MonoBehaviour {
 		pegaso.SetActive (false);
 		humo.SetActive (true);
 		humo.gameObject.GetComponent<Animator>().Play("Humo");
-
-
 	}
 
 	void CasaBosque()
 	{	
 		player.gameObject.GetComponent<Animator>().Play("PlayerIdle");
 		humo.gameObject.GetComponent<Animator>().Play("Humo");
-
 	}
 
 	void EntraCasa()
-	{	
-		
+	{			
 		player.SetActive (false);
-		//ambienteBosque.Play ();
-
 	}
 
 	void PuertaCasa()
 	{	
-
 		ambienteBosque = GetComponent<AudioSource> ();						
 		ambienteBosque.clip = chirrido;
 		ambienteBosque.Play ();
@@ -186,7 +171,6 @@ public class EfectoTronco : MonoBehaviour {
 		casaLadrillo2.SetActive (true);
 	}
 
-
 	void LoboAparece()
 	{	
 		lobo.SetActive (true);
@@ -208,7 +192,6 @@ public class EfectoTronco : MonoBehaviour {
 		chanchaArquitecta.SetActive (false);
 	}
 
-
 	void CasaPajaDesAparece()
 	{	
 		casaPaja.SetActive (false);
@@ -222,8 +205,9 @@ public class EfectoTronco : MonoBehaviour {
 	{	
 		casaLadrillo.SetActive (false);
 	}
-	// Update is called once per frame
-	void Update () {
+
+	void Update () 
+	{
 		
 	}
 }

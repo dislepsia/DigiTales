@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.UIElements;
 
+//CONTROLA BOTONES DE LA APP
 public class ControlarBotones : MonoBehaviour
 {
     public void ExitGame()
@@ -11,10 +12,11 @@ public class ControlarBotones : MonoBehaviour
         Application.Quit();
     }
 
+	//METODO ASOCIADO A BOTON
     public void MenuPrincipal()
     {
-		Screen.orientation = ScreenOrientation.Portrait;
-        SceneManager.LoadScene("NewMenu");
+		Screen.orientation = ScreenOrientation.Portrait; //ROTA PANTALLA
+        SceneManager.LoadScene("NewMenu"); //CARGA ESCENA MENU
     }
 
     public void Creditos()
@@ -25,15 +27,15 @@ public class ControlarBotones : MonoBehaviour
 
     public void RelatarCuento()
     {
-		switch (CargarPantallaDeCuento.objetoEleccion.cuento) {
+		switch (CargarPantallaDeCuento.objetoEleccion.cuento) 
+		{
+			case "nena":
+				SceneManager.LoadScene("Cuento1Escena1");
+				break;
 
-		case "nena":
-			SceneManager.LoadScene("Cuento1Escena1");
-			break;
-
-		case "chanchitos":
-			SceneManager.LoadScene("Cuento2Escena1");
-			break;
+			case "chanchitos":
+				SceneManager.LoadScene("Cuento2Escena1");
+				break;
 		}
     }
 
@@ -41,15 +43,15 @@ public class ControlarBotones : MonoBehaviour
 	{
 		Screen.orientation = ScreenOrientation.Portrait;
 
-		switch (CargarPantallaDeCuento.objetoEleccion.cuento) {
+		switch (CargarPantallaDeCuento.objetoEleccion.cuento)
+		{
+			case "nena":
+				SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");    
+				break;
 
-		case "nena":
-			SceneManager.LoadScene("MiniJuego-NenaTemerosa-Letras");    
-			break;
-
-		case "chanchitos":
-			SceneManager.LoadScene("MiniJuego-Chanchitos");    
-			break;
+			case "chanchitos":
+				SceneManager.LoadScene("MiniJuego-Chanchitos");    
+				break;
 		}  
 	}
 
@@ -74,8 +76,6 @@ public class ControlarBotones : MonoBehaviour
 	public void Opciones()
 	{
 		Screen.orientation = ScreenOrientation.Portrait;
-		//ControlarVibracion ();
-		//ControlarReconocimiento ();
 		SceneManager.LoadScene("Opciones");
 	}
 
@@ -96,20 +96,5 @@ public class ControlarBotones : MonoBehaviour
 		Screen.orientation = ScreenOrientation.Portrait;
 		SceneManager.LoadScene("Salir");
 	}
-
-	/*public void ControlarVibracion()
-	{
-		if(PlayerPrefs.GetString ("ModoVibracion").Equals("0")){
-			Debug.Log ("Botones-Inicio-Vibrar: ON");
-			Vibrate ();
-		}
-		else{
-			Debug.Log ("Botones-Inicio-Vibrar: OFF");
-		}	
-	}
-		
-	public void Vibrate(){
-		Handheld.Vibrate ();
-	}*/
 }
 
