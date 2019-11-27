@@ -10,34 +10,28 @@ public class SettingsMenu : MonoBehaviour {
 	public AudioMixer audioMixer;
 
 	public void SetVolume(float volume){
-		audioMixer.SetFloat("volume",volume);
+		audioMixer.SetFloat ("volume", volume);
 		PlayerPrefs.SetFloat ("Volume", volume);
-
-		//string nombreEscena = SceneManager.GetActiveScene().name;
-
-		//if (nombreEscena.Equals ("Opciones")) {
 		
-			volume = (-1) * volume;
+		volume = (-1) * volume;
 
-			if (volume > 55 && volume < 80) {
-				GameObject.Find ("Icono-Sonido-Bajo").GetComponent<Image> ().enabled = true;
-				GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = false;
-				GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = false;
-			}
+		if (volume > 55 && volume < 80) {
+			GameObject.Find ("Icono-Sonido-Bajo").GetComponent<Image> ().enabled = true;
+			GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = false;
+			GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = false;
+		}
 
-			if (volume > 25 && volume < 55) {
-				GameObject.Find ("Icono-Sonido-Bajo").GetComponent<Image> ().enabled = false;
-				GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = true;
-				GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = false;
-			}
+		if (volume > 25 && volume < 55) {
+			GameObject.Find ("Icono-Sonido-Bajo").GetComponent<Image> ().enabled = false;
+			GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = true;
+			GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = false;
+		}
 
-			if (volume > 0 && volume < 25) {
-				GameObject.Find ("Icono-Sonido-Bajo").GetComponent<Image> ().enabled = false;
-				GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = false;
-				GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = true;
-			}
-
-		//}
+		if (volume > 0 && volume < 25) {
+			GameObject.Find ("Icono-Sonido-Bajo").GetComponent<Image> ().enabled = false;
+			GameObject.Find ("Icono-Sonido-Medio").GetComponent<Image> ().enabled = false;
+			GameObject.Find ("Icono-Sonido-Alto").GetComponent<Image> ().enabled = true;
+		}
 	}
 
 	public void Update(){

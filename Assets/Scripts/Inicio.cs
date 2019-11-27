@@ -16,9 +16,16 @@ public class Inicio : MonoBehaviour {
 		StartCoroutine (SpriteShapeOut());
 		StopCoroutine ("SpriteShapeOut");
 
-		//inicializo modo relato
-		PlayerPrefs.SetString ("ModoReconocimiento", "0");		
-		PlayerPrefs.SetString ("ModoVibracion", "1");	
+		//Inicializo modo relato
+		if (!PlayerPrefs.HasKey ("ModoReconocimiento")) {
+			PlayerPrefs.SetInt ("ModoReconocimiento", 0);
+		} 
+
+		if (!PlayerPrefs.HasKey ("ModoVibracion")) {
+			PlayerPrefs.SetInt ("ModoVibracion", 1);
+		} 
+
+		PlayerPrefs.Save ();
 	}  
 
 	IEnumerator SpriteShapeOut()
