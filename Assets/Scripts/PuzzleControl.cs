@@ -39,7 +39,7 @@ public class PuzzleControl : MonoBehaviour {
 			GameObject.Find ("ArmadoOk").GetComponent<TextMeshProUGUI> ().enabled = true;
 			AudioSource respuestaOk = GameObject.Find ("AudioRespuestaOk").GetComponent<AudioSource> ();
 			respuestaOk.Play ();
-			StartCoroutine (EsperarSegundos (2));
+			StartCoroutine (EsperarSegundos (3));
 		}
 	}
 
