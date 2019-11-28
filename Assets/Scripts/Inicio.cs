@@ -18,16 +18,22 @@ public class Inicio : MonoBehaviour
 		StopCoroutine ("SpriteShapeOut");
 
 		//INICIALIZO MODO RELATO
-		if (!PlayerPrefs.HasKey ("ModoReconocimiento")) 
+		//Debug.Log("Valor de PlayerPref: " + PlayerPrefs.HasKey ("ModoReconocimiento"));
+		//Debug.Log("Valor volumen: "+PlayerPrefs.GetString ("Volumen"));
+
+		if (PlayerPrefs.HasKey ("ModoReconocimiento") == false) 
 		{
-			PlayerPrefs.SetInt ("ModoReconocimiento", 0);
+			PlayerPrefs.SetString ("ModoReconocimiento", "0");
 		} 
 
 		//INICIALIZO VIBRACION
-		if (!PlayerPrefs.HasKey ("ModoVibracion")) 
+		if (PlayerPrefs.HasKey ("ModoVibracion") == false) 
 		{
-			PlayerPrefs.SetInt ("ModoVibracion", 1);
+			PlayerPrefs.SetString ("ModoVibracion", "1");
 		} 
+
+		//PlayerPrefs.SetString ("ModoReconocimiento", "0");
+		//PlayerPrefs.SetString ("ModoVibracion", "1");
 
 		PlayerPrefs.Save ();
 	}  

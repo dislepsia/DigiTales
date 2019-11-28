@@ -10,10 +10,10 @@ public class Vibracion : MonoBehaviour {
 
 	public void Dropdown_IndexChange(int indice)
 	{
-		PlayerPrefs.SetInt ("ModoVibracion", indice);
+		PlayerPrefs.SetString ("ModoVibracion", indice.ToString());
 		PlayerPrefs.Save ();
 
-		if (PlayerPrefs.GetInt ("ModoVibracion") == 0)
+		if (PlayerPrefs.GetString ("ModoVibracion") == "0")
 			Vibrate ();
 	}
 
@@ -28,7 +28,7 @@ public class Vibracion : MonoBehaviour {
 		if (nombreEscena.Equals ("Opciones")) {
 
 			if (PlayerPrefs.HasKey ("ModoVibracion")) {
-				if (PlayerPrefs.GetInt ("ModoVibracion") == 0) {
+				if (PlayerPrefs.GetString ("ModoVibracion") == "0") {
 					GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 0;
 				} else {
 					GameObject.Find ("DropdownVibracion").GetComponent<TMP_Dropdown> ().value = 1;
@@ -36,7 +36,7 @@ public class Vibracion : MonoBehaviour {
 			} 
 
 			if (!PlayerPrefs.HasKey ("ModoVibracion")){
-				PlayerPrefs.SetInt ("ModoVibracion", 0);
+				PlayerPrefs.SetString ("ModoVibracion", "0");
 				PlayerPrefs.Save ();
 			}
 		}
@@ -48,7 +48,7 @@ public class Vibracion : MonoBehaviour {
 
 		if (nombreEscena.Equals ("Opciones")) {
 
-			if (PlayerPrefs.GetInt ("ModoVibracion") == 0) {
+			if (PlayerPrefs.GetString ("ModoVibracion") == "0") {
 				GameObject.Find ("Icono-Vibrar-Si").GetComponent<Image> ().enabled = true;
 				GameObject.Find ("Icono-Vibrar-No").GetComponent<Image> ().enabled = false;
 

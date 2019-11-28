@@ -8,7 +8,7 @@ public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 
 	public void Dropdown_IndexChange(int indice)
 	{
-		PlayerPrefs.SetInt ("ModoReconocimiento", indice);
+		PlayerPrefs.SetString ("ModoReconocimiento", indice.ToString());
 		PlayerPrefs.Save ();
 	}
 
@@ -16,7 +16,7 @@ public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 
 		if (PlayerPrefs.HasKey ("ModoReconocimiento")) {
 
-			if(PlayerPrefs.GetInt ("ModoReconocimiento") == 0) {
+			if(PlayerPrefs.GetString ("ModoReconocimiento") == "0") {
 				GameObject.Find ("DropdownReconocimiento").GetComponent<TMP_Dropdown> ().value = 0;
 
 			} else {
@@ -26,13 +26,13 @@ public class SeleccionModoReconocimientoVoz : MonoBehaviour {
 		} 
 
 		if (!PlayerPrefs.HasKey ("ModoReconocimiento")) {
-			PlayerPrefs.SetInt ("ModoReconocimiento", 0);
+			PlayerPrefs.SetString ("ModoReconocimiento", "0");
 			PlayerPrefs.Save ();
 		}
 	}
 
 	void Update(){
-		if(PlayerPrefs.GetInt ("ModoReconocimiento") == 0) {
+		if(PlayerPrefs.GetString ("ModoReconocimiento") == "0") {
 			GameObject.Find ("Icono-TipoRelato-TiempoReal").GetComponent<Image> ().enabled = true;
 			GameObject.Find ("Icono-TipoRelato-PalabrasClave").GetComponent<Image> ().enabled = false;
 
