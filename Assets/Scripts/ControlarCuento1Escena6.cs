@@ -149,9 +149,9 @@ public class ControlarCuento1Escena6 : MonoBehaviour
 							if(palabraspintadas==i)
 							{
 								textoCompleto = true;
-								DesactivarEscucha ();
-								coroutineStarted = false;
+								DesactivarEscucha ();								
 								PintarPalabra (palabrasSpeech [i].ToString ());	
+								coroutineStarted = false;
 							}
 							break;
 						default:
@@ -181,7 +181,7 @@ public class ControlarCuento1Escena6 : MonoBehaviour
 						if(n == 0 && nroContenedor==0)
 						{
 							Pintar (palabrasSpeech [i].ToString ().Trim());	
-							ambienteBosque.clip = lobo;	
+							ambienteBosque.Play ();		
 						}
 						break;
 					case "paraliza":	

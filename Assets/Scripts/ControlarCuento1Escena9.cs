@@ -166,9 +166,9 @@ public class ControlarCuento1Escena9 : MonoBehaviour
 								DesactivarEscucha ();
 								pegaso.SetActive(true);
 								pegaso.gameObject.GetComponent<Animator> ().Play ("PegasoVuelo2");
-								ambienteBosque.Play ();
+								ambienteBosque.Play ();								
+								PintarPalabra (palabrasSpeech [i].ToString ());	
 								coroutineStarted = false;
-								PintarPalabra (palabrasSpeech [i].ToString ());		
 							}
 							break;
 						default:

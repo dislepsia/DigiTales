@@ -154,9 +154,9 @@ public class ControlarCuento1Escena8 : MonoBehaviour
 								textoCompleto = true;
 								DesactivarEscucha ();
 								pegaso.gameObject.GetComponent<Animator>().Play("PegasoVuelo");
-								ambienteBosque.Play ();
+								ambienteBosque.Play ();								
+								PintarPalabra (palabrasSpeech [i].ToString ());	
 								coroutineStarted = false;
-								PintarPalabra (palabrasSpeech [i].ToString ());		
 							}
 							break;
 						default:	

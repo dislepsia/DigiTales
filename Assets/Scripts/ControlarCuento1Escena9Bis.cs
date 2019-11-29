@@ -99,9 +99,9 @@ public class ControlarCuento1Escena9Bis : MonoBehaviour
 					{	
 						case "continuará":							
 							textoCompleto = true;
-							DesactivarEscucha ();
+							DesactivarEscucha ();							
+							PintarPalabra (palabrasSpeech [i].ToString ());	
 							coroutineStarted = false;
-							PintarPalabra (palabrasSpeech [i].ToString ());				
 							break;
 						default:	
 							PintarPalabra (palabrasSpeech [i].ToString ());
@@ -122,10 +122,14 @@ public class ControlarCuento1Escena9Bis : MonoBehaviour
 
 			for (i = k; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
 			{			
-				switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
-				{			
-					case "continuará":
+				switch (palabrasSpeech [i].ToString ().Trim())
+				{		
+					case "esta":
 						if(n == 0 && nroContenedor==0)
+							Pintar (palabrasSpeech [i].ToString ().Trim());				
+						break;
+					case "continuará":
+						if(n == 1 && nroContenedor==0)
 						{
 							textoCompleto = true;
 							DesactivarEscucha ();

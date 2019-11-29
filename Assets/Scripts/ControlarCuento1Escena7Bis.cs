@@ -128,7 +128,7 @@ public class ControlarCuento1Escena7Bis : MonoBehaviour
 
 			for (i = k; i < cantPalabrasSpeech && cantPalabrasSpeech <= cantPalabrasEscena; i++)
 			{	
-				switch (palabrasSpeech [cantPalabrasSpeech-1].ToString ().Trim())
+				switch (palabrasSpeech [i].ToString ().Trim())
 				{
 					case "unos":
 						if(n == 0 && nroContenedor==0)

@@ -162,9 +162,9 @@ public class ControlarCuento1Escena7 : MonoBehaviour
 								textoCompleto = true;
 								DesactivarEscucha ();
 								fantasma.gameObject.GetComponent<Animator> ().enabled =true;
-								fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");
-								coroutineStarted = false;
+								fantasma.gameObject.GetComponent<Animator>().Play("Fantasma");								
 								PintarPalabra (palabrasSpeech [i].ToString ());	
+								coroutineStarted = false;
 							}
 							break;
 						default:

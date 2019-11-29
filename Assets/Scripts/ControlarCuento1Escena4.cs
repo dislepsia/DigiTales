@@ -138,9 +138,9 @@ public class ControlarCuento1Escena4 : MonoBehaviour
 								DesactivarEscucha ();
 								player.gameObject.GetComponent<Animator>().Play("PlayerRun");
 								efectoParallax = 1;
-								ambienteBosque.Play ();		
+								ambienteBosque.Play ();										
+								PintarPalabra (palabrasSpeech [i].ToString ());	
 								coroutineStarted = false;
-								PintarPalabra (palabrasSpeech [i].ToString ());			
 							}
 							break;
 						default:	

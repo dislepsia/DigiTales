@@ -182,6 +182,7 @@ public class ControlarCuento2Escena3 : MonoBehaviour
 								chanchoCarpintero.SetActive (true);
 								chanchoCarpintero.gameObject.GetComponent<Animator> ().enabled =true;
 								chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoLLega1");
+								ambienteBosque.Play ();	
 							}
 							break;
 					case "carpintero":					
@@ -190,6 +191,7 @@ public class ControlarCuento2Escena3 : MonoBehaviour
 							textoCompleto = true;
 							DesactivarEscucha ();
 							Pintar (palabrasSpeech [i].ToString ().Trim ());
+							ambienteBosque.clip = CasaMaderas;
 							nroContenedor=1;
 							coroutineStarted1 = "hizo su pintoresca casa";
 						}
@@ -215,6 +217,7 @@ public class ControlarCuento2Escena3 : MonoBehaviour
 						if(n == 0  && nroContenedor==2)
 						{
 							chanchoCarpintero.gameObject.GetComponent<Animator>().Play("ChanchoConstruyeTodo1");
+							ambienteBosque.Play ();
 							Pintar (palabrasSpeech [i].ToString ().Trim ());						
 						}
 						break;

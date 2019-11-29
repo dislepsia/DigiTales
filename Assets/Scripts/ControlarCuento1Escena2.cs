@@ -131,9 +131,9 @@ public class ControlarCuento1Escena2 : MonoBehaviour
 							if(palabraspintadas==i)
 							{
 								textoCompleto = true;
-								DesactivarEscucha ();
-								coroutineStarted = false;
+								DesactivarEscucha ();								
 								PintarPalabra (palabrasSpeech [i].ToString ());	
+								coroutineStarted = false;
 							}
 							break;
 						default:	
