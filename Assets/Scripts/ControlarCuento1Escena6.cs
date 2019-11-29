@@ -54,6 +54,7 @@ public class ControlarCuento1Escena6 : MonoBehaviour
 
 	bool textoCompleto = false;
 
+	bool yaSalto = false;
 
     void Start() 
 	{ 
@@ -139,10 +140,14 @@ public class ControlarCuento1Escena6 : MonoBehaviour
 							if(palabraspintadas==i)
 							{
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								player.gameObject.GetComponent<Animator> ().Play ("PlayerJump");
-								tronco.gameObject.GetComponent<Animator> ().enabled =true;
-								tronco.gameObject.GetComponent<Animator>().Play("MoverTronco");
-								efectoParallax = 1;	
+								if(yaSalto == false)
+								{
+									player.gameObject.GetComponent<Animator> ().Play ("PlayerJump");
+									tronco.gameObject.GetComponent<Animator> ().enabled =true;
+									tronco.gameObject.GetComponent<Animator>().Play("MoverTronco");
+									efectoParallax = 1;
+									yaSalto = true;
+								}
 							}
 							break;
 						case "tronco":	
@@ -211,11 +216,14 @@ public class ControlarCuento1Escena6 : MonoBehaviour
 					case "saltar":					
 						if(n == 0 && nroContenedor==2)
 						{
-							player.gameObject.GetComponent<Animator>().Play("PlayerJump");
-							tronco.gameObject.GetComponent<Animator> ().enabled = true;
-							tronco.gameObject.GetComponent<Animator>().Play("MoverTronco");
-
-							efectoParallax = 1;	
+							if(yaSalto == false)
+							{
+								player.gameObject.GetComponent<Animator> ().Play ("PlayerJump");
+								tronco.gameObject.GetComponent<Animator> ().enabled =true;
+								tronco.gameObject.GetComponent<Animator>().Play("MoverTronco");
+								efectoParallax = 1;
+								yaSalto = true;
+							}
 							Pintar (palabrasSpeech [i].ToString ().Trim());
 						}
 						break;

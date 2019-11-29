@@ -62,6 +62,8 @@ public class ControlarCuento1Escena9 : MonoBehaviour
 
 	string fraseEscena = string.Empty;
 
+	bool hayCasa = false;
+
 
     void Start()
 	{ 
@@ -122,7 +124,11 @@ public class ControlarCuento1Escena9 : MonoBehaviour
 							if(palabraspintadas==i)
 							{
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								casa.SetActive(true);
+								if(hayCasa == false)
+								{
+									casa.SetActive(true);
+									hayCasa = true;
+								}
 								coroutineStarted2 = false;	
 								coroutineStarted3 = false;
 							}
@@ -198,7 +204,11 @@ public class ControlarCuento1Escena9 : MonoBehaviour
 					case "casa":
 						if(n == 0 && nroContenedor==0)
 						{
-							casa.SetActive(true);
+							if(hayCasa == false)
+							{
+								casa.SetActive(true);
+								hayCasa = true;
+							}
 							Pintar (palabrasSpeech [i].ToString ().Trim());			
 							coroutineStarted2 = false;	
 							coroutineStarted3 = false;
@@ -333,14 +343,11 @@ public class ControlarCuento1Escena9 : MonoBehaviour
 			stopRecordingButton.gameObject.SetActive(false);
 			microfono.gameObject.SetActive(false);
 
-			if(fraseEscena == "una casa abandonada aparece")
-			{
-				casa.SetActive(false);			
-			}
-			else
-			{
+			if(fraseEscena != "una casa abandonada aparece")
+			{				
 				player.gameObject.GetComponent<Animator> ().Play ("PlayerIdle");
 			}
+
 			contenedorError.SetActive (true);
 		}
 	}

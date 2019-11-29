@@ -63,6 +63,8 @@ public class ControlarCuento2Escena5 : MonoBehaviour
 
 	string escenaNro = string.Empty; 
 
+	bool hayLobo = false;
+
 
     void Start() 
 	{ 
@@ -120,7 +122,11 @@ public class ControlarCuento2Escena5 : MonoBehaviour
 								if(modoVibracion == "0")
 									Handheld.Vibrate ();
 								ambienteBosque.Play ();	
-								polvoLobo.SetActive (true);
+								if(hayLobo==false)
+								{
+									polvoLobo.SetActive (true);
+									hayLobo = true;
+								}
 							}
 							break;
 						case "aparece":
@@ -203,7 +209,11 @@ public class ControlarCuento2Escena5 : MonoBehaviour
 							if(modoVibracion == "0")
 								Handheld.Vibrate ();
 							ambienteBosque.Play ();	
-							polvoLobo.SetActive (true);
+							if(hayLobo==false)
+							{
+								polvoLobo.SetActive (true);
+								hayLobo = true;
+							}
 						}
 						break;
 					case "aparece":					
