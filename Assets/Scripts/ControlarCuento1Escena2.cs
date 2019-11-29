@@ -312,6 +312,8 @@ public class ControlarCuento1Escena2 : MonoBehaviour
 			bosqueInv.SetActive (false);
 			yield return new WaitForSeconds(0.1f);
 		}
+		if(modoVibracion == "0")
+			Handheld.Vibrate ();
 		ambienteBosque.Play ();	
 	}
 

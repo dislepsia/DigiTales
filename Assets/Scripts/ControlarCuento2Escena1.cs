@@ -143,6 +143,8 @@ public class ControlarCuento2Escena1 : MonoBehaviour
 							if(palabraspintadas==i)
 							{								
 								PintarPalabra (palabrasSpeech [i].ToString ());
+								if(modoVibracion == "0")
+									Handheld.Vibrate ();
 								//ACTIVO ANIMACIONES DE CHANCHITOS
 								polvo.SetActive (true);
 								polvo1.SetActive (true);
@@ -232,6 +234,8 @@ public class ControlarCuento2Escena1 : MonoBehaviour
 						if(n == 0   && nroContenedor==1)
 						{
 							Pintar (palabrasSpeech [i].ToString ().Trim ());	
+							if(modoVibracion == "0")
+								Handheld.Vibrate ();
 							polvo.SetActive (true);
 							polvo1.SetActive (true);
 							polvo2.SetActive (true);						

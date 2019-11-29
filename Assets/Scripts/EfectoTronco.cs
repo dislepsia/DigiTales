@@ -58,7 +58,8 @@ public class EfectoTronco : MonoBehaviour
 
 	void Temblor()
 	{	
-		Handheld.Vibrate ();
+		if(PlayerPrefs.GetString ("ModoVibracion") == "0")
+			Handheld.Vibrate ();
 	}
 
 	void Correr()

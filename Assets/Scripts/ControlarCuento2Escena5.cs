@@ -117,6 +117,8 @@ public class ControlarCuento2Escena5 : MonoBehaviour
 							if(palabraspintadas==i)
 							{								
 								PintarPalabra (palabrasSpeech [i].ToString ());
+								if(modoVibracion == "0")
+									Handheld.Vibrate ();
 								ambienteBosque.Play ();	
 								polvoLobo.SetActive (true);
 							}
@@ -198,6 +200,8 @@ public class ControlarCuento2Escena5 : MonoBehaviour
 						if(n == 0  && nroContenedor==0)
 						{
 							Pintar (palabrasSpeech [i].ToString ().Trim ());
+							if(modoVibracion == "0")
+								Handheld.Vibrate ();
 							ambienteBosque.Play ();	
 							polvoLobo.SetActive (true);
 						}

@@ -118,7 +118,10 @@ public class ControlarCuento1Escena4 : MonoBehaviour
 							if(palabraspintadas==i)
 							{							
 								PintarPalabra (palabrasSpeech [i].ToString ());
-								coroutineStarted4 = false;
+								if(modoVibracion=="0")
+									coroutineStarted4 = false;
+								else
+									ambienteBosque.Play ();
 							}
 							break;						
 						case "oye":
@@ -185,7 +188,10 @@ public class ControlarCuento1Escena4 : MonoBehaviour
 						if(n == 0 && nroContenedor==1)
 						{
 							Pintar (palabrasSpeech [i].ToString ().Trim());
-							coroutineStarted4 = false;
+							if(modoVibracion=="0")
+								coroutineStarted4 = false;
+							else
+								ambienteBosque.Play ();
 						}
 						break;				
 					case "oye":
